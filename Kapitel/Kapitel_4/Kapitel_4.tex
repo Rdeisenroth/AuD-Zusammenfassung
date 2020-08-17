@@ -67,7 +67,7 @@
                                 IF z.parent == z.parent.parent.left THEN    // Linkes Kind (if-Fall)
                                     y = z.parent.parent.right;
                                     IF y != nil AND y.color == red THEN     // Fall 1
-                                        z.parent.color = block;
+                                        z.parent.color = black;
                                         y.color = black;
                                         z.parent.parent.color = red;
                                         z = z.parent.parent;                // rekursiv nach oben weiterführen
