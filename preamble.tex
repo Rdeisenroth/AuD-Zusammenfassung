@@ -1,0 +1,145 @@
+%We do not define Documentclass here
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+%\usepackage{minted} % Used to syntax highlight code
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,skins}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{mleftright}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{patterns, shapes, intersections, arrows, math, decorations,decorations.pathreplacing, decorations.pathmorphing, positioning, calc, automata, chains,matrix, arrows.meta, , shadows.blur, shapes.symbols}
+\usepackage{cryptocode}
+\usepackage{booktabs}
+\usepackage[font=small, labelfont=sc, position=bottom]{caption}
+\usepackage[labelfont=normalfont, position=bottom]{subcaption}
+\usepackage{etoolbox}
+%\usepackage{lmodern}
+\usepackage{adjustbox}
+\usepackage{framed}
+\usepackage{ragged2e}
+\usepackage{ebproof}
+\usepackage{proof}
+\usepackage{tabularx}
+\usepackage{latexsym}
+\usepackage{colortbl}
+\usepackage{forest}
+\usepackage{longtable}
+\usepackage[longtable]{multirow}
+\usepackage{stackengine}
+\usepackage{caption}
+\usepackage{xifthen}
+\usepackage{karnaughmap}
+\usepackage{listings}
+\usepackage{blindtext}
+\usepackage{standalone}
+\usepackage{wrapfig}
+\usepackage{xr-hyper}
+\usepackage{import}
+
+% Make Links blue
+\ifthenelse{\isundefined{\hypersetup}}{}{
+    \hypersetup{
+        %colorlinks=true,
+        %linkcolor=blue,
+    }
+}
+
+% Document definitions (please change here instead of in the document)
+\newcommand{\Fach}{AuD}
+%\newcommand{\contributors}{}
+
+\newtcblisting{ccode}[2][]{
+    listing engine=minted,
+    colback=bashcodebg!30,
+    colframe=black!70,
+    listing only,
+    %minted style=colorful,
+    minted language=c,
+    minted options={linenos=true,numbersep=3mm,texcl=true,#1},
+    left=5mm,enhanced,
+    overlay={\begin{tcbclipinterior}\fill[black!25] (frame.south west)
+                rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
+    #2
+}
+\definecolor{bashcodebg}{rgb}{0.85,0.85,0.85}
+%Formatierungen für Beispiele in diesem Dokument. Im Allgemeinen nicht notwendig!
+\let\file\texttt
+\let\code\texttt
+\let\pck\textsf
+\let\cls\textsf
+
+%Color Definitions
+\definecolor{tablegreen}{RGB}{207, 228, 174}
+\definecolor{tablered}{RGB}{255, 191, 191}
+\definecolor{tableyellow}{RGB}{255, 250, 193}
+\definecolor{tableblue}{RGB}{107, 207, 246}
+\definecolor{arrowgreen}{RGB}{0, 165, 79}
+\definecolor{clight2}{RGB}{212, 237, 244}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Makros
+\newcommand{\fatsf}[1]{\textsf{\textbf{#1}}}
+\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
+\newcommand{\tikzmark}[2][-3pt]{\tikz[remember picture, overlay, baseline=-0.5ex]\node[#1](#2){};}
+
+\tikzset{brace/.style={decorate, decoration={brace}},
+    brace mirrored/.style={decorate, decoration={brace,mirror}},
+}
+
+\newcounter{brace}
+\setcounter{brace}{0}
+\newcommand{\drawbrace}[3][brace]{%
+    \refstepcounter{brace}
+    \tikz[remember picture, overlay]\draw[#1] (#2.center)--(#3.center)node[pos=0.5, name=brace-\thebrace]{};
+}
+
+\newcounter{arrow}
+\setcounter{arrow}{0}
+\newcommand{\drawcurvedarrow}[3][]{%
+\refstepcounter{arrow}
+\tikz[remember picture, overlay]\draw (#2.center)edge[#1]node[coordinate,pos=0.5, name=arrow-\thearrow]{}(#3.center);
+}
+
+% #1 options, #2 position, #3 text 
+\newcommand{\annote}[3][]{%
+    \tikz[remember picture, overlay]\node[#1] at (#2) {#3};
+}
+
+% Setzt die Nummerierung von Listen auf (a), (b), ...
+\setlist[enumerate]{label=(\alph*)}
+
+\newenvironment{cpenumerate}[1][]{\begin{enumerate}[nosep, #1]}{\end{enumerate}}
+
+\newlength{\leftstackrelawd}
+\newlength{\leftstackrelbwd}
+\def\leftstackrel#1#2{\settowidth{\leftstackrelawd}%
+    {${{}^{#1}}$}\settowidth{\leftstackrelbwd}{$#2$}%
+    \addtolength{\leftstackrelawd}{-\leftstackrelbwd}%
+    \leavevmode\ifthenelse{\lengthtest{\leftstackrelawd>0pt}}%
+    {\kern-.5\leftstackrelawd}{}\mathrel{\mathop{#2}\limits^{#1}}}
+
+\newcommand{\gegeben}{\fatsf{Gegeben: }}
+\newcommand{\zuzeigen}{\fatsf{Zu Zeigen: }}
+\newcommand{\zuberechnen}{\fatsf{Zu Berechnen: }}
+\newcommand{\zubestimmen}{\fatsf{Zu Bestimmen: }}
+\newcommand{\anzugeben}{\fatsf{Anzugeben: }}
+\newcommand{\loesung}{\fatsf{Lösung: }}
+\newcommand{\rechnung}{\fatsf{Rechnung: }}
+
+
+
+% Center Captions
+\captionsetup[figure]{justification=centering}
+\captionsetup[subfigure]{justification=centering}
+\captionsetup[table]{justification=centering}
+
+% Remove unwanted space from tables
+\aboverulesep = 0mm \belowrulesep = 0mm

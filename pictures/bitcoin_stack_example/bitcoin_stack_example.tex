@@ -1,0 +1,59 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+%Styles
+\tikzstyle{stacknode} = [draw=black,rectangle,inner sep=0pt,minimum width= 2cm, minimum height= .8cm, ultra thick]
+\begin{tikzpicture}
+    \node[drop shadow={opacity=.25, shadow xshift=0.07, shadow yshift=-0.07}, blur shadow={shadow blur steps=20,shadow blur extra rounding=1.3pt},fill=black!10,align=left](n1){\texttt{scriptPubKey:}\\\texttt{OP\_DUP OP\_HASH160 56fa64a8bd7852d2c58095fa9a2fcd52d2c580b65d35549d}\\\texttt{OP\_EQUALVERIFY OP\_CHECKSIG}};
+    
+    %Stack 1
+    \node[stacknode,below right = 3.5cm and 0cm of n1.south west](s1n1){\texttt{Signature}};
+    \node[stacknode,above=-\pgflinewidth of s1n1](s1n2){\texttt{PK}};
+    \draw[ultra thick] ([xshift=.5\pgflinewidth]s1n2.north west) -- ++(0,1.6cm);
+    \draw[ultra thick] ([xshift=-.5\pgflinewidth]s1n2.north east) -- ++(0,1.6cm);
+    %Stack 2
+    \node[stacknode, right=.5cm of s1n1](s2n1){\texttt{Signature}};
+    \node[stacknode,above=-\pgflinewidth of s2n1](s2n2){\texttt{PK}};
+    \node[stacknode,above=-\pgflinewidth of s2n2](s2n3){\texttt{PK}};
+    \draw[ultra thick] ([xshift=.5\pgflinewidth]s2n3.north west) -- ++(0,.8cm);
+    \draw[ultra thick] ([xshift=-.5\pgflinewidth]s2n3.north east) -- ++(0,.8cm);
+    %Stack 3
+    \node[stacknode, right=.5cm of s2n1](s3n1){\texttt{Signature}};
+    \node[stacknode,above=-\pgflinewidth of s3n1](s3n2){\texttt{PK}};
+    \node[stacknode,above=-\pgflinewidth of s3n2](s3n3){\texttt{Hash(PK)}};
+    \draw[ultra thick] ([xshift=.5\pgflinewidth]s3n3.north west) -- ++(0,.8cm);
+    \draw[ultra thick] ([xshift=-.5\pgflinewidth]s3n3.north east) -- ++(0,.8cm);
+    %Stack 4
+    \node[stacknode, right=.5cm of s3n1](s4n1){\texttt{Signature}};
+    \node[stacknode,above=-\pgflinewidth of s4n1](s4n2){\texttt{PK}};
+    \node[stacknode,above=-\pgflinewidth of s4n2](s4n3){\texttt{Hash(PK)}};
+    \node[stacknode,above=-\pgflinewidth of s4n3](s4n4){\texttt{56fa64\ldots}};
+    %Stack 5
+    \node[stacknode, right=.5cm of s4n1](s5n1){\texttt{Signature}};
+    \node[stacknode,above=-\pgflinewidth of s5n1](s5n2){\texttt{PK}};
+    \draw[ultra thick] ([xshift=.5\pgflinewidth]s5n2.north west) -- ++(0,1.6cm);
+    \draw[ultra thick] ([xshift=-.5\pgflinewidth]s5n2.north east) -- ++(0,1.6cm);
+    %Stack 6
+    \draw[ultra thick] ([xshift=.5cm,yshift=3.2cm+\pgflinewidth ]s5n1.south east) -- ++(0cm,-3.2cm-.5\pgflinewidth) -- ++(2cm,0cm) -- ++(0cm, 3.2cm+.5\pgflinewidth);
+
+    %Pfeile
+    \draw[-{Triangle}] ([xshift=.2cm]s1n1.south) to[out=270,in=270,looseness=.7] node[below](lbl1){\texttt{OP\_DUP}}     ([xshift=-.2cm]s2n1.south);
+    \draw[-{Triangle}] ([xshift=.2cm]s2n1.south) to[out=270,in=270,looseness=.7] node[below](lbl2){\texttt{OP\_HASH160}} ([xshift=-.2cm]s3n1.south);
+    \draw[-{Triangle}] ([xshift=.2cm]s3n1.south) to[out=270,in=270,looseness=.7] node[below](lbl3){\texttt{OP\_56fa\ldots}} ([xshift=-.2cm]s4n1.south);
+    \draw[-{Triangle}] ([xshift=.2cm]s4n1.south) to[out=270,in=270,looseness=.7] node[below](lbl4){\texttt{OP\_EQUALVERIFY}} ([xshift=-.2cm]s5n1.south);
+    \draw[-{Triangle}] ([xshift=.2cm]s5n1.south) to[out=270,in=270,looseness=.7] node[below](lbl5){\texttt{OP\_CHECKSIG}} ++(2cm,0cm);
+    %Beschriftungen
+    \node[below=1em of lbl1,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{push(k)}\\\texttt{push(k)}};
+    \node[below=1em of lbl2,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{\textcolor{gray}{//h=Hash(k)}}\\\texttt{push(h)}};
+    \node[below=1em of lbl3,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{push(56fa\ldots)}};
+    \node[below=1em of lbl4,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{h=pop()}\\\texttt{\textcolor{gray}{//k==h?}}};
+    \node[below=1em of lbl5,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{h=pop()}\\\texttt{\textcolor{gray}{//k,h gültig?}}};
+\end{tikzpicture}
+\end{document}

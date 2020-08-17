@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+    \begin{tikzpicture}[align=center,line width=.4mm]
+        \node[draw,rectangle,rounded corners](left){\textsf{Eingabe}};
+        \node[draw,rectangle,rounded corners, right = 2cm of left](right){\textsf{Ausgabe}};
+        \draw[line width=1mm, draw=black!30!green,-triangle 45,postaction={draw, line width=2mm, shorten >=5mm, -}] (left) -- node[circle,fill=black!90,line width= .4mm, draw=black,pos=.4,text=white]{?} (right);
+    \end{tikzpicture}
+\end{document}

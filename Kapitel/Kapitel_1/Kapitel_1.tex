@@ -1,0 +1,89 @@
+\documentclass[
+    12pt,
+    a4paper,
+    ngerman,
+    color=3b,% Farbe für Hervorhebungen auf Basis der Deklarationen in den
+    %type=intern,
+    %titlepage=true,
+    marginpar=false,
+    colorback=false,
+    %logo=head,
+    leqno,
+]{tudaexercise}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+\externaldocument{../Kapitel_2/Kapitel_2}
+% Set Graphics Path, so pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+\section{Einführung}\label{1}\label{Einfuehrung}
+\subsection{Probleme in der Informatik}\label{1.1}
+Ein \fatsf{Problem} im Sinne der Informatik:
+\begin{itemize}
+    \item Enthält Beschreibung der Eingabe
+    \item Enthält Beschreibung der Ausgabe
+    \item Gibt selbst \fatsf{keinen} Übergang von Ein und Ausgabe an
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includestandalone[width=.5\textwidth]{pictures/problem_informatik_modell/problem_informatik_modell}% 
+    \caption{Modell Problem Informatik}
+    \label{fig:modell-problem-informatik}
+\end{figure}
+z.B. Finde den kürzesten Weg zwischen 2 Orten\\
+Eine \fatsf{Probleminstanz} ist eine konkrete Eingabebelegung für die entsprechende Ausgabe gewünscht.\\
+Für das obige Problem wäre das z.B. "`Was ist der kürzeste Weg vom Audimax in die Mensa?"'
+\subsection{Definitionen für Algorithmen}\label{1.2}\label{Definitionen fuer Algorithmen}
+"`Ein Algorithmus ist eine \fatsf{endliche Folge} von Rechenschritten, die eine \fatsf{Eingabe} in eine \fatsf{Ausgabe} umwandelt."'\footnote{Quelle: Cormen et al., 4. Auflage}\\
+Anforderungen an Algorithmen:\begin{itemize}
+    \item Spezifizierung der Ein- und Ausgabe:\begin{itemize}
+              \item Anzahl und Typen aller Elemente ist/sind definiert
+          \end{itemize}
+    \item Eindeutigkeit:\begin{itemize}
+              \item Jeder Einzelschritt ist klar definiert und ausführbar
+              \item Die Reihenfolge der Einzelschritte ist festgelegt.
+          \end{itemize}
+    \item Endlichkeit\begin{itemize}
+              \item Notation hat endliche Länge
+          \end{itemize}
+\end{itemize}
+Eigenschaften von Algorithmen:\begin{itemize}
+    \item Determiniertheit:\begin{itemize}
+              \item Für gleiche Eingabe folgt stets die gleiche Ausgabe (andere Zwischenzustände sind möglich)
+          \end{itemize}
+    \item Determinismus:\begin{itemize}
+              \item Für die gleiche Eingabe ist die Ausführung und Ausgabe stets identisch.
+          \end{itemize}
+    \item Terminierung:\begin{itemize}
+              \item Der Algorithmus läuft für jede endliche Eingabe nur endlich lange
+          \end{itemize}
+    \item Korrektheit:\begin{itemize}
+              \item Der Algorithmus berechnet stets die spezifizierte Ausgabe (falls dieser
+                    terminiert).
+          \end{itemize}
+    \item Effizienz:\begin{itemize}
+              \item Sparsamkeit im Ressourcenverbrauch (Zeit, Speicher, Energie, ...)
+          \end{itemize}
+\end{itemize}
+\subsection{Definitionen für Datenstrukturen}\label{1.3}\label{Definitionen fuer Datenstrukturen}
+"`Eine Datenstruktur ist eine Methode,
+Daten \fatsf{abzuspeichern} und zu \fatsf{organisieren} sowie
+den \fatsf{Zugriff} auf die Daten und die \fatsf{Modifikation}
+der Daten zu erleichtern."'\footnote{Quelle: Cormen et al., 4. Auflage}\\
+\begin{wrapfigure}[5]{r}{.6\textwidth}
+    \centering
+    \includestandalone[width=.5\textwidth]{pictures/baum_beispiel/baum_beispiel}% 
+    \caption{Beispiel Datenstruktur (Rot-Schwarz-Baum)}
+    \label{fig:baum_beispiel}
+\end{wrapfigure}
+Datenstrukturen:\begin{itemize}
+    \item Sind Organisationsformen für Daten
+    \item Beinhalten Strukturbestandteile und Nutzerdaten (Payload)
+\end{itemize}
+z.B. \hyperref[2.2]{Arrays}, listen, \ldots
+\vspace*{2cm}
+\end{document}

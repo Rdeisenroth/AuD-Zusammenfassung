@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+%Styles
+\begin{tikzpicture}
+    \def\blocksize{2em}
+    \newcounter{ind};
+    \setcounter{ind}{0};
+    \node[draw=none,fill=none]{S};
+    \foreach \x in {$12$,$47$,$17$,$98$,$72$,$$,$$,$$,$$}{
+        \addtocounter{ind}{1};
+        \node[
+            minimum height=\blocksize, 
+            minimum width=\blocksize,
+            rectangle, draw=black,
+            anchor=center, %align=center, %text width=2em,
+            inner sep=0pt, outer sep=0pt
+            ] (n\theind) at (\theind*\blocksize,0) {\x};
+            \node[draw=none,fill=none, above = 0mm of n\theind,text=gray] {\footnotesize \the\numexpr\value{ind}-1\relax};
+    }
+\end{tikzpicture}
+\end{document}

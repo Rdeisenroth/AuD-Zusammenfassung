@@ -1,0 +1,29 @@
+\documentclass[varwidth]{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+%Styles
+\begin{center}
+    $
+        T(n)=\begin{cases}
+            c & \text{falls } n=1,\\
+            2T(\frac{n}{2})+cn & \text{falls}n>1\\
+        \end{cases}
+    $\\
+\end{center}
+\begin{forest}
+    for tree={l sep=.2cm, edge={thick}}
+    [,phantom
+    [$T(n)$]
+    [$cn$[$T(\frac{n}{2})$][$T(\frac{n}{2})$]]
+    [$cn$[$\frac{cn}{2}$[$T(\frac{n}{4})$][$T(\frac{n}{4})$]][$\frac{cn}{2}$[$T(\frac{n}{4})$][$T(\frac{n}{4})$]]]
+    [$cn$[$\frac{cn}{2}$[$\frac{cn}{4}$[,shape=coordinate[$c$,edge={dotted}]][,shape=coordinate[$c$,edge={dotted}]]][$\frac{cn}{4}$[,shape=coordinate[$c$,edge={dotted}]][,shape=coordinate[$c$,edge={dotted}]]]][$\frac{cn}{2}$[$\frac{cn}{4}$[,shape=coordinate[$c$,edge={dotted}]][,shape=coordinate[$c$,edge={dotted}]]][$\frac{cn}{4}$[,shape=coordinate[$c$,edge={dotted}]][,shape=coordinate[$c$,edge={dotted}]]]]]
+    ]
+\end{forest}
+\end{document}

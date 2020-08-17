@@ -1,0 +1,39 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[left=1.00in, right=1.00in, top=1.00in, bottom=1.00in]{geometry}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,skins}
+
+\newtcblisting{bashcode}[1][]{
+  listing engine=minted,
+  colback=bashcodebg,
+  colframe=black!70,
+  listing only,
+  minted style=colorful,
+  minted language=bash,
+  minted options={linenos=true,numbersep=3mm,texcl=true,#1},
+  left=5mm,enhanced,
+  overlay={\begin{tcbclipinterior}\fill[black!25] (frame.south west)
+            rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}
+}
+\definecolor{bashcodebg}{rgb}{0.85,0.85,0.85}
+
+\begin{document}
+
+The following minted environment begins in a new line even if 
+a background color is added to the minted environment.
+\begin{bashcode}
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer # Java version 8
+\end{bashcode}
+
+The following minted environment begins in a new line even if 
+a background color is added to the minted environment.
+\begin{bashcode}[linenos=false]
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer # Java version 8
+\end{bashcode}
+
+\end{document}

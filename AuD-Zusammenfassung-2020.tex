@@ -1,0 +1,43 @@
+\input{preamble_text}
+
+\externaldocument{../Kapitel_1/Kapitel_1}
+\externaldocument{../Kapitel_2/Kapitel_2}
+\externaldocument{../Kapitel_3/Kapitel_3}
+\externaldocument{../Kapitel_4/Kapitel_4}
+\externaldocument{../Kapitel_5/Kapitel_5}
+\externaldocument{../Kapitel_6/Kapitel_6}
+\externaldocument{../Kapitel_7/Kapitel_7}
+\externaldocument{../Kapitel_8/Kapitel_8}
+
+%\def\isMain{true}
+\begin{document}
+
+%--Titelseite--
+\title{Algorithmen\\und Datenstrukturen}
+\subtitle{Gedächtnisstütze}
+\term{
+    \fatsf{Author:} Ruben Deisenroth\\
+    \fatsf{Helfer und Mitwirkende:} J. Milkovits
+}
+
+\date{\fatsf{Stand:} \today} % Ohne Angabe wird automatisch das heutige Datum eingefügt
+\maketitle
+\tableofcontents %Inhaltsverzeichnis
+\clearpage
+%---Beginn Der Zusammenfassung---%
+
+%Kapitel Laden
+% Dieser Ansatz lässt keine preview von LaTeX-Workshop zu
+%\foreach \kapitelnr in {1,...,8}{
+%    \input{Kapitel/Kapitel_\kapitelnr/Kapitel_\kapitelnr}
+%}
+%Dieser schon
+\input{Kapitel/Kapitel_1/Kapitel_1}
+\input{Kapitel/Kapitel_2/Kapitel_2}
+\input{Kapitel/Kapitel_3/Kapitel_3}
+\input{Kapitel/Kapitel_4/Kapitel_4}
+\input{Kapitel/Kapitel_5/Kapitel_5}
+\input{Kapitel/Kapitel_6/Kapitel_6}
+\input{Kapitel/Kapitel_7/Kapitel_7}
+\input{Kapitel/Kapitel_8/Kapitel_8}
+\end{document}
