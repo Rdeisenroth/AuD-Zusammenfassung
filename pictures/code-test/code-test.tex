@@ -1,39 +1,95 @@
 \documentclass[11pt,letterpaper]{article}
 \usepackage[left=1.00in, right=1.00in, top=1.00in, bottom=1.00in]{geometry}
 
-\usepackage{tcolorbox}
-\tcbuselibrary{minted,skins}
+\usepackage{tcolorbox} % Paket zum Erstellen von Boxen, Kompatibel mit minted
+\tcbuselibrary{minted,skins} % Einbinden von Minted (Paket selbst muss nicht geladen werden)
 
-\newtcblisting{bashcode}[1][]{
-  listing engine=minted,
-  colback=bashcodebg,
-  colframe=black!70,
-  listing only,
-  minted style=colorful,
-  minted language=bash,
-  minted options={linenos=true,numbersep=3mm,texcl=true,#1},
-  left=5mm,enhanced,
-  overlay={\begin{tcbclipinterior}\fill[black!25] (frame.south west)
-            rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}
+% Color Definitions
+\definecolor{vlcodebg}{rgb}{0.85,0.85,0.85}
+
+% Environment für Vorlesungs-Code Style (Arg 1 = minted Options, Arg 2 = tcolorbox Options)
+\newtcblisting{VLCode}[2][]{
+  listing engine=minted, % Minted verwenden
+  colback=vlcodebg, %Hintergrundfarbe
+  colframe=black!70, % Randfarbe
+  listing only, % Sonst will er den Plain Text nach dem Minted Listing noch anfügen
+  minted style=bw, % Minted Style setzen
+  minted language=java, % Sprache setzen
+  minted options={ %Minted Optionen
+    linenos=true,
+    numbersep=3mm,
+    texcl=true,
+    #1 % weitere optionen für Minted zulassen
+    },
+  left=5mm, % Links Platz lassen
+  enhanced, % Erlaubt uns, den ramen zu zeichnen
+  overlay={ % Für Grauen Bereich links
+            \begin{tcbclipinterior}
+              \fill[black!25] (frame.south west) rectangle ([xshift=5mm]frame.north west); % Zeilennummernbereich färben
+            \end{tcbclipinterior}
+          },
+  #2 % Weitere Argumente zulassen
 }
-\definecolor{bashcodebg}{rgb}{0.85,0.85,0.85}
+
+% Environment für meinen Style (Arg 1 = minted Options, Arg 2 = tcolorbox Options)
+\newtcblisting{ccode}[2][]{
+    listing engine=minted, % Minted verwenden
+    colback=vlcodebg!30, %Hintergrundfarbe
+    colframe=black!70, % Randfarbe
+    listing only,  % Sonst will er den Plain Text nach dem Minted Listing noch anfügen
+    %minted style=colorful, %Sieht actually worse aus imo
+    minted language=java, % Sprache setzen
+    minted options={ %Minted Optionen
+      linenos=true,
+      numbersep=3mm,
+      texcl=true,
+      #1 % weitere optionen für Minted zulassen
+      },
+      left=5mm, % Links Platz lassen
+      enhanced, % Erlaubt uns, den ramen zu zeichnen
+      overlay={ % Für Grauen Bereich links
+                \begin{tcbclipinterior}
+                  \fill[black!25] (frame.south west) rectangle ([xshift=5mm]frame.north west); % Zeilennummernbereich färben
+                \end{tcbclipinterior}
+              },
+      #2 % Weitere Argumente zulassen
+}
+
 
 \begin{document}
 
-The following minted environment begins in a new line even if 
-a background color is added to the minted environment.
-\begin{bashcode}
-$ sudo add-apt-repository ppa:webupd8team/java
-$ sudo apt-get update
-$ sudo apt-get install oracle-java8-installer # Java version 8
-\end{bashcode}
+Vorlesungsstyle:
+\begin{VLCode}[autogobble]{}
+  public class Main() {
+    public static void main(String... args){
+      // do awesome stuff
+    }
+  }
+\end{VLCode}
+Vorlesungsstyle mit Titel:
+\begin{VLCode}[autogobble]{title=EinTitel}
+  public class Main() {
+    public static void main(String... args){
+      // do awesome stuff
+    }
+  }
+\end{VLCode}
 
-The following minted environment begins in a new line even if 
-a background color is added to the minted environment.
-\begin{bashcode}[linenos=false]
-$ sudo add-apt-repository ppa:webupd8team/java
-$ sudo apt-get update
-$ sudo apt-get install oracle-java8-installer # Java version 8
-\end{bashcode}
+Vorlesungsstyle ohne Zeilen:
+\begin{VLCode}[autogobble, linenos=false]{}
+  public class Main() {
+    public static void main(String... args){
+      // do awesome stuff
+    }
+  }
+\end{VLCode}
 
+Mein Style:
+\begin{ccode}[autogobble]{title={\texttt{Ein Krasser Titel In AlgFont()}}}
+  public class Main() {
+    public static void main(String... args){
+      // do awesome stuff
+    }
+  }
+\end{ccode}
 \end{document}
