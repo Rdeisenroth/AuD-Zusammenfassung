@@ -615,8 +615,7 @@ Beispiele:\begin{itemize}
                     A[k] = R[j]
                     j = j + 1
           \end{ccode}
-
-
+          (Teilarrays werden nicht parallel bearbeitet)
     \item \fatsf{Korrektheit von MergeSort}
           \begin{itemize}
               \item \textit{Schleifeninvariante}
@@ -670,7 +669,7 @@ Beispiele:\begin{itemize}
                     \]
               \item Lösen der Rekursionsgleichung mithilfe eines Rekursionsbaums
                     \begin{itemize}
-                        \item[] \includegraphics[width=9cm]{pictures/merge_sort_equation/merge_sort_equation}
+                        \item[] \includegraphics[width=14cm]{pictures/merge_sort_equation/merge_sort_equation}
                         \item Verwenden der Konstante $c$ statt $\Theta(1)$
                         \item $cn$ stellt den Aufwand an der ersten Ebene dar
                         \item Der addierte Aufwand jeder Stufe (aller Knoten) ist auch $cn$

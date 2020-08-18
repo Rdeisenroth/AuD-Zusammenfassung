@@ -213,11 +213,11 @@
                                 zigZag(T,z);
                     \end{ccode}
                 \item[]
-                \item[] \includegraphics[width=8cm]{pictures/zigzag.PNG}
-                \item[] \includegraphics[width=8cm]{pictures/zigzig.PNG}
-                \item[] \includegraphics[width=8cm]{pictures/zig.PNG}
+                \item[] \includegraphics[width=12cm]{pictures/zigzag.PNG}
+                \item[] \includegraphics[width=11cm]{pictures/zigzig.PNG}
+                \item[] \includegraphics[width=11cm]{pictures/zig.PNG}
             \end{itemize}
-        
+        \vspace*{-1cm}
         \item \fatsf{Suchen}
             \begin{itemize}
                 \item Laufzeit: $O(h)$
@@ -355,11 +355,11 @@
                         \item Jeder innere Knoten mit $n$ Werten hat $n+1$ Kinder, sodass gilt:
                         \item[] $k_0 \leq key[0] \leq k_1 \leq key[1] \leq ... \leq k_{n-1} \leq key[n-1] \leq k_n$
                     \end{itemize}
-                \item[] \includegraphics[width=9cm]{pictures/bbaum.PNG}
+                \item[] \includegraphics[width=12cm]{pictures/bbaum.PNG}
                 \item Höhe B-Baum: $h \leq log_t \frac{n+1}{2}$ (Grad $t$ und $n$ Werte)
                 \item B-Baum wird für größere $t$ flacher
             \end{itemize}
-        
+        \clearpage
         \item \fatsf{Suche}
             \begin{itemize}
                 \item[] \includegraphics[width=12cm]{pictures/bbaumSuche.PNG}
@@ -377,7 +377,6 @@
                     \end{ccode}
             \end{itemize}
 
-\pagebreak
 
         \item \fatsf{Einfügen}
             \begin{itemize}
@@ -404,6 +403,8 @@
                     Füge z in Blatt ein
                     \end{ccode}
             \end{itemize}
+
+\clearpage
 
         \item \fatsf{Löschen}
             \begin{itemize}
@@ -434,7 +435,7 @@
                             \item keine Änderung oberhalb notwendig
                         \end{itemize}
                     \end{minipage}
-                \clearpage
+                    
                     \item Code:
                 \item[]
                     \begin{ccode}[autogobble]{title={delete(T, k)}}
