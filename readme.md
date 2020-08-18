@@ -2,8 +2,7 @@
 ## Was ist das?
 Eine Zusammenfassung des Faches Algorithmen und Datenstrukturen (kurz: AuD), geschrieben in Latex.
 Aktuell umfasst sie:
-- Definitionen und Konzepte der Folien (z.B: $\mathcal{O}(g)=\{f:\forall c \in \mathbb{R}_{>0}, \exists n_0 \in \mathbb{N}, \forall n \geq n_0, 0\leq f(n)<cg(n)\}$
-                        )
+- Definitionen und Konzepte der Folien
 - Pseudocode der Folien
 - Teilweise Beispiele
 
