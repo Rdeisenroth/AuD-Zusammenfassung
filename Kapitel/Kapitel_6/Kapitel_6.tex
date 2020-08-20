@@ -359,16 +359,15 @@
                 \item[]
                     \begin{ccode}[autogobble,escapeinside=||]{title={Bellman-Ford-SSSP(G,s,w)}}
                     initSSSP(G,s,w);
-                    FOR i = 1 TO |V|-1 DO
+                    FOR i = 1 TO |$\vert V\vert$|-1 DO
                         FOREACH (u,v) in E DO
                             relax(G,u,v,w);
                     FOREACH (u,v) in E DO   // Prüfung ob negativer Zyklus
                         IF v.dist > u.dist+w((u,v)) THEN
                             return false;
                     return true;
-
-                    initSSSP(G,s,w)
-
+                    \end{ccode}
+                    \begin{ccode}[autogobble,escapeinside=||]{title={initSSSP(G,s,w)}}
                     FOREACH v in V DO
                         v.dist = |$\infty$|;
                         v.pred = nil;
@@ -403,6 +402,14 @@
                         FOREACH v in adj(u) DO
                             relax(G,u,v,w);
                     \end{ccode}
+                \item \begin{minipage}{.3\textwidth}
+                    \includegraphics[]{pictures/dijkstra-fail-graph/dijkstra-fail-graph}
+                \end{minipage}
+                \begin{minipage}{.5\textwidth}
+                    \begin{itemize}
+                        \item Beispiel für Problem mit negativen Kantengewisten bei Dijkstra: Dijkstra würde Pfad 1-2-3 liefern, da das Kantengewicht 4 größer als der andere Pfad ist.
+                    \end{itemize}
+                \end{minipage}
             \end{itemize}
     \end{itemize}
 \clearpage
