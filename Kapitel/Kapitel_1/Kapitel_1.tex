@@ -39,7 +39,7 @@ Eine \fatsf{Probleminstanz} ist eine konkrete Eingabebelegung für die entsprech
 Für das obige Problem wäre das z.B. "`Was ist der kürzeste Weg vom Audimax in die Mensa?"'
 \subsection{Definitionen für Algorithmen}\label{1.2}\label{Definitionen fuer Algorithmen}
 "`Ein Algorithmus ist eine \fatsf{endliche Folge} von Rechenschritten, die eine \fatsf{Eingabe} in eine \fatsf{Ausgabe} umwandelt."'\footnote{Quelle: Cormen et al., 4. Auflage}\\
-Anforderungen an Algorithmen:\begin{itemize}
+\fatsf{Anforderungen an Algorithmen:}\begin{itemize}
     \item Spezifizierung der Ein- und Ausgabe:\begin{itemize}
               \item Anzahl und Typen aller Elemente ist/sind definiert
           \end{itemize}
@@ -51,7 +51,7 @@ Anforderungen an Algorithmen:\begin{itemize}
               \item Notation hat endliche Länge
           \end{itemize}
 \end{itemize}
-Eigenschaften von Algorithmen:\begin{itemize}
+\fatsf{Eigenschaften von Algorithmen:}\begin{itemize}
     \item Determiniertheit:\begin{itemize}
               \item Für gleiche Eingabe folgt stets die gleiche Ausgabe (andere Zwischenzustände sind möglich)
           \end{itemize}
@@ -86,4 +86,23 @@ Datenstrukturen:\begin{itemize}
 \end{itemize}
 z.B. \hyperref[2.2]{Arrays}, listen, \ldots
 \vspace*{2cm}
+\subsection{Pseudocode-Konventionen}
+\begin{itemize}
+    \item Blöcke werden durch Einrückungen hervorgehoben
+    \item Blockkonstrukte sind "`\texttt{for x to y}"', "`\texttt{while}"', "`\texttt{repeat-until}"' und "`\texttt{if-else}"'
+    \item Kommentare erhalten das Prädikat "`\texttt{//}"'
+    \item "`\texttt{i = j = e}"' bedeutet, \texttt{i} und \texttt{j} erhalten den Wert von \texttt{e}
+    \item Variablen sind immer lokal
+    \item $A[i]$ bezeichnet das i-te Element im Array A
+    \item $A[i..j]$ Array A im Bereich von $i-j$
+    \item Attribute werden über einen "`\texttt{.}"' abgerufen
+\end{itemize}
+\subsection{Weitere wichtige Definitionen}
+\begin{itemize}
+    \item \fatsf{short circuit evaluation (Kurzschlussauswertung)}: Strategie, bei der die Auswertung, nachdem die Gesamtlösung durch einen Teilausdruck eindeutig bestimmt wurde, abgebrochen wird. 
+    z.B.: \texttt{1+1==2 || 1/0==0}$\longrightarrow \texttt{true}$
+    \item \fatsf{call-by-reference (Referenzparameter)}: Übergeben von Referenz auf ein Objekt. Dadurch sind Änderungen an diesem innerhalb der Routine möglich.
+    \item \fatsf{call-by-value (Wertparameter)}: Übergeben einer Kopie des Objekts. Das ursprüngliche Objekt kann so nicht mehr verändert werden, jedoch die Kopie. Die referenzen bleiben beim Kopieren gleich (z.B. bein Linked List)
+\end{itemize}
+\clearpage
 \end{document}

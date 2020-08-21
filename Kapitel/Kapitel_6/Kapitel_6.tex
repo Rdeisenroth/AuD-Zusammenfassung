@@ -110,8 +110,20 @@
                             v.dist = u.dist+1;
                             v.pred = u;
                             enqueue(Q,v);
-                    u.color = BLACK;            // Knoten abgearbeitet
+                    u.color = BLACK;             // Knoten abgearbeitet
                     \end{ccode}
+                \item[] \begin{tcolorbox}[
+                    colback=yellow!20,
+                    colframe=black!50!red!100,
+                    enhanced,
+                    title={Farben:}
+                ]
+                \begin{itemize}
+                    \item {\makebox[\widthof{\texttt{WHITE}:}][l]{\texttt{WHITE}:} Knoten noch nicht besucht}
+                    \item {\makebox[\widthof{\texttt{WHITE}:}][l]{\texttt{GRAY}:} Knoten in Queue für nächsten Schritt}
+                    \item {\makebox[\widthof{\texttt{WHITE}:}][l]{\texttt{BLACK}:} Knoten ist Fertig}
+                \end{itemize}
+                \end{tcolorbox}
                 \item Laufzeit: $O(|V| + |E|)$
                 \item Nach Algorithmus steht in $v$ die kürzeste Distanz von $s$ nach $v$
             \end{itemize}
