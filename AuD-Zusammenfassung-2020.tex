@@ -1,3 +1,8 @@
+\RequirePackage{scrlfile}
+% Wir müssen imakeidx vor Hyperref laden, damit das Stichwortverzeichnis hyperlinks hat
+\AfterClass{scrartcl}{
+  \RequirePackage{imakeidx}
+}
 \input{preamble_text}
 
 \externaldocument{../Kapitel_1/Kapitel_1}
@@ -40,4 +45,7 @@
 \input{Kapitel/Kapitel_6/Kapitel_6}
 \input{Kapitel/Kapitel_7/Kapitel_7}
 \input{Kapitel/Kapitel_8/Kapitel_8}
+\clearpage
+%Stichwortverzeichnis
+\printindex
 \end{document}

@@ -22,7 +22,7 @@
 \begin{document}
 \section{Einführung}\label{1}\label{Einfuehrung}
 \subsection{Probleme in der Informatik}\label{1.1}
-Ein \fatsf{Problem} im Sinne der Informatik:
+Ein \fatsf{Problem}\index{Problem} im Sinne der Informatik:
 \begin{itemize}
     \item Enthält Beschreibung der Eingabe
     \item Enthält Beschreibung der Ausgabe
@@ -35,41 +35,41 @@ Ein \fatsf{Problem} im Sinne der Informatik:
     \label{fig:modell-problem-informatik}
 \end{figure}
 z.B. Finde den kürzesten Weg zwischen 2 Orten\\
-Eine \fatsf{Probleminstanz} ist eine konkrete Eingabebelegung für die entsprechende Ausgabe gewünscht.\\
+Eine \fatsf{Probleminstanz}\index{Probleminstanz} ist eine konkrete Eingabebelegung für die entsprechende Ausgabe gewünscht.\\
 Für das obige Problem wäre das z.B. "`Was ist der kürzeste Weg vom Audimax in die Mensa?"'
-\subsection{Definitionen für Algorithmen}\label{1.2}\label{Definitionen fuer Algorithmen}
+\subsection{Definitionen für Algorithmen}\label{1.2}\label{Definitionen fuer Algorithmen}\index{Algorithmen}
 "`Ein Algorithmus ist eine \fatsf{endliche Folge} von Rechenschritten, die eine \fatsf{Eingabe} in eine \fatsf{Ausgabe} umwandelt."'\footnote{Quelle: Cormen et al., 4. Auflage}\\
 \fatsf{Anforderungen an Algorithmen:}\begin{itemize}
     \item Spezifizierung der Ein- und Ausgabe:\begin{itemize}
               \item Anzahl und Typen aller Elemente ist/sind definiert
           \end{itemize}
-    \item Eindeutigkeit:\begin{itemize}
+    \item Eindeutigkeit:\index{Eindeutigkeit}\begin{itemize}
               \item Jeder Einzelschritt ist klar definiert und ausführbar
               \item Die Reihenfolge der Einzelschritte ist festgelegt.
           \end{itemize}
-    \item Endlichkeit\begin{itemize}
+    \item Endlichkeit\index{Endlichkeit}\begin{itemize}
               \item Notation hat endliche Länge
           \end{itemize}
 \end{itemize}
 \fatsf{Eigenschaften von Algorithmen:}\begin{itemize}
-    \item Determiniertheit:\begin{itemize}
+    \item Determiniertheit:\index{Determiniertheit}\begin{itemize}
               \item Für gleiche Eingabe folgt stets die gleiche Ausgabe (andere Zwischenzustände sind möglich)
           \end{itemize}
-    \item Determinismus:\begin{itemize}
+    \item Determinismus:\index{Determinismus}\begin{itemize}
               \item Für die gleiche Eingabe ist die Ausführung und Ausgabe stets identisch.
           \end{itemize}
-    \item Terminierung:\begin{itemize}
+    \item Terminierung:\index{Terminierung}\begin{itemize}
               \item Der Algorithmus läuft für jede endliche Eingabe nur endlich lange
           \end{itemize}
-    \item Korrektheit:\begin{itemize}
+    \item Korrektheit:\index{Korrektheit}\begin{itemize}
               \item Der Algorithmus berechnet stets die spezifizierte Ausgabe (falls dieser
                     terminiert).
           \end{itemize}
-    \item Effizienz:\begin{itemize}
+    \item Effizienz:\index{Effizienz}\begin{itemize}
               \item Sparsamkeit im Ressourcenverbrauch (Zeit, Speicher, Energie, ...)
           \end{itemize}
 \end{itemize}
-\subsection{Definitionen für Datenstrukturen}\label{1.3}\label{Definitionen fuer Datenstrukturen}
+\subsection{Definitionen für Datenstrukturen}\label{1.3}\label{Definitionen fuer Datenstrukturen}\index{Datenstrukturen}
 "`Eine Datenstruktur ist eine Methode,
 Daten \fatsf{abzuspeichern} und zu \fatsf{organisieren} sowie
 den \fatsf{Zugriff} auf die Daten und die \fatsf{Modifikation}
@@ -86,7 +86,7 @@ Datenstrukturen:\begin{itemize}
 \end{itemize}
 z.B. \hyperref[2.2]{Arrays}, listen, \ldots
 \vspace*{2cm}
-\subsection{Pseudocode-Konventionen}
+\subsection{Pseudocode-Konventionen}\index{Pseudocode}
 \begin{itemize}
     \item Blöcke werden durch Einrückungen hervorgehoben
     \item Blockkonstrukte sind "`\texttt{for x to y}"', "`\texttt{while}"', "`\texttt{repeat-until}"' und "`\texttt{if-else}"'
@@ -99,10 +99,10 @@ z.B. \hyperref[2.2]{Arrays}, listen, \ldots
 \end{itemize}
 \subsection{Weitere wichtige Definitionen}
 \begin{itemize}
-    \item \fatsf{short circuit evaluation (Kurzschlussauswertung)}: Strategie, bei der die Auswertung, nachdem die Gesamtlösung durch einen Teilausdruck eindeutig bestimmt wurde, abgebrochen wird. 
+    \item \fatsf{short circuit evaluation (Kurzschlussauswertung)}\index{short circuit evaluation}: Strategie, bei der die Auswertung, nachdem die Gesamtlösung durch einen Teilausdruck eindeutig bestimmt wurde, abgebrochen wird. 
     z.B.: \texttt{1+1==2 || 1/0==0}$\longrightarrow \texttt{true}$
-    \item \fatsf{call-by-reference (Referenzparameter)}: Übergeben von Referenz auf ein Objekt. Dadurch sind Änderungen an diesem innerhalb der Routine möglich.
-    \item \fatsf{call-by-value (Wertparameter)}: Übergeben einer Kopie des Objekts. Das ursprüngliche Objekt kann so nicht mehr verändert werden, jedoch die Kopie. Die referenzen bleiben beim Kopieren gleich (z.B. bein Linked List)
+    \item \fatsf{call-by-reference (Referenzparameter)}\index{call-by-reference}: Übergeben von Referenz auf ein Objekt. Dadurch sind Änderungen an diesem innerhalb der Routine möglich.
+    \item \fatsf{call-by-value (Wertparameter)}\index{call-by-value}: Übergeben einer Kopie des Objekts. Das ursprüngliche Objekt kann so nicht mehr verändert werden, jedoch die Kopie. Die referenzen bleiben beim Kopieren gleich (z.B. bein Linked List)
 \end{itemize}
 \clearpage
 \end{document}

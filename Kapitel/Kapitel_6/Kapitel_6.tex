@@ -147,7 +147,7 @@
 
         \item \fatsf{Abgeleiteter BFS-Baum}
             \begin{itemize}
-                \item[] \includegraphics[width=9cm]{pictures/bfsBaum.PNG}
+                \item[] \includegraphics[width=14cm]{pictures/bfsBaum.PNG}
                 \item Subgraph $G^s_{pred} = (V^s_{pred},E^s_{pred})$ von G:
                     \begin{itemize}
                         \item $V^s_{pred} = \{v \in V | v.pred \neq nil\} \cup \{s\}$
@@ -305,7 +305,7 @@
                 \item In Worten: Suchen der \string"kleinsten\string" Kante und Zusammenfügen von Mengen, falls noch nicht geschehen
                 \item Laufzeit: $O(|E| \cdot log|E|)$
                 \item[]
-                    \begin{ccode}[autogobble,escapeinside=||]{title={MST-Kruskal(G,w)}}
+                    \begin{ccode}[autogobble,escapeinside=||,fontsize=\small]{title={MST-Kruskal(G,w)}}
                     A = |$\emptyset$|
                     FOREACH v in V DO
                         set(v) = {v};       // Menge mit sich selbst

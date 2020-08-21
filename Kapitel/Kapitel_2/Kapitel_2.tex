@@ -20,9 +20,9 @@
 
 \begin{document}
 
-\section{Sortieren}\label{2}\label{Sortieren}
+\section{Sortieren}\label{2}\label{Sortieren}\index{Sortieren}
 \subsection{Einführung}\label{2.1}\label{Einfuehrung Sortieren}
-Das Sortierproblem\\
+Das Sortierproblem\index{Sortierproblem}\\
 \begin{itemize}
     \item Ausgangspunkt: Folge von Datensätzen $D_1,D_2,\cdots,D_n$
           \begin{figure}[h]
@@ -44,7 +44,7 @@ Durchführung:\begin{itemize}
     \item Algorithmus \fatsf{korrekt}, wenn dieser das Problem für alle Instanzen löst
 \end{itemize}
 \clearpage
-\subsection{Arrays}\label{2.2}\label{Arrays}
+\subsection{Arrays}\label{2.2}\label{Arrays}\index{Array}
 Reihung (Feld) fester Länge von Daten des gleichen Typs
 \begin{figure}[h]
     \centering
@@ -58,7 +58,7 @@ Reihung (Feld) fester Länge von Daten des gleichen Typs
 \end{itemize}
 Beispiel: $A[2]=17$\\
 $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter Aufwand
-\subsection{Exkurs: Totale Ordnung}\label{Totale Ordnung}
+\subsection{Exkurs: Totale Ordnung}\label{Totale Ordnung}\index{Totale Ordnung}
 Sei $M$ eine nicht leere Menge und $\leq \subseteq M\times M $ eine binäre Relation auf $M$.
 
 Das Paar $(M,\leq)$ heißt genau dann eine totale Relation auf der Menge $M$, wenn folgende Eigenschaften erfüllt sind:
@@ -92,7 +92,7 @@ Beispiele:\begin{itemize}
 \subsection{Analyse von Algorithmen \textmd{(I)}}\label{Analyse von Algorithmen 1}
 \begin{itemize}
 
-    \item \fatsf{Schleifeninvariante \textmd{(SIV)}:}
+    \item \fatsf{Schleifeninvariante \textmd{(SIV)}:}\index{Schleifeninvariante}
           \begin{itemize}
               \item Sonderform der Invariante
               \item Am Anfang/Ende jedes Schleifendurchlaufs und vor/nach jedem Schleifendurchlauf gültig
@@ -106,7 +106,7 @@ Beispiele:\begin{itemize}
               \item Beispiel für Umsetzung: \hyperref[insSortSiv]{\textcolor{red}{Insertion Sort - SIV}}
           \end{itemize}
 
-    \item \fatsf{Laufzeitanalyse:}
+    \item \fatsf{Laufzeitanalyse:}\index{Laufzeitanalyse}
           \begin{itemize}
               \item Aufstellung der Kosten und Durchführungsanzahl für jede Zeile des Quelltextes
               \item Beachte: Bei Schleifen wird auch der Aufruf gezählt, der den Abbruch einleitet
@@ -114,7 +114,7 @@ Beispiele:\begin{itemize}
               \item Zusätzliche Überprüfung des \texttt{Best Case, Worst Case} und \texttt{Average Case}
           \end{itemize}
 
-    \item \fatsf{Effizienz von Algorithmen}:
+    \item \fatsf{Effizienz von Algorithmen}\index{Effizienz von Algorithmen}:
           \begin{itemize}
               \item Effizienzfaktoren
                     \begin{itemize}
@@ -404,13 +404,13 @@ Beispiele:\begin{itemize}
           \end{itemize}
           \clearpage
     \item \textbf{Laufzeitanalyse von \texttt{Insertion Sort}} {\label{insSortLaufzeit}}\\
-
+          \vspace*{-1em}
           \begin{itemize}
               \item[]
                     \begin{minipage}{0.3\textwidth}
                         \centering
                         \renewcommand{\arraystretch}{.8}
-                        \resizebox{.7\textwidth}{!}{%
+                        \resizebox{\textwidth}{!}{%
                             \begin{tabular}{ccc}
                                 \toprule
                                 \fatsf{Zeile} & \fatsf{Kosten} & \fatsf{Anzahl}                         \\
@@ -437,11 +437,11 @@ Beispiele:\begin{itemize}
                             \item $Laufzeit = Anzahl * Kosten$ jeder Zeile
                             \item Schleifen: Abbruchüberprüfung zählt auch
                             \item \texttt{$t_j$}: Anzahl der Abfragen der \texttt{While}-Schleife
+                            \item Laufzeit:
+                            $T(n)=c_{1} n+c_{2}(n-1)+c_{4}(n-1)+c_{5} \sum_{j=1}^{n-1} t_{j}+c_{6} \sum_{j=1}^{n-1}\left(t_{j}-1\right)$\\$+c_{7} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{8}(n-1)$
                         \end{itemize}
                     \end{minipage}
-                    \newline
-                    Laufzeit:
-                    $T(n)=c_{1} n+c_{2}(n-1)+c_{4}(n-1)+c_{5} \sum_{j=1}^{n-1} t_{j}+c_{6} \sum_{j=1}^{n-1}\left(t_{j}-1\right)$\\$+c_{7} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{8}(n-1)$
+                    \vspace*{-1.1em}
               \item \textit{Warum $n$ in Zeile 1?}
                     \begin{itemize}
                         \item Die Überprüfung der Fortführungsbedingung beinhaltet auch die letze Überprüfung
@@ -713,7 +713,7 @@ Beispiele:\begin{itemize}
                     \begin{itemize}
                         \item[]
                               Da die Teilarrays bereits sortiert sind, ist keine weitere Arbeit nötig um diese zu vereinigen.
-                              \texttt{A[p...r]} ist nun sortiert.
+                              \texttt{A[p$\ldots$r]} ist nun sortiert.
                     \end{itemize}
           \end{itemize}
 
@@ -869,7 +869,7 @@ Beispiele:\begin{itemize}
 
                         \item \textit{Induktion:}
                               \begin{itemize}
-                                  \item $lg$ steht hier für $log_2$
+                                  \item $lg$ steht hier für $\log_2$
                                   \item $n = 1$: $T(1) \leq c$
                                   \item {\makebox[2cm][l]{$n = 2$: $T(2)$}}  $\leq T(1) + T(1) +2c$
                                   \item[] {\makebox[2cm][l]{}} $\leq 4c \leq 8c$
@@ -880,8 +880,8 @@ Beispiele:\begin{itemize}
                               \begin{itemize}
                                   \item (1): $\left \lfloor \frac{n}{2} \right \rfloor + \left \lceil \frac{n}{2} \right \rceil = n$
                                   \item (2): $\left \lfloor \frac{n}{2} \right \rfloor \leq \frac{n}{2} \leq \frac{2}{3}n$
-                                  \item (3): $log_c(\frac{a}{b}) = log_c(a) - log_c(b)$
-                                  \item (4): $log_c(a*b) = log_c(a) + log_c(b)$
+                                  \item (3): $\log_c(\frac{a}{b}) = \log_c(a) - \log_c(b)$
+                                  \item (4): $\log_c(a*b) = \log_c(a) + \log_c(b)$
                               \end{itemize}
                         \item \textit{Induktionsschritt:}
                               \begin{itemize}
@@ -926,32 +926,32 @@ Beispiele:\begin{itemize}
                                   \item Erreichen der Randbedingung ist vonnöten, die Frage ist wann dies geschieht.
                                   \item Größe Teilproblem bei Level $i$: $\frac{n}{4^i}$
                                   \item Erreichen Teilproblem der Größe 1, wenn $\frac{n}{4^i}=1$, d.h. wenn $i=log_4(n)$ \\
-                                        $\Rightarrow$ Baum hat also $log_4n + 1$ Ebenen
+                                        $\Rightarrow$ Baum hat also $\log_4n + 1$ Ebenen
                               \end{itemize}
                         \item \textit{Kosten pro Ebene:}
                               \begin{itemize}
                                   \item Jede Ebene hat 3-mal soviele Knoten wie darüber liegende
                                   \item Anzahl der Knoten in Tiefe $i$ ist $3^i$
-                                  \item Kosten $c(\frac{n}{4^i})^2~,~i=0...log_4n-1$
+                                  \item Kosten $c(\frac{n}{4^i})^2~,~i=0,\cdots, \log_4n-1$
                                   \item Anzahl $\cdot$ Kosten = $3^i \cdot c(\frac{n}{4^i})^2 = (\frac{3}{16})^i \cdot cn^2$
                               \end{itemize}
                               %\clearpage
                         \item \textit{Unterste Ebene:}
                               \begin{itemize}
-                                  \item $3^{log_4(n)} = n  {log_4(3)}$ Knoten
+                                  \item $3^{\log_4(n)} = n  {\log_4(3)}$ Knoten
                                   \item Jeder Knoten trägt $T(1)$ Kosten bei
-                                  \item Kosten unten: $n^{log_4(3)} \cdot T(1) = \Theta(n^{log_4(3)})$
+                                  \item Kosten unten: $n^{\log_4(3)} \cdot T(1) = \Theta(n^{\log_4(3)})$
                               \end{itemize}
                         \item \textit{Addiere alle Kosten aller Ebenen:}
                               \begin{itemize}
-                                  \item {\makebox[0.75cm][l]{$T(n)$}} $= cn^2 + \frac{3}{16}cn^2 + (\frac{3}{16})^2cn^2+...+ (\frac{3}{16})^{log_4n-1}cn^2 + \Theta(n^{log_4(3)})$
-                                  \item[] {\makebox[0.75cm][l]{}} $= \sum^{log_4n-1}_{i=0} (\frac{3}{16})^icn^2+ \Theta(n^{log_4^3})$
-                                  \item[] {\makebox[0.75cm][l]{}} $= \frac{(\frac{3}{16}^{log_4n})-1}{\frac{3}{16}-1} \cdot cn^2 + \Theta(n^{log_43})$ (Verwendung der geometrischen Reihe)
+                                  \item {\makebox[0.75cm][l]{$T(n)$}} $= cn^2 + \frac{3}{16}cn^2 + (\frac{3}{16})^2cn^2+...+ (\frac{3}{16})^{\log_4n-1}cn^2 + \Theta(n^{\log_4(3)})$
+                                  \item[] {\makebox[0.75cm][l]{}} $= \sum^{\log_4n-1}_{i=0} (\frac{3}{16})^icn^2+ \Theta(n^{\log_4^3})$
+                                  \item[] {\makebox[0.75cm][l]{}} $= \frac{(\frac{3}{16}^{\log_4n})-1}{\frac{3}{16}-1} \cdot cn^2 + \Theta(n^{\log_43})$ (Verwendung der geometrischen Reihe)
                                   \item Verwendung einer unendlichen fallenden geometrischen Reihe als obere Schranke:
-                                  \item[] {\makebox[0.73cm][l]{$T(n)$}}  $= \sum^{log_4n-1}_{i=0} (\frac{3}{16})^i \cdot cn^2 + \Theta(n^{log_43})$
-                                  \item[] {\makebox[0.73cm][l]{}} $< \sum^{\infty}_{i=0} (\frac{3}{16})^i \cdot cn^2 + \Theta(n^{log_43})$
-                                  \item[] {\makebox[0.75cm][l]{}} $= \frac{1}{1-\frac{3}{16}} \cdot cn^2 + \Theta(n^{log_43})$
-                                  \item[] {\makebox[0.75cm][l]{}} $ = \frac{16}{13} \cdot cn^2 + Theta(n^{log_43}) = O(n^2)$
+                                  \item[] {\makebox[0.73cm][l]{$T(n)$}}  $= \sum^{\-1}_{i=0} (\frac{3}{16})^i \cdot cn^2 + \Theta(n^{\log_43})$
+                                  \item[] {\makebox[0.73cm][l]{}} $< \sum^{\infty}_{i=0} (\frac{3}{16})^i \cdot cn^2 + \Theta(n^{\log_43})$
+                                  \item[] {\makebox[0.75cm][l]{}} $= \frac{1}{1-\frac{3}{16}} \cdot cn^2 + \Theta(n^{\log_43})$
+                                  \item[] {\makebox[0.75cm][l]{}} $ = \frac{16}{13} \cdot cn^2 + Theta(n^{\log_43}) = O(n^2)$
                               \end{itemize}
                         \item \textit{Jetzt \textbf{Subsitutionsmethode:}}
                               \begin{itemize}
@@ -981,20 +981,20 @@ Beispiele:\begin{itemize}
                               oder $\left \lceil \frac{n}{b} \right \rceil$ gemeint ist. Dann besitzt $T(n)$ die folgenden asymptotischen Schranken
                               ($a$ und $b$ werden aus $f(n)$ gelesen):
                               \begin{enumerate}
-                                  \item Gilt $f(n) = O(n^{log_b (a - \epsilon)})$ für eine Konstante $\epsilon > 0$, dann $T(n) = \Theta(n^{log_b (a)})$
-                                  \item Gilt $f(n) = \Theta(n^{log_b (a)})$, dann gilt $T(n) = \Theta(n^{log_b (a)} lg(n))$
-                                  \item Gilt $f(n) = \Omega(n^{log_b (a+\epsilon)})$ für eine Konstante $\epsilon > 0$ und $a~f(\frac{n}{b}) \leq c~f(n)$
+                                  \item Gilt $f(n) = O(n^{\log_b (a - \epsilon)})$ für eine Konstante $\epsilon > 0$, dann $T(n) = \Theta(n^{\log_b (a)})$
+                                  \item Gilt $f(n) = \Theta(n^{\log_b (a)})$, dann gilt $T(n) = \Theta(n^{\log_b (a)} lg(n))$
+                                  \item Gilt $f(n) = \Omega(n^{\log_b (a+\epsilon)})$ für eine Konstante $\epsilon > 0$ und $a~f(\frac{n}{b}) \leq c~f(n)$
                                         für eine \\ Konstante $c < 1$ und hinreichend großen $n$, dann ist $T(n) = \Theta(f(n))$
                               \end{enumerate}
                     \end{itemize}
 
               \item \textit{Erklärung:}
                     \begin{itemize}
-                        \item In jedem der 3 Fälle wird die Funktion $f(n)$ mit $n^{log_b(a)}$ verglichen
+                        \item In jedem der 3 Fälle wird die Funktion $f(n)$ mit $n^{\log_b(a)}$ verglichen
                               \begin{enumerate}
-                                  \item Wenn $f(n)$ polynomial kleiner ist als $n^{log_b(a)}$, dann $T(n) = \Theta(n^{log_b(a)})$
-                                  \item Wenn $f(n)$ und $n^{log_b(a)}$ die gleiche Größe haben, gilt $T(n) = \Theta(n^{log_b (a)} lg(n))$
-                                  \item Wenn $f(n)$ polynomial größer als $n^{log_b(a)}$ und $a~f(\frac{n}{b}) \leq c~f(n)$ erfüllt, dann $T(n) = \Theta(f(n))$
+                                  \item Wenn $f(n)$ polynomial kleiner ist als $n^{\log_b(a)}$, dann $T(n) = \Theta(n^{\log_b(a)})$
+                                  \item Wenn $f(n)$ und $n^{\log_b(a)}$ die gleiche Größe haben, gilt $T(n) = \Theta(n^{\log_b (a)} lg(n))$
+                                  \item Wenn $f(n)$ polynomial größer als $n^{\log_b(a)}$ und $a~f(\frac{n}{b}) \leq c~f(n)$ erfüllt, dann $T(n) = \Theta(f(n))$
                               \end{enumerate}
                         \item (polynomial größer/kleiner: um Faktor $n^\epsilon$ asymptotisch größer/kleiner)
                     \end{itemize}
@@ -1003,8 +1003,8 @@ Beispiele:\begin{itemize}
                     \begin{itemize}
                         \item Wenn einer dieser Fälle eintritt, kann das Mastertheorem nicht angewendet werden
                               \begin{enumerate}
-                                  \item Wenn $f(n)$ kleiner ist als $n^{log_b(a)}$, aber nicht polynomial kleiner
-                                  \item Wenn $f(n)$ größer ist als $n^{log_b(a)}$, aber nicht polynomial größer
+                                  \item Wenn $f(n)$ kleiner ist als $n^{\log_b(a)}$, aber nicht polynomial kleiner
+                                  \item Wenn $f(n)$ größer ist als $n^{\log_b(a)}$, aber nicht polynomial größer
                                   \item Regularitätsbedingung $a~f(\frac{n}{b}) \leq c~f(n)$ wird nicht erfüllt
                                   \item $a$ oder $b$ sind nicht konstant (z.B. $a=2^n$)
                               \end{enumerate}
@@ -1015,8 +1015,8 @@ Beispiele:\begin{itemize}
                         \item \textit{$T(n) = 9T(\frac{n}{3}) + n$}
                               \begin{itemize}
                                   \item $a=9, b=3, f(n)=n$
-                                  \item $log_b(a) = log_3(9) = 2$
-                                  \item {\makebox[1.5cm][l]{$f(n) = n$}} $= O(n^{log_b(a-\epsilon)})$
+                                  \item $\log_b(a) = \log_3(9) = 2$
+                                  \item {\makebox[1.5cm][l]{$f(n) = n$}} $= O(n^{\log_b(a-\epsilon)})$
                                   \item[] {\makebox[1.5cm][l]{}} $= O(n^{2-\epsilon})$
                                   \item Ist diese Gleichung für ein $\epsilon > 0$ erfüllt? $\Rightarrow$ $\epsilon = 1$
                                   \item \fatsf{1. Fall} $\Rightarrow$ $T(n) = \Theta(n^2)$
@@ -1025,8 +1025,8 @@ Beispiele:\begin{itemize}
                         \item \textit{$T(n) = T(\frac{2n}{3}) + 1$}
                               \begin{itemize}
                                   \item $a=1, b= \frac{3}{2}, f(n) = 1$
-                                  \item $log_{\frac{3}{2}} 1 = 0$
-                                  \item {\makebox[1.5cm][l]{$f(n) = 1$}} $= O(n^{log_b(a)})$
+                                  \item $\log_{\frac{3}{2}} 1 = 0$
+                                  \item {\makebox[1.5cm][l]{$f(n) = 1$}} $= O(n^{\log_b(a)})$
                                   \item[] {\makebox[1.5cm][l]{}} $= O(n^0)$
                                   \item[] {\makebox[1.5cm][l]{}} $= O(1)$
                                   \item \fatsf{2.Fall} $\Rightarrow$ $T(n) = \Theta(1 * lg(n)) = \Theta(lg(n))$
@@ -1035,10 +1035,10 @@ Beispiele:\begin{itemize}
                         \item \textit{$T(n) = 3(T\frac{n}{4}) + n~lg(n)$}
                               \begin{itemize}
                                   \item $a=3,b=4,f(n)= n~lg(n)$
-                                  \item $n^{log_b(a)} = n^{log_4(3)} \leq n^{0.793}$
+                                  \item $n^{\log_b(a)} = n^{\log_4(3)} \leq n^{0.793}$
                                   \item $\epsilon = 0.1$ im Folgenden
                                   \item $f(n) = n~lg(n) \geq n \geq n^{0.793 + 0.1} \geq n^{0.793}$
-                                  \item \fatsf{3.Fall} $\Rightarrow$ $f(n) = \Omega(n^{log_b(a+0.1)})$
+                                  \item \fatsf{3.Fall} $\Rightarrow$ $f(n) = \Omega(n^{\log_b(a+0.1)})$
                                   \item $a f(\frac{n}{b}) = 3f(\frac{n}{4}) = 3(\frac{n}{4})~lg(\frac{n}{4}) \leq \frac{3}{4} n~lg(n)$
                                   \item Damit ist auch die Randbedingung erfüllt und $T(n) = \Theta(n~lg(n))$
 

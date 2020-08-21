@@ -33,7 +33,7 @@
                     \begin{itemize}
                         \item Jeder Knoten hat die Farbe rot oder schwarz
                         \item Die Wurzel ist schwarz
-                        \item Wenn ein Knoten rot ist, sind seine Kinder schwarz (\string"Nicht-Rot-Rot-Regel\string")
+                        \item Wenn ein Knoten rot ist, sind seine Kinder schwarz ("`Nicht-Rot-Rot-Regel"')
                         \item Für jeden Knoten hat jeder Pfad zu einem Blatt die selbe Anzahl an gleichen schwarzen Knoten
                     \end{itemize}
                 \item Halbblätter im RBT sind schwarz
@@ -105,7 +105,7 @@
             \begin{itemize}
                 \item Laufzeit: $O(h) = O(log~n)$
                 \item analog zum binären Suchbaum, aber neue Node erbt Farbe der alten Node
-                \item Wenn "neue" Node schwarz war $\Rightarrow$ Fixup
+                \item Wenn "`neue"' Node schwarz war $\Rightarrow$ Fixup
                 \item Verschiedene Fälle, die auch gegenseitig Voraussetzungen füreinander sind 
                 \item Da das Ganze jedoch etwas umfangreicher ist, findet es sich nicht hier in der Zusammenfassung
             \end{itemize}
@@ -285,7 +285,7 @@
 \clearpage
         \item \fatsf{Lösche Maximum}
             \begin{itemize}
-                \item[1.] Ersetze Maximum durch "letztes" Blatt
+                \item[1.] Ersetze Maximum durch "`letztes"' Blatt
                 \item[2.] Vertausche Knoten durch Maximum der beiden Kinder (\texttt{heapify})
                 \item[]
                     \begin{minipage}{0.33\textwidth}
@@ -355,7 +355,7 @@
                         \item Jeder innere Knoten mit $n$ Werten hat $n+1$ Kinder, sodass gilt:
                         \item[] $k_0 \leq key[0] \leq k_1 \leq key[1] \leq ... \leq k_{n-1} \leq key[n-1] \leq k_n$
                     \end{itemize}
-                \item[] \includegraphics[width=12cm]{pictures/bbaum.PNG}
+                \item[] \includegraphics[width=15cm]{pictures/bbaum.PNG}
                 \item Höhe B-Baum: $h \leq log_t \frac{n+1}{2}$ (Grad $t$ und $n$ Werte)
                 \item B-Baum wird für größere $t$ flacher
             \end{itemize}
