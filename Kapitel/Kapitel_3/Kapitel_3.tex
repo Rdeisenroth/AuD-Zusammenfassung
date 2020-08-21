@@ -20,8 +20,8 @@
 
 
 \begin{document}
-\section{Grundlegende Datenstrukturen}
-\subsection{Stacks}\label{Stacks}
+\section{Grundlegende Datenstrukturen}\index{Grundlegende Datenstrukturen}
+\subsection{Stacks}\label{Stacks}\index{Stacks}
 \begin{itemize}
     \item \fatsf{Abstrakter Datentyp Stack}
           \begin{itemize}
@@ -49,7 +49,7 @@
                     \end{itemize}
           \end{itemize}
 
-    \item \fatsf{}{Beispiel Bitcoin}
+    \item \fatsf{}{Beispiel Bitcoin}\index{Bitcoin}
     \item[] \includegraphics[width=15cm]{pictures/bitcoin_stack_example/bitcoin_stack_example}
           \clearpage
     \item \fatsf{Stacks als Array}
@@ -157,7 +157,7 @@
 \end{itemize}
 
 \pagebreak
-\subsection{Verkettete Listen}\label{Verkettete Listen}
+\subsection{Verkettete Listen}\label{Verkettete Listen}\index{Verkettete Listen}
 \begin{itemize}
     \item \fatsf{Aufbau}
           \begin{itemize}
@@ -220,7 +220,7 @@
                     \end{itemize}
           \end{itemize}
 
-    \item \fatsf{Vereinfachung per Wächter/Sentinels}
+    \item \fatsf{Vereinfachung per Wächter/Sentinels}\index{Sentinel}
           \begin{itemize}
               \item Ziel ist die Eliminierung der Spezialfälle für Listenanfang/-ende
               \item[] \includegraphics[width=12cm]{pictures/linkedListSentinel.pdf}
@@ -233,7 +233,7 @@
           \end{itemize}
 \end{itemize}
 \clearpage
-\subsection{Queues}\label{Queues}
+\subsection{Queues}\label{Queues}\index{Queue}
 \begin{itemize}
     \item \textbf{Abstrakter Datentyp Queue}
           \begin{itemize}
@@ -261,14 +261,14 @@
 
               \item Abstrakter Aufbau:
                     \begin{itemize}
-                        \item \fatsf{FIFO}-Prinzip / First in, First out
+                        \item \fatsf{FIFO}-Prinzip\index{FIFO} / First in, First out
                         \item[] \includegraphics[width=8cm]{pictures/FIFO/FIFO}
                     \end{itemize}
           \end{itemize}
 
           \pagebreak
 
-    \item \fatsf{Queues als (virtuelles) zyklisches Array}
+    \item \fatsf{Queues als (virtuelles) zyklisches Array}\index{zyklisches Array}
           \begin{itemize}
               \item[] Bekannt: Maximale Elemente gleichzeitig in Queue
               \item[] \includegraphics[width=12cm]{pictures/queueZyklisch.pdf}
@@ -370,7 +370,7 @@
 \end{itemize}
 
 \pagebreak
-\subsection{Binäre Bäume}\label{Binaere Baeume}
+\subsection{Binäre Bäume}\label{Binaere Baeume}\index{Binäre Bäume}
 \begin{itemize}
     \item \fatsf{Bäume durch verkettete Listen}
           \begin{itemize}
@@ -389,7 +389,7 @@
                     \end{minipage}
           \end{itemize}
 
-    \item \fatsf{Allgemeine Begrifflichkeiten}
+    \item \fatsf{Allgemeine Begrifflichkeiten}\index{Vorfahre}\index{ancestor}\index{Wurzel}\index{root}\index{parent}\index{Elternknoten}\index{Kindknoten}\index{child}\index{Geschwisterknoten}\index{sibling}\index{Nachkomme}\index{descendant}\index{Blatt}\index{leaf}\index{Höhe (Baum)}
           \begin{itemize}
               \item[]
                     \begin{minipage}[t]{0.45\textwidth}
@@ -407,7 +407,7 @@
           \clearpage
     \item \fatsf{Begrifflichkeiten Binärbaum}
           \begin{itemize}
-              \item[]
+              \item[]\index{Halbblatt}\index{Teilbaum}
                     \begin{minipage}[t]{0.45\textwidth}
                         \includegraphics[width=8cm]{pictures/binärbaumBegriffe}
                     \end{minipage}
@@ -426,7 +426,7 @@
           \end{itemize}
 
 
-    \item \fatsf{Traversieren von Bäumen}
+    \item \fatsf{Traversieren von Bäumen}\index{Traversieren von Bäumen}
           \begin{itemize}
               \item Darstellung eines Baumes mithilfe einer Liste der Werte aller Knoten
               \item Laufzeit bei $n$ Knoten: $T(n) = O(n)$
@@ -454,7 +454,7 @@
                         \end{itemize}
                     \end{minipage}
               \item[]
-              \item[] \textbf{Code:} \\
+              \item[] \textbf{Code:} \index{inorder}\index{preorder}\index{postorder}\\
                     \begin{minipage}[t]{0.29\textwidth}
                         \begin{ccode}[autogobble]{title={inorder(x)}}
                             IF x != nil THEN
@@ -603,7 +603,7 @@
 \end{itemize}
 
 \pagebreak
-\subsection{Binäre Suchbäume}\label{Binaere Suchbaeume}
+\subsection{Binäre Suchbäume}\label{Binaere Suchbaeume}\index{Binäre Suchbäume}
 \begin{itemize}
     \item \fatsf{Definition}
           \begin{itemize}
@@ -689,7 +689,7 @@
                     \end{itemize}
                     \clearpage
               \item \textit{Code}
-              \item[]
+              \item[]\index{transplant}
                         \begin{ccode}[autogobble]{title={transplant(T,u,v) // Hängt Teilbaum v an Parent von u}}
                             IF u.parent == nil THEN
                                 T.root = v;
@@ -741,7 +741,7 @@
                         \item Erwartete Höhe: $\Theta(log_2 n)$
                     \end{itemize}
           \end{itemize}
-    \item \fatsf{Suchbäume als Suchindex}
+    \item \fatsf{Suchbäume als Suchindex}\index{Suchindex}
           \begin{itemize}
               \item Knoten speichert nur Primärschlüssel und Zeiger auf Daten
               \item Zusätzliche Indizes möglich, kosten aber Speicherplatzbedarf

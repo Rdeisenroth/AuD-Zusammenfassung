@@ -63,10 +63,10 @@ Sei $M$ eine nicht leere Menge und $\leq \subseteq M\times M $ eine binäre Rela
 
 Das Paar $(M,\leq)$ heißt genau dann eine totale Relation auf der Menge $M$, wenn folgende Eigenschaften erfüllt sind:
 \begin{itemize}
-    \item Reflexivität: $\forall x \in M: x \leq x$
-    \item Transitivität: $\forall x,y,z\in M: x\leq y \land y \leq z \Rightarrow x \leq z$
-    \item Antisymmetrie: $\forall x,y\in M: x\leq y \land y \leq x \Rightarrow x = y$
-    \item Totalität: $\forall x,y \in M : x\leq y \lor y \leq x$
+    \item Reflexivität\index{Reflexivität}: $\forall x \in M: x \leq x$
+    \item Transitivität\index{Transitivität}: $\forall x,y,z\in M: x\leq y \land y \leq z \Rightarrow x \leq z$
+    \item Antisymmetrie\index{Antisymmetrie}: $\forall x,y\in M: x\leq y \land y \leq x \Rightarrow x = y$
+    \item Totalität\index{Totalität}: $\forall x,y \in M : x\leq y \lor y \leq x$
 \end{itemize}
 Beispiele:\begin{itemize}
     \item $\leq$ Ordnung auf natürlichen Zahlen
@@ -135,25 +135,25 @@ Beispiele:\begin{itemize}
 \clearpage
 \subsection{Analyse von Algorithmen \textmd{(II)}}\label{Analyse von Algorithmen 2}
 \begin{itemize}
-    \item \fatsf{Komplexität:}
+    \item \fatsf{Komplexität:}\index{Komplexität}
           \begin{itemize}
               \item Abstrakte Rechenzeit $T(n)$ ist abhängig von den Eingabedaten
               \item Übliche Betrachtungsweise der Rechenzeit ist asymptotische Betrachtung
           \end{itemize}
 
-    \item \fatsf{Asymptotik:}
+    \item \fatsf{Asymptotik:}\index{Asymptotik}
           \begin{itemize}
               \item Annäherung an einer sich ins Unendliche verlaufende Kurve
               \item z.B.: $f(x) = \frac{1}{x} + x$ | Asymptote: $g(x)=x$ | ($\frac{1}{x}$ läuft gegen Null)
           \end{itemize}
 
-    \item \fatsf{Asymptotische Komplexität:}
+    \item \fatsf{Asymptotische Komplexität:}\index{Asymptotische Komplexität}
           \begin{itemize}
               \item Abschätzung des zeitlichen Aufwands eines Algorithmus in Abhängigkeit einer Eingabe
               \item Beispiel für Umsetzung: \hyperref[insSortLaufzeitTheta]{\textcolor{red}{Insertion Sort - Laufzeit $\Theta$}}
           \end{itemize}
 
-    \item \fatsf{Asymptotische Notation:}
+    \item \fatsf{Asymptotische Notation:}\index{Asymptotische Notation}
           \begin{itemize}
               \item Betrachtung der Laufzeit $T(n)$ für sehr gro\ss e Eingaben $n \in \mathbb{N}$
               \item Komplexität ist unabhängig von konstanten Faktoren und Summanden
@@ -192,7 +192,7 @@ Beispiele:\begin{itemize}
 \clearpage
 \subsection{Analyse von Algorithmen \textmd{(III)}}\label{Analyse von Algorithmen 3}
 \begin{itemize}
-    \item \textbf{$\Theta$-Notation}
+    \item \textbf{$\Theta$-Notation}\index{$\Theta$-Notation}
           \begin{itemize}
               \item $\Theta$-Notation beschränkt eine Funktion asymptotisch von oben und unten
               \item Funktionen $f,g: \mathbb{N} \rightarrow \mathbb{R}_{>0}$ ($\mathbb{N}$: Eingabelänge, $\mathbb{R}$: Zeit)
@@ -233,14 +233,14 @@ Beispiele:\begin{itemize}
 
           \pagebreak
 
-    \item \textbf{$O$-Notation}
+    \item \textbf{$\mathcal{O}$-Notation}\index{$\mathcal{O}$-Notation}
           \begin{itemize}
-              \item $O$-Notation beschränkt eine Funktion asymptotisch von oben
+              \item $\mathcal{O}$-Notation beschränkt eine Funktion asymptotisch von oben
               \item[] \includegraphics[width=12cm]{pictures/oNotation.pdf}
               \item $O(g)$ enthält alle $f$, die höchstens so schnell wie $g$ wachsen
-              \item Schreibweise: $f=O(g)$
-              \item $f(n)=\Theta(g) \rightarrow f(n) = O(g)$ | $\Theta(g(n)) \subseteq O(g(n))$
-              \item Ist $f$ in der Menge $\Theta(g)$, dann auch in der Menge $O(g)$
+              \item Schreibweise: $f=\mathcal{O}(g)$
+              \item $f(n)=\Theta(g) \rightarrow f(n) = \mathcal{O}(g)$ | $\Theta(g(n)) \subseteq \mathcal{O}(g(n))$
+              \item Ist $f$ in der Menge $\Theta(g)$, dann auch in der Menge $\mathcal{O}(g)$
               \item[]
               \item[]
                     \begin{minipage}{0.3\textwidth}
@@ -254,8 +254,8 @@ Beispiele:\begin{itemize}
                     \begin{minipage}[t]{0.6\textwidth}
                         \vspace{-3cm}
                         \begin{itemize}
-                            \item z.B.: $f(n) = n + 2$ | $f(n) = O(n)$?
-                            \item Ja $f(n)$ ist Teil von $O(n)$ für z.B. $c = 2$ und $n_0 = 2$
+                            \item z.B.: $f(n) = n + 2$ | $f(n) = \mathcal{O}(n)$?
+                            \item Ja $f(n)$ ist Teil von $\mathcal{O}(n)$ für z.B. $c = 2$ und $n_0 = 2$
                         \end{itemize}
                     \end{minipage}
           \end{itemize}
@@ -286,7 +286,7 @@ Beispiele:\begin{itemize}
 
           \pagebreak
 
-    \item \textbf{$\Omega$-Notation}
+    \item \textbf{$\Omega$-Notation}\index{$\Omega$-Notation}
           \begin{itemize}
               \item $\Omega$-Notation beschränkt eine Funktion asymptotisch von unten
               \item[] \includegraphics[width=12cm]{pictures/omegaNotation.pdf}
@@ -307,7 +307,7 @@ Beispiele:\begin{itemize}
                     \end{minipage}
           \end{itemize}
           \clearpage
-    \item \textbf{Komplexitätsklassen}
+    \item \textbf{Komplexitätsklassen}\index{Komplexitätsklassen}
           \begin{itemize}
               \item $n$ ist hier die Länge der Eingabe
               \item[] \includegraphics[width=12cm]{pictures/komplexitätsklassen.pdf}
@@ -348,7 +348,7 @@ Beispiele:\begin{itemize}
           \end{itemize}
 \end{itemize}
 \clearpage
-\subsection{Insertion Sort \textmd{(Sortieren durch Einfügen)}}\label{InsertionSort}
+\subsection{Insertion Sort \textmd{(Sortieren durch Einfügen)}}\label{InsertionSort}\index{Insertion Sort}
 \begin{itemize}
     \item \fatsf{Idee}
           \begin{itemize}
@@ -491,7 +491,7 @@ Beispiele:\begin{itemize}
           \end{itemize}
 \end{itemize}
 \clearpage
-\subsection{Bubble Sort}\label{BubbleSort}
+\subsection{Bubble Sort}\label{BubbleSort}\index{Bubble Sort}
 \begin{itemize}
     \item \fatsf{Idee}
           \begin{itemize}
@@ -534,13 +534,13 @@ Beispiele:\begin{itemize}
 
 \end{itemize}
 \clearpage
-\subsection{Selection Sort}\label{Selection sort}
+\subsection{Selection Sort}\label{Selection sort}\index{Selection Sort}
 \begin{itemize}
     \item \fatsf{Idee}
           \begin{itemize}
               \item Sortieren durch direktes Auswählen
-              \item \texttt{MinSort}: "wähle kleines Element in Array und tausche es nach vorne"
-              \item \texttt{MaxSort}: "wähle größtes Element in Array und tausche es nach vorne"
+              \item \texttt{MinSort}\index{MinSort}: "wähle kleines Element in Array und tausche es nach vorne"
+              \item \texttt{MaxSort}\index{MaxSort}: "wähle größtes Element in Array und tausche es nach vorne"
           \end{itemize}
 
     \item \fatsf{Code - MinSort}
@@ -558,28 +558,28 @@ Beispiele:\begin{itemize}
 \end{itemize}
 
 %\pagebreak
-\subsection{Divide-And-Conquer Prinzip}\label{Divide-And-Conquer}
+\subsection{Divide-And-Conquer Prinzip}\label{Divide-And-Conquer}\index{Divide-And-Conquer}
 \begin{itemize}
     \item Anderer Ansatz im Gegensatz zu z.B. \texttt{InsertionSort} (inkrementelle Herangehensweise)
     \item Laufzeit ist im schlechtesten Fall immer noch besser als \texttt{InsertionSort}
     \item Prinzip: Zerlege das Problem und löse es direkt oder zerlege es weiter
-    \item \textit{Divide:}
+    \item \textit{Divide:}\index{Divide}
           \begin{itemize}
               \item Teile das Problem in mehrere Teilprobleme auf
               \item Teilprobleme sind Instanzen des gleichen Problems
           \end{itemize}
-    \item \textit{Conquer:}
+    \item \textit{Conquer:}\index{Conquer}
           \begin{itemize}
               \item Beherrsche die Teilprobleme rekursiv
               \item Falls Teilprobleme klein genug, löse sie auf direktem Weg
           \end{itemize}
-    \item \textit{Combine:}
+    \item \textit{Combine:}\index{Combine}
           \begin{itemize}
               \item Vereine die Lösungen der Teilprobleme zu Lösung des ursprünglichen Problems
           \end{itemize}
 \end{itemize}
 \clearpage
-\subsection{Merge Sort} \label{Merge Sort}
+\subsection{Merge Sort} \label{Merge Sort}\index{Merge Sort}
 \begin{itemize}
     \item \fatsf{Idee}
           \begin{itemize}
@@ -683,14 +683,14 @@ Beispiele:\begin{itemize}
           \end{itemize}
 \end{itemize}
 \clearpage
-\subsection{Quicksort}\label{Quicksort}
+\subsection{Quicksort}\label{Quicksort}\index{Quicksort}
 \begin{itemize}
     \item \fatsf{Idee}
           \begin{itemize}
-              \item \textit{Pivotelement:}
+              \item \textit{Pivotelement:}\index{Pivotelement}
                     \begin{itemize}
                         \item[]
-                              Wahl eines Pivotelement \texttt{x} aus dem Array
+                              Wahl eines Pivotelement \texttt{x} aus dem Array (=Mittelsäule bei Sortierung)
                     \end{itemize}
 
               \item \textit{Divide:}
@@ -724,7 +724,7 @@ Beispiele:\begin{itemize}
                 QUICKSORT(A,p,q-1)
                 QUICKSORT(A,q+1,r)
           \end{ccode}
-          \begin{ccode}[autogobble,escapeinside=||]{title={PARTITION(A,p,r)}}
+          \index{Partition}\begin{ccode}[autogobble,escapeinside=||]{title={PARTITION(A,p,r)}}
               x = A[r]    // Wahl des Pivotelements
               i = p - 1   // Index i setzen
               FOR j = p TO r - 1 // Auffüllen des Teilarrays mit Elementen
@@ -815,7 +815,7 @@ Beispiele:\begin{itemize}
 \end{itemize}
 \clearpage
 
-\subsection{Laufzeitanalyse von rekursiven Algorithmen}\label{Laufzeit rekursive Algorithmen}
+\subsection{Laufzeitanalyse von rekursiven Algorithmen}\label{Laufzeit rekursive Algorithmen}\index{Laufzeit bei Rekursion}
 \begin{itemize}
     \item \fatsf{Analyse von Divide-And-Conquer Algorithmen}
           \begin{itemize}
@@ -840,7 +840,7 @@ Beispiele:\begin{itemize}
                     \end{itemize}
           \end{itemize}
 
-    \item \fatsf{Subsitutionsmethode}
+    \item \fatsf{Subsitutionsmethode}\index{Substitutionsmethode}
           \begin{itemize}
               \item Idee: Erraten einer Schranke und Nutzen von Induktion zum Beweis der Korrektheit
               \item Ablauf:
@@ -902,7 +902,7 @@ Beispiele:\begin{itemize}
           \end{itemize}
 
 
-    \item \fatsf{Rekursionsbaum}
+    \item \fatsf{Rekursionsbaum}\index{Rekursionsbaum}
           \begin{itemize}
               \item Idee: Stellen das Ineinander-Einsetzen als Baum dar und Analyse der Kosten
               \item Ablauf:
@@ -970,7 +970,7 @@ Beispiele:\begin{itemize}
                     \end{itemize}
           \end{itemize}
 
-    \item \fatsf{Mastertheorem}
+    \item \fatsf{Mastertheorem}\index{Mastertheorem}
           \begin{itemize}
               \item \textit{Idee:}
                     \begin{itemize}
