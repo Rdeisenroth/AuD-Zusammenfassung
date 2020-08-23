@@ -93,24 +93,26 @@
             \begin{itemize}
                 \item[]
                     \begin{ccode}[autogobble,escapeinside=||]{title={BFS(G,s) //G=(V,E) s = source node in V}}
-                    FOREACH u in V-{s} DO
-                        u.color = WHITE;        // Weiß = noch nicht besucht
-                        u.dist = |$+\infty$|            // Setzen der Distanzen auf Unendlich
-                        u.pred = nil;           // Setzen der Vorgänger auf nil
-                    s.color = GRAY;             // Anfang bei Startnode
-                    s.dist = 0;
-                    s.pred = nil;
-                    newQueue(Q);
-                    enqueue(Q,s);
-                    WHILE !isEmpty(Q) DO
-                    u = dequeue(Q); 
-                    FOREACH v in adj(G,u) DO
-                        IF v.color == WHITE THEN
-                            v.color == GRAY;
-                            v.dist = u.dist+1;
-                            v.pred = u;
-                            enqueue(Q,v);
-                    u.color = BLACK;             // Knoten abgearbeitet
+                        BFS(G,s) //G=(V,E) s = source node in V
+
+                        FOREACH u in V-{s} DO
+                            u.color = WHITE;        // Weiß = noch nicht besucht
+                            u.dist = |$+\infty$|            // Setzen der Distanzen auf Unendlich
+                            u.pred = nil;           // Setzen der Vorgänger auf nil
+                        s.color = GRAY;             // Anfang bei Startnode
+                        s.dist = 0;
+                        s.pred = nil;
+                        newQueue(Q);
+                        enqueue(Q,s);
+                        WHILE !isEmpty(Q) DO
+                            u = dequeue(Q); 
+                            FOREACH v in adj(G,u) DO
+                                IF v.color == WHITE THEN
+                                    v.color == GRAY;
+                                    v.dist = u.dist+1;
+                                    v.pred = u;
+                                    enqueue(Q,v);
+                            u.color = BLACK;            // Knoten abgearbeitet
                     \end{ccode}
                 \item[] \begin{tcolorbox}[
                     colback=yellow!20,
