@@ -20,12 +20,12 @@
 
 
 \begin{document}
-\section{Randomized Data Structures}\label{Randomized Data Structures}
-\subsection{Skip Lists}\label{Skip Lists}
+\section{Randomized Data Structures}\label{Randomized Data Structures}\index{Randomized Data Structures}
+\subsection{Skip Lists}\label{Skip Lists}\index{Skip Lists}
     \begin{itemize}
         \item \fatsf{Idee}
             \begin{itemize}
-                \item Einfügen von \string"Express-Liste\string" mit einigen Elementen
+                \item Einfügen von "`Express-Liste"'\index{Express-Liste} mit einigen Elementen
                 \item Beginne mit Suche in der Express-Liste mit weniger Elementen
                 \item Falls das suchende Element kleiner als nächstes Element in Express-Liste $\Rightarrow$ weiter nach rechts
                 \item Falls nicht $\Rightarrow$ Eine Stufe nach unten wandern und dort weiter suchen
@@ -91,7 +91,7 @@
             \end{itemize}
     \end{itemize}
 \clearpage
-\subsection{Hashtables}\label{Hashtables}
+\subsection{Hashtables}\label{Hashtables}\index{Hashtables}
     \begin{itemize}
         \item \fatsf{Idee}
             \begin{itemize}
@@ -126,14 +126,14 @@
                 \item[]
             \end{itemize}
 
-        \item \fatsf{Hash-Funktionen}
+        \item \fatsf{Hash-Funktionen}\index{Hash-Funktion}
             \begin{itemize}
-                \item Universelle Hash-Funktion:
+                \item Universelle Hash-Funktion\index{Hash-Funktion!universell}:
                     \begin{itemize}
                         \item Wähle zufällige $a,b \in [0, p - 1]$, $p~prim$, $a \neq 0$
                         \item $h_{a,b}(x)= ((a \cdot x + b)~mod~p)~mod~T.length$
                     \end{itemize}
-                \item Krypthographische Hash-Funktionen:
+                \item Krypthographische Hash-Funktionen:\index{Hash-Funktion!Kryptographisch}
                     \begin{itemize}
                         \item MD5, SHA-1, SHA-2, SHA-3
                         \item $h(x) = MD5(x)~mod~T.length$
@@ -167,7 +167,7 @@
             \end{itemize}
     \end{itemize}
 
-\subsection{Bloom-Filter}\label{Bloom-Filter}
+\subsection{Bloom-Filter}\label{Bloom-Filter}\index{Bloom-Filter}
     \begin{itemize}
         \item \fatsf{Idee}
             \begin{itemize}
@@ -187,7 +187,7 @@
                 \item $k$ gute Hash-Funktionen $H_0,...,H_{k-1}$ mit Bildbereich $0,1,...,m-1$
                 \item Empfohlene Wahl: $k = \frac{m}{n} \cdot ln2$ (Fehlerrate von ca. $2^{-k}$)
                 \clearpage
-                \item Code:
+                \item Code:\index{initBloom(X,BF,H)}
                 \item[]
                     \begin{ccode}[autogobble]{title={initBloom(X, BF, H) // H Array of hash functions}}
                     FOR i = 0 TO BF.length - 1 DO 
@@ -204,7 +204,7 @@
 
         \item \fatsf{Suche}
             \begin{itemize}
-                \item[]
+                \item[]\index{searchBloom(BF,H,y)}
                     \begin{ccode}[autogobble]{title={searchBloom(BF, H, y)}}
                     result = 1;
                     FOR j = 0 TO H.length - 1 DO

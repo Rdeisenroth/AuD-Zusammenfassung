@@ -23,8 +23,8 @@
 
 
 \begin{document}
-\section{Advanced Data Structures}\label{Advanced Data Structures}
-\subsection{Rot-Schwarz-Bäume}\label{Rot-Schwarz-Baeume}
+\section{Advanced Data Structures}\label{Advanced Data Structures}\index{Advanced Data Structures}
+\subsection{Rot-Schwarz-Bäume}\label{Rot-Schwarz-Baeume}\index{Rot-Schwarz-Bäume}
     \begin{itemize}
         \item \fatsf{Definition}
             \begin{itemize}
@@ -37,7 +37,7 @@
                         \item Für jeden Knoten hat jeder Pfad zu einem Blatt die selbe Anzahl an gleichen schwarzen Knoten
                     \end{itemize}
                 \item Halbblätter im RBT sind schwarz
-                \item Schwarzhöhe eines Knoten: \\
+                \item Schwarzhöhe\index{Schwarzhöhe} eines Knoten: \\
                         Eindeutige Anzahl von schwarzen Knoten auf dem Weg zu einem Blatt im Teilbaum des Knoten
                 \item Für leeren Baum gibt Schwarzhöhe = 0 ($SH(nil)=0$)
                 \item Höhe eines Rot-Schwarz-Baums
@@ -61,7 +61,7 @@
                 \item Laufzeit: $\Theta(h)$ ($h$ jedoch $log~n$)
                 \item[1.] Finde Elternknoten wie im BST (\hyperref[BST-Insert]{BST-Einfüge Algorithmus})
                 \item[2.] Färbe den neuen Knoten rot
-                \item[3.] Wiederherstellen der Rot-Schwarz-Bedingung
+                \item[3.] Wiederherstellen der Rot-Schwarz-Bedingung\index{fixColorsAfterInsertion()}
                             \begin{ccode}[autogobble,fontsize=\small]{title={fixColorsAfterInsertion(T,z)}}
                             WHILE z.parent.color == red DO                  // solange der Elternknoten rot ist
                                 IF z.parent == z.parent.parent.left THEN    // Linkes Kind (if-Fall)
@@ -82,7 +82,7 @@
                                     // Tauschen von rechts und links
                                 T.root.color = black;                       // Setzen der Wurzel auf Schwarz
                             \end{ccode}
-                \item Hilfsmethode \texttt{rotateLeft}
+                \item Hilfsmethode \texttt{rotateLeft}\index{rotateLeft()}
                             \begin{ccode}[autogobble]{title={rotateLeft(T,x)}}
                             y = x.right;
                             x.right = y.left;
@@ -117,7 +117,7 @@
                 \item {\makebox[2cm][l]{Suchen: }} $\Theta(log~n)$
             \end{itemize}
     \end{itemize}
-    \subsection{AVL-Bäume}\label{AVL-Baeume}
+    \subsection{AVL-Bäume}\label{AVL-Baeume}\index{AVL-Bäume}
     \begin{itemize}
         \item \fatsf{Definition:}
             \begin{itemize}
@@ -125,7 +125,7 @@
                 \item Binärer Suchbaum
                 \item Allerdings Balance in jedem Knoten nur $-1,0,1$
                 \item Balance für $x$: $B(x)$ = Höhe(rechter Teilbaum) - Höhe(linker Teilbaum)
-                \item[] \includegraphics[width=7cm]{pictures/avlbaum.PNG}
+                \item[]\index{linkslastig}\index{rechtslastig}\index{balanciert} \includegraphics[width=7cm]{pictures/avlbaum.PNG}
             \end{itemize}
         
         \item \fatsf{AVL vs. Rot-Schwarz}
@@ -151,7 +151,7 @@
 \clearpage
         \item \fatsf{Einfügen}
             \begin{itemize}
-                \item Einfügen funktioniert wie beim Binary Search Tree mit Sentinel
+                \item Einfügen funktioniert wie beim Binary Search Tree mit Sentinel\index{Sentinel}
                 \item Erfordert danach jedoch Rebalancieren weiter oben im Baum
                 \item Rebalancieren: (verschiedene Fälle)
                 \item[]
@@ -186,7 +186,7 @@
             \end{itemize}
     \end{itemize}
     \clearpage
-    \subsection{Splay-Bäume}\label{Splay-Baeume}
+    \subsection{Splay-Bäume}\label{Splay-Baeume}\index{Splay-Bäume}
     \begin{itemize}
         \item \fatsf{Definition}
             \begin{itemize}
@@ -199,7 +199,7 @@
         \item \fatsf{Splay-Operationen}
             \begin{itemize}
                 \item Suchen oder Einfügen: Spüle gesuchten oder neu eingefügten Knoten an die Wurzel
-                \item Splay: (Folge von Zig-,Zig-Zig-, Zig-Zag-Operationen)
+                \item Splay:\index{splay} (Folge von Zig-,Zig-Zig-, Zig-Zag-Operationen)
                 \item []
                     \begin{ccode}[autogobble]{title={splay(T,z)}}
                     WHILE z != T.root DO
@@ -213,9 +213,9 @@
                                 zigZag(T,z);
                     \end{ccode}
                 \item[]
-                \item[] \includegraphics[width=12cm]{pictures/zigzag.PNG}
-                \item[] \includegraphics[width=11cm]{pictures/zigzig.PNG}
-                \item[] \includegraphics[width=11cm]{pictures/zig.PNG}
+                \item[]\index{Zig-Zag} \includegraphics[width=12cm]{pictures/zigzag.PNG}
+                \item[]\index{Zig-Zig} \includegraphics[width=11cm]{pictures/zigzig.PNG}
+                \item[]\index{Zig} \includegraphics[width=11cm]{pictures/zig.PNG}
             \end{itemize}
         \vspace*{-1cm}
         \item \fatsf{Suchen}
@@ -248,7 +248,7 @@
             \end{itemize}
     \end{itemize}
     \clearpage
-    \subsection{Binäre Max-Heaps}\label{Binaere Max-Heaps}
+    \subsection{Binäre Max-Heaps}\label{Binaere Max-Heaps}\index{Binäre Max-Heaps}
     \begin{itemize}
         \item \fatsf{Definition}
             \begin{itemize}
@@ -287,7 +287,7 @@
             \begin{itemize}
                 \item[1.] Ersetze Maximum durch "`letztes"' Blatt
                 \item[2.] Vertausche Knoten durch Maximum der beiden Kinder (\texttt{heapify})
-                \item[]
+                \item[]\index{extract-max(H)}\index{heapify(H,i)}
                     \begin{minipage}{0.33\textwidth}
                         \includegraphics[width=6cm]{pictures/heapDelete.PNG}
                     \end{minipage} 
@@ -321,7 +321,7 @@
                 \item Blätter sind für sich triviale Max-Heaps
                 \item Bauen von Max-Heaps für Teilbäume mithilfe Rekursion per \texttt{heapify} 
                 \item (Array nicht unbedingt in richtiger Reihenfolge)
-                \item[]
+                \item[]\index{buildHeap(H,A)}\index{HeapSort(H,A)}
                     \begin{ccode}[autogobble]{title={buildHeap(H.A) // Array in H.A}}
                     H.length = A.length;
                     FOR i = ceil((H.length-1)/2) - 1 DOWNTO 0 DO
@@ -341,7 +341,7 @@
             \end{itemize}
     \end{itemize}
     \clearpage
-    \subsection{B-Bäume}\label{B-Baeume}
+    \subsection{B-Bäume}\label{B-Baeume}\index{B-Baeume}
     \begin{itemize}
         \item \fatsf{Definition}
             \begin{itemize}
@@ -383,7 +383,7 @@
                 \item Einfügen erfolgt immer in einem Blatt
                 \item Falls das Blatt voll ist, muss jedoch gesplittet werden
                 \item $\Rightarrow$ Beim Durchlaufen des Baumes an jeder notwendigen (voll) Position splitten
-                \item Splitten:
+                \item Splitten:\index{Splitten}
                     \begin{itemize}
                         \item Bricht volle Node auf und fügt mittleren Wert zur Elternnode hinzu
                         \item Aus den anderen Werten entstehen nun jeweils eigene Kinder
@@ -416,7 +416,7 @@
                         \includegraphics[width=4cm]{pictures/bbaumMelt.PNG}
                     \end{minipage}
                     \begin{minipage}{0.65\textwidth}
-                        Allgemeines Verschmelzen:
+                        Allgemeines Verschmelzen:\index{Verschmelzen}
                         \begin{itemize}
                             \item Kind und alle rechten/linken Geschwisterknoten nur $t-1$ Werte
                             \item Wenn Elternknoten vorher min. $t$ Werte

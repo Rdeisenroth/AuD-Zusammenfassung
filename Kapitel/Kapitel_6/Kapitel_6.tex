@@ -19,8 +19,8 @@
 \graphicspath{{../../}}
 
 \begin{document}
-\section{Graph Algorithms}
-\subsection{Graphen}
+\section{Graph Algorithms}\index{Graph Algorithms}
+\subsection{Graphen}\index{Graphen}
     \begin{itemize}
         \item \fatsf{(Endlicher) gerichteter Graph}
             \begin{itemize}
@@ -39,27 +39,27 @@
                 \item Kanten haben keine Richtung
             \end{itemize}
 
-        \item \fatsf{Pfadfinder}
+        \item \fatsf{Pfadfinder}\index{Pfadfinder}
             \begin{itemize}
                 \item Knoten $v$ ist von Knoten $u$ erreichbar, wenn es einen Pfad gibt
                 \item $u$ ist immer von $u$ per leerem Pfad (k=1) erreichbar
                 \item Länge des Pfades = $k - 1$ = Anzahl Kanten
             \end{itemize}
 
-        \item \fatsf{Zusammenhänge}
+        \item \fatsf{Zusammenhänge}\index{Zusammenhänge}
             \begin{itemize}
-                \item Ungerichtet: Zusammenhängend wenn jeder Knoten von jedem anderen Knoten aus erreichbar ist
-                \item Gerichtet: \fatsf{Stark} zusammenhängend, wenn obiges auch gemäß Kantenrichtung gilt
+                \item Ungerichtet: Zusammenhängend\index{Zusammenhänge!zusammenhängend} wenn jeder Knoten von jedem anderen Knoten aus erreichbar ist
+                \item Gerichtet: \fatsf{Stark}\index{Zusammenhänge!stark zusammenhängend} zusammenhängend, wenn obiges auch gemäß Kantenrichtung gilt
             \end{itemize}
 
         \item \fatsf{Bäume und Subgraphen} \\
             Graph $G$ ist ein Baum, wenn $V$ leer ist oder wenn es einen Knoten in $V$ gibt, \\
             von dem aus jeder andere Knoten eindeutig erreichbar ist (Wurzel). \\
-            Graph $G'=(V',E')$ ist Subgraph von $G=(V,E)$, wenn $V'\subseteq V$ und $E' \subseteq E$.
+            Graph $G'=(V',E')$ ist Subgraph\index{Subgraph} von $G=(V,E)$, wenn $V'\subseteq V$ und $E' \subseteq E$.
 
         \item \fatsf{Darstellung von Graphen}
             \begin{itemize}
-                \item Als Adjazentmatrix (1, wenn Kante von i zu j / 0, wenn keine Kante)
+                \item Als Adjazentmatrix\index{Adjazenzmatrix} (1, wenn Kante von i zu j / 0, wenn keine Kante)
                 \item Bei ungerichteten Graphen ist Matrix spiegelsymmetrisch zur Hauptdiagonalen
                 \item Speicherbedarf: $\Theta(|V^2|)$
                 \item[]
@@ -73,7 +73,7 @@
                 \item Speicherbedarf: $\Theta(|V| + |E|)$
             \end{itemize}
 
-        \item \fatsf{Gewichtete Graphen}
+        \item \fatsf{Gewichtete Graphen}\index{Gewichtete Graphen}
             \begin{itemize}
                 \item gewichteter gerichteter Graph $G=(V,E)$
                 \item besitzt zusätzlich Funktion $w: E \rightarrow R$
@@ -81,7 +81,7 @@
             \end{itemize}
     \end{itemize}
 
-\subsection{Breadth-First Search (BFS)}
+\subsection{Breadth-First Search (BFS)}\index{Breadth-First Search (BFS)}
     \begin{itemize}
         \item \fatsf{Idee}
             \begin{itemize}
@@ -158,7 +158,7 @@
             \end{itemize}
     \end{itemize}
 
-\subsection{Depth-First Search(DFS)}
+\subsection{Depth-First Search(DFS)}\index{Depth-First Search(DFS)}
     \begin{itemize}
         \item \fatsf{Idee}
             \begin{itemize}
@@ -193,7 +193,7 @@
                     \end{ccode}
             \end{itemize}
 
-        \item \fatsf{DFS-Wald = Menge von DFS-Bäumen}
+        \item \fatsf{DFS-Wald = Menge von DFS-Bäumen}\index{DFS-Wald}
             \begin{itemize}
                 \item Subgraph $G_{pred}=(V,E_{pred})$ von G
                 \item besteht aus $E_{pred} = {(v.pred,v)|v \in V, v.pred \neq nil}$
@@ -229,7 +229,7 @@
         
 \pagebreak
 
-        \item \fatsf{Starke Zusammenhangskomponenten}
+        \item \fatsf{Starke Zusammenhangskomponenten}\index{Starke Zusammenhangskomponenten}
             \begin{itemize}
                 \item Knotenmenge $C \subseteq V$, so dass
                 \item[] es zwischen zwei Knoten $u,v \in C$ einen Pfad von $u$ nach $v$ gibt
@@ -265,7 +265,7 @@
             \end{itemize}
     \end{itemize}
 \clearpage
-\subsection{Minimale Spannbäume}
+\subsection{Minimale Spannbäume}\index{Minimale Spannbäume}
     \begin{itemize}
         \item \fatsf{Definition}
             \begin{itemize}
@@ -299,7 +299,7 @@
                     \end{minipage}
             \end{itemize}
         
-        \item \fatsf{Algorithmus von Kruskal}
+        \item \fatsf{Algorithmus von Kruskal}\index{Kruksal}
             \begin{itemize}
                 \item Lässt parallel mehrere Unterbäume eines MST wachsen
                 \item In Worten: Suchen der \string"kleinsten\string" Kante und Zusammenfügen von Mengen, falls noch nicht geschehen
@@ -318,7 +318,7 @@
                     \end{ccode}
             \end{itemize}
             \clearpage
-        \item \fatsf{Algorithmus von Prim}
+        \item \fatsf{Algorithmus von Prim}\index{Prim}
             \begin{itemize}
                 \item Konstruiert einen MST Knoten für Knoten
                 \item Fügt immer leichte Kante zu zusammenhängender Menge hinzu
@@ -341,11 +341,11 @@
         
     \end{itemize}
 
-\subsection{Kürzeste Wege in (gerichteten) Graphen}
+\subsection{Kürzeste Wege in (gerichteten) Graphen}\index{Kürzeste Wege}
     \begin{itemize}
         \item \fatsf{Definition}
             \begin{itemize}
-                \item SSSP - Single-Source Shortest Path
+                \item SSSP - Single-Source Shortest Path\index{SSSP}
                 \item Von Quelle $s$ ausgehend die kürzesten Pfad zu allen anderen Knoten
                 \item Kürzester Pfad: Minimales Gewicht von einem zum anderen Knoten
                 \item BFS findet nur minimale Kantenwege (nicht Gewichtswege)
@@ -353,7 +353,7 @@
                 \item Negative Kantengewichte sind erlaubt, aber keine Zyklen mit negativem Gesamtgewicht
             \end{itemize}
         
-        \item \fatsf{Gemeinsame Idee für Algorithmen - Relax}
+        \item \fatsf{Gemeinsame Idee für Algorithmen - Relax}\index{Relax}
             \begin{itemize}
                 \item Verringere aktuelle Distanz von Knoten $v$, wenn durch Kante $(u,v)$ kürzer erreichbar
                 \item[] \includegraphics[width=12cm]{pictures/ssspRelax.PNG}
@@ -365,7 +365,7 @@
                     \end{ccode}
             \end{itemize}
 \clearpage
-        \item \fatsf{Bellman-Ford-Algorithmus}
+        \item \fatsf{Bellman-Ford-Algorithmus}\index{Bellman-Ford}
             \begin{itemize}
                 \item Laufzeit: $\Theta(|E| \cdot |V|)$
                 \item[]
@@ -387,7 +387,7 @@
                     \end{ccode}
             \end{itemize}
 
-        \item \fatsf{TopoSort für dag}
+        \item \fatsf{TopoSort für dag}\index{TopoSort}
             \begin{itemize}
                 \item Erhalten des kürzesten Pfades durch das topologische Sortieren
                 \item Laufzeit: $\Theta(|E| + |V|)$
@@ -401,7 +401,7 @@
                     \end{ccode}
             \end{itemize}
 
-        \item \fatsf{Dijkstra-Algorithmus}
+        \item \fatsf{Dijkstra-Algorithmus}\index{Dijkstra}
             \begin{itemize}
                 \item Voraussetzung: Keine negativen Kantengewichte
                 \item Laufzeit: $\Theta(|V| \cdot log|V| + |E|)$
@@ -425,7 +425,7 @@
             \end{itemize}
     \end{itemize}
 \clearpage
-\subsection{Maximaler Fluss in Graphen}
+\subsection{Maximaler Fluss in Graphen}\index{Maximaler Fluss}
     \begin{itemize}
         \item \fatsf{Idee}
             \begin{itemize}
@@ -443,11 +443,11 @@
                         \end{itemize}
                     \end{minipage}
                 \item \fatsf{Flussnetzwerk:} \\
-                        Ein Flussnetzwerk ist ein gewichteter, gerichteter Graph $G=(V,E)$ mit Kapazität $c$, so dass
+                        Ein Flussnetzwerk\index{Flussnetzwerk} ist ein gewichteter, gerichteter Graph $G=(V,E)$ mit Kapazität $c$, so dass
                         $c(u,v) \geq 0$ für $(u,v) \in E$ und $c(u,v) = 0$ für $(u,v) \notin E$, mit zwei Knoten $s,t \in V$,
                         so dass jeder Knoten von $s$ aus erreichbar ist und $t$ von jedem Knoten aus erreichbar ist. 
                         Damit gilt $|E| \geq |V| - 1$.
-                \item \fatsf{Fluss:} \\
+                \item \fatsf{Fluss:}\index{Fluss} \\
                         Ein Fluss $f: V x V \rightarrow \mathbb{R}$ für ein Flussnetzwerk $G = (V,E)$ mit Kapazität $c$
                         und Quelle $s$ und Senke $t$ erfüllt $0 \leq f(u,v) \leq c(u,v)$ für alle $u,v \in V$, sowie für alle
                         $u \in V - \{s,t\}$: \\ 
@@ -463,7 +463,7 @@
                 \item[] \includegraphics[width=12cm]{pictures/flussTrans2.PNG}
             \end{itemize}
 \clearpage
-        \item \fatsf{Restkapazitätsgraph}
+        \item \fatsf{Restkapazitätsgraph}\index{Restkapazitätsgraph}
             \begin{itemize}
                 \item Wird für Ford-Fulkerson benötigt
                 \item Restkapazität $c_f(u,v)$: \\
@@ -478,7 +478,7 @@
             \end{itemize}
 
 
-        \item \fatsf{Ford-Fulkerson-Algorithmus}
+        \item \fatsf{Ford-Fulkerson-Algorithmus}\index{Ford-Fulkerson}
             \begin{itemize}
                 \item Idee: Suche Pfad von $s$ nach $t$, der noch \fatsf{erweiterbar} ist
                 \item Suche dieses Pfades im Restkapazitätsgraphen $G_f$ (mögliche Zu- und Abflüsse)

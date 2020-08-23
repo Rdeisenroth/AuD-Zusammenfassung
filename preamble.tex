@@ -40,7 +40,6 @@
 \usepackage{wrapfig}
 \usepackage{xr-hyper}
 \usepackage{import}
-%\usepackage{imakeidx}
 % Define Glossary style
 \ifthenelse{\isundefined{\printindex}}{}{
     \makeindex[
@@ -51,10 +50,27 @@
         ]
 }
 \usepackage{filecontents} % Style für Stichwortverzeichnis nicht in seperatem File
-\begin{filecontents}{mystyle.ist}
+\begin{filecontents}[overwrite]{mystyle.ist}
+% Fancy Headings
+heading_prefix "
+\\nopagebreak\n
+\\tikz{%
+\\node[rounded rectangle, rounded rectangle west arc=0pt, minimum height=0.7cm,fill=black!20!teal,text=white, drop shadow={opacity=.5,shadow xshift=0pt}](text){\\large\\noindent\\bfseries\\sffamily " % Hier wird der Buchstabe eingefügt
+heading_suffix "};
+\\draw ([xshift=4mm]text.north east) [color=gray, fill=gray, drop shadow={opacity=.5,shadow xshift=2pt}] coordinate (a) [bend right=0] to ([xshift=5.2cm]text.north west) coordinate (b) [bend right] to +(0,-0.7cm) coordinate (c) [bend right] to (a |- c) [bend right=60] to cycle ;
+}
+\\nopagebreak\n"
 headings_flag  1 % wir benutzen Überschriften
-heading_prefix "{\\large\\noindent\\bfseries " % und setzen sie fett und Groß
-heading_suffix "\\hfil}\\nopagebreak\n"% und links, nach ihnen kein Seitenumbruch
+% Übersetzungen
+symhead_positive "Symbole"
+symhead_negative "symbole"
+numhead_positive "Zahlen"
+numhead_negative "zahlen"
+% Schönere unterpunkte
+item_01 "\n \\subitem$\\bullet$ "
+item_1 "\n \\subitem$\\bullet$ "
+item_12 "\n \\subsubitem - "
+item_2 "\n \\subsubitem - "
 delim_0 "\\dotfill" % Punktzeile zwischen Einträgen und Seitenzahlen (Ebene 0)
 delim_1 "\\dotfill" % Punktzeile zwischen Einträgen und Seitenzahlen (Ebene 1)
 delim_2 "\\dotfill" % Punktzeile zwischen Einträgen und Seitenzahlen (Ebene 2)
@@ -75,20 +91,30 @@ suffix_3p "\\,ff." % Suffix bei einem bereich aus 3 Seiten
 \newcommand{\Fach}{AuD}
 %\newcommand{\contributors}{}
 
+
+% Environment für meinen Style (Arg 1 = minted Options, Arg 2 = tcolorbox Options)
 \newtcblisting{ccode}[2][]{
-    listing engine=minted,
-    colback=bashcodebg!30,
-    colframe=black!70,
-    listing only,
-    %minted style=colorful,
-    minted language=c,
-    minted options={linenos=true,numbersep=3mm,texcl=true,#1},
-    left=5mm,enhanced,
-    overlay={\begin{tcbclipinterior}\fill[black!25] (frame.south west)
-                rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}},
-    #2
+    listing engine=minted, % Minted verwenden
+    colback=bashcodebg!30, %Hintergrundfarbe
+    colframe=black!70, % Randfarbe
+    listing only,  % Sonst will er den Plain Text nach dem Minted Listing noch anfügen
+    %minted style=colorful, %Sieht actually worse aus imo
+    minted language=java, % Sprache setzen
+    minted options={ %Minted Optionen
+      linenos=true,
+      numbersep=3mm,
+      texcl=true,
+      #1 % weitere optionen für Minted zulassen
+      },
+      left=5mm, % Links Platz lassen
+      enhanced, % Erlaubt uns, den ramen zu zeichnen
+      overlay={ % Für Grauen Bereich links
+                \begin{tcbclipinterior}
+                  \fill[black!25] (frame.south west) rectangle ([xshift=5mm]frame.north west); % Zeilennummernbereich färben
+                \end{tcbclipinterior}
+              },
+      #2 % Weitere Argumente zulassen
 }
-\definecolor{bashcodebg}{rgb}{0.85,0.85,0.85}
 %Formatierungen für Beispiele in diesem Dokument. Im Allgemeinen nicht notwendig!
 \let\file\texttt
 \let\code\texttt
@@ -96,6 +122,7 @@ suffix_3p "\\,ff." % Suffix bei einem bereich aus 3 Seiten
 \let\cls\textsf
 
 %Color Definitions
+\definecolor{bashcodebg}{rgb}{0.85,0.85,0.85}
 \definecolor{tablegreen}{RGB}{207, 228, 174}
 \definecolor{tablered}{RGB}{255, 191, 191}
 \definecolor{tableyellow}{RGB}{255, 250, 193}
