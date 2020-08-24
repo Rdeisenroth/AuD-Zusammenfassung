@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+%Styles
+\tikzstyle{treeNodeStyle}=[align=center, draw=black, circle, semithick, text width=6mm, inner sep=0pt]
+\definecolor{rbRedNodeColor}{HTML}{ff2e17}
+\tikzstyle{rbRedNodeStyle}=[treeNodeStyle, draw=rbRedNodeColor, fill=rbRedNodeColor!20]
+\tikzstyle{rbBlackNodeStyle}=[treeNodeStyle, text=white, fill=black!55]
+\tikzstyle{rbRedBlackNodeStyle} = [treeNodeStyle, text=white, left color=red!80,right color=black!80]
+    \begin{forest}
+        [,shape=coordinate[$C$,rbBlackNodeStyle,name=nodeC[$B$,rbRedNodeStyle,name=nodeB[$A$,rbRedNodeStyle]\toplefttreemark{z}[,phantom]][$D$,rbBlackNodeStyle,name={nodeD}]\toprighttreemark{y}]]
+            \draw[line width=1mm, draw=gray,-triangle 45,postaction={draw, line width=2mm, shorten >=5mm, -}] ([xshift=1cm]nodeD.east) -- ++(2cm,0cm);
+            % Rotation Pfeile + Labels
+            \begin{scope}[on background layer]
+                % Define Virtual Point on the right (For Phantom Node)
+                \draw[->, dashed,draw=arrowgreen] (nodeB) to [out=120,in=170,looseness=.7] (nodeC) to[out=10,in=60,looseness=.7] node[pos=0.3,above,sloped]{\tiny \textcolor{arrowgreen}{RotateRight(C)}} (nodeD);
+            \end{scope}
+        \end{forest}
+    \begin{forest}
+        [,shape=coordinate[$B$,rbBlackNodeStyle[$A$,rbRedNodeStyle[,phantom][$D$,rbBlackNodeStyle]][$C$,rbRedNodeStyle]]\toplefttreemark{z}]
+    \end{forest}
+
+\end{document}

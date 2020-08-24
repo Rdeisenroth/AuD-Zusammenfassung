@@ -1,0 +1,18 @@
+\documentclass[varwidth]{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+\begin{ccode}[autogobble]{title=SolveProblem(),minted language=javascript}
+let solution = null;
+while(myProblem != solved){
+    doNextStepToSolveProblem();
+}
+return solution;
+\end{ccode}
+\end{document}
