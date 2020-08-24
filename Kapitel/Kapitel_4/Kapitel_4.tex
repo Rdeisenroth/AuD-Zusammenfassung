@@ -110,24 +110,61 @@
             \end{itemize}
             \item Also müssen wir:
             \begin{itemize}
-                \item nach rotation die root des aktuellen Teilbaumes auf schwarz setzen
+                \item nach Rotation die root des Baumes ggf auf schwarz setzen
                 \item Überprüfen, ob RSB-Bedingung verletzt wurde
                 \item Bloß wenn das parent auch rot ist kommen wir in Verlegenheit $\Longrightarrow$ wir müssen den Algorithmus starten
             \end{itemize} 
             
             \begin{minipage}{.5\textwidth}
-            \item Fälle falls Parent rot ist:
+            \item Fälle falls $z.parent$ rot ist:
             \begin{itemize}
-                \item[1.] Onkel ist ebenfalls rot $\Rightarrow$ parent und Onkel werden schwarz gefärbt und Grandparent wird rot gefärbt
-                \item[2.] Onkel ist schwarz und z hat andere Kindrichtung wie z.p $\Rightarrow$ zu Fall 3 durch rotation konvertieren
-                \item[3.] Onkel ist schwarz und z hat gleiche Kindrichtung wie z.p $\Rightarrow$ z.p wird schwarz, z.p.p wird rot, und es wird um z.p.p entgegen der Kindrichtung gedreht
+                \item[1.] Onkel ist ebenfalls rot $\Rightarrow$ parent und Onkel werden schwarz gefärbt und Grandparent wird rot gefärbt, z wird zu z.p.p, ggf. Verletzung durch Farbe des neuen z
+                \item[2.] Onkel ist schwarz und z hat andere Kindrichtung wie z.p $\Rightarrow$ zu Fall 3 durch Rotation konvertieren
+                \item[3.] Onkel ist schwarz und z hat gleiche Kindrichtung wie z.p $\Rightarrow$ z.p wird schwarz, z.p.p wird rot, und es wird um z.p.p entgegen der Kindrichtung gedreht. Schleife terminiert nach Fall 3
             \end{itemize}
             \end{minipage}
             \begin{minipage}{.4\textwidth}
-                \includegraphics[width=\textwidth]{pictures/fixColorsAfterInsertionCases/case 1}
-                \captionof*{figure}{Fall 1}
+                \begin{tcolorbox}[
+                    colback=yellow!20,
+                    colframe=black!70,
+                    enhanced,
+                    title={Fall 1},
+                    fonttitle=\sffamily\bfseries,
+                    center title,
+                    every float=\centering
+                    ]
+                    \includegraphics[width=\textwidth]{pictures/fixColorsAfterInsertionCases/case 1}
+                \end{tcolorbox}
             \end{minipage}\\
         \end{itemize}
+        \begin{minipage}{.5\textwidth}
+            \begin{tcolorbox}[
+                colback=yellow!20,
+                colframe=black!70,
+                enhanced,
+                title={Fall 2},
+                fonttitle=\sffamily\bfseries,
+                center title,
+                every float=\centering
+                ]
+                \hspace*{-1cm}\includegraphics{pictures/fixColorsAfterInsertionCases/case2}
+            \end{tcolorbox}
+            %\captionof*{figure}{Fall 2}
+        \end{minipage}
+        \begin{minipage}{.445\textwidth}
+            \begin{tcolorbox}[
+                colback=yellow!20,
+                colframe=black!70,
+                enhanced,
+                title={Fall 3},
+                fonttitle=\sffamily\bfseries,
+                center title,
+                every float=\centering
+                ]
+                \nopagebreak\hspace*{-1cm}\includegraphics{pictures/fixColorsAfterInsertionCases/case3}
+                \end{tcolorbox}
+                %\captionof*{figure}{Fall 3}
+        \end{minipage}
         \begin{ccode}[autogobble,fontsize=\small]{title={fixColorsAfterInsertion(T,z)}}
             WHILE z.parent.color == red DO                  // solange der Elternknoten rot ist
                 IF z.parent == z.parent.parent.left THEN    // Linkes Kind (if-Fall)
@@ -137,25 +174,17 @@
                         y.color = black;
                         z.parent.parent.color = red;
                         z = z.parent.parent;                // rekursiv nach oben weiterführen
-                    ELSE                                    // Fall 2
-                        IF z == z.parent.right THEN         // Zwischenfall (2.1)
+                    ELSE                                    
+                        IF z == z.parent.right THEN         // Fall 2
                             z = z.parent;
                             rotateLeft(T,z);
-                        z.parent.color = black;
+                        z.parent.color = black;             // Fall 3
                         z.parent.parent.color = red;
                         rotateRight(T, z.parent.parent);
-                ELSE                                        // Rechtes Kind (else-Fall)
-                    // Tauschen von rechts und links
+                ELSE                                        
+                    // Tauschen von rechts und links        
                 T.root.color = black;                       // Setzen der Wurzel auf Schwarz
             \end{ccode}
-            \begin{minipage}{.5\textwidth}
-                \includegraphics{pictures/fixColorsAfterInsertionCases/case2}
-                \captionof*{figure}{Fall 2}
-            \end{minipage}
-            \begin{minipage}{.4\textwidth}
-            \nopagebreak\includegraphics{pictures/fixColorsAfterInsertionCases/case3}
-                \captionof*{figure}{Fall 3}
-            \end{minipage}
             \clearpage
         \item \fatsf{Löschen}
             \begin{itemize}
@@ -188,7 +217,7 @@
                         y TREE-MINIMUM(z.right);
                         y-original-color=y.color;
                         x=x.right;
-                        IF <.p == z
+                        IF y.p == z
                             x.p = y;
                         ELSE
                             transplant(T,y,y.right);
@@ -205,18 +234,18 @@
                 \item Delete kann die RSB-Bedingung verletzen. Das fixup hat vier fälle:\\
                 \includegraphics[width=\textwidth-2cm]{pictures/deleteFixuoRBTCases.png}
                 \begin{itemize}
-                    \item[1.] Knoten $w$ (Bruder von Knoten $x$), rot
+                    \item[1.] Knoten $w$ (Bruder von Knoten $x$) ist rot
                     \begin{itemize}
                         \item Da $w$ schwarze Kinder haben muss, können wir die Farben von $w$ und $x.p$ wechseln und dann eine Linksdrehung auf $x.p$ ausführen, ohne eine der rot-schwarzen Eigenschaften zu verletzen.
                         \item Das neue Geschwisterchen von $x$, das vor der Rotation eines der Kinder von $w$ ist, ist jetzt schwarz. Wir haben also Fall $1$ in Fall $2, 3$ oder $4$ konvertiert.
-                        Die Fälle$ 2, 3$ und $4$ treten auf, wenn der Knoten $w$ schwarz ist, aber unterschiedliche Farben der Kinder.
+                        Die Fälle $ 2, 3$ und $4$ treten auf, wenn der Knoten $w$ schwarz ist, aber unterschiedliche Farben der Kinder.
                     \end{itemize}
                     \item[2.] $w$ ist schwarz und beide Kinder von $w$ sind schwarz
                     \begin{itemize}
                         \item entfernen eines Schwarz von $x$ und $w$, wobei $x$ nur ein Schwarz hat und $w$ rot bleibt
                         \item Um Entfernen aus $x$ und $w$ zu kompensieren ein zusätzliches Schwarz hinzufügen.
                         \item w konnte entweder Schwarz oder rot sein.
-                        \item Wenn $x.p(a)$ schwarz, dann Vaterknoten $\Delta SH=-1$; verfahre rekursiv mit $x.p(a)$ als neuem $x$; $\Rightarrow$ wir wiederholen die while-Schleife mit $x.p$ als neuem Knoten $x$. 
+                        \item Wenn $x.p~(=a)$ schwarz, dann Vaterknoten $\Delta SH=-1$; verfahre rekursiv mit $x.p~(=a)$ als neuem $x$; $\Rightarrow$ wir wiederholen die while-Schleife mit $x.p$ als neuem Knoten $x$. 
                     \end{itemize}
                     \item[3.] $w$ ist schwarz, $w$'s linkes Kind ist rot und $w$'s rechtes Kind ist schwarz
                     \begin{itemize}
@@ -226,10 +255,10 @@
                     \end{itemize}
                     \item[4.] $w$ ist schwarz und das rechte Kind von $w$ ist rot
                     \begin{itemize}
-                        \item $w$ erbt die farbe von $x.p$
+                        \item $w$ erbt die Farbe von $x.p$
                         \item $x.p$ wird schwarz
                         \item $w.right$ wird schwarz
-                        \item[$\Rightarrow$] Linksrotation von $x.p$
+                        \item[$\Rightarrow$] LinksRotation von $x.p$
                         \item $x$ als Wurzel festlegen, wird der Whileloop beendet, wenn die Schleifenbedingung getestet wird. 
                     \end{itemize}
                 \end{itemize}
