@@ -163,7 +163,103 @@
                 \item analog zum binären Suchbaum, aber neue Node erbt Farbe der alten Node
                 \item Wenn "`neue"' Node schwarz war $\Rightarrow$ Fixup
                 \item Verschiedene Fälle, die auch gegenseitig Voraussetzungen füreinander sind 
-                \item Da das Ganze jedoch etwas umfangreicher ist, findet es sich nicht hier in der Zusammenfassung
+                \item Hilfsroutine transplant\index{transplant}
+                \begin{ccode}[autogobble,fontsize=\small]{title={transplant(T,u,v)}}
+                    IF u.parent==nil THEN
+                        T.root=v;
+                    ELSE
+                        IF u==u.parent.left THEN
+                            u.parent.left=v;
+                        ELSE
+                            u.parent.right=v;
+                    IF v != nil THEN
+                        v.parent=u.parent;
+                \end{ccode}
+                \begin{ccode}[autogobble,fontsize=\small]{title={delete(T,z)}}
+                    y=z;
+                    y-original-color=y.color;
+                    IF z.left == nil;
+                        x = z.right;
+                        transplant(T,z,z.right);
+                    ELSE IF z.right == nil;
+                        x = z.left;
+                        transplant(T,z,z.left);
+                    ELSE
+                        y TREE-MINIMUM(z.right);
+                        y-original-color=y.color;
+                        x=x.right;
+                        IF <.p == z
+                            x.p = y;
+                        ELSE
+                            transplant(T,y,y.right);
+                            y.right=z.right;
+                            y.right.p=y;
+                        transplant(T,z,y);
+                        y.left=z.left;
+                        y.left.p=y;
+                        y.color=z.color;
+                    IF y-original-color == BLACK
+                        deleteFixup(T,x);
+                \end{ccode}
+                \clearpage
+                \item Delete kann die RSB-Bedingung verletzen. Das fixup hat vier fälle:\\
+                \includegraphics[width=\textwidth-2cm]{pictures/deleteFixuoRBTCases.png}
+                \begin{itemize}
+                    \item[1.] Knoten $w$ (Bruder von Knoten $x$), rot
+                    \begin{itemize}
+                        \item Da $w$ schwarze Kinder haben muss, können wir die Farben von $w$ und $x.p$ wechseln und dann eine Linksdrehung auf $x.p$ ausführen, ohne eine der rot-schwarzen Eigenschaften zu verletzen.
+                        \item Das neue Geschwisterchen von $x$, das vor der Rotation eines der Kinder von $w$ ist, ist jetzt schwarz. Wir haben also Fall $1$ in Fall $2, 3$ oder $4$ konvertiert.
+                        Die Fälle$ 2, 3$ und $4$ treten auf, wenn der Knoten $w$ schwarz ist, aber unterschiedliche Farben der Kinder.
+                    \end{itemize}
+                    \item[2.] $w$ ist schwarz und beide Kinder von $w$ sind schwarz
+                    \begin{itemize}
+                        \item entfernen eines Schwarz von $x$ und $w$, wobei $x$ nur ein Schwarz hat und $w$ rot bleibt
+                        \item Um Entfernen aus $x$ und $w$ zu kompensieren ein zusätzliches Schwarz hinzufügen.
+                        \item w konnte entweder Schwarz oder rot sein.
+                        \item Wenn $x.p(a)$ schwarz, dann Vaterknoten $\Delta SH=-1$; verfahre rekursiv mit $x.p(a)$ als neuem $x$; $\Rightarrow$ wir wiederholen die while-Schleife mit $x.p$ als neuem Knoten $x$. 
+                    \end{itemize}
+                    \item[3.] $w$ ist schwarz, $w$'s linkes Kind ist rot und $w$'s rechtes Kind ist schwarz
+                    \begin{itemize}
+                        \item Farben von $w$ und seinem linken Kind links ändern und dann eine Rechtsdrehung auf $w$ ausführen
+                        \item Das neue Geschwister $w$ von $x$ ist jetzt ein schwarzer Knoten mit einem roten rechten Kind
+                        \item[$\Rightarrow$] Fall $3$ in Fall $4$ transformiert.
+                    \end{itemize}
+                    \item[4.] $w$ ist schwarz und das rechte Kind von $w$ ist rot
+                    \begin{itemize}
+                        \item $w$ erbt die farbe von $x.p$
+                        \item $x.p$ wird schwarz
+                        \item $w.right$ wird schwarz
+                        \item[$\Rightarrow$] Linksrotation von $x.p$
+                        \item $x$ als Wurzel festlegen, wird der Whileloop beendet, wenn die Schleifenbedingung getestet wird. 
+                    \end{itemize}
+                \end{itemize}
+                \item 
+                \begin{ccode}[autogobble,fontsize=\small]{title={deleteFixup(T,z)}}
+                    WHILE x != T.root and x.color == BLACK
+                        IF x==x.p.left
+                            w=x.p.right;
+                            IF w.color == RED                           // Case 1
+                                w.color=BLACK;
+                                x.p.color=RED;
+                                rotateLeft(T,x.p);
+                                w=x.p.right;
+                            IF w.left.color == w.right.color == BLACK   // Case 2
+                                w.color = RED;
+                                x=x.p;
+                            ELSE IF w.right.color == BLACK              // Case 3
+                                w.left.color = BLACK;
+                                w.color=RED;
+                                rotateRight(T,w);
+                                w=x.p.right;
+                            w.color=x.p.color;                          // Case 4
+                            x.p.color=BLACK;
+                            w.right.color=BLACK;
+                            rotateLeft(T,x.p);
+                            x=T.root;
+                        ELSE
+                            // same as above with "right" and "left" exchanged
+                    x.color=BLACK;
+                \end{ccode}
             \end{itemize}
         
         \item \fatsf{Worst-Case-Laufzeiten}
@@ -173,6 +269,7 @@
                 \item {\makebox[2cm][l]{Suchen: }} $\Theta(log~n)$
             \end{itemize}
     \end{itemize}
+    \clearpage
     \subsection{AVL-Bäume}\label{AVL-Baeume}\index{AVL-Bäume}
     \begin{itemize}
         \item \fatsf{Definition:}
