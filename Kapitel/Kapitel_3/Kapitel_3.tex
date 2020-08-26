@@ -64,7 +64,7 @@
           \begin{minipage}[t]{.4\textwidth}
               \begin{ccode}[autogobble]{title=new(S)}
                   S.A[]=ALLOCATE(MAX);
-                  S.TOP=-1;
+                  S.top=-1;
               \end{ccode}
           \end{minipage}
           \begin{minipage}[t]{.4\textwidth}
@@ -115,7 +115,7 @@
                     \begin{minipage}[t]{.5\textwidth}
                         \begin{ccode}[autogobble]{title=new(S)}
                             S.A[]=ALLOCATE(1);
-                            S.TOP=-1;
+                            S.top=-1;
                             S.memsize=1;
                         \end{ccode}
                     \end{minipage}
@@ -375,7 +375,7 @@
     \item \fatsf{Bäume durch verkettete Listen}
           \begin{itemize}
               \item[] \includegraphics[width=12cm]{pictures/binäreBaumeListe.PNG}
-              \item[] Bäume sind \string"azyklisch\string" (Keine "rückführende Spur")
+              \item[] Bäume sind "`azyklisch"'(also "`keine Schleifen zwischen Knoten"')
           \end{itemize}
 
     \item \fatsf{Darstellung als (ungerichteter) Graph}
@@ -483,7 +483,7 @@
           \clearpage
     \item \fatsf{Eindeutige Bestimmbarkeit von Bäumen}
           \begin{itemize}
-              \item Nur In-,Pre-,Postorder reichen nicht zur eindeutigen Bestimmbarkeit von Bäumen
+              \item Nur In-, Pre-, Postorder reichen nicht zur eindeutigen Bestimmbarkeit von Bäumen
               \item[] $\Rightarrow$ Preorder/Postorder $+$ Inorder $+$ eindeutige Werte sind notwendig
               \item[] \includegraphics[width=12cm]{pictures/bestimmbarkeitBaum.PNG}
           \end{itemize}
@@ -625,7 +625,7 @@
                             \item Laufzeit $= O(h)$ (Höhe)
                             \item Code:
                             \item[]
-                                  \begin{ccode}[autogobble]{title={search(x,k) // 1. Aufruf x = root}}
+                                  \begin{ccode}[autogobble]{title={search(x,k) // 1. Aufruf: x = root}}
                                       IF x == nil OR x.key == k THEN
                                         return x;
                                       IF x.key > k THEN
@@ -732,7 +732,7 @@
                     \end{itemize}
               \item \textit{Worst Case:}
                     \begin{itemize}
-                        \item Degenerierter Baum (lineare Liste)
+                        \item Degenerierter Baum (links- bzw. rechtslastiger Baum)
                         \item $h = n - 1$
                         \item Laufzeit = $\Theta(n)$
                     \end{itemize}
@@ -744,7 +744,7 @@
     \item \fatsf{Suchbäume als Suchindex}\index{Suchindex}
           \begin{itemize}
               \item Knoten speichert nur Primärschlüssel und Zeiger auf Daten
-              \item Zusätzliche Indizes möglich, kosten aber Speicherplatzbedarf
+              \item Zusätzliche Indizes möglich, kosten aber Speicherplatz
               \item[] \includegraphics[width=12cm]{pictures/suchbaumSuchindex.PNG}
           \end{itemize}
 \end{itemize}

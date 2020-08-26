@@ -73,6 +73,7 @@
             \begin{itemize}
                 \item Füge auf unterster Ebene ein
                 \item Evtl. auf höheren Ebenen mit zufälliger Wahl mithilfe von $p$ auf jeder Ebene
+                \item falls ein Element nicht auf die nächst höhere Ebene gelangt, gelangt es auch nicht auf andere höhere Ebenen (Abbruch des Auswahlprozesses)
             \end{itemize}
 
         \item \fatsf{Löschen}
@@ -158,7 +159,7 @@
         
         \item \fatsf{Laufzeiten}
             \begin{itemize}
-                \item Wählt mal $T.length = n$ ergibt sich konstante Laufzeit
+                \item Für $T.length = n$ ergibt sich konstante Laufzeit
                 \item {\makebox[2cm][l]{Einfügen: }} $\Theta(1)$
                 \item {\makebox[2cm][l]{Löschen: }} $\Theta(1)$
                 \item {\makebox[2cm][l]{Suchen: }} $\Theta(1)$
@@ -171,7 +172,7 @@
     \begin{itemize}
         \item \fatsf{Idee}
             \begin{itemize}
-                \item Speicherschonende Wörterbucher mit kleinem Fehler
+                \item Speicherschonende Wörterbucher mit kleinem Fehlerpotenzial
                 \item z.B. Vermeidung von schlechten Passwörtern 
                     \begin{enumerate}
                         \item Abspeichern aller schlechten Passwörter in kompakter Form
@@ -197,7 +198,7 @@
                             BF[H[j](X[i])] = 1;
                     \end{ccode}
                 \item[]
-                \item[1.] Initialisiere Array mit 0-Einträgen
+                \item[1.] Initialisiere Array mit "$0$er-Einträgen
                 \item[2.] Schreibe für jedes Element in jede Bit-Position $H_0(x_i),...,H_{k-1}(x_i)$ eine 1 
                 \item[] \includegraphics[width=15cm]{pictures/bloomCreate.PNG} 
             \end{itemize}

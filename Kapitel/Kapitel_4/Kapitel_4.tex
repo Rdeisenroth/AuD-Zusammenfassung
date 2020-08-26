@@ -34,7 +34,7 @@
                         \item Jeder Knoten hat die Farbe rot oder schwarz
                         \item Die Wurzel ist schwarz
                         \item Wenn ein Knoten rot ist, sind seine Kinder schwarz ("`Nicht-Rot-Rot-Regel"')
-                        \item Für jeden Knoten hat jeder Pfad zu einem Blatt die selbe Anzahl an gleichen schwarzen Knoten
+                        \item Für jeden Knoten hat jeder Pfad zu einem Blatt die selbe Anzahl an schwarzen Knoten
                     \end{itemize}
                 \item Halbblätter im RBT sind schwarz
                 \item Schwarzhöhe\index{Schwarzhöhe} eines Knoten: \\
@@ -310,7 +310,7 @@
                 \item[]\index{linkslastig}\index{rechtslastig}\index{balanciert} \includegraphics[width=7cm]{pictures/avlbaum.PNG}
             \end{itemize}
         
-        \item \fatsf{AVL vs. Rot-Schwarz}
+        \item \fatsf{AVL vs. Rot-Schwarz-Bäume}
             \begin{itemize}
                 \item \textit{AVL:}
                     \begin{itemize}
@@ -327,7 +327,7 @@
                     \end{itemize}
                 \item Gemeinsamkeiten:
                     \item AVL $\subset$ Rot-Schwarz
-                    \item AVL Baum $\Rightarrow$ Rot-Schwarz-Baum mit Höhe $\left \lceil \frac{h+1}{2} \right \rceil$
+                    \item AVL-Baum $\Rightarrow$ Rot-Schwarz-Baum mit Höhe $\left \lceil \frac{h+1}{2} \right \rceil$
                     \item Für jede Höhe $h \geq 3$ gibt es einen RBT, der kein AVL-Baum ist (AVL $\neq$ RBT)
             \end{itemize}
 \clearpage
@@ -355,7 +355,7 @@
         \item \fatsf{Löschen}
             \begin{itemize}
                 \item Analog zum binären Suchbaum
-                \item Rebalancieren bis eventuell in die Wurzel notwendig
+                \item Rebalancieren (eventuell bis zur Wurzel) notwendig
             \end{itemize}
 
         \item \fatsf{Worst-Case-Laufzeiten}
@@ -372,16 +372,16 @@
     \begin{itemize}
         \item \fatsf{Definition}
             \begin{itemize}
-                \item selbst-organisierende Listen
-                \item Ansatz: Einmal angefragte Werte werdeb wahrs. noch öfter angefragt
+                \item selbst-organisierender Baum
+                \item Ansatz: Einmal angefragte Werte werden wahrs. noch öfter angefragt
                 \item Angefragte Werte nach oben schieben
-                \item Splay-Bäume sind Untermenge von BST
+                \item Splay-Bäume sind eine Untermenge von Rot-Schwarz-Bäumen ($\subseteq$)
             \end{itemize}
         
         \item \fatsf{Splay-Operationen}
             \begin{itemize}
                 \item Suchen oder Einfügen: Spüle gesuchten oder neu eingefügten Knoten an die Wurzel
-                \item Splay:\index{splay} (Folge von Zig-,Zig-Zig-, Zig-Zag-Operationen)
+                \item Splay:\index{splay} Folge von Zig-,Zig-Zig-, Zig-Zag-Operationen
                 \item []
                     \begin{ccode}[autogobble]{title={splay(T,z)}}
                     WHILE z != T.root DO
@@ -435,7 +435,7 @@
         \item \fatsf{Definition}
             \begin{itemize}
                 \item Heaps sind keine BSTs
-                \item Eigenschaften binäre Max-Heaps:
+                \item Eigenschaften von binären Max-Heaps:
                     \begin{itemize}
                         \item bis auf das unterste Level vollständig und dort von links gefüllt ist
                         \item Für alle Knoten gilt: \texttt{x.parent.key $\geq$ x.key}
@@ -513,7 +513,7 @@
 
         \item \fatsf{Heap-Sort}
             \begin{itemize}
-                \item Idee: Bauen des Heaps aus Array und dann Extraktion des Maximums
+                \item Idee: Bauen des Heaps aus Array und dann (wiederholte) Extraktion des Maximums
                 \item[]
                     \begin{ccode}[autogobble]{title={heapSort(H.A)}}
                     buildHeap(H.A)                  // Bauen des Heaps
@@ -530,8 +530,8 @@
                 \item Jeder B-Baum hat einen angebenen Grad also z.B. $t=2$
                 \item Eigenschaften:
                     \begin{itemize}
-                        \item Wurzel zwischen $[1,...,2t-1]$ Werte
-                        \item Knoten zwischen $[t-1,...2t-1]$ Werte
+                        \item Wurzel zwischen $[1,~\cdots,~2t-1]$ Werte
+                        \item Knoten zwischen $[t-1,~\cdots,~2t-1]$ Werte
                         \item Werte innerhalb eines Knotens aufsteigend geordnet
                         \item Blätter haben alle die gleiche Höhe
                         \item Jeder innere Knoten mit $n$ Werten hat $n+1$ Kinder, sodass gilt:
@@ -564,7 +564,7 @@
             \begin{itemize}
                 \item Einfügen erfolgt immer in einem Blatt
                 \item Falls das Blatt voll ist, muss jedoch gesplittet werden
-                \item $\Rightarrow$ Beim Durchlaufen des Baumes an jeder notwendigen (voll) Position splitten
+                \item $\Rightarrow$ Beim Durchlaufen des Baumes an jeder notwendigen vollen Position splitten
                 \item Splitten:\index{Splitten}
                     \begin{itemize}
                         \item Bricht volle Node auf und fügt mittleren Wert zur Elternnode hinzu
@@ -579,9 +579,9 @@
                     \end{enumerate}
                 \item[]
                     \begin{ccode}[autogobble]{title={insert(T, z)}}
-                    Wenn Wurzel schon 2t-1 Werte, dann splitte Wurzel
+                    Wenn Wurzel schon 2t-1 Werte hat, dann splitte Wurzel
                     Suche rekursiv Einfügeposition:
-                        Wenn zu besuchendes Kind 2t-1 Werte, splitte es erst
+                        Wenn zu besuchendes Kind 2t-1 Werte hat, splitte es erst
                     Füge z in Blatt ein
                     \end{ccode}
             \end{itemize}
@@ -590,7 +590,7 @@
 
         \item \fatsf{Löschen}
             \begin{itemize}
-                \item Wenn Blatt noch mehr als t-1 Werte, kann der Wert einfach entfernt werden
+                \item Wenn Blatt noch mehr als $t-1$ Werte, kann der Wert einfach entfernt werden
                 \item Allerdings durchlaufen wir hier den Baum auch wieder von oben und stellen gewisse Voraussetzungen her
                 \item Durchlaufen des Baumes von oben und Anwendung der folgenden Algorithmen
                 \item[]

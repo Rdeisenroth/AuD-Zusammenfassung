@@ -41,12 +41,12 @@
 
         \item \fatsf{Pfadfinder}\index{Pfadfinder}
             \begin{itemize}
-                \item Knoten $v$ ist von Knoten $u$ erreichbar, wenn es einen Pfad gibt
+                \item Knoten $v$ ist von Knoten $u$ erreichbar, wenn es wenn es von $u$ aus einen Pfad über $n$ Knoten nach $v$
                 \item $u$ ist immer von $u$ per leerem Pfad (k=1) erreichbar
                 \item Länge des Pfades = $k - 1$ = Anzahl Kanten
             \end{itemize}
 
-        \item \fatsf{Zusammenhänge}\index{Zusammenhänge}
+        \item \fatsf{Zusammenhängende Graphen}\index{Zusammenhänge}
             \begin{itemize}
                 \item Ungerichtet: Zusammenhängend\index{Zusammenhänge!zusammenhängend} wenn jeder Knoten von jedem anderen Knoten aus erreichbar ist
                 \item Gerichtet: \fatsf{Stark}\index{Zusammenhänge!stark zusammenhängend} zusammenhängend, wenn obiges auch gemäß Kantenrichtung gilt
@@ -59,7 +59,7 @@
 
         \item \fatsf{Darstellung von Graphen}
             \begin{itemize}
-                \item Als Adjazentmatrix\index{Adjazenzmatrix} (1, wenn Kante von i zu j / 0, wenn keine Kante)
+                \item Als Adjazentmatrix\index{Adjazenzmatrix} (1, wenn Kante von i zu j bzw. 0, wenn keine Kante)
                 \item Bei ungerichteten Graphen ist Matrix spiegelsymmetrisch zur Hauptdiagonalen
                 \item Speicherbedarf: $\Theta(|V^2|)$
                 \item[]
@@ -75,9 +75,9 @@
 
         \item \fatsf{Gewichtete Graphen}\index{Gewichtete Graphen}
             \begin{itemize}
-                \item gewichteter gerichteter Graph $G=(V,E)$
+                \item gewichteter gerichteter oder ungerichteter Graph $G=(V,E)$
                 \item besitzt zusätzlich Funktion $w: E \rightarrow R$
-                \item Abspeichern des Werts einer Kante $w((u,v))$
+                \item Angabe des Gewichts einer Kante $u$ nach $v$ durch $w((u,v))$
             \end{itemize}
     \end{itemize}
 
@@ -123,7 +123,7 @@
                 \begin{itemize}
                     \item {\makebox[\widthof{\texttt{WHITE}:}][l]{\texttt{WHITE}:} Knoten noch nicht besucht}
                     \item {\makebox[\widthof{\texttt{WHITE}:}][l]{\texttt{GRAY}:} Knoten in Queue für nächsten Schritt}
-                    \item {\makebox[\widthof{\texttt{WHITE}:}][l]{\texttt{BLACK}:} Knoten ist Fertig}
+                    \item {\makebox[\widthof{\texttt{WHITE}:}][l]{\texttt{BLACK}:} Knoten ist fertig}
                 \end{itemize}
                 \end{tcolorbox}
                 \item Laufzeit: $O(|V| + |E|)$
@@ -206,8 +206,8 @@
         \item \fatsf{Kantenarten}
             \begin{itemize}
                 \item {\makebox[3cm][l]{Baumkanten:}} alle Kanten in $G_{pred}$
-                \item {\makebox[3cm][l]{Vorwärtskanten:}} alle Kanten in $G$ zu Nachkommen in $G_{pred}$, die nicht Baumkante
-                \item {\makebox[3cm][l]{Rückwärtskanten:}} alle Kanten in $G$ zu Vorfahren in $G_{pred}$, die nicht Baumkante
+                \item {\makebox[3cm][l]{Vorwärtskanten:}} alle Kanten in $G$ zu Nachkommen in $G_{pred}$, die keine Baumkante sind
+                \item {\makebox[3cm][l]{Rückwärtskanten:}} alle Kanten in $G$ zu Vorfahren in $G_{pred}$, die keine Baumkante sind
                 \item {\makebox[3cm][l]{Kreuzkanten:}} alle anderen Kanten in $G$ (inkl. Schleifen)
             \end{itemize}
 
@@ -304,7 +304,7 @@
         \item \fatsf{Algorithmus von Kruskal}\index{Kruksal}
             \begin{itemize}
                 \item Lässt parallel mehrere Unterbäume eines MST wachsen
-                \item In Worten: Suchen der \string"kleinsten\string" Kante und Zusammenfügen von Mengen, falls noch nicht geschehen
+                \item In Worten: Suchen der \string"kleinsten\string" Kante und Zusammenfügen von Mengen, falls Mengen ungleich sind
                 \item Laufzeit: $O(|E| \cdot log|E|)$
                 \item[]
                     \begin{ccode}[autogobble,escapeinside=||,fontsize=\small]{title={MST-Kruskal(G,w)}}
@@ -349,7 +349,7 @@
             \begin{itemize}
                 \item SSSP - Single-Source Shortest Path\index{SSSP}
                 \item Von Quelle $s$ ausgehend die kürzesten Pfad zu allen anderen Knoten
-                \item Kürzester Pfad: Minimales Gewicht von einem zum anderen Knoten
+                \item Kürzester Pfad: Pfad mit minimalem Gesamtgewicht von einem zum anderen Knoten
                 \item BFS findet nur minimale Kantenwege (nicht Gewichtswege)
                 \item MST minimiert das Gesamtgewicht des Baumes (nicht zu einzelnen Kanten)
                 \item Negative Kantengewichte sind erlaubt, aber keine Zyklen mit negativem Gesamtgewicht

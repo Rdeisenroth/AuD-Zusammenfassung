@@ -51,7 +51,7 @@
     \draw[-{Triangle}] ([xshift=.2cm]s5n1.south) to[out=270,in=270,looseness=.7] node[below](lbl5){\texttt{OP\_CHECKSIG}} ++(2cm,0cm);
     %Beschriftungen
     \node[below=1em of lbl1,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{push(k)}\\\texttt{push(k)}};
-    \node[below=1em of lbl2,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{\textcolor{gray}{//h=Hash(k)}}\\\texttt{push(h)}};
+    \node[below=1em of lbl2,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{h=Hash(k)}\\\texttt{push(h)}};
     \node[below=1em of lbl3,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{push(56fa\ldots)}};
     \node[below=1em of lbl4,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{h=pop()}\\\texttt{\textcolor{gray}{//k==h?}}};
     \node[below=1em of lbl5,inner sep=0pt,align=center]{\textsf{entspricht}\\\texttt{k=pop()}\\\texttt{h=pop()}\\\texttt{\textcolor{gray}{//k,h gültig?}}};
