@@ -259,7 +259,7 @@
                             \begin{ccode}[autogobble,escapeinside=||]{title={SCC(G)}}
                             run DFS(G)
                             compute |$G^T$|
-                            run DGS(|$G^T$|) but visit vertices in main loop
+                            run DFS(|$G^T$|) but visit vertices in main loop
                                 in descending finish time from 1
                             output each DFS tree from above as one SCC
                             \end{ccode}

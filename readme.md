@@ -55,4 +55,9 @@ Dadurch kann die Zusammenfassung Reibungslos mit VS-Code kompillieren.
 Wenn dir ein Fehler aufgefallen ist, du die Zusammenfassung erweitern willst oder einfach nur Anregungen hast kannst du entwerder einen Pull-Request starten oder mir auf Discord an `Rubosplay#0815` eine DM senden.
 
 ## Danksagung
-Vielen Dank an [J. Milkovits](https://github.com/j-milkovits) für die Bereitstellung des Quellcodes [seiner Zusammenfassung](https://github.com/j-milkovits/latex_university_documents/tree/master/aud-reference_sheet)
+Vielen Dank an [J. Milkovits](https://github.com/j-milkovits) für die Bereitstellung des Quellcodes [seiner Zusammenfassung](https://github.com/j-milkovits/latex_university_documents/tree/master/aud-reference_sheet)  
+
+Weitere Helfer (Namen oder Discord Tags):  
+- Nhan Huynh (Nyanyan#5701) - Anregungen+Fehlersuche+Hilfe
+- robflop#3939 Anregungen+Fehlersuche
+- Khan#3224 Fehlersuche
