@@ -33,9 +33,9 @@
 
         \item \fatsf{Stabzerlegungsproblem}\index{Stabzerlegungsproblem}
             \begin{itemize}
-                \item[] \includegraphics[width=12cm]{pictures/stabzerlegungsproblem.PNG}
+                \item[] \includegraphics[width=12cm]{pictures/stabzerlegungsproblem.pdf}
                 \item[] Optimaler Erlös: zwei 2cm lange Stücke ($5+5=10$) 
-                \item \textit{Aufteilung der Eisenstange:}
+                \item \textit{Aufteilung der Stange:}
                     \begin{itemize}
                         \item Stange mit Länge $n$ kann auf $2^{n-1}$ Weisen zerlegt werden
                         \item Position $i$: Distanz vom linken Ende der Stange
@@ -49,7 +49,7 @@
                     \begin{itemize}
                         \item[]
                             \begin{ccode}[autogobble,escapeinside=||]{title={CUT-ROD(p,n)    // p Preis-Array, n Stangenlänge}}
-                            IF n== 0
+                            IF n == 0
                                 return 0;
                             q = |$-\infty$|;
                             FOR i = 1 TO n  // nicht Start bei 0, sonst kein Rekursionsschritt
@@ -69,9 +69,9 @@
                                 Jedes Teilproblem nur einmal lösen. Falls die Lösung eines Teilproblems nochmal benötigt
                                 wird, schlagen wir diese nach.
                         \item Dynamische Programmierung wird zusätzlichen Speicherplatz benutzen um Laufzeit einzusparen.
-                        \item Reduktion der exponentiellen Laufzeit auf polynomielle.
+                        \item Reduktion von exponentieller auf polynomielle Laufzeit.
                     \end{itemize}
-                \item \textit{Rekursive Top-Down mit Memoisation:}
+                \item \textit{Rekursiver Top-Down-Ansatz mit Memoisation:}
                     \begin{itemize}
                         \item Idee: Speicherung der Lösungen der Teilprobleme
                         \item Laufzeit: $\Theta(n^2)$
@@ -100,20 +100,36 @@
                     \begin{itemize}
                         \item Laufzeit: $\Theta(n^2)$
                         \item Sortieren der Teilprobleme nach ihrer Grö\ss e und lösen in dieser Reihenfolge
-                        \item Immer alle kleineren Teilprobleme bei bestimmten Wert bereits gelöst
-                        \item[]
+                        \item Alle Teilprobleme kleiner als das momentane Problem sind bereits gelöst
+                        \item[]\hspace*{-2.4cm}\begin{minipage}{.45\textwidth}
                             \begin{ccode}[autogobble,escapeinside=||]{title={BOTTOM-UP-CUT-ROD(p, n)}}
                             Let r[0...n] be a new array
                             r[0] = 0
-                            FOR j = i TO n
+                            FOR j = 1 TO n
                                 q = |$-\infty$|
                                 FOR i = 1 TO j
                                     q = max(q, p[i] + r[j - i])
                                 r[j] = q
                             return r[n]
                             \end{ccode}
-                        \item Teilproblemgraph ($i \rightarrow j$ bedeutet, dass Berechnung von $r_i$ den Wert $r_j$ benutzt)
-                        \item[] \includegraphics[width=8cm]{pictures/teilproblemgraph.PNG}
+                        \end{minipage}
+                        \begin{minipage}{.55\textwidth}
+                            \begin{ccode}[autogobble,escapeinside=||]{title={EXTENDED-BOTTOM-UP-CUT-ROD(p, n)}}
+                                Let r[0...n] and s[0...n] be  new arrays
+                                r[0] = 0, s[0] = 0
+                                FOR j = 1 TO n
+                                    q = |$-\infty$|
+                                    FOR i = 1 TO j
+                                        IF q < p[i] + r[j-i]
+                                            q = p[i] + r[j - i]
+                                            s[j] = i
+                                    r[j] = q
+                                return r and s
+                                \end{ccode}
+                            
+                        \end{minipage}
+                            \item Teilproblemgraph ($i \rightarrow j$ bedeutet, dass Berechnung von $r_i$ den Wert $r_j$ benutzt)
+                        \item[] \includegraphics[width=8cm]{pictures/teilproblemgraph.pdf}
                     \end{itemize}
             \end{itemize}
 
@@ -131,7 +147,7 @@
                                 f = FIB(n-1) + FIB(n-2);
                             return f;
                             \end{ccode}
-                            \item[] \includegraphics[width=13cm]{pictures/fibBaum.PNG}
+                            \item[] \includegraphics[width=13cm]{pictures/fibBaum.pdf}
                             \item[] Gleiche Teilprobleme werden wieder mehrmals gelöst  
                     \end{itemize}
 \pagebreak
@@ -164,14 +180,12 @@
                             \begin{ccode}[autogobble,escapeinside=||]{title={BOTTOM-UP-FIB(n)}}
                             Let m[0...n-1] be a new array
                             FOR i = 1 TO n
-                                IF i = 0
-                                    f = 0;
-                                ELSEIF i |$\leq$| 2
+                                IF i |$\leq$| 2
                                     f = 1;
                                 ELSE
-                                    f = m(i-1) + m(i-2);
+                                    f = BOTTOM-UP-FIB(n-1) + BOTTOM-UP-FIB(n-2);
                                 m[i] = f;
-                            return m[n];
+                            return m[n-1];
                             \end{ccode}
                     \end{itemize}
             \end{itemize}
