@@ -178,14 +178,14 @@
                         \item Hier wieder Berechnen aller Teilprobleme von unten beginnend
                         \item[]
                             \begin{ccode}[autogobble,escapeinside=||]{title={BOTTOM-UP-FIB(n)}}
-                            Let m[0...n-1] be a new array
+                            Let m[0...n] be a new array
                             FOR i = 1 TO n
                                 IF i |$\leq$| 2
                                     f = 1;
                                 ELSE
-                                    f = BOTTOM-UP-FIB(n-1) + BOTTOM-UP-FIB(n-2);
+                                    f = m[i-1] + m[i-2];
                                 m[i] = f;
-                            return m[n-1];
+                            return m[n];
                             \end{ccode}
                     \end{itemize}
             \end{itemize}
