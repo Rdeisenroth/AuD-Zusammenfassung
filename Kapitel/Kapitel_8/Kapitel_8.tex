@@ -48,7 +48,7 @@
               \item Beispiele: Soduko, 3D-Matching,...
               \item Beispiel: \textit{Faktorisierungsproblem}
                     \begin{itemize}
-                        \item Jede nicht Primzahl kann eindeutig als Primzahlprodukt geschrieben werden
+                        \item Jede nicht-Primzahl kann eindeutig als Primzahlprodukt geschrieben werden
                         \item $35 = 5 \cdot 7$, $117 = 3 \cdot 3 \cdot 13$,...
                         \item Faktorsieren auf klassischen Computern schwer
                         \item $n \longrightarrow^{schwer} p,q$
@@ -72,7 +72,7 @@
                         \item[] $\Rightarrow$ Test, ob es sich um Permutation der Knoten handelt
                         \item[] $\Rightarrow$ Test, ob alle angegebenen Kanten auf Kreis im Graphen existieren
                         \item[] $\Rightarrow$ Verifikationsalgorithmus $V$ mit quadratischer Laufzeit
-                        \item Verifikationsalgorithmus: $V(x,y) = 1/0$ (1, falls Kreis/ 0, falls nicht)
+                        \item Verifikationsalgorithmus: $V(x,y) = 1/0$ (1, falls Kreis bzw. 0, falls nicht)
                         \item Damit: Hamilton-Kreis $\in$ NP
                     \end{itemize}
           \end{itemize}
@@ -98,7 +98,7 @@
               \item Eines der wichtigsten offenen Probleme der theoretischen Informatik
               \item Konsequenzen eines Beweises von $P=NP$:
                     \begin{itemize}
-                        \item $P=NP$: \fatsf{dramatisch}, vieles bisher schwieriges lösbar (Rucksack, Kryptographie)
+                        \item $P=NP$: \fatsf{dramatisch}, vieles bisher schwieriges einfacher lösbar (Rucksack, Kryptographie)
                         \item $P\neq NP$: \fatsf{nicht dramatisch}, mgl. interessante Konsequenzen in Kryptographie
                     \end{itemize}
           \end{itemize}
@@ -173,13 +173,13 @@
                     \begin{itemize}
                         \item Reisender plant Rundreise durch mehrere Städte
                         \item Start und Ziel ist eine vorgegebene Stadt
-                        \item Jede Stadt nur einmal besucjhen
-                        \item Ziel: Minimale Reiselkosten
+                        \item Jede Stadt nur einmal besuchen
+                        \item Ziel: Minimale Reisekosten
                         \item[] \includegraphics[width=12cm]{pictures/tsp1.PNG}
                     \end{itemize}
               \item \textit{Problem:}
                     \begin{itemize}
-                        \item Anzahl der Rundreisen $(n-1)!$
+                        \item Anzahl der verschiedenen Rundreisen $(n-1)!$
                         \item Stark nach oben explodierende Zahlen
                         \item Brute-Force für große $n$ praktisch unmöglich
                         \item Es existiert kein effizienter Algorithmus, der das TSP effizient löst
@@ -203,7 +203,7 @@
                         \item Start: Instanz von $HAM-KREIS$ mit $G=(V,E)$
                         \item Konstruiere Instanz von $TSP$
                         \item[] $\Rightarrow$ $G'=(V,E')$ mit $E'=\{(i,j):i,j \in V$ und $i\neq j\}$
-                        \item Definiere Kostenfunktion $c(i,j) = 0$,falls $(i,j) \in E$ / $c(i,j)=1$, falls $(i,j) \notin E$
+                        \item Definiere Kostenfunktion $c(i,j) = 0$, falls $(i,j) \in E$ / $c(i,j)=1$, falls $(i,j) \notin E$
                         \item Instanz von TSP ist $<G', c, 0>$ (Konstruktion in polynomieller Zeit) (0: Kosten von 0)
                         \item \fatsf{Zeige jetzt:} $G$ besitzt hamiltonischen Kreis $\Leftrightarrow$ G' enthält Tour mit Kosten $\leq$ 0
                         \item $\Rightarrow$ Graph $G$ besitzt einen hamiltonischen Kreis $h$

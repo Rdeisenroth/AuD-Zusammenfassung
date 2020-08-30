@@ -266,7 +266,7 @@
                             A = {|$a_1$|};
                             k = 1;          // Index des zuletzt hinzugefügten Elements in A
                             FOR m = 2 TO n                      
-                                IF s[m] |$\geq$| f[k]           // Findet zuerst endende Aktivität in Menge
+                                IF s[m] |$\geq$| f[k]       // Findet zuerst endende Aktivität in Menge
                                     A = A |$\cup$| {|$a_m$|};   // Fügt diese hinzu, falls kompatibel
                                     k = m;
                             return A;
@@ -281,19 +281,18 @@
         \item \fatsf{Suchbaum - Baum der Möglichkeiten}
             \begin{itemize}
                 \item Darstellung aller für ein Problem bestehenden Möglichkeiten
-                \item Problem: Dreimal hintereinander der selbe Buchstabe (A,B)
-                \item[] \includegraphics[width=9cm]{pictures/suchbaum.PNG}
+                \item[] \includegraphics[width=14cm]{pictures/suchbaum.pdf}
             \end{itemize}
         \item \fatsf{Backtracking - Idee}
             \begin{itemize}
                 \item Lösung finden via Trial and error
                 \item Schrittweises Herantasten an die Gesamtlösung
-                \item Falls Teillösung inkorrekt $\rightarrow$ Schritt zurück und andere Möglichkeit
+                \item Falls Teillösung inkorrekt $\rightarrow$ Gehe einen Schritt zurück und probiere eine andere Möglichkeit
                 \item Voraussetzung:
                     \begin{itemize}
                         \item Lösung setzt sich aus Komponenten zusammen (Sudoku, Labyrinth,..)
                         \item Mehrere Wahlmöglichkeiten für jede Komponente
-                        \item Teillösung kann getestet werden
+                        \item Teillösung kann auf Korrektheit getestet werden
                     \end{itemize}
             \end{itemize}
             \item \fatsf{Allgemeiner Backtracking-Algorithmus}
@@ -332,14 +331,14 @@
                         \end{itemize}
                     \end{minipage}
                 \item[]
-                    \begin{ccode}[autogobble]{title={PLACE-QUEENS(Q,r) // Q Array, r Index der ersten leeren Zeile}}
+                    \begin{ccode}[autogobble]{title={PLACE-QUEENS(Q,r) // Q Array von Damenpositionen, r Index der ersten leeren Zeile}}
                     IF r == n
-                        return Q
+                        return Q;
                     ELSE
                         FOR j = 0 TO n - 1 // Mögliche Positionierungen
                             legal = true;
                             FOR i = 0 TO r - 1  // Evaluation der mgl. Bedrohungen
-                                IF (Q[i] == j) OR (Q[i==j + r - i]) OR (Q[i] == j - r + i)
+                                IF (Q[i] == j) OR (Q[i == j + r - i]) OR (Q[i] == j - r + i)
                                     legal = false;
                             IF legal == true
                                 Q[r] = j;
@@ -408,12 +407,12 @@
                 \item[] \includegraphics[width=12cm]{pictures/rucksack1.PNG}
                 \item Rucksack hat eine Kapazität von 101, 9 verschiedene Gegenstände
                 \item Ziel: Höchster Wert der Gegenstände im Rucksack
-                \item Beispiellösung: 3 + 5 (Wert 73, Größe 70)
+                \item Beispiellösung: Gegenstand 3 + 5 (Wert 73, Größe 70)
                 \item Nachbarschaftslösungen: 
                     \begin{itemize}
-                        \item 2,3 und 5: Wert 105, Größe 96
-                        \item 1,3 und 5: Wert 152, Größe 155 (problematisch)
-                        \item 3: Wert 47, Größe 48
+                        \item Gegenstände 2,3 und 5: Wert 105, Größe 96
+                        \item Gegenstände 1,3 und 5: Wert 152, Größe 155 (Gewichtsüberschreitung problematisch)
+                        \item Gegenstand 3: Wert 47, Größe 48
                     \end{itemize}
                 \item[]
                     \begin{minipage}{0.4\textwidth}
@@ -423,7 +422,7 @@
                         \fatsf{Nachbarschaft:}
                         \begin{itemize}
                             \item Suchraum $S$ kann sehr groß sein
-                            \item Einschränkung des Suchraums in der Nähe des Punktes
+                            \item Einschränkung des Suchraums in der Nähe der Startlösung x
                             \item Distanzfunktion $d: S x S \rightarrow \mathbb{R}$
                             \item Nachbarschaft: $N(x) = \{y \in S: d(x,y) \leq \epsilon\}$
                         \end{itemize}
@@ -437,8 +436,8 @@
                         \item Suche nach globalem Optimum
                         \item Anwenden der Technik auf \fatsf{aktuelle} Lösung im Suchraum
                         \item Wahl einer neuen zufälligen Lösung in jeder Iteration
-                        \item Falls die neue Lösung besseren Wert liefert $\Rightarrow$ neue \fatsf{aktuelle} Lösung
-                        \item Terminierung, falls keine weiteren Verbesserungen oder Zeit vorbei
+                        \item Falls die neue Lösung besseren Wert liefert $\Rightarrow$ als neue \fatsf{aktuelle} Lösung setzen
+                        \item Terminierung, falls keine weiteren Verbesserungen auffindbar oder Zeit vorbei
                     \end{itemize}
                 \item \textit{Code}
                     \begin{itemize}
@@ -446,8 +445,8 @@
                             \begin{ccode}[autogobble]{title={RANDOM-SEARCH}}
                             best <- irgendeine initiale zufällige Lösung
                             REPEAT
-                                S <- zufällige Lösung
-                                IF (Quality(S) > Qualityy(best)) THEN
+                                S <- zufällige Lösung // von "best" unabhängig
+                                IF (Quality(S) > Quality(best)) THEN
                                     best <- S
                             UNTIL best ist die ideale Lösung oder Zeit ist vorbei
                             return best
@@ -473,7 +472,7 @@
                         \item Auswahl einer neuen Lösung aus Nachbarschaft in jeder Iteration
                         \item Falls diese besseren Wert liefert, überschreiben der \fatsf{aktuellen} Lösung
                         \item Falls nicht, Wahl einer anderen Lösung aus Nachbarschaft
-                        \item Terminierung, falls keine weiteren Verbesserungen oder Zeit vorbei
+                        \item Terminierung, falls keine weiteren Verbesserungen auffindbar oder Zeit vorbei
                     \end{itemize}
                 \item \textit{Code}
                     \begin{itemize}
@@ -561,7 +560,7 @@
                 \item \textit{Idee und Ablauf}
                     \begin{itemize}
                         \item Wenn neue Lösung besser, dann wird diese immer gewählt
-                        \item Wenn neue Lösung schlechter, wird diese mit gewisser Wahrscheinlichkeit gewählt \\
+                        \item Wenn neue Lösung schlechter, wird diese mit gewisser Wahrscheinlichkeit gewählt: \\
                                 $Pr(R,S,t) = e \frac{Quality(R)-Quality(S)}{t}$
                         \item Der Bruch ist negativ, da $R$ schlechter ist als $S$
                     \end{itemize}
@@ -591,7 +590,7 @@
                         \item \textit{Idee und Ablauf}
                             \begin{itemize}
                                 \item Speichert alle bisherigen Lösungen und Liste und nimmt diese nicht nochmal
-                                \item Kann sich jedoch von der optimalen Lösung entfernen
+                                \item Kann sich jedoch wieder von der optimalen Lösung entfernen
                                 \item Tabu List hat maximale Grö\ss e, falls voll, werden älteste Lösungen gelöscht
                             \end{itemize}
                         
@@ -817,10 +816,10 @@
             \begin{itemize}
                 \item \textit{Eigenschaften}
                     \begin{itemize}
-                        \item Besteuerung einer Operationen, so dass sie Kosten anderer Operationen mittragen
-                        \item Zuweisung von höherer Kosten (Amortisierte Kosten), als ihre tatsächlichen Kosten sind
+                        \item Besteuerung einiger Operationen, so dass sie Kosten anderer Operationen mittragen
+                        \item Zuweisung von höherern Kosten (Amortisierte Kosten), als ihre tatsächlichen Kosten sind
                         \item \fatsf{Guthaben}: Differenz zwischen amortisierten und tatsächlichen Kosten
-                        \item Nutzung dieses Guthabens für Operationen bei denen amortisiert < tatsächlich
+                        \item Nutzung dieses Guthabens für Operationen bei denen amortisiert < tatsächlich gilt
                         \item Guthaben darf nicht negativ werden:
                         \item[] Summe amortisierte Kosten > Summe tatsächliche Kosten
                     \end{itemize}
@@ -845,7 +844,7 @@
                 \item \textit{Obere Schranken der Kosten}
                     \begin{itemize}
                         \item Guthaben auf dem Konto entspricht der Anzahl der auf 1 gesetzten Bits
-                        \item Kosten: $T(n) \sum^n_{i=1} t_i \leq v\sum^n_{i=1} a_i$
+                        \item Kosten: $T(n) \sum^n_{i=1} t_i \leq v\sum^n_{i=1} a_i$, für ein konstantes $v$
                         \item Nun Abschätzung dieser Formel zum Erhalten einer oberen Schranke
                         \item Beobachtung: Bei jeder \texttt{INCREMENT} höchstens ein neues Bit von 0 auf 1
                         \item Für alle $i$ gilt damit $f_i \leq 1$
@@ -862,7 +861,7 @@
                     \begin{itemize}
                         \item Betrachtung welchen Einfluss die Operationen auf die Datenstruktur haben
                         \item Potentialfunktion $\phi(i)$: Hängt vom aktuellen Zustand der Datenstruktur nach $i$-ter Operation ab
-                        \item Ausgangspotential sollte vor jeglicher Operation nicht negativ sein $\phi(0) \geq 0$
+                        \item Ausgangspotential sollte vor jeglicher Operation nicht negativ sein: $\phi(0) \geq 0$
                     \end{itemize}
 
                 \item \textit{Amortisierte Kosten}

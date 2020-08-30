@@ -1,0 +1,132 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb} % needed for math
+\usepackage{amsmath} % needed for math
+\usepackage[utf8]{inputenc} % this is needed for german umlauts
+\usepackage[ngerman]{babel} % this is needed for german umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage[margin=2.5cm]{geometry} %layout
+\usepackage{hyperref}  % this is needed for forms and links within the text
+\usepackage{tikz}
+\usepackage{xifthen}
+\usepackage{eforms} % <-- the driver is pdftex or xetex
+\begin{document}
+\noindent Führen Sie die Unterroutine MERGE in Mergesort auf dem Array
+\begin{align*}
+    A[54 \ldots 63]=[20,22,52,68,89,14,39,56,75,78]
+\end{align*}
+aus. Der Algorithmus durchlauft in einer for-Schleife nacheinander die Elemente des Arrays. Geben Sie zuerst die
+Tellarrays $L$ und $R$ an und anschließend den Zustand des Array $A$ nach jedem Durchlauf der for-Schleife sowie direkt
+vor dem Ende an. Verwenden Sie den Algorithmus, der in der Vorlesung gezeigt wurde. Geben Sie den Wert von $i, j$
+und $k$ nach jeder tteration der for-Schleife sowie direkt vor dem Ende von MERGE konkret an.\\
+Damit die Überprüfung funktioniert, schreibe "`inf"' (ohne Gänsefüßchen) für unendlich.
+\def\textfieldwidth{.8cm}
+\begin{defineJS}{\aNiceScript}
+    var isCorrect = true;
+    var expectedL = [20,22,52,68,89, "inf"];
+    var expectedR = [14,39,56,75,78, "inf"];
+    var expected = [
+        [14,22,52,68,89,14,39,56,75,78, 0, 1, 54],
+        [14,20,52,68,89,14,39,56,75,78, 1, 1, 55],
+        [14,20,22,68,89,14,39,56,75,78, 2, 1, 56],
+        [14,20,22,39,89,14,39,56,75,78, 2, 2, 57],
+        [14,20,22,39,52,14,39,56,75,78, 3, 2, 58],
+        [14,20,22,39,52,56,39,56,75,78, 3, 3, 59],
+        [14,20,22,39,52,56,68,56,75,78, 4, 3, 60],
+        [14,20,22,39,52,56,68,75,75,78, 4, 4, 61],
+        [14,20,22,39,52,56,68,75,78,78, 4, 5, 62],
+        [14,20,22,39,52,56,68,75,78,89, 5, 5, 63],
+        [14,20,22,39,52,56,68,75,78,89]
+        ];
+    for(var i = 0; i < expectedL.length;i++){
+        if(expectedL[i]!=this.getField("l"+(i+1)).value) {
+            isCorrect=false;
+            app.alert("Fehler in L, Spalte " + i + ": Erwartet wurde <" + expectedL[i] + "> aber gefunden wurde <" + this.getField("l"+(i+1)).value + ">.");
+            break;
+        }
+    }
+    if(isCorrect){
+        for(var i = 0; i < expectedR.length;i++){
+            if(expectedR[i]!=this.getField("r"+(i+1)).value) {
+                isCorrect=false;
+                app.alert("Fehler in R, Spalte " + i + ": Erwartet wurde <" + expectedR[i] + "> aber gefunden wurde <" + this.getField("r"+(i+1)).value + ">.");
+                break;
+            }
+        }
+    }
+    if(isCorrect){
+        aloop:for(var i = 1; i <= 11; i++) {
+            for(var j = 1; j <= 13; j++) {
+                if(j<11 && expected[i-1][j-1]!=this.getField("merge"+i+"-"+j).value){
+                    isCorrect=false;
+                    app.alert("Fehler in Zeile " + i + ", Spalte " + j + ": Erwartet wurde <" + expected[i-1][j-1] + "> aber gefunden wurde <" + this.getField("merge"+i+"-"+j).value  +  ">.");
+                    break aloop;
+                } else if(i<11) {
+                    if(j == 11 && expected[i-1][j-1]!==this.getField("merge"+i+"-i").value){
+                        isCorrect=false;
+                        app.alert("Fehler in Zeile " + i + ", Spalte i: Erwartet wurde <" + expected[i-1][j-1] + "> aber gefunden wurde <" + this.getField("merge"+i+"-i").value  +  ">."); 
+                        break aloop;
+                    }
+                    if(j == 12 && expected[i-1][j-1]!==this.getField("merge"+i+"-j").value){
+                        isCorrect=false;
+                        app.alert("Fehler in Zeile " + i + ", Spalte j: Erwartet wurde <" + expected[i-1][j-1] + "> aber gefunden wurde <" + this.getField("merge"+i+"-j").value  +  ">."); 
+                        break aloop;
+                    }
+                    if(j == 13 && expected[i-1][j-1]!==this.getField("merge"+i+"-k").value){
+                        isCorrect=false;
+                        app.alert("Fehler in Zeile " + i + ", Spalte k: Erwartet wurde <" + expected[i-1][j-1] + "> aber gefunden wurde <" + this.getField("merge"+i+"-k").value  +  ">."); 
+                        break aloop;
+                    }
+                }
+            }
+        }
+    }
+    if(isCorrect){
+        app.alert("Deine Lösung ist Korrekt.");
+    } 
+\end{defineJS}
+\begin{Form}[action={}]
+    [20,22,52,68,89,14,39,56,75,78]\\
+    $L[$
+                    \TextField[name=l1, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=l2, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=l3, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=l4, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=l5, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=l6, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$]$\\
+    $R[$
+                    \TextField[name=r1,width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=r2,width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=r3,width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=r4,width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=r5,width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                    \TextField[name=r6,width=\textfieldwidth,charsize=12pt, maxlen=3]{}$]$\\
+    \linebreak
+    \foreach \i in {1,...,11}{
+            $[$
+                            \TextField[name=merge\i-1, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-2, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-3, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-4, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-5, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-6, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-7, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-8, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-9, width=\textfieldwidth,charsize=12pt, maxlen=3]{}$,$
+                            \TextField[name=merge\i-10,width=\textfieldwidth,charsize=12pt, maxlen=3]{}$]$
+            \qquad
+            \ifthenelse{\i = 11}{}{
+                $i=$\TextField[name=merge\i-i,width=\textfieldwidth,charsize=12pt]{}$,
+                    j=$\TextField[name=merge\i-j,width=\textfieldwidth,charsize=12pt]{}$,
+                    k=$\TextField[name=merge\i-k,width=\textfieldwidth,charsize=12pt]{}
+            }
+            \\
+        }
+    \vspace*{.3cm}
+    \phantom{a}\\
+    \pushButton[\BC{0 0 1}\BG{0.98 0.92 0.73}
+    \textColor{1 0 0}\CA{Prüfen}\AC{Checken}\A{\JS{\aNiceScript}}]
+    {myComboButton}{2cm}{1cm}
+    \Reset{Reset}
+    \hfill ~\\
+\end{Form}
+\end{document}
