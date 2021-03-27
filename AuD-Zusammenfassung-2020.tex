@@ -1,9 +1,14 @@
 \RequirePackage{scrlfile}
+\RequirePackage[table]{xcolor}
 % Wir müssen imakeidx vor Hyperref laden, damit das Stichwortverzeichnis hyperlinks hat
 \AfterClass{scrartcl}{
   \RequirePackage{imakeidx}
 }
 \input{preamble_text}
+
+\ConfigureHeadline{
+	headline={summary-centered}
+}
 
 \externaldocument{../Kapitel_1/Kapitel_1}
 \externaldocument{../Kapitel_2/Kapitel_2}
@@ -18,14 +23,14 @@
 \begin{document}
 
 %--Titelseite--
-\title{Algorithmen\\und Datenstrukturen}
+\title[AuD]{Algorithmen\\und Datenstrukturen}
 \subtitle{Gedächtnisstütze}
 \term{
-    \fatsf{Author:} Ruben Deisenroth\\
+    \fatsf{Author:} Ruben Deisenroth \hfill \fatsf{Semester: SoSe2020}\\
     \fatsf{Helfer und Mitwirkende:} J. Milkovits
 }
 
-\date{\fatsf{Stand:} \today} % Ohne Angabe wird automatisch das heutige Datum eingefügt
+\date{\fatsf{Stand:} \today \hfill \fatsf{Fachbereich: }Informatik} % Ohne Angabe wird automatisch das heutige Datum eingefügt
 \maketitle
 \tableofcontents %Inhaltsverzeichnis
 \clearpage

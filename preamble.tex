@@ -55,7 +55,7 @@
 heading_prefix "
 \\nopagebreak\n
 \\tikz{%
-\\node[rounded rectangle, rounded rectangle west arc=0pt, minimum height=0.7cm,fill=black!20!teal,text=white, drop shadow={opacity=.5,shadow xshift=0pt}](text){\\large\\noindent\\bfseries\\sffamily " % Hier wird der Buchstabe eingefügt
+\\node[rounded rectangle, rounded rectangle west arc=0pt, minimum height=0.7cm,fill=accentcolor,text=white, drop shadow={opacity=.5,shadow xshift=0pt}](text){\\large\\noindent\\bfseries\\sffamily " % Hier wird der Buchstabe eingefügt
 heading_suffix "};
 \\draw ([xshift=4mm]text.north east) [color=gray, fill=gray, drop shadow={opacity=.5,shadow xshift=2pt}] coordinate (a) [bend right=0] to ([xshift=5.2cm]text.north west) coordinate (b) [bend right] to +(0,-0.7cm) coordinate (c) [bend right] to (a |- c) [bend right=60] to cycle ;
 }
@@ -95,14 +95,19 @@ suffix_3p "\\,ff." % Suffix bei einem bereich aus 3 Seiten
 \newcommand{\Fach}{AuD}
 %\newcommand{\contributors}{}
 
+\renewcommand{\theFancyVerbLine}{\tikz{\coordinate(a);\node[text width=5mm,inner sep=0pt,align=center]{\ttfamily\textcolor{white}{\scriptsize\arabic{FancyVerbLine}}};}}
 
 % Environment für meinen Style (Arg 1 = minted Options, Arg 2 = tcolorbox Options)
 \newtcblisting{ccode}[2][]{
     listing engine=minted, % Minted verwenden
-    colback=bashcodebg!30, %Hintergrundfarbe
+    colback=black!10, %Hintergrundfarbe
     colframe=black!70, % Randfarbe
     listing only,  % Sonst will er den Plain Text nach dem Minted Listing noch anfügen
-    %minted style=colorful, %Sieht actually worse aus imo
+    frame hidden,
+    boxrule=0pt,
+    %hbox,
+    title style=black!90,
+    minted style=friendly, %Sieht actually worse aus imo
     minted language=java, % Sprache setzen
     minted options={ %Minted Optionen
       linenos=true,
@@ -110,12 +115,12 @@ suffix_3p "\\,ff." % Suffix bei einem bereich aus 3 Seiten
       texcl=true,
       #1 % weitere optionen für Minted zulassen
       },
-      left=5mm, % Links Platz lassen
+      left=7.1mm, % Links Platz lassen
       enhanced, % Erlaubt uns, den ramen zu zeichnen
       fonttitle=\sffamily, % Titelschriftart auf 
       overlay={ % Für Grauen Bereich links
                 \begin{tcbclipinterior}
-                  \fill[black!25] (frame.south west) rectangle ([xshift=5mm]frame.north west); % Zeilennummernbereich färben
+                  \fill[black!70] (frame.south west) rectangle ([xshift=5mm]frame.north west); % Zeilennummernbereich färben
                 \end{tcbclipinterior}
               },
       #2 % Weitere Argumente zulassen
@@ -205,3 +210,56 @@ suffix_3p "\\,ff." % Suffix bei einem bereich aus 3 Seiten
 
 % Remove unwanted space from tables
 \aboverulesep = 0mm \belowrulesep = 0mm
+
+
+\makeatletter
+\newcommand*{\secname}{\@currentlabelname}
+\ExplSyntaxOn
+\clist_map_inline:nn {odd, even, oneside} {
+  \keys_define:nn {ptxcd/exercise/headline} {
+    #1 .choice:,
+    #1 / title-name-id .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {
+      \g_ptxcd_shorttitle_tl\par
+      \StudentName\StudentID},
+    #1 / title-name .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {
+      \g_ptxcd_shorttitle_tl\par
+      \smallskip
+      \StudentName},
+    #1 / title .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {\g_ptxcd_shorttitle_tl},
+    #1 / name-id .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {\StudentName\StudentID},
+    #1 / name .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {\StudentName},
+    #1 / submittors .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {%
+      \textbf{\sffamily\g_ptxcd_shorttitle_tl\space{}Authoren:}\space%
+      \@studentNameEins%
+      \ifthenelse{\isundefined{\@studentNameZwei}}{}{%
+        ,\space\@studentNameZwei%
+      }%
+      \ifthenelse{\isundefined{\@studentNameDrei}}{}{%
+        ,\space\@studentNameDrei%
+      }%
+    },
+    #1 / submittors-centered .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {%
+      \centering\textbf{\sffamily\g_ptxcd_shorttitle_tl\space{}Authoren:}\space%
+      \@studentNameEins%
+      \ifthenelse{\isundefined{\@studentNameZwei}}{}{%
+        ,\space\@studentNameZwei%
+      }%
+      \ifthenelse{\isundefined{\@studentNameDrei}}{}{%
+        ,\space\@studentNameDrei%
+      }%
+    },
+    #1 / summary-centered .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {%
+      \centering\textbf{\sffamily\g_ptxcd_shorttitle_tl\space{}Zusammenfassung}\space{}von\space%
+      Ruben\space Deisenroth%
+      \ifthenelse{\isundefined{\@studentNameZwei}}{}{%
+        ,\space\@studentNameZwei%
+      }%
+      \ifthenelse{\isundefined{\@studentNameDrei}}{}{%
+        ,\space\@studentNameDrei%
+      }%
+    },
+    #1 / unknown .code:n = \tl_gset:cn {g_ptxcd_ex_headline_#1_tl} {##1}
+  }
+}
+\ExplSyntaxOff
+\makeatother
