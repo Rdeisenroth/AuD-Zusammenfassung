@@ -1,14 +1,25 @@
-\RequirePackage{scrlfile}
-\RequirePackage[table]{xcolor}
-% Wir müssen imakeidx vor Hyperref laden, damit das Stichwortverzeichnis hyperlinks hat
-\AfterClass{scrartcl}{
-  \RequirePackage{imakeidx}
-}
-\input{preamble_text}
+% \RequirePackage{scrlfile}
+% \RequirePackage[table]{xcolor}
+% % Wir müssen imakeidx vor Hyperref laden, damit das Stichwortverzeichnis hyperlinks hat
+% \AfterClass{scrartcl}{
+%   \RequirePackage{imakeidx}
+% }
+% \input{preamble_text}
 
-\ConfigureHeadline{
-	headline={summary-centered}
-}
+% \ConfigureHeadline{
+% 	headline={summary-centered}
+% }
+
+\documentclass[
+    ngerman,
+    color=3b,
+    % dark_mode,
+    load_common, % Loads a list of commonly used Packages
+    summary,
+    boxarc,
+    % manual_term,
+    % solution=true,
+]{tuda_summary} 
 
 \externaldocument{../Kapitel_1/Kapitel_1}
 \externaldocument{../Kapitel_2/Kapitel_2}
@@ -52,5 +63,12 @@
 \input{Kapitel/Kapitel_8/Kapitel_8}
 \clearpage
 % schönes Stichwortverzeichnis
+\makeatletter
+% we don't want a page break before a Header
+% \g@addto@macro\@idxitem\nobreak
+\g@addto@macro\imki@indexheaders\nobreak
+\makeatother
+
 \printindex
+
 \end{document}

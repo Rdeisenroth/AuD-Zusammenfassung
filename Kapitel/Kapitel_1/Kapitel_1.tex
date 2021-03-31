@@ -1,21 +1,17 @@
 \documentclass[
-    12pt,
-    a4paper,
     ngerman,
-    color=3b,% Farbe für Hervorhebungen auf Basis der Deklarationen in den
-    %type=intern,
-    %titlepage=true,
-    marginpar=false,
-    colorback=false,
-    %logo=head,
-    leqno,
-]{tudaexercise}
-\usepackage{import}
+    color=3b,
+    dark_mode,
+    load_common, % Loads a list of commonly used Packages
+    summary,
+    boxarc,
+    % manual_term,
+    % solution=true,
+]{tuda_summary} 
 % Import all Packages from Main Preamble with relative Path
-\subimport*{../../}{preamble}
+% \subimport*{../../}{preamble}
 % Get Labels from Main Document using the xr-hyper Package
 \externaldocument{../../AuD-Zusammenfassung-2020}
-\externaldocument{../Kapitel_2/Kapitel_2}
 % Set Graphics Path, so pictures load correctly
 \graphicspath{{../../}}
 
@@ -38,7 +34,9 @@ z.B. Finde den kürzesten Weg zwischen 2 Orten\\
 Eine \fatsf{Probleminstanz}\index{Probleminstanz} ist eine konkrete Eingabebelegung für die entsprechende Ausgabe gewünscht.\\
 Für das obige Problem wäre das z.B. "`Was ist der kürzeste Weg vom Audimax in die Mensa?"'
 \subsection{Definitionen für Algorithmen}\label{1.2}\label{Definitionen fuer Algorithmen}\index{Algorithmen}
-"`Ein Algorithmus ist eine \fatsf{endliche Folge} von Rechenschritten, die eine \fatsf{Eingabe} in eine \fatsf{Ausgabe} umwandelt."'\footnote{Quelle: Cormen et al., 4. Auflage}\\
+% \begin{definition}[Algorithmus]
+    \enquote{Ein Algorithmus ist eine \fatsf{endliche Folge} von Rechenschritten, die eine \fatsf{Eingabe} in eine \fatsf{Ausgabe} umwandelt.}\footnote{Quelle: Cormen et al., 4. Auflage}
+% \end{definition}
 \fatsf{Anforderungen an Algorithmen:}\begin{itemize}
     \item Spezifizierung der Ein- und Ausgabe:\begin{itemize}
               \item Anzahl und Typen aller Elemente ist/sind definiert
