@@ -1,18 +1,15 @@
 \documentclass[
-    12pt,
-    a4paper,
     ngerman,
-    color=3b,% Farbe für Hervorhebungen auf Basis der Deklarationen in den
-    %type=intern,
-    %titlepage=true,
-    marginpar=false,
-    colorback=false,
-    %logo=head,
-    leqno,
-]{tudaexercise}
-\usepackage{import}
+    color=3b,
+    dark_mode,
+    load_common, % Loads a list of commonly used Packages
+    summary,
+    boxarc,
+    % manual_term,
+    % solution=true,
+]{tuda_summary} 
 % Import all Packages from Main Preamble with relative Path
-\subimport*{../../}{preamble}
+% \subimport*{../../}{preamble}
 % Get Labels from Main Document using the xr-hyper Package
 \externaldocument{../../AuD-Zusammenfassung-2020}
 % Set Graphics Path, so pictures load correctly
@@ -359,7 +356,8 @@ Beispiele:\begin{itemize}
 
     \item \fatsf{Code}
           \begin{itemize}
-              \begin{ccode}[autogobble]{title=Insertion-Sort(A)}
+              %\begin{noindent}
+              \begin{codeBlock}[autogobble]{title=Insertion-Sort(A)}
                   FOR j = 1 TO A.length - 1
                     key = A[j]
                     // Füge A[j] in die sortierte Sequenz A[0...j-1] ein
@@ -368,7 +366,8 @@ Beispiele:\begin{itemize}
                         A[i + 1] = A[i]
                         i = i - 1
                     A[i + 1] = key
-              \end{ccode}
+              \end{codeBlock}
+              %\end{noindent}
           \end{itemize}
 
     \item \fatsf{Schleifeninvariante von \texttt{Insertion Sort}}\label{insSortSiv}
@@ -409,8 +408,8 @@ Beispiele:\begin{itemize}
               \item[]
                     \begin{minipage}{0.3\textwidth}
                         \centering
-                        \renewcommand{\arraystretch}{.8}
-                        \rowcolors{2}{white}{black!10}
+                        % \renewcommand{\arraystretch}{.8}
+                        % \rowcolors{2}{white}{black!10}
                         \resizebox{\textwidth}{!}{%
                             \begin{tabular}{ccc}
                                 \toprule
@@ -430,7 +429,7 @@ Beispiele:\begin{itemize}
                         \label{tab:insertion-sort:laufzeit}
                     \end{minipage}
                     \begin{minipage}[t]{0.45\textwidth}
-                        \vspace*{-2.5cm}
+                        \vspace*{-2.3cm}
                         \begin{itemize}
                             \item Festlegung der Laufzeit für jede Zeile
                             \item Jede Zeile besitzt gewissen Kosten \texttt{$c_i$}
@@ -439,7 +438,7 @@ Beispiele:\begin{itemize}
                             \item Schleifen: Abbruchüberprüfung zählt auch
                             \item \texttt{$t_j$}: Anzahl der Abfragen der \texttt{While}-Schleife
                             \item Laufzeit:
-                            $T(n)=c_{1} n+c_{2}(n-1)+c_{4}(n-1)+c_{5} \sum_{j=1}^{n-1} t_{j}+c_{6} \sum_{j=1}^{n-1}\left(t_{j}-1\right)$\\$+c_{7} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{8}(n-1)$
+                                  $T(n)=c_{1} n+c_{2}(n-1)+c_{4}(n-1)+c_{5} \sum_{j=1}^{n-1} t_{j}+c_{6} \sum_{j=1}^{n-1}\left(t_{j}-1\right)$\\$+c_{7} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{8}(n-1)$
                         \end{itemize}
                     \end{minipage}
                     \vspace*{-1.1em}
@@ -503,12 +502,14 @@ Beispiele:\begin{itemize}
     \item \fatsf{Code}
           \begin{itemize}
               \item[]
-                    \begin{ccode}[autogobble]{title=BubbleSort(A)}
+                    %\begin{noindent}
+                    \begin{codeBlock}[autogobble]{title=BubbleSort(A)}
                         FOR i = 0 TO A.length - 2
                             FOR j = A.length - 1 DOWNTO i + 1
                                 IF A[j] < A[j-1]
                                     SWAP(A[j], A[j-1])
-                    \end{ccode}
+                    \end{codeBlock}
+                    %\end{noindent}
           \end{itemize}
 
     \item \fatsf{Analyse von \texttt{Bubble Sort}}
@@ -547,14 +548,16 @@ Beispiele:\begin{itemize}
     \item \fatsf{Code - MinSort}
           \begin{itemize}
               \item[]
-                    \begin{ccode}[autogobble]{title=Selection-Sort(A)}
+                    %\begin{noindent}
+                    \begin{codeBlock}[autogobble]{title=Selection-Sort(A)}
                         FOR i = 0 TO A.length - 2
                             k = i
                             FOR j = i + 1 TO A.length - 1
                                 IF A[j] < A[k]
                                     k = j
                             SWAP(A[i], A[k])
-                    \end{ccode}
+                    \end{codeBlock}
+                    %\end{noindent}
           \end{itemize}
 \end{itemize}
 
@@ -589,14 +592,16 @@ Beispiele:\begin{itemize}
               \item \textit{Combine:} Vereinige die zwei sortierten Teilfolgen, um die sortierte Lösung zu erzeugen
           \end{itemize}
     \item \fatsf{Code}
-          \begin{ccode}[autogobble,escapeinside=||]{title={MERGE-SORT(A,p,r)}}
+          %\begin{noindent}
+          \begin{codeBlock}[autogobble,escapeinside=||]{title={MERGE-SORT(A,p,r)}}
               IF p < r
                 q = |$\left \lfloor \texttt{(p+r)/2} \right \rfloor$| // Teilen in 2 Teilfolgen
                 MERGE-SORT(A,p,q) // Sortieren der beiden Teilfolgen
                 MERGE-SORT(A,q+1,r)
                 MERGE(A,p,q,r) // Vereinigung der beiden sortierten Teilfolgen
-          \end{ccode}
-          \begin{ccode}[autogobble,escapeinside=||]{title={MERGE(A,p,q,r)}}
+          \end{codeBlock}
+          
+          \begin{codeBlock}[autogobble,escapeinside=||]{title={MERGE(A,p,q,r)}}
               |$n_1$| = q - p + 1
               |$n_2$| = r - q
               Let L[0...|$n_1$|] and R[0...|$n_2$|] be new arrays
@@ -615,7 +620,8 @@ Beispiele:\begin{itemize}
                 ELSE
                     A[k] = R[j]
                     j = j + 1
-          \end{ccode}
+          \end{codeBlock}
+          %\end{noindent}
           (Teilarrays werden nicht parallel bearbeitet)
     \item \fatsf{Korrektheit von MergeSort}
           \begin{itemize}
@@ -719,13 +725,14 @@ Beispiele:\begin{itemize}
           \end{itemize}
 
     \item \fatsf{Code}
-          \begin{ccode}[autogobble,escapeinside=||]{title={QUICKSORT(A,p,r)}}
+          %\begin{noindent}
+          \begin{codeBlock}[autogobble,escapeinside=||]{title={QUICKSORT(A,p,r)}}
               IF p < r    // Überprüfung, ob Teilarray leer ist
                 q = PARTITION(A,p,r)
                 QUICKSORT(A,p,q-1)
                 QUICKSORT(A,q+1,r)
-          \end{ccode}
-          \index{Partition}\begin{ccode}[autogobble,escapeinside=||]{title={PARTITION(A,p,r)}}
+          \end{codeBlock}
+          \index{Partition}\begin{codeBlock}[autogobble,escapeinside=||]{title={PARTITION(A,p,r)}}
               x = A[r]    // Wahl des Pivotelements
               i = p - 1   // Index i setzen
               FOR j = p TO r - 1 // Auffüllen des Teilarrays mit Elementen
@@ -734,7 +741,8 @@ Beispiele:\begin{itemize}
                     SWAP(A[i], A[j])
               SWAP(A[i+1], A[r]) // Tausch des Pivotelements
               RETURN i + 1 // Neuer Index des Pivotelements
-          \end{ccode}
+          \end{codeBlock}
+          %\end{noindent}
           (Teilarrays werden nicht parallel bearbeitet)
           \clearpage
     \item \fatsf{Korrektheit von Quicksort}

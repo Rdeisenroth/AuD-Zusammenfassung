@@ -32,7 +32,7 @@
 }
 
 % Environment für meinen Style (Arg 1 = minted Options, Arg 2 = tcolorbox Options)
-\newtcblisting{ccode}[2][]{
+\newtcblisting{codeBlock}[2][]{
     listing engine=minted, % Minted verwenden
     colback=vlcodebg!30, %Hintergrundfarbe
     colframe=black!70, % Randfarbe
@@ -85,11 +85,11 @@ Vorlesungsstyle ohne Zeilen:
 \end{VLCode}
 
 Mein Style:
-\begin{ccode}[autogobble]{title={\texttt{Ein Krasser Titel In AlgFont()}}}
+\begin{codeBlock}[autogobble]{title={\texttt{Ein Krasser Titel In AlgFont()}}}
   public class Main() {
     public static void main(String... args){
       // do awesome stuff
     }
   }
-\end{ccode}
+\end{codeBlock}
 \end{document}

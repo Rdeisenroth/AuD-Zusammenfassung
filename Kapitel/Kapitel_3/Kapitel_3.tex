@@ -62,37 +62,37 @@
 
     \item \fatsf{Stacks als Array - Methoden, falls maximale Größe bekannt}\\
           \begin{minipage}[t]{.4\textwidth}
-              \begin{ccode}[autogobble]{title=new(S)}
+              \begin{codeBlock}[autogobble]{title=new(S)}
                   S.A[]=ALLOCATE(MAX);
                   S.top=-1;
-              \end{ccode}
+              \end{codeBlock}
           \end{minipage}
           \begin{minipage}[t]{.4\textwidth}
-              \begin{ccode}[autogobble]{title=isEmpty(S)}
+              \begin{codeBlock}[autogobble]{title=isEmpty(S)}
                   IF S.top<0 THEN
                     return true;
                   ELSE
                     return false;
-              \end{ccode}
+              \end{codeBlock}
           \end{minipage}
           \\
           \begin{minipage}[t]{.4\textwidth}
-              \begin{ccode}[autogobble]{title=pop(S)}
+              \begin{codeBlock}[autogobble]{title=pop(S)}
                   IF isEmpty(S) THEN
                     error "underflow";
                   ELSE
                     s.top=s.top-1;
                     return S.A[S.top+1];
-              \end{ccode}
+              \end{codeBlock}
           \end{minipage}
           \begin{minipage}[t]{.4\textwidth}
-              \begin{ccode}[autogobble]{title=push(S)}
+              \begin{codeBlock}[autogobble]{title=push(S)}
                   IF S.top==MAX-1 THEN
                     error "overflow";
                   ELSE
                     S.top=S.top+1;
                     S.A[S.top]=k;
-              \end{ccode}
+              \end{codeBlock}
           \end{minipage}
           %\item[] \includegraphics[width=12cm]{pictures/arrayMethods1}
 
@@ -113,23 +113,23 @@
               \item Methoden:
               \item[] \texttt{RESIZE(A,m)} reserviert neuen Speicher der Grö\ss e \texttt{m} und kopiert \texttt{A} um\\
                     \begin{minipage}[t]{.5\textwidth}
-                        \begin{ccode}[autogobble]{title=new(S)}
+                        \begin{codeBlock}[autogobble]{title=new(S)}
                             S.A[]=ALLOCATE(1);
                             S.top=-1;
                             S.memsize=1;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{.4\textwidth}
-                        \begin{ccode}[autogobble]{title=isEmpty(S)}
+                        \begin{codeBlock}[autogobble]{title=isEmpty(S)}
                             IF S.top<0 THEN
                                 return true;
                             ELSE
                                 return false;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \\
                     \begin{minipage}[t]{.5\textwidth}
-                        \begin{ccode}[autogobble]{title=pop(S)}
+                        \begin{codeBlock}[autogobble]{title=pop(S)}
                             IF isEmpty(S) THEN
                                 error "underflow";
                             ELSE
@@ -138,16 +138,16 @@
                                     S.mensize=s.memsize/2;
                                     RESIZE(S.A,S.memsize);
                                 return S.A[S.top+1];
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{.4\textwidth}
-                        \begin{ccode}[autogobble]{title=push(S)}
+                        \begin{codeBlock}[autogobble]{title=push(S)}
                             S.top=S.top+1;
                             S.A[S.top]=k;
                             IF S.top+1>=S.memsize THEN
                                 S.memsize=2*S.memsize;
                                 RESIZE(S.A,S.memsize);
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     %\item[] \includegraphics[width=12cm]{pictures/stacksArray2.PNG}
 
@@ -178,12 +178,12 @@
                         \item[] $\Rightarrow$ Keine Überprüfung, ob Wert bereits in Liste, sonst $\Theta(n)$
                         \item Code:
                         \item[]
-                              \begin{ccode}[autogobble]{title={search(L,k) // Returns pointer to k in L (or nil)}}
+                              \begin{codeBlock}[autogobble]{title={search(L,k) // Returns pointer to k in L (or nil)}}
                                   current = L.head;
                                   WHILE current != nil AND current.key != k DO
                                     current = current.next;
                                   return current;
-                              \end{ccode}
+                              \end{codeBlock}
                         \item[] \includegraphics[width=12cm]{pictures/verketteteListenSuche.pdf}
                     \end{itemize}
 
@@ -193,14 +193,14 @@
                         \item Laufzeit beträgt $\Theta(1)$, da Einfügen am Kopf
                         \item Code:
                         \item[]
-                              \begin{ccode}[autogobble]{title={insert(L,x)}}
+                              \begin{codeBlock}[autogobble]{title={insert(L,x)}}
                                   insert(L,x)
                                   x.next = l.head;
                                   x.prev = nil;
                                   IF L.head != nil THEN
                                     L.head.prev = x;
                                   L.head = x;
-                              \end{ccode}
+                              \end{codeBlock}
                     \end{itemize}
 
               \item \textit{Löschen eines Elements aus Liste}
@@ -209,14 +209,14 @@
                         \item[] Löschen eines Wertes $k$ mithilfe von Suche beträgt $\Omega(n)$
                         \item Code:
                         \item[]
-                              \begin{ccode}[autogobble]{title={delete (L,x)}}
+                              \begin{codeBlock}[autogobble]{title={delete (L,x)}}
                                   IF x.prev != nil THEN
                                     x.prev.next = x.next
                                   ELSE
                                     L.head = x.next;
                                   IF x.next != nil THEN
                                     x.next.prev = x.prev;
-                              \end{ccode}
+                              \end{codeBlock}
                     \end{itemize}
           \end{itemize}
 
@@ -226,10 +226,10 @@
               \item[] \includegraphics[width=12cm]{pictures/linkedListSentinel.pdf}
               \item Löschen mit Sentinels:
               \item[]
-                    \begin{ccode}[autogobble]{title={deleteSent(L,x)}}
+                    \begin{codeBlock}[autogobble]{title={deleteSent(L,x)}}
                         x.prev.next = x.next;
                         x.next.prev = x.prev;
-                    \end{ccode}
+                    \end{codeBlock}
           \end{itemize}
 \end{itemize}
 \clearpage
@@ -281,21 +281,21 @@
 
               \item Methoden für zyklisches Array\\
                     \begin{minipage}[t]{.45\textwidth}
-                        \begin{ccode}[autogobble]{title={new(Q)}}
+                        \begin{codeBlock}[autogobble]{title={new(Q)}}
                             Q.A[]=ALLOCATE(MAX);
                             Q.front=0;
                             Q.rear=0;
                             Q.empty=true;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{.45\textwidth}
-                        \begin{ccode}[autogobble]{title={isEmpty(Q)}}
+                        \begin{codeBlock}[autogobble]{title={isEmpty(Q)}}
                             return Q.empty;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \\
                     \begin{minipage}[t]{.45\textwidth}
-                        \begin{ccode}[autogobble]{title={dequeue(Q)}}
+                        \begin{codeBlock}[autogobble]{title={dequeue(Q)}}
                             IF isEmpty(Q) THEN
                                 error "underflow";
                             ELSE
@@ -303,17 +303,17 @@
                                 IF Q.front==Q.rear THEN
                                     Q.empty=true;
                                 return Q.A[Q.front-1 mod MAX];
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{.45\textwidth}
-                        \begin{ccode}[autogobble]{title={enqueue(Q,k)}}
+                        \begin{codeBlock}[autogobble]{title={enqueue(Q,k)}}
                             IF Q.rear==Q.front AND !Q.isEmpty
                             THEN error "overflow";
                             ELSE
                                 Q.A[Q.rear]=k;
                                 Q.rear=Q.rear+1 mod MAX;
                                 Q.empty=false;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     %\item[] \includegraphics[width=12cm]{pictures/queueZyklischM.PNG}
           \end{itemize}
@@ -326,39 +326,39 @@
               \item[] Methoden:
               \item[] %\includegraphics[width=12cm]{pictures/queuesListe2.PNG} 
                     \begin{minipage}[t]{.4\textwidth}
-                        \begin{ccode}[autogobble]{title={new(Q)}}
+                        \begin{codeBlock}[autogobble]{title={new(Q)}}
                             Q.front=nil;
                             Q.rear=nil;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{.4\textwidth}
-                        \begin{ccode}[autogobble]{title={isEmpty(Q)}}
+                        \begin{codeBlock}[autogobble]{title={isEmpty(Q)}}
                             IF Q.front==nil THEN
                                 return true;
                             ELSE
                                 return false;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \\
                     \begin{minipage}[t]{.4\textwidth}
-                        \begin{ccode}[autogobble]{title={dequeue(Q)}}
+                        \begin{codeBlock}[autogobble]{title={dequeue(Q)}}
                             IF isEmpty(Q) THEN
                                 error "underflow";
                             ELSE
                                 x=Q.front;
                                 Q.front=Q.front.next;
                                 return x;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{.4\textwidth}
-                        \begin{ccode}[autogobble]{title={enqueue(Q,k)}}
+                        \begin{codeBlock}[autogobble]{title={enqueue(Q,k)}}
                             IF isEmpty(Q) THEN
                                 Q.front=x;
                             ELSE
                                 Q.rear.next=x;
                             x.next=nil;
                             Q.rear=x;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
           \end{itemize}
 
@@ -456,28 +456,28 @@
               \item[]
               \item[] \textbf{Code:} \index{inorder}\index{preorder}\index{postorder}\\
                     \begin{minipage}[t]{0.29\textwidth}
-                        \begin{ccode}[autogobble]{title={inorder(x)}}
+                        \begin{codeBlock}[autogobble]{title={inorder(x)}}
                             IF x != nil THEN
                                 inorder(x.left);
                                 print x.key;
                                 inorder(x.right);
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{0.3\textwidth}
-                        \begin{ccode}[autogobble]{title={preorder(x)}}
+                        \begin{codeBlock}[autogobble]{title={preorder(x)}}
                             IF x != nil THEN
                                 print x.key;
                                 preorder(x.left);
                                 preorder(x.right);
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
                     \begin{minipage}[t]{0.31\textwidth}
-                        \begin{ccode}[autogobble]{title={postorder(x)}}
+                        \begin{codeBlock}[autogobble]{title={postorder(x)}}
                             IF x != nil THEN
                                 postorder(x.left);
                                 postorder(x.right);
                                 print x.key;
-                        \end{ccode}
+                        \end{codeBlock}
                     \end{minipage}
           \end{itemize}
           \clearpage
@@ -520,13 +520,13 @@
                         \item Starte mit \texttt{search(T.root,k)}
                         \item Code:
                         \item[]
-                              \begin{ccode}[autogobble]{title={search(x,k)}}
+                              \begin{codeBlock}[autogobble]{title={search(x,k)}}
                                   IF x == nil THEN return nil;
                                   IF x.key == k THEN return x;
                                   y = search(x.left,k);
                                   IF y != nil THEN return y;
                                   return search(x.right,k);
-                              \end{ccode}
+                              \end{codeBlock}
                     \end{itemize}
                     \clearpage
               \item \textit{Einfügen von Elementen:}
@@ -535,12 +535,12 @@
                         \item Hier wird als Wurzel eingefügt (Achtung: Erzeugt linkslastigen Baum)
                         \item Code:
                         \item[]
-                              \begin{ccode}[autogobble]{title={insert(T,x) // x.parent == x.left == x.right == nil;}}
+                              \begin{codeBlock}[autogobble]{title={insert(T,x) // x.parent == x.left == x.right == nil;}}
                                   IF T.root != nil THEN
                                     T.root.parent = x;
                                     x.left = T.root;
                                   T.root = x;
-                              \end{ccode}
+                              \end{codeBlock}
                     \end{itemize}
 
               \item \textit{Löschen von Elementen:}
@@ -559,7 +559,7 @@
                                   \begin{itemize}
                                       \item Laufzeit = $\Theta(1)$
                                       \item[]
-                                            \begin{ccode}[autogobble]{title={connect(T,y,w) // Connects w to y.parent}}
+                                            \begin{codeBlock}[autogobble]{title={connect(T,y,w) // Connects w to y.parent}}
                                                 v = y.parent;
                                                 IF y != T.root THEN
                                                     IF y == v.right THEN
@@ -570,7 +570,7 @@
                                                     T.root = w;
                                                 IF w != nil THEN
                                                     w.parent = v;
-                                            \end{ccode}
+                                            \end{codeBlock}
                                   \end{itemize}
                               \end{minipage}
 
@@ -582,7 +582,7 @@
                               \begin{minipage}{0.45\textwidth}
                                   \begin{itemize}
                                       \item[]
-                                            \begin{ccode}[autogobble]{title={delete(T,x) // assumes x in T}}
+                                            \begin{codeBlock}[autogobble]{title={delete(T,x) // assumes x in T}}
                                                 y = T.root;
                                                 WHILE y.right != nil DO
                                                     y = y.right;
@@ -595,7 +595,7 @@
                                                     IF x.right != nil THEN
                                                         x.right.parent = y;
                                                     connect(T,x,y);
-                                            \end{ccode}
+                                            \end{codeBlock}
                                   \end{itemize}
                               \end{minipage}
                     \end{itemize}
@@ -625,24 +625,24 @@
                             \item Laufzeit $= O(h)$ (Höhe)
                             \item Code:
                             \item[]
-                                  \begin{ccode}[autogobble]{title={search(x,k) // 1. Aufruf: x = root}}
+                                  \begin{codeBlock}[autogobble]{title={search(x,k) // 1. Aufruf: x = root}}
                                       IF x == nil OR x.key == k THEN
                                         return x;
                                       IF x.key > k THEN
                                         return search(x.left,k);
                                       ELSE
                                         return search(x.right,k);
-                                  \end{ccode}
+                                  \end{codeBlock}
                             \item Iterativer Code:
                             \item[]
-                                  \begin{ccode}[autogobble]{title={iterative-search(x,k)}}
+                                  \begin{codeBlock}[autogobble]{title={iterative-search(x,k)}}
                                       WHILE x != nil AND x.key != k DO
                                         IF x.key > k THEN
                                             x = x.left;
                                         ELSE
                                             x = x.right;
                                       return x;
-                                  \end{ccode}
+                                  \end{codeBlock}
                         \end{itemize}
                     \end{minipage}
           \end{itemize}
@@ -656,7 +656,7 @@
                         \item Aufwendiger, da Ordnung erhalten werden muss
                         \item Code:
                         \item[]\label{BST-Insert}
-                              \begin{ccode}[autogobble]{title={insert (T,z) // z.left == z.right == nil;}}
+                              \begin{codeBlock}[autogobble]{title={insert (T,z) // z.left == z.right == nil;}}
                                   x = T.root;
                                   px = nil;
                                   WHILE x != nil DO
@@ -673,7 +673,7 @@
                                         px.left = z;
                                     ELSE
                                         px.right = z;
-                              \end{ccode}
+                              \end{codeBlock}
                     \end{itemize}
           \end{itemize}
 
@@ -690,7 +690,7 @@
                     \clearpage
               \item \textit{Code}
               \item[]\index{transplant}
-                        \begin{ccode}[autogobble]{title={transplant(T,u,v) // Hängt Teilbaum v an Parent von u}}
+                        \begin{codeBlock}[autogobble]{title={transplant(T,u,v) // Hängt Teilbaum v an Parent von u}}
                             IF u.parent == nil THEN
                                 T.root = v;
                             ELSE
@@ -700,8 +700,8 @@
                                     u.parent.right = v;
                             IF v != nil THEN
                                 v.parent = u.parent;
-                        \end{ccode}
-                        \begin{ccode}[autogobble]{title={delete(T,z)}}
+                        \end{codeBlock}
+                        \begin{codeBlock}[autogobble]{title={delete(T,z)}}
                             IF z.left == nil THEN
                                 transplant(T,z,z.left)
                             ELSE
@@ -717,7 +717,7 @@
                                     transplant(T,z,y)
                                     y.left = z.left;
                                     y.left.parent = y;
-                        \end{ccode}
+                        \end{codeBlock}
               \item Laufzeit = $O(h)$
               \item Laufzeit ist damit besser, wenn viele Suchoperationen und $h$ klein relativ zu $n$
           \end{itemize}

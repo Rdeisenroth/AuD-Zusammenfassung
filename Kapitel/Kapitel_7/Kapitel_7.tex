@@ -48,14 +48,14 @@
                 \item \textit{Rekursive Top-Down Implementierung:}
                     \begin{itemize}
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={CUT-ROD(p,n)    // p Preis-Array, n Stangenlänge}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={CUT-ROD(p,n)    // p Preis-Array, n Stangenlänge}}
                             IF n == 0
                                 return 0;
                             q = |$-\infty$|;
                             FOR i = 1 TO n  // nicht Start bei 0, sonst kein Rekursionsschritt
                                 q = max(q, p[i] + CUT-ROD(p, n - i));
                             return q;
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
                 \item \textit{Stabzerlegung via Dynamischer Programmierung:}
                     \begin{itemize}
@@ -76,13 +76,13 @@
                         \item Idee: Speicherung der Lösungen der Teilprobleme
                         \item Laufzeit: $\Theta(n^2)$
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={MEMOIZED-CUT-ROD(p, n)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={MEMOIZED-CUT-ROD(p, n)}}
                             Let r[0...] be new array
                             FOR i = 0 TO n
                                 r[i] = |$-\infty$|
                             return MEMOIZED-CUT-ROD-AUX(p, n, r)
-                        \end{ccode}
-                        \begin{ccode}[autogobble,escapeinside=||]{title={MEMOIZED-CUT-ROD-AUX(p, n, r)       // r new Array}}
+                        \end{codeBlock}
+                        \begin{codeBlock}[autogobble,escapeinside=||]{title={MEMOIZED-CUT-ROD-AUX(p, n, r)       // r new Array}}
                             IF r[n] |$\geq$| 0                        // Abfrage ob vorhanden
                                 return r[n]
                             IF n == 0
@@ -93,7 +93,7 @@
                                 q = max(q, p[i] + MEMOIZED-CUT-ROD-AUX(p, n - i, r))
                             r[n] = q                            // Abspeichern
                             return q
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
 \pagebreak
                 \item \textit{Bottom-Up Ansatz:}\index{Bottom-Up}
@@ -102,7 +102,7 @@
                         \item Sortieren der Teilprobleme nach ihrer Grö\ss e und lösen in dieser Reihenfolge
                         \item Alle Teilprobleme kleiner als das momentane Problem sind bereits gelöst
                         \item[]\hspace*{-2.4cm}\begin{minipage}{.45\textwidth}
-                            \begin{ccode}[autogobble,escapeinside=||]{title={BOTTOM-UP-CUT-ROD(p, n)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={BOTTOM-UP-CUT-ROD(p, n)}}
                             Let r[0...n] be a new array
                             r[0] = 0
                             FOR j = 1 TO n
@@ -111,10 +111,10 @@
                                     q = max(q, p[i] + r[j - i])
                                 r[j] = q
                             return r[n]
-                            \end{ccode}
+                            \end{codeBlock}
                         \end{minipage}
                         \begin{minipage}{.55\textwidth}
-                            \begin{ccode}[autogobble,escapeinside=||]{title={EXTENDED-BOTTOM-UP-CUT-ROD(p, n)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={EXTENDED-BOTTOM-UP-CUT-ROD(p, n)}}
                                 Let r[0...n] and s[0...n] be  new arrays
                                 r[0] = 0, s[0] = 0
                                 FOR j = 1 TO n
@@ -125,7 +125,7 @@
                                             s[j] = i
                                     r[j] = q
                                 return r and s
-                                \end{ccode}
+                                \end{codeBlock}
                             
                         \end{minipage}
                             \item Teilproblemgraph ($i \rightarrow j$ bedeutet, dass Berechnung von $r_i$ den Wert $r_j$ benutzt)
@@ -140,13 +140,13 @@
                 \item \textit{Naiver rekursiver Algorithmus:}
                     \begin{itemize}
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={FIB(n)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={FIB(n)}}
                             IF n |$\leq$| 2
                                 f = 1;
                             ELSE
                                 f = FIB(n-1) + FIB(n-2);
                             return f;
-                            \end{ccode}
+                            \end{codeBlock}
                             \item[] \includegraphics[width=13cm]{pictures/fibBaum.pdf}
                             \item[] Gleiche Teilprobleme werden wieder mehrmals gelöst  
                     \end{itemize}
@@ -156,13 +156,13 @@
                         \item Wieder Abspeichern von Teilproblemen um Laufzeit einzusparen
                         \item Laufzeit: $\Theta(n)$
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={MEMOIZED-FIB(n)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={MEMOIZED-FIB(n)}}
                             Let m[0...n-1] be a new array
                             FOR i = 0 TO n - 1
                                 m[i] = 0
                             return MEMOIZED-FIB-AUX(n, m)
-                            \end{ccode}
-                            \begin{ccode}[autogobble,escapeinside=||]{title={MEMOIZED-FIB-AUX(n, m)}}
+                            \end{codeBlock}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={MEMOIZED-FIB-AUX(n, m)}}
                             IF m[n-1] != 0
                                 return m[n-1];      // Auslesen von gespeicherten Werten
                             IF n |$\leq$| 2
@@ -171,13 +171,13 @@
                                 f = MEMOIZED-FIB-AUX(n-1, m) + MEMOIZED-FIB-AUX(n-2, m);
                             m[n-1] = f;
                             return f;
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
                 \item \textit{Bottom-Up Algorithmus}
                     \begin{itemize}
                         \item Hier wieder Berechnen aller Teilprobleme von unten beginnend
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={BOTTOM-UP-FIB(n)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={BOTTOM-UP-FIB(n)}}
                             Let m[0...n] be a new array
                             FOR i = 1 TO n
                                 IF i |$\leq$| 2
@@ -186,7 +186,7 @@
                                     f = m[i-1] + m[i-2];
                                 m[i] = f;
                             return m[n];
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
             \end{itemize}
     \end{itemize}
@@ -242,7 +242,7 @@
                         \item Voraussetzung: Aktivitäten sind monoton steigend nach der Endzeit sortiert
                         \item Laufzeit: $\Theta(n)$
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={RECURSIVE-ACTIVITY-SELECTOR(s,f,k,n)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={RECURSIVE-ACTIVITY-SELECTOR(s,f,k,n)}}
                             // s Anfangszeitenarray, f Endzeitenarray, 
                             // k Index von Teilproblem, n Größe Anfangsproblem
                             m = k + 1;
@@ -253,7 +253,7 @@
                                 return {|$a_m$|} |$\cup$| RECURSIVE-ACTIVITY-SELECTOR(s,f,m,n)
                             ELSE
                                 return |$\emptyset$|
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
                 
                 \item \textit{Iterativer Greedy-Algorithmus}
@@ -261,7 +261,7 @@
                         \item Voraussetzung: Aktivitäten sind monoton steigend nach der Endzeit sortiert
                         \item Laufzeit: $\Theta(n)$
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={GREEDY-ACTIVITY-SELECTOR(s,f)}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={GREEDY-ACTIVITY-SELECTOR(s,f)}}
                             n = s.length;
                             A = {|$a_1$|};
                             k = 1;          // Index des zuletzt hinzugefügten Elements in A
@@ -270,7 +270,7 @@
                                     A = A |$\cup$| {|$a_m$|};   // Fügt diese hinzu, falls kompatibel
                                     k = m;
                             return A;
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
             \end{itemize}
     \end{itemize}
@@ -298,7 +298,7 @@
             \item \fatsf{Allgemeiner Backtracking-Algorithmus}
             \begin{itemize}
                 \item[]
-                    \begin{ccode}[autogobble]{title={BACKTRACKING(A, s)}}
+                    \begin{codeBlock}[autogobble]{title={BACKTRACKING(A, s)}}
                     IF alle Komponenten richtig gesetzt
                         return true;
                     ELSE
@@ -310,7 +310,7 @@
                             ELSE
                                 Auswahl(Komponente) rückgängig machen
                             BACKTRACKING(A, s + 1)
-                    \end{ccode}
+                    \end{codeBlock}
             \end{itemize}
 \clearpage
         \item \fatsf{Damenproblem}\index{Damenproblem}
@@ -331,7 +331,7 @@
                         \end{itemize}
                     \end{minipage}
                 \item[]
-                    \begin{ccode}[autogobble]{title={PLACE-QUEENS(Q,r) // Q Array von Damenpositionen, r Index der ersten leeren Zeile}}
+                    \begin{codeBlock}[autogobble]{title={PLACE-QUEENS(Q,r) // Q Array von Damenpositionen, r Index der ersten leeren Zeile}}
                     IF r == n
                         return Q;
                     ELSE
@@ -343,7 +343,7 @@
                             IF legal == true
                                 Q[r] = j;
                                 PLACE-QUEENS(Q, r + 1)
-                    \end{ccode}
+                    \end{codeBlock}
                         \item[] \includegraphics[width=16cm]{pictures/damenSuchbaum.PNG}
             \end{itemize}
 
@@ -442,7 +442,7 @@
                 \item \textit{Code}
                     \begin{itemize}
                         \item[]
-                            \begin{ccode}[autogobble]{title={RANDOM-SEARCH}}
+                            \begin{codeBlock}[autogobble]{title={RANDOM-SEARCH}}
                             best <- irgendeine initiale zufällige Lösung
                             REPEAT
                                 S <- zufällige Lösung // von "best" unabhängig
@@ -450,7 +450,7 @@
                                     best <- S
                             UNTIL best ist die ideale Lösung oder Zeit ist vorbei
                             return best
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
                 \item \textit{Nachteile}
                     \begin{itemize}
@@ -477,7 +477,7 @@
                 \item \textit{Code}
                     \begin{itemize}
                         \item[]
-                            \begin{ccode}[autogobble,fontsize=\small]{title={HILL-CLIMBER}}
+                            \begin{codeBlock}[autogobble,fontsize=\small]{title={HILL-CLIMBER}}
                             T <- Distribution von möglichen Zeitintervallen
                             S <- irgendeine initiale zufällige Lösung
                             best <- S
@@ -493,7 +493,7 @@
                                 S <- irgendeine zufällige Lösung
                             UNTIL best ist die ideale Lösung oder totale Zeit erreicht
                             return best
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
 \pagebreak
                 \item \textit{Nachteile}
@@ -521,7 +521,7 @@
                 \item \textit{Code}
                     \begin{itemize}
                         \item[]
-                            \begin{ccode}[autogobble,fontsize=\small]{title={ITERATIVE-LOCAL-SEARCH}}
+                            \begin{codeBlock}[autogobble,fontsize=\small]{title={ITERATIVE-LOCAL-SEARCH}}
                             T <- Distribution von möglichen Zeitintervallen
                             S <- irgendeine initiale zufällige Lösung
                             H <- S      // Wahl des Homebasepunktes
@@ -539,7 +539,7 @@
                                 S <- Perturb(H)
                             UNTIL best ist die ideale Lösung oder totale Zeit erreicht
                             return best
-                            \end{ccode}
+                            \end{codeBlock}
                         \item Perturb:
                             \begin{itemize}
                                 \item ausreichend weiter Sprung (außerhalb der Nachbarschaft)
@@ -568,7 +568,7 @@
                 \item \textit{Code}
                     \begin{itemize}
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={SIMULATED-ANNEALING}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={SIMULATED-ANNEALING}}
                             t <- Temperatur, initial eine hohe Zahl
                             S <- irgendeine initiale zufällige Lösung
                             best <- S
@@ -582,7 +582,7 @@
                                     best <- S 
                             UNTIL best ist die ideale Lösung oder Temperatur |$\leq$| 0
                             return best
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
 
                 \item \textit{Tabu-Search}
@@ -597,7 +597,7 @@
                         \item \textit{Code}
                             \begin{itemize}
                                 \item[]
-                                    \begin{ccode}[autogobble,escapeinside=||,fontsize=\footnotesize]{title={TABU-SEARCH}}
+                                    \begin{codeBlock}[autogobble,escapeinside=||,fontsize=\footnotesize]{title={TABU-SEARCH}}
                                     l <- maximale Größe der Tabu List
                                     n <- Anzahl der zu betrachtenden Nachbarschaftslösungen
                                     S <- irgendeine initiale zufällige Lösung
@@ -619,7 +619,7 @@
                                             best <- S
                                     UNTIL best ist die ideale Lösung oder totale Zeit erreicht
                                     return best
-                                    \end{ccode}
+                                    \end{codeBlock}
                             \end{itemize}
                     \end{itemize}
             \end{itemize}
@@ -647,7 +647,7 @@
                 \item \textit{Abstrakter Code (Allgemeiner Breed und Join)}
                     \begin{itemize}
                         \item[] 
-                            \begin{ccode}[autogobble,escapeinside=||]{title={ABSTRACT-EVOLUTIONARY-ALGORITHM}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={ABSTRACT-EVOLUTIONARY-ALGORITHM}}
                             P <- generiere initiale Population
                             best <- |$\boxdot$| // leere Menge
                             REPEAT
@@ -658,7 +658,7 @@
                                 P <- Join(P, Breed(P))
                             UNTIL best ist die ideale Lösung oder totale Zeit erreicht
                             return best
-                            \end{ccode}
+                            \end{codeBlock}
                         \item \textit{Breed:} Erstellung neuer Stichprobe mithilfe Fitnessinformation
                         \item \textit{Join:} Fügt neue Population der Menge hinzu
                     \end{itemize}
@@ -687,7 +687,7 @@
                 \item \textit{Algorithmus der Evolutionsstrategie}
                     \begin{itemize}
                         \item[]
-                            \begin{ccode}[autogobble,escapeinside=||]{title={($\mu, \lambda$)-EVOLUTION-STRATEGY}}
+                            \begin{codeBlock}[autogobble,escapeinside=||]{title={($\mu, \lambda$)-EVOLUTION-STRATEGY}}
                             |$\mu$| <- Anzahl der Eltern (initiale Lösung)
                             |$\lambda$| <- Anzahl der Kinder
                             P <- {}
@@ -706,7 +706,7 @@
                                         P <- P |$\cup$| {MUTATE(|$Q_j$|)}
                             UNTIL best ist die ideale Lösung oder totale Zeit erreicht
                             return best
-                            \end{ccode}
+                            \end{codeBlock}
                     \end{itemize}
             \end{itemize}
     \end{itemize}

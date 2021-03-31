@@ -40,6 +40,7 @@
 \usepackage{wrapfig}
 \usepackage{xr-hyper}
 \usepackage{import}
+\RequirePackage{pagecolor} % Used for dark Mode
 % Define Glossary style
 \ifthenelse{\isundefined{\printindex}}{}{
     \makeindex[
@@ -98,7 +99,7 @@
 \renewcommand{\theFancyVerbLine}{\tikz{\coordinate(a);\node[text width=5mm,inner sep=0pt,align=center]{\ttfamily\textcolor{white}{\scriptsize\arabic{FancyVerbLine}}};}}
 
 % Environment für meinen Style (Arg 1 = minted Options, Arg 2 = tcolorbox Options)
-\newtcblisting{ccode}[2][]{
+\newtcblisting{codeBlock}[2][]{
     listing engine=minted, % Minted verwenden
     colback=black!10, %Hintergrundfarbe
     colframe=black!70, % Randfarbe
@@ -143,6 +144,7 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\colorlet{fgcolor}{.}
 
 % Makros
 \newcommand{\fatsf}[1]{\textsf{\textbf{#1}}}

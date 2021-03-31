@@ -6,14 +6,10 @@
 % }
 % \input{preamble_text}
 
-% \ConfigureHeadline{
-% 	headline={summary-centered}
-% }
-
 \documentclass[
     ngerman,
     color=3b,
-    % dark_mode,
+    dark_mode,
     load_common, % Loads a list of commonly used Packages
     summary,
     boxarc,
@@ -29,20 +25,28 @@
 \externaldocument{../Kapitel_6/Kapitel_6}
 \externaldocument{../Kapitel_7/Kapitel_7}
 \externaldocument{../Kapitel_8/Kapitel_8}
+ 
+\title[AuD]{Algorithmen\\und Datenstrukturen}
+\subtitle{Zusammenfassung}
+% \subsubtitle{test}
+\semester{SoSe 2020}
+\fachbereich{Informatik}
+\author{Ruben Deisenroth}
+\contributor{J. Milkovits}
+\date{\today}
+\version{2.0 (Snapshot)}
+\termOrder{printAuthor,printSemester,printContributor,%
+printVersion,,,printDate,printFachbereich}
+
+\ConfigureHeadline{
+	headline={summary-centered}
+}
 
 %\def\isMain{true}
 \begin{document}
 
 %--Titelseite--
-\title[AuD]{Algorithmen\\und Datenstrukturen}
-\subtitle{Gedächtnisstütze}
-\term{
-    \fatsf{Author:} Ruben Deisenroth \hfill \fatsf{Semester: SoSe2020}\\
-    \fatsf{Helfer und Mitwirkende:} J. Milkovits
-}
-
-\date{\fatsf{Stand:} \today \hfill \fatsf{Fachbereich: }Informatik} % Ohne Angabe wird automatisch das heutige Datum eingefügt
-\maketitle
+\maketitle{}
 \tableofcontents %Inhaltsverzeichnis
 \clearpage
 %---Beginn Der Zusammenfassung---%
