@@ -37,41 +37,34 @@ Für das obige Problem wäre das z.B. "`Was ist der kürzeste Weg vom Audimax in
 \begin{definition}[Algorithmus]
     \enquote{Ein Algorithmus ist eine \fatsf{endliche Folge} von Rechenschritten, die eine \fatsf{Eingabe} in eine \fatsf{Ausgabe} umwandelt.}\footnote{Quelle: Cormen et al., 4. Auflage}
 \end{definition}
-\fatsf{Anforderungen an Algorithmen:}\begin{itemize}
-    \item Spezifizierung der Ein- und Ausgabe:\begin{itemize}
-              \item Anzahl und Typen aller Elemente ist/sind definiert
-          \end{itemize}
-    \item Eindeutigkeit:\index{Eindeutigkeit}\begin{itemize}
-              \item Jeder Einzelschritt ist klar definiert und ausführbar
-              \item Die Reihenfolge der Einzelschritte ist festgelegt.
-          \end{itemize}
-    \item Endlichkeit\index{Endlichkeit}\begin{itemize}
-              \item Notation hat endliche Länge
-          \end{itemize}
-\end{itemize}
-\fatsf{Eigenschaften von Algorithmen:}\begin{itemize}
-    \item Determiniertheit:\index{Determiniertheit}\begin{itemize}
-              \item Für gleiche Eingabe folgt stets die gleiche Ausgabe (andere Zwischenzustände sind möglich)
-          \end{itemize}
-    \item Determinismus:\index{Determinismus}\begin{itemize}
-              \item Für die gleiche Eingabe ist die Ausführung und Ausgabe stets identisch.
-          \end{itemize}
-    \item Terminierung:\index{Terminierung}\begin{itemize}
-              \item Der Algorithmus läuft für jede endliche Eingabe nur endlich lange
-          \end{itemize}
-    \item Korrektheit:\index{Korrektheit}\begin{itemize}
-              \item Der Algorithmus berechnet stets die spezifizierte Ausgabe (falls dieser
-                    terminiert).
-          \end{itemize}
-    \item Effizienz:\index{Effizienz}\begin{itemize}
-              \item Sparsamkeit im Ressourcenverbrauch (Zeit, Speicher, Energie, ...)
-          \end{itemize}
-\end{itemize}
+\paragraph{Anforderungen an Algorithmen:}
+\begin{description}[leftmargin=7cm]
+    \item[Spezifizierung der Ein- und Ausgabe] \begin{itemize}
+        \item Anzahl und Typen aller Elemente ist/sind definiert
+    \end{itemize}
+    \item[Eindeutigkeit]\index{Eindeutigkeit}\begin{itemize}
+        \item Jeder Einzelschritt ist klar definiert und ausführbar
+        \item Die Reihenfolge der Einzelschritte ist festgelegt.
+    \end{itemize}
+    \item[Endlichkeit]\index{Endlichkeit}\begin{itemize}
+        \item Notation hat endliche Länge
+    \end{itemize}
+\end{description}
+\paragraph{Eigenschaften von Algorithmen:}
+\begin{description}[leftmargin=3.5cm]
+    \item[Determiniertheit]\index{Determiniertheit} Für gleiche Eingabe folgt stets die gleiche Ausgabe (andere Zwischenzustände sind möglich)
+    \item[Determinismus]\index{Determinismus} Für die gleiche Eingabe ist die Ausführung und Ausgabe stets identisch.
+    \item[Terminierung]\index{Terminierung} Der Algorithmus läuft für jede endliche Eingabe nur endlich lange
+    \item[Korrektheit]\index{Korrektheit} Der Algorithmus berechnet stets die spezifizierte Ausgabe (falls dieser terminiert).
+    \item[Effizienz]\index{Effizienz} Sparsamkeit im Ressourcenverbrauch (Zeit, Speicher, Energie, ...)
+\end{description}
 \subsection{Definitionen für Datenstrukturen}\label{1.3}\label{Definitionen fuer Datenstrukturen}\index{Datenstrukturen}
-"`Eine Datenstruktur ist eine Methode,
-Daten \fatsf{abzuspeichern} und zu \fatsf{organisieren} sowie
-den \fatsf{Zugriff} auf die Daten und die \fatsf{Modifikation}
-der Daten zu erleichtern."'\footnote{Quelle: Cormen et al., 4. Auflage}\\
+\begin{definition}[Datenstruktur]
+    \enquote{Eine Datenstruktur ist eine Methode,
+    Daten \fatsf{abzuspeichern} und zu \fatsf{organisieren} sowie
+    den \fatsf{Zugriff} auf die Daten und die \fatsf{Modifikation}
+    der Daten zu erleichtern.}\footnote{Quelle: Cormen et al., 4. Auflage}\\
+\end{definition}
 \begin{wrapfigure}[5]{r}{.6\textwidth}
     \centering
     \includestandalone[width=.5\textwidth]{pictures/baum_beispiel/baum_beispiel}% 
@@ -96,11 +89,15 @@ z.B. \hyperref[2.2]{Arrays}, Listen, \ldots
     \item Attribute werden über einen "`\texttt{.}"' abgerufen
 \end{itemize}
 \subsection{Weitere wichtige Definitionen}
-\begin{itemize}
-    \item \fatsf{short circuit evaluation (Kurzschlussauswertung)}\index{short circuit evaluation}: Strategie, bei der die Auswertung, nachdem die Gesamtlösung durch einen Teilausdruck eindeutig bestimmt wurde, abgebrochen wird. 
+\begin{definition}[short circuit evaluation (Kurzschlussauswertung)]\index{short circuit evaluation}
+    Strategie, bei der die Auswertung, nachdem die \linebreak Gesamtlösung durch einen Teilausdruck eindeutig bestimmt wurde, abgebrochen wird.\\ 
     z.B.: \texttt{1+1==2 || 1/0==0}$\longrightarrow \texttt{true}$
-    \item \fatsf{call-by-reference (Referenzparameter)}\index{call-by-reference}: Übergeben von Referenz auf ein Objekt. Dadurch sind Änderungen an diesem innerhalb der Routine möglich.
-    \item \fatsf{call-by-value (Wertparameter)}\index{call-by-value}: Übergeben einer Kopie des Objekts. Das ursprüngliche Objekt kann so nicht mehr verändert werden, jedoch die Kopie. Die referenzen bleiben beim Kopieren gleich (z.B. bein Linked List)
-\end{itemize}
+\end{definition}
+\begin{definition}[call-by-reference (Referenzparameter)]\index{call-by-reference}
+    Übergeben von Referenz auf ein Objekt. Dadurch sind Änderungen an diesem innerhalb der Routine möglich.
+\end{definition}
+\begin{definition}[call-by-value (Wertparameter)]index{call-by-value}
+    Übergeben einer Kopie des Objekts. Das ursprüngliche Objekt kann so nicht mehr verändert werden, jedoch die Kopie. Die referenzen bleiben beim Kopieren gleich\linebreak (z.B. bein Linked List)
+\end{definition}
 \clearpage
 \end{document}
