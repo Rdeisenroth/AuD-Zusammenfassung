@@ -1,7 +1,7 @@
 \documentclass[
     ngerman,
     color=3b,
-    dark_mode,
+    % dark_mode,
     load_common, % Loads a list of commonly used Packages
     summary,
     boxarc,
@@ -78,16 +78,19 @@ Datenstrukturen:\begin{itemize}
 z.B. \hyperref[2.2]{Arrays}, Listen, \ldots
 \vspace*{2cm}
 \subsection{Pseudocode-Konventionen}\index{Pseudocode}
-\begin{itemize}
-    \item Blöcke werden durch Einrückungen hervorgehoben
-    \item Blockkonstrukte sind "`\texttt{for x to y}"', "`\texttt{while}"', "`\texttt{repeat-until}"' und "`\texttt{if-else}"'
-    \item Kommentare erhalten das Prädikat "`\texttt{//}"'
-    \item "`\texttt{i = j = e}"' bedeutet, \texttt{i} und \texttt{j} erhalten den Wert von \texttt{e}
-    \item Variablen sind immer lokal
-    \item $A[i]$ bezeichnet das i-te Element im Array A
-    \item $A[i..j]$ Array A im Bereich von $i-j$
-    \item Attribute werden über einen "`\texttt{.}"' abgerufen
-\end{itemize}
+\begin{grayInfoBox}
+    \begin{itemize}
+        \item Blöcke werden durch Einrückungen hervorgehoben
+        \item Blockkonstrukte sind "`\texttt{for x to y}"', "`\texttt{while}"', "`\texttt{repeat-until}"' und "`\texttt{if-else}"'
+        \item Kommentare erhalten das Prädikat "`\texttt{//}"'
+        \item "`\texttt{i = j = e}"' bedeutet, \texttt{i} und \texttt{j} erhalten den Wert von \texttt{e}
+        \item Variablen sind immer lokal
+        \item $A[i]$ bezeichnet das i-te Element im Array A
+        \item $A[i..j]$ Array A im Bereich von $i-j$
+        \item Attribute werden über einen "`\texttt{.}"' abgerufen
+    \end{itemize}
+\end{grayInfoBox}
+
 \subsection{Weitere wichtige Definitionen}
 \begin{definition}[short circuit evaluation (Kurzschlussauswertung)]\index{short circuit evaluation}
     Strategie, bei der die Auswertung, nachdem die \linebreak Gesamtlösung durch einen Teilausdruck eindeutig bestimmt wurde, abgebrochen wird.\\ 
