@@ -1,7 +1,7 @@
 \documentclass[
     ngerman,
     color=3b,
-    dark_mode,
+    % dark_mode,
     load_common, % Loads a list of commonly used Packages
     summary,
     boxarc,
@@ -410,6 +410,7 @@ Beispiele:\begin{itemize}
                         \centering
                         % \renewcommand{\arraystretch}{.8}
                         % \rowcolors{2}{white}{black!10}
+                        \resetrc
                         \resizebox{\textwidth}{!}{%
                             \begin{tabular}{ccc}
                                 \toprule
@@ -669,6 +670,7 @@ Beispiele:\begin{itemize}
               \item[] \[
                         T(n) = \left.
                         \begin{cases}
+                            \hiderowcolors
                             \Theta(1)                    & \text{falls } n = 1 \\
                             2~T(\frac{n}{2}) + \Theta(n) & \text{falls } n > 1 \\
                         \end{cases}
@@ -1061,6 +1063,7 @@ Beispiele:\begin{itemize}
 \vspace{3cm}
 \begin{table}[ht]
     \centering
+    \rowcolors{2}{\thepagecolor}{fgcolor!10!\thepagecolor}
     \begin{tabular}{c|c|c}
         \fatsf{Grundlegende Datenstrukturen}            & \fatsf{Fortgeschrittene Datenstrukturen}         & \fatsf{Randomisierte Datenstrukturen} \\
         \toprule

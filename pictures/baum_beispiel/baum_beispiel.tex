@@ -11,7 +11,7 @@
 %Styles
 \tikzstyle{treeNodeStyle}=[align=center, draw=fgcolor, circle, semithick, text width=6mm, inner sep=0pt]
 \definecolor{rbRedNodeColor}{HTML}{ff2e17}
-\tikzstyle{rbRedNodeStyle}=[treeNodeStyle, draw=rbRedNodeColor, fill=rbRedNodeColor!20!\thepagecolor]
+\tikzstyle{rbRedNodeStyle}=[treeNodeStyle, draw=rbRedNodeColor, text=., fill=rbRedNodeColor!20!\thepagecolor]
 \tikzstyle{rbBlackNodeStyle}=[treeNodeStyle, text=white, fill=black!55]
     \begin{forest}
             [23, for tree={rbBlackNodeStyle, s sep=2/(2^(level))*1cm} [17,rbRedNodeStyle [9] [22]] [24 [, phantom] [25, rbRedNodeStyle]]]
