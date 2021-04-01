@@ -18,174 +18,188 @@
 \begin{document}
 
 \section{Sortieren}\label{2}\label{Sortieren}\index{Sortieren}
-\subsection{Einführung}\label{2.1}\label{Einfuehrung Sortieren}
-Das Sortierproblem\index{Sortierproblem}\\
+\subsection{Einführung - Das Sortierproblem}\label{2.1}\label{Einfuehrung Sortieren}\index{Sortierproblem}
+% \paragraph{Problemstellung:}
+\begin{definition}[Das Sortierproblem]\mbox{}\\
+    \fatsf{Ausgangspunkt}:
+    \begin{center}
+        \includestandalone[width=.2\textwidth]{pictures/folge_von_Datensätzen/folge_von_Datensätzen}% 
+        \captionof{figure}{Folge von Datensätzen $D_1,D_2,\cdots,D_n$}
+        \label{fig:folge_von_Datensätzen}
+    \end{center}
+
+    \fatsf{Ziel}:  Datensätze so anzuordnen, dass die Schlüsselwerte sukzessive
+    ansteigen (oder absteigen)\\
+    \fatsf{Bedingung}: Schlüssel(werte) müssen vergleichbar sein
+\end{definition}
 \begin{itemize}
-    \item Ausgangspunkt: Folge von Datensätzen $D_1,D_2,\cdots,D_n$
-          \begin{figure}[h]
-              \centering
-              \includestandalone[width=.2\textwidth]{pictures/folge_von_Datensätzen/folge_von_Datensätzen}% 
-              %\caption{Beispiel Datenstruktur (Rot-Schwarz-Baum)}
-              \label{fig:folge_von_Datensätzen}
-          \end{figure}
-          \vspace*{-1em}
     \item zu sortierende Elemente heißen auch Schlüssel(werte)
-    \item Ziel:  Datensätze so anzuordnen, dass die Schlüsselwerte sukzessive
-          ansteigen (oder absteigen)
-    \item Bedingung: Schlüssel(werte) müssen vergleichbar sein
 \end{itemize}
-Durchführung:\begin{itemize}
-    \item Eingabe: Sequenz von Schlüsselwerten $\left\{a_1,a_2,\ldots,a_n\right\}$
-    \item Eingabe ist eine \fatsf{Instanz} des Sortierproblems
-    \item Ausgabe: Permutation $\left\{a_1',a_2',\ldots,a_n'\right\}$ derselben Folge mit Eigenschaft $a_1'\leq\ldots\leq a_n'$
-    \item Algorithmus \fatsf{korrekt}, wenn dieser das Problem für alle Instanzen löst
-\end{itemize}
-\clearpage
+\begin{grayInfoBox}[title=Durchführung]
+    \begin{itemize}
+        \item \fatsf{Eingabe}: Sequenz von Schlüsselwerten $\left\{a_1,a_2,\ldots,a_n\right\}$
+        \item Eingabe ist eine \fatsf{Instanz} des Sortierproblems
+        \item \fatsf{Ausgabe}: Permutation $\left\{a_1',a_2',\ldots,a_n'\right\}$ derselben Folge mit Eigenschaft $a_1'\leq\ldots\leq a_n'$
+        \item Algorithmus ist \fatsf{korrekt}, wenn dieser das Problem für alle Instanzen löst
+    \end{itemize}
+\end{grayInfoBox}
 \subsection{Arrays}\label{2.2}\label{Arrays}\index{Array}
-Reihung (Feld) fester Länge von Daten des gleichen Typs
+\begin{definition}[Array]
+    Reihung (Feld) fester Länge von Daten des gleichen Typs
+\end{definition}
 \begin{figure}[h]
     \centering
     \includestandalone[]{pictures/array_beispiel/array_beispiel}% 
     \caption{beispielhafte Darstellung eines Arrays}
     \label{fig:folge_von_Datensätzen}
 \end{figure}
-\begin{itemize}
-    \item $A$: Bezeichnung des Arrays mit dem Namen "`$A$"'
-    \item $A[i]$: Zugiff auf das $(i+1)$-te Element des Arrays
-\end{itemize}
-Beispiel: $A[2]=17$\\
+\begin{description}[leftmargin=1cm]
+    \item [$A$] Bezeichnung des Arrays mit dem Namen "`$A$"'
+    \item [{$A[i]$}] Zugiff auf das $(i+1)$-te Element des Arrays
+\end{description}
+\paragraph{Beispiel:}\mbox{}
+\begin{grayInfoBox}
+    $A[2]=17$
+\end{grayInfoBox}
 $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter Aufwand
+\clearpage
 \subsection{Exkurs: Totale Ordnung}\label{Totale Ordnung}\index{Totale Ordnung}
-Sei $M$ eine nicht leere Menge und $\leq \subseteq M\times M $ eine binäre Relation auf $M$.
+\begin{definition}[Totale Ordnung]
+    Sei $M$ eine nicht leere Menge und $\leq \subseteq M\times M $ eine binäre Relation auf $M$.
 
-Das Paar $(M,\leq)$ heißt genau dann eine totale Relation auf der Menge $M$, wenn folgende Eigenschaften erfüllt sind:
-\begin{itemize}
-    \item Reflexivität\index{Reflexivität}: $\forall x \in M: x \leq x$
-    \item Transitivität\index{Transitivität}: $\forall x,y,z\in M: x\leq y \land y \leq z \Rightarrow x \leq z$
-    \item Antisymmetrie\index{Antisymmetrie}: $\forall x,y\in M: x\leq y \land y \leq x \Rightarrow x = y$
-    \item Totalität\index{Totalität}: $\forall x,y \in M : x\leq y \lor y \leq x$
-\end{itemize}
-Beispiele:\begin{itemize}
-    \item $\leq$ Ordnung auf natürlichen Zahlen
-    \item Lexikographische Ordnung $\leq_{lex}$ ist eine totale Ordnung
-\end{itemize}
+    Das Paar $(M,\leq)$ heißt genau dann eine totale Relation auf der Menge $M$, wenn folgende Eigenschaften erfüllt sind:
+    \begin{itemize}
+        \item Reflexivität\index{Reflexivität}: $\forall x \in M: x \leq x$
+        \item Transitivität\index{Transitivität}: $\forall x,y,z\in M: x\leq y \land y \leq z \Rightarrow x \leq z$
+        \item Antisymmetrie\index{Antisymmetrie}: $\forall x,y\in M: x\leq y \land y \leq x \Rightarrow x = y$
+        \item Totalität\index{Totalität}: $\forall x,y \in M : x\leq y \lor y \leq x$
+    \end{itemize}
+\end{definition}
+\paragraph{Beispiele}\mbox{}
+\begin{grayInfoBox}
+    \begin{itemize}
+        \item $\leq$ Ordnung auf natürlichen Zahlen
+        \item Lexikographische Ordnung $\leq_{lex}$ ist eine totale Ordnung
+    \end{itemize}
+\end{grayInfoBox}
 \subsection{Vergleichskriterien von Suchalgorithmen}\label{Vergleichskriterien von Suchalgorithmen}
-\begin{itemize}
-    \item Berechnungsaufwand: $\mathcal{O}(n)$
-    \item Effizienz: Best Case vs. Average Case vs Worst Case
-    \item Speicherbedarf:\begin{itemize}
+\begin{description}[leftmargin=3.6cm,itemsep=1em]
+    \item[Berechnungsaufwand] \begin{itemize}
+              \item $\mathcal{O}(n)$
+          \end{itemize}
+    \item[Effizienz] \begin{itemize}
+              \item Best Case vs. Average Case vs Worst Case
+          \end{itemize}
+    \item[Speicherbedarf] \begin{itemize}
               \item in-Place (in situ): zusätzlicher Speicher von der Eingabegröße unabhängig
               \item out-of-place: Speichermehrbedarf von Eingabegröße abhängig
           \end{itemize}
-    \item Stabilität: stabile Verfahren verändern die Reihenfolge von äquivalenten Elementen nicht
-    \item Anwendung als Auswahlfaktor:\begin{itemize}
+    \item[Stabilität] \begin{itemize}
+              \item stabile Verfahren verändern die Reihenfolge von äquivalenten Elementen nicht
+          \end{itemize}
+    \item[Anwendung als Auswahlfaktor] \begin{itemize}
               \item Hauptoperationen beim Sortieren: Vergleichen und Vertauschen
               \item Anwendung spielt eine enorme Rolle:\begin{itemize}
                         \item Verfahren mit vielen Vertauschungen und wenig Vergleichen, wenn Vergleichen teuer
                         \item Verfahren mit wenig Vertauschungen und vielen Vergleichen, wenn Umsortieren teuer
                     \end{itemize}
           \end{itemize}
-\end{itemize}
+\end{description}
+\clearpage
 \subsection{Analyse von Algorithmen \textmd{(I)}}\label{Analyse von Algorithmen 1}
+\paragraph{Schleifeninvariante \textmd{(SIV)}:}\index{Schleifeninvariante}
 \begin{itemize}
-
-    \item \fatsf{Schleifeninvariante \textmd{(SIV)}:}\index{Schleifeninvariante}
-          \begin{itemize}
-              \item Sonderform der Invariante
-              \item Am Anfang/Ende jedes Schleifendurchlaufs und vor/nach jedem Schleifendurchlauf gültig
-              \item Wird zur Feststellung der Korrektheit von Algorithmen verwendet
-              \item Eigenschaften:
-                    \begin{itemize}
-                        \item Initialisierung: Invariante ist vor jeder Iteration wahr
-                        \item Fortsetzung: Wenn SIV vor der Schleife wahr ist, dann auch bis Beginn der nächsten Iteration
-                        \item Terminierung: SIV liefert bei Schleifenabbruch, helfende Eigenschaft für Korrektheit
-                    \end{itemize}
-              \item Beispiel für Umsetzung: \hyperref[insSortSiv]{\textcolor{red}{Insertion Sort - SIV}}
-          \end{itemize}
-
-    \item \fatsf{Laufzeitanalyse:}\index{Laufzeitanalyse}
-          \begin{itemize}
-              \item Aufstellung der Kosten und Durchführungsanzahl für jede Zeile des Quelltextes
-              \item Beachte: Bei Schleifen wird auch der Aufruf gezählt, der den Abbruch einleitet
-              \item Beispiel für Umsetzung: \hyperref[insSortLaufzeit]{\textcolor{red}{Insertion Sort - Laufzeit}}
-              \item Zusätzliche Überprüfung des \texttt{Best Case, Worst Case} und \texttt{Average Case}
-          \end{itemize}
-
-    \item \fatsf{Effizienz von Algorithmen}\index{Effizienz von Algorithmen}:
-          \begin{itemize}
-              \item Effizienzfaktoren
-                    \begin{itemize}
-                        \item Rechenzeit (Anzahl der Einzelschritte)
-                        \item Kommunikationsaufwand
-                        \item Speicherplatzbedarf
-                        \item Zugriffe auf Speicher
-                    \end{itemize}
-              \item Laufzeit hängt von versch. Faktoren ab
-                    \begin{itemize}
-                        \item Länge der Eingabe
-                        \item Implementierung der Basisoperationen
-                        \item Takt der CPU
-                    \end{itemize}
-          \end{itemize}
-
+    \item Sonderform der Invariante
+    \item Am Anfang/Ende jedes Schleifendurchlaufs und vor/nach jedem Schleifendurchlauf gültig
+    \item Wird zur Feststellung der Korrektheit von Algorithmen verwendet
+    \item Eigenschaften:
+          \begin{description}
+              \item [Initialisierung] Invariante ist vor jeder Iteration wahr
+              \item [Fortsetzung] Wenn SIV vor der Schleife wahr ist, dann auch bis Beginn der nächsten Iteration
+              \item [Terminierung] SIV liefert bei Schleifenabbruch, helfende Eigenschaft für Korrektheit
+          \end{description}
+    \item Beispiel für Umsetzung: \hyperref[insSortSiv]{\textcolor{red}{Insertion Sort - SIV}}
 \end{itemize}
+
+\paragraph{Laufzeitanalyse:}\index{Laufzeitanalyse}
+\begin{itemize}
+    \item Aufstellung der Kosten und Durchführungsanzahl für jede Zeile des Quelltextes
+    \item Beachte: Bei Schleifen wird auch der Aufruf gezählt, der den Abbruch einleitet
+    \item Beispiel für Umsetzung: \hyperref[insSortLaufzeit]{\textcolor{red}{Insertion Sort - Laufzeit}}
+    \item Zusätzliche Überprüfung des \texttt{Best Case, Worst Case} und \texttt{Average Case}
+\end{itemize}
+
+\paragraph{Effizienz von Algorithmen:}\index{Effizienz von Algorithmen}
+\begin{description}[leftmargin=7cm,itemsep=1em]
+    \item [Effizienzfaktoren]
+          \begin{itemize}
+              \item Rechenzeit (Anzahl der Einzelschritte)
+              \item Kommunikationsaufwand
+              \item Speicherplatzbedarf
+              \item Zugriffe auf Speicher
+          \end{itemize}
+    \item [Laufzeitfaktoren]
+          \begin{itemize}
+              \item Länge der Eingabe
+              \item Implementierung der Basisoperationen
+              \item Takt der CPU
+          \end{itemize}
+\end{description}
 \clearpage
 \subsection{Analyse von Algorithmen \textmd{(II)}}\label{Analyse von Algorithmen 2}
+\paragraph{Komplexität:}\index{Komplexität}
 \begin{itemize}
-    \item \fatsf{Komplexität:}\index{Komplexität}
+    \item Abstrakte Rechenzeit $T(n)$ ist abhängig von den Eingabedaten
+    \item Übliche Betrachtungsweise der Rechenzeit ist asymptotische Betrachtung
+\end{itemize}
+
+\paragraph{Asymptotik:}\index{Asymptotik}
+\begin{itemize}
+    \item Annäherung an einer sich ins Unendliche verlaufende Kurve
+    \item z.B.: $f(x) = \frac{1}{x} + x$ | Asymptote: $g(x)=x$ | ($\frac{1}{x}$ läuft gegen Null)
+\end{itemize}
+
+\paragraph{Asymptotische Komplexität:}\index{Asymptotische Komplexität}
+\begin{itemize}
+    \item Abschätzung des zeitlichen Aufwands eines Algorithmus in Abhängigkeit einer Eingabe
+    \item Beispiel für Umsetzung: \hyperref[insSortLaufzeitTheta]{\textcolor{red}{Insertion Sort - Laufzeit $\Theta$}}
+\end{itemize}
+
+\paragraph{Asymptotische Notation:}\index{Asymptotische Notation}
+\begin{itemize}
+    \item Betrachtung der Laufzeit $T(n)$ für sehr gro\ss e Eingaben $n \in \mathbb{N}$
+    \item Komplexität ist unabhängig von konstanten Faktoren und Summanden
+    \item Nicht berücksichtigt: Rechnergeschwindigkeit / Initialisierungsaufwände
+    \item Komplexitätsmessung via Funktionsklasse ausreichend
           \begin{itemize}
-              \item Abstrakte Rechenzeit $T(n)$ ist abhängig von den Eingabedaten
-              \item Übliche Betrachtungsweise der Rechenzeit ist asymptotische Betrachtung
-          \end{itemize}
-
-    \item \fatsf{Asymptotik:}\index{Asymptotik}
-          \begin{itemize}
-              \item Annäherung an einer sich ins Unendliche verlaufende Kurve
-              \item z.B.: $f(x) = \frac{1}{x} + x$ | Asymptote: $g(x)=x$ | ($\frac{1}{x}$ läuft gegen Null)
-          \end{itemize}
-
-    \item \fatsf{Asymptotische Komplexität:}\index{Asymptotische Komplexität}
-          \begin{itemize}
-              \item Abschätzung des zeitlichen Aufwands eines Algorithmus in Abhängigkeit einer Eingabe
-              \item Beispiel für Umsetzung: \hyperref[insSortLaufzeitTheta]{\textcolor{red}{Insertion Sort - Laufzeit $\Theta$}}
-          \end{itemize}
-
-    \item \fatsf{Asymptotische Notation:}\index{Asymptotische Notation}
-          \begin{itemize}
-              \item Betrachtung der Laufzeit $T(n)$ für sehr gro\ss e Eingaben $n \in \mathbb{N}$
-              \item Komplexität ist unabhängig von konstanten Faktoren und Summanden
-              \item Nicht berücksichtigt: Rechnergeschwindigkeit / Initialisierungsaufwände
-              \item Komplexitätsmessung via Funktionsklasse ausreichend
-                    \begin{itemize}
-                        \item Verhalten des Algorithmus für gro\ss e Problemgrö\ss en
-                        \item Veränderung der Laufzeit bei Verdopplung der Problemgrö\ss e
-                    \end{itemize}
-          \end{itemize}
-
-    \item \textbf{Gründe für die Nutzung der theoretischen Betrachtung statt der Messung der Laufzeit }
-          \begin{itemize}
-              \item \textit{Vergleichbarkeit}
-                    \begin{itemize}
-                        \item Laufzeit abhängig von konkreter Implementierung und System
-                        \item Theoretische Betrachung ist frei von Abhängigkeiten und Seiteneffekten
-                        \item Theoretische Betrachtung lässt direkte Vergleichbarkeit zu
-                    \end{itemize}
-
-              \item \textit{Aufwand}
-                    \begin{itemize}
-                        \item Wieviele Testreihen?
-                        \item In welcher Umgebung?
-                        \item Messen führt in der Ausführung zu hohem, praktischen Aufwand
-                    \end{itemize}
-
-              \item \textit{Komplexitätsfunktion}
-                    \begin{itemize}
-                        \item Wachstumsverhalten ausreichend
-                        \item Praktische Evaluation mit Zeiten nur für Auswahl von Systemen möglich
-                        \item Theoretischer Vergleich (Funktionsklassen) hat ähnlichen Erkenntnisgewinn
-                    \end{itemize}
+              \item Verhalten des Algorithmus für gro\ss e Problemgrö\ss en
+              \item Veränderung der Laufzeit bei Verdopplung der Problemgrö\ss e
           \end{itemize}
 \end{itemize}
+
+\paragraph{Gründe für die Nutzung der theoretischen Betrachtung statt der Messung der Laufzeit }
+\begin{description}[itemsep=1em]
+    \item [Vergleichbarkeit]
+          \begin{itemize}
+              \item Laufzeit abhängig von konkreter Implementierung und System
+              \item Theoretische Betrachung ist frei von Abhängigkeiten und Seiteneffekten
+              \item Theoretische Betrachtung lässt direkte Vergleichbarkeit zu
+          \end{itemize}
+
+    \item [Aufwand]
+          \begin{itemize}
+              \item Wieviele Testreihen?
+              \item In welcher Umgebung?
+              \item Messen führt in der Ausführung zu hohem, praktischen Aufwand
+          \end{itemize}
+
+    \item [Komplexitätsfunktion]
+          \begin{itemize}
+              \item Wachstumsverhalten ausreichend
+              \item Praktische Evaluation mit Zeiten nur für Auswahl von Systemen möglich
+              \item Theoretischer Vergleich (Funktionsklassen) hat ähnlichen Erkenntnisgewinn
+          \end{itemize}
+\end{description}
 \clearpage
 \subsection{Analyse von Algorithmen \textmd{(III)}}\label{Analyse von Algorithmen 3}
 \begin{itemize}
