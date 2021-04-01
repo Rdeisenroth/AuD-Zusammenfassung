@@ -3,8 +3,8 @@
 Eine Zusammenfassung des Faches Algorithmen und Datenstrukturen (kurz: AuD), geschrieben in Latex.
 Aktuell umfasst sie:
 - Definitionen und Konzepte der Folien
-- Pseudocode der Folien
-- Teilweise Beispiele
+- Pseudocode der Folien (und teils auch eigenen)
+- Einige Beispiele
 
 ## Wie kompiliere ich sie?
 Requirements:
@@ -30,30 +30,24 @@ Bei VS-Code mit LaTeX-Workshop kann dazu die `settings.json` angepasst werden, i
                 "%DOC%"
             ]
         },
-        {
-            "name": "pdflatex",
-            "command": "pdflatex",
-            "args": [
-                "--shell-escape",
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ]
-        }
     ],
 ```
 Dadurch kann die Zusammenfassung Reibungslos mit VS-Code kompillieren.
-## Wie kann ich Helfen?
-Wenn dir ein Fehler aufgefallen ist, du die Zusammenfassung erweitern willst oder einfach nur Anregungen hast kannst du entwerder einen Pull-Request starten oder mir auf Discord an `Rubosplay#0815` eine DM senden.
 
+## Bekannte Fehler/Warnungen
+- Aktuell Lässt sich die Zusammenfassung nicht mit Lua$\TeX$ kompillieren, sondern muss mit pdf$\TeX$ kompilliert werden
+- Um die Kapitel einzeln kompillieren zu können, ist es notwendig, die `tuda_summary.cls` in `$Texmfhome` o.ä. zu legen
+## Wie kann ich Helfen?
+Wenn dir ein Fehler aufgefallen ist, du die Zusammenfassung erweitern willst oder einfach nur Anregungen hast kannst du entwerder einen PR oder Issue eröffnen oder mir auf Discord an `Rubosplay#0815` eine DM senden.
+
+## Versionshistorie (Changelog)
+- v2.0 (02.04.2021) Komplettüberholung
+  - Neues Layout
+  - Umstieg auf meine `TUDA-summary.cls` Vorlage
+    - Dark Mode
+    - Viele Stilistische Anpassungen
+  - Gitignore angepasst
+  - Weniger indents (war ja teilweise die Halbe Seite mit indents verschwendet)
 ## Danksagung
 Vielen Dank an [J. Milkovits](https://github.com/j-milkovits) für die Bereitstellung des Quellcodes [seiner Zusammenfassung](https://github.com/j-milkovits/latex_university_documents/tree/master/aud-reference_sheet)  
 
