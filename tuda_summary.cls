@@ -267,6 +267,15 @@
 \clist_gset:Nn \g_ptxcd_ex_term_order_clist {printAuthor,printSemester,printContributor,printVersion,quad,quad,printDate,printFachbereich}
 \newcommand*{\termOrder}[1]{\tl_gset:Nn \g_ptxcd_ex_term_order_clist {#1}}
 
+\prg_new_conditional:Nnn \__ptxcd_if_dark_mode: {T,F,TF} {
+	\bool_if:NTF \g_dark_mode_bool
+	{\prg_return_true:}
+	{\prg_return_false:}
+}
+
+\cs_set_eq:NN\IfDarkModeT \__ptxcd_if_dark_mode:T
+\cs_set_eq:NN\IfDarkModeT \__ptxcd_if_dark_mode:F
+\cs_set_eq:NN\IfDarkModeTF \__ptxcd_if_dark_mode:TF
 
 \ExplSyntaxOff
 
@@ -714,6 +723,13 @@
 \newcommand{\fakebullett}{~\llap{-}~}
 \newcommand{\fakebullettt}{~\llap{*}~}
 \newcommand{\mlcell}[2][l]{\Gape[0pt][2pt]{\makecell[#1]{#2}}}
+\newcommand{\toprighttreemark}[1]{{\node at (.north east) [xshift=.2cm,yshift=.2cm] {#1};}}
+\newcommand{\toplefttreemark}[1]{{\node at (.north west) [xshift=-.2cm,yshift=.2cm] {#1};}}
+\newcommand{\toptreemark}[1]{{\node at (.north) [yshift=.2cm] {#1};}}
+\newcommand{\toppointer}[1]{{\node (lbl) at (.north) [yshift=1cm] {\textcolor{orange}{#1}}; \draw[->,orange] (lbl.south) -- (.north);}}
+\newcommand{\shorttoppointer}[1]{{\node (lbl) at (.north) [yshift=6mm] {\textcolor{orange}{#1}}; \draw[->,orange] (lbl.south) -- (.north);}}
+\newcommand{\toprightpointer}[1]{{\node (lbl) at (.north) [xshift=.3cm,yshift=.8cm] {\textcolor{orange}{#1}}; \draw[->,orange] ($(lbl.south)-(.05cm,0)$) -- ($(.north)+(.1cm,-.15mm)$);}}
+\newcommand{\topleftpointer}[1]{{\node (lbl) at (.north) [xshift=-.3cm,yshift=.8cm] {\textcolor{orange}{#1}}; \draw[->,orange] ($(lbl.south)+(.05cm,0)$) -- ($(.north)-(.1cm,.15mm)$);}}
 
 % Colors
 

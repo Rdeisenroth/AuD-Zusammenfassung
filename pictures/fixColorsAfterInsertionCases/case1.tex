@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+%Styles
+\tikzstyle{treeNodeStyle}=[align=center, draw=black, circle, semithick, text width=6mm, inner sep=0pt]%
+\definecolor{rbRedNodeColor}{HTML}{ff2e17}%
+\tikzstyle{rbRedNodeStyle}=[treeNodeStyle, draw=rbRedNodeColor, fill=rbRedNodeColor!20]%
+\tikzstyle{rbBlackNodeStyle}=[treeNodeStyle, text=white, fill=black!55]%
+\tikzstyle{rbRedBlackNodeStyle} = [treeNodeStyle, text=white, left color=red!80,right color=black!80]%
+\begin{forest}
+        [,shape=coordinate[$C$,rbBlackNodeStyle[$B$,rbRedNodeStyle[$A$,rbRedNodeStyle]\toplefttreemark{z}[,phantom]][$D$,rbRedNodeStyle,name={D1}]\toprighttreemark{y}]]
+        \draw[line width=1mm, draw=gray,-triangle 45,postaction={draw, line width=2mm, shorten >=5mm, -}] ([xshift=1cm]D1.east) -- ++(2cm,0cm);
+\end{forest}
+\begin{forest}
+        [,shape=coordinate[$C$,rbRedNodeStyle[$B$,rbBlackNodeStyle[$A$,rbRedNodeStyle][,phantom]][$D$,rbBlackNodeStyle,name={D1}]]\toplefttreemark{z}]
+\end{forest}
+
+\end{document}
