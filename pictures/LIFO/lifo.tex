@@ -9,16 +9,16 @@
 
 \begin{document}
 %Styles
-\tikzstyle{stacknode} = [draw=black,rectangle,inner sep=0pt,minimum width= 2cm, minimum height= .8cm, ultra thick]
+\tikzstyle{stacknode} = [draw=fgcolor,rectangle,inner sep=0pt,minimum width= 2cm, minimum height= .8cm, ultra thick]
 \begin{tikzpicture}
     \node[stacknode](n1){};
     \node[stacknode,above=-\pgflinewidth of n1](n2){};
     \node[stacknode,above=-\pgflinewidth of n2](n3){};
-    \draw[line width=.2cm,draw=white]([xshift=-1mm]n3.north west) -- ([xshift=1mm]n3.north east);
+    \draw[line width=.2cm,draw=\thepagecolor]([xshift=-1mm]n3.north west) -- ([xshift=1mm]n3.north east);
     \node[stacknode, above left = .3cm and 1cm of n3](n4){\textsf{push(S,k)}};
     \node[stacknode, above right = .3cm and 1cm of n3](n5){\textsf{pop(S)}};
-    \draw[-{Triangle},ultra thick, draw=black!20!green] (n4.east) to [out=0,in=90,looseness=1] ([xshift=-5mm, yshift=-.1cm]n3.north);
-    \draw[{Triangle}-,ultra thick, draw=black!20!green] (n5.west) to [out=180,in=90,looseness=1] ([xshift=5mm, yshift=-.1cm]n3.north);
+    \draw[-{Triangle},ultra thick, draw=accentcolor] (n4.east) to [out=0,in=90,looseness=1] ([xshift=-5mm, yshift=-.1cm]n3.north);
+    \draw[{Triangle}-,ultra thick, draw=accentcolor] (n5.west) to [out=180,in=90,looseness=1] ([xshift=5mm, yshift=-.1cm]n3.north);
     \node[draw=none,inner sep=0pt,right = .3cm of n1.south east,yshift=.5\baselineskip-1.6pt-.5pt](stacklbl){\fatsf{Stack s}};
 \end{tikzpicture}
 \end{document}

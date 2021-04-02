@@ -11,7 +11,10 @@
 %Styles
 \begin{tikzpicture}
     \def\blocksize{2em}
+    \ifcsname c@ind\endcsname
+    \else
     \newcounter{ind};
+    \fi
     \setcounter{ind}{0};
     \node[draw=none,fill=none]{S};
     \foreach \x in {$12$,$47$,$17$,$98$,$72$,$$,$$,$$,$$}{
@@ -19,7 +22,7 @@
         \node[
             minimum height=\blocksize, 
             minimum width=\blocksize,
-            rectangle, draw=black,
+            rectangle, draw=.,
             anchor=center, %align=center, %text width=2em,
             inner sep=0pt, outer sep=0pt
             ] (n\theind) at (\theind*\blocksize,0) {\x};

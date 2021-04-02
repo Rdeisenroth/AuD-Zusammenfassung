@@ -9,23 +9,23 @@
 
 \begin{document}
 %Styles
-\tikzstyle{stacknode} = [draw=black,rectangle,inner sep=0pt,minimum width= .8cm, minimum height= 2cm, ultra thick]
+\tikzstyle{stacknode} = [draw=.,rectangle,inner sep=0pt,minimum width= .8cm, minimum height= 2cm, ultra thick]
 \begin{tikzpicture}
     %Stack
     \node[stacknode](n1){};
     \node[stacknode,right=-\pgflinewidth of n1](n2){};
     \node[stacknode,right=-\pgflinewidth of n2](n3){};
     %Stack ends
-    \draw[ultra thick,draw=black]([xshift=.5\pgflinewidth,yshift=.5\pgflinewidth]n1.south west) -- ++(-.8cm,0cm);
-    \draw[ultra thick,draw=black]([xshift=.5\pgflinewidth,yshift=-.5\pgflinewidth]n1.north west) -- ++(-.8cm,0cm);
-    \draw[ultra thick,draw=black]([xshift=-.5\pgflinewidth,yshift=.5\pgflinewidth]n3.south east) -- ++(.8cm,0cm);
-    \draw[ultra thick,draw=black]([xshift=-.5\pgflinewidth,yshift=-.5\pgflinewidth]n3.north east) -- ++(.8cm,0cm);
+    \draw[ultra thick,draw=.]([xshift=.5\pgflinewidth,yshift=.5\pgflinewidth]n1.south west) -- ++(-.8cm,0cm);
+    \draw[ultra thick,draw=.]([xshift=.5\pgflinewidth,yshift=-.5\pgflinewidth]n1.north west) -- ++(-.8cm,0cm);
+    \draw[ultra thick,draw=.]([xshift=-.5\pgflinewidth,yshift=.5\pgflinewidth]n3.south east) -- ++(.8cm,0cm);
+    \draw[ultra thick,draw=.]([xshift=-.5\pgflinewidth,yshift=-.5\pgflinewidth]n3.north east) -- ++(.8cm,0cm);
     %Otner Nodes
     \node[stacknode, above left = .3cm and 1.2cm of n1](n4){\rotatebox{270}{\textsf{\small enqueue(Q,k)}}};
     \node[stacknode, below right = .3cm and 1.2cm of n3](n5){\rotatebox{270}{\textsf{\small dequeue(Q)}}};
     %Arrows
-    \draw[-{Triangle},ultra thick, draw=black!20!green] (n4.south) to [out=270,in=180,looseness=1.3] ([xshift=-.8cm, yshift=0]n1.west);
-    \draw[{Triangle}-,ultra thick, draw=black!20!green] (n5.north) to [out=90,in=00,looseness=1.3] ([xshift=.8cm-.5\pgflinewidth, yshift=0]n3.east);
+    \draw[-{Triangle},ultra thick, draw=accentcolor] (n4.south) to [out=270,in=180,looseness=1.3] ([xshift=-.8cm, yshift=0]n1.west);
+    \draw[{Triangle}-,ultra thick, draw=accentcolor] (n5.north) to [out=90,in=00,looseness=1.3] ([xshift=.8cm-.5\pgflinewidth, yshift=0]n3.east);
     % Label
     \node[draw=none,inner sep=0pt,above = .3cm of n2,yshift=.5\baselineskip-1.6pt-.5pt](stacklbl){\fatsf{Queue Q}};
     \node[draw=none,inner sep=0pt, below left = .3cm and .1cm of n1]{\textsf{rear}};

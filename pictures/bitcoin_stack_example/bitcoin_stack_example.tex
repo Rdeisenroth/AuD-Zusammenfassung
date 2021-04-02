@@ -9,9 +9,9 @@
 
 \begin{document}
 %Styles
-\tikzstyle{stacknode} = [draw=black,rectangle,inner sep=0pt,minimum width= 2cm, minimum height= .8cm, ultra thick]
-\begin{tikzpicture}
-    \node[drop shadow={opacity=.25, shadow xshift=0.07, shadow yshift=-0.07}, blur shadow={shadow blur steps=20,shadow blur extra rounding=1.3pt},fill=black!10,align=left](n1){\texttt{scriptPubKey:}\\\texttt{OP\_DUP OP\_HASH160 56fa64a8bd7852d2c58095fa9a2fcd52d2c580b65d35549d}\\\texttt{OP\_EQUALVERIFY OP\_CHECKSIG}};
+\tikzstyle{stacknode} = [draw=fgcolor,rectangle,inner sep=0pt,minimum width= 2cm, minimum height= .8cm, ultra thick]
+\begin{tikzpicture}[font=\footnotesize]
+    \node[drop shadow={opacity=.25, shadow xshift=0.07, shadow yshift=-0.07}, blur shadow={shadow blur steps=20,shadow blur extra rounding=1.3pt},fill=fgcolor!15!\thepagecolor,align=left](n1){\texttt{scriptPubKey:}\\\texttt{OP\_DUP OP\_HASH160 56fa64a8bd7852d2c58095fa9a2fcd52d2c580b65d35549d}\\\texttt{OP\_EQUALVERIFY OP\_CHECKSIG}};
     
     %Stack 1
     \node[stacknode,below right = 3.5cm and 0cm of n1.south west](s1n1){\texttt{Signature}};
