@@ -25,7 +25,7 @@ Bei VS-Code mit LaTeX-Workshop kann dazu die `settings.json` angepasst werden, i
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-pdf",
+                "-lualatex", // alternativ: "-pdf" o.ä.
                 "-outdir=%OUTDIR%",
                 "%DOC%"
             ]
@@ -35,19 +35,19 @@ Bei VS-Code mit LaTeX-Workshop kann dazu die `settings.json` angepasst werden, i
 Dadurch kann die Zusammenfassung Reibungslos mit VS-Code kompillieren.
 
 ## Bekannte Fehler/Warnungen
-- Aktuell Lässt sich die Zusammenfassung nicht mit Lua$\TeX$ kompillieren, sondern muss mit pdf$\TeX$ kompilliert werden
-- Um die Kapitel einzeln kompillieren zu können, ist es notwendig, die `tuda_summary.cls` in `$Texmfhome` o.ä. zu legen
+- Um die Kapitel einzeln kompillieren zu können, ist es notwendig, die `tuda_summary.cls` in `$Texmfhome` o.ä. zu legen oder jeweils in die einzelnen Ordner zu kopieren
 ## Wie kann ich Helfen?
 Wenn dir ein Fehler aufgefallen ist, du die Zusammenfassung erweitern willst oder einfach nur Anregungen hast kannst du entwerder einen PR oder Issue eröffnen oder mir auf Discord an `Rubosplay#0815` eine DM senden.
 
 ## Versionshistorie (Changelog)
-- v2.0 (02.04.2021) Komplettüberholung
+- v2.0 (06.04.2021) Komplettüberholung
   - Neues Layout
   - Umstieg auf meine `TUDA-summary.cls` Vorlage
     - Dark Mode
     - Viele Stilistische Anpassungen
   - Gitignore angepasst
   - Weniger indents (war ja teilweise die Halbe Seite mit indents verschwendet)
+  - Korrupte Bilder angepasst, lässt sich wieder mit LuaTeX kompillieren
 ## Danksagung
 Vielen Dank an [J. Milkovits](https://github.com/j-milkovits) für die Bereitstellung des Quellcodes [seiner Zusammenfassung](https://github.com/j-milkovits/latex_university_documents/tree/master/aud-reference_sheet)  
 
