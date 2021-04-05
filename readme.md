@@ -15,7 +15,7 @@ Zunächst muss natürlich die Ordnerstruktur heruntergeladen werden, z.b. mit `g
 Anschließend muss die Zusammenfassung mit dem `--shell-escape`-Flag kompilliert werden.  
   
 Bei VS-Code mit LaTeX-Workshop kann dazu die `settings.json` angepasst werden, indem man Folgendes anhängt:
-```json
+```jsonc
 "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
