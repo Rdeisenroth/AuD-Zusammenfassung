@@ -24,16 +24,30 @@
 \bool_gset_true:N \g_ptxcd_ex_fancy_rowcolor_bool
 \tl_gclear_new:N \datename
 \tl_gset:Nn \datename {Datum}
-\DeclareOption{dark_mode}{\pagecolor{black}\color{white}\bool_gset_true:N \g_dark_mode_bool}
-\DeclareOption{manual_term}{\bool_gset_true:N \g_manual_term_bool}
-\DeclareOption{summary}{\bool_gset_true:N \g_is_summary_bool\tl_gset:Nn \datename {Stand}}
-\DeclareOption{load_common}{\bool_gset_true:N \g_ptxcd_ex_load_common_bool}
-\DeclareOption{default_row_color}{\bool_gset_false:N \g_ptxcd_ex_fancy_rowcolor_bool}
-\DeclareStringOption[4pt]{boxarc}[2pt]
+\prop_new:N \g_ptxcd_template_opts_prop
+
+% Additional Class Options
+\keys_define:nn {ptxcd/exercise} {
+  boxarc .code:n = \prop_gput:Nnn \g_ptxcd_template_opts_prop {boxarc} {#1},
+  boxarc .initial:n = {0pt},
+  boxarc .default:n = {3pt},
+  dark_mode .code:n = \pagecolor{black}\color{white}\selectcolormodel{RGB}\bool_gset_true:N \g_dark_mode_bool,
+  manual_term .bool_gset:N = \g_manual_term_bool,
+  manual_term .initial:n = false,
+  manual_term .default:n = true,
+  summary .code:n = \bool_gset_true:N \g_is_summary_bool\tl_gset:Nn \datename {Stand},
+  load_common .bool_gset:N = \g_ptxcd_ex_load_common_bool,
+  load_common .initial:n = false,
+  load_common . default:n = true,
+  default_row_color .bool_gset_inverse:N =  \g_ptxcd_ex_fancy_rowcolor_bool,
+  default_row_color .initial:n = false,
+  default_row_color .default:n = true,
+}
 \ExplSyntaxOff
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{tudaexercise}}
 \ProcessOptions\relax
-\ProcessKeyvalOptions{boxarc}\relax
+% \ProcessKeyvalOptions{boxarc}\relax
 \LoadClass[
   %fontsize= 12pt,
   a4paper,
@@ -70,7 +84,7 @@
 % \newcommand{\loadcommon}{
   \bool_if:NT \g_ptxcd_ex_load_common_bool {
     % \pagecolor{black}\color{white}
-    \RequirePackage{adjustbox}
+    \RequirePackage[export]{adjustbox}
     \RequirePackage{amssymb}
     \RequirePackage[ngerman]{babel}
     \RequirePackage{blindtext}
@@ -237,14 +251,23 @@
 \newcommand*{\getShortTitle}{\g_ptxcd_shorttitle_tl}
 
 % Author
-\newcommand*{\printAuthor}{
-  \seq_if_empty:NF \g_ptxcd_author_seq {\textbf{\textsf{\int_compare:nTF{\seq_count:N \g_ptxcd_author_seq > 1}{Authoren}{Author}:~}}\seq_use:Nnnn \g_ptxcd_author_seq {~\authorandname{}~} {,~} {~\authorandname{}~}}
+\tl_gclear_new:N \printAuthor
+\renewcommand*{\author}[1]{
+  \seq_gset_split:Nnn \g_ptxcd_author_seq {\and} {#1}
+  \seq_if_empty:NF \g_ptxcd_author_seq {\tl_gset:Nn \printAuthor {\textbf{\textsf{\int_compare:nTF{\seq_count:N \g_ptxcd_author_seq > 1}{Authoren}{Author}:~}}\seq_use:Nnnn \g_ptxcd_author_seq {~\authorandname{}~} {,~} {~\authorandname{}~}}}
 }
 
 % Contributors
-\newcommand*{\printContributor}{
-  \seq_if_empty:NF \g_ptxcd_contributor_seq {\textbf{\textsf{Helfer:~}}\seq_use:Nnnn \g_ptxcd_contributor_seq {~\authorandname{}~} {,~} {~\authorandname{}~}}
+\seq_new:N \g_ptxcd_contributor_seq
+\tl_gclear_new:N \printContributor
+\newcommand*\contributor[1]{
+  \seq_gset_split:Nnn \g_ptxcd_contributor_seq {\and} {#1}
+  \seq_if_empty:NF \g_ptxcd_contributor_seq {\tl_gset:Nn \printContributor {\textbf{\textsf{Helfer:~}}\seq_use:Nnnn \g_ptxcd_contributor_seq {~\authorandname{}~} {,~} {~\authorandname{}~}}}
 }
+
+% \newcommand*{\printContributor}{
+%   \seq_if_empty:NF \g_ptxcd_contributor_seq {\textbf{\textsf{Helfer:~}}\seq_use:Nnnn \g_ptxcd_contributor_seq {~\authorandname{}~} {,~} {~\authorandname{}~}}
+% }
 
 % Date
 \tl_gclear_new:N \printDate
@@ -274,7 +297,7 @@
 }
 
 \cs_set_eq:NN\IfDarkModeT \__ptxcd_if_dark_mode:T
-\cs_set_eq:NN\IfDarkModeT \__ptxcd_if_dark_mode:F
+\cs_set_eq:NN\IfDarkModeF \__ptxcd_if_dark_mode:F
 \cs_set_eq:NN\IfDarkModeTF \__ptxcd_if_dark_mode:TF
 
 \ExplSyntaxOff
@@ -304,7 +327,7 @@
 }
 
 \ExplSyntaxOn
-\def\boxarc{\use:c {tuda_summary@boxarc}} % Used for Code Blocks, Info boxes, etc.
+\def\boxarc{\prop_item:Nn \g_ptxcd_template_opts_prop {boxarc}} % Used for Code Blocks, Info boxes, etc.
 
 \ExplSyntaxOff
 
@@ -350,12 +373,6 @@
 }
 
 \ptxcd_declare_caption:Nnn \authorandname {und} {and}
-
-\seq_new:N \g_ptxcd_contributor_seq
-
-\newcommand*\contributor[1]{
-  \seq_gset_split:Nnn \g_ptxcd_contributor_seq {\and} {#1}
-}
 
 \newcommand*{\@contributor}{
   \begingroup
@@ -624,7 +641,7 @@
 
 % An Important Information Box (Accentcolor bar on the left+ light Accentcolor BG)
 \newtcolorbox{defBox}[1][]{
-  colback=accentcolor!10!\thepagecolor, %Hintergrundfarbe
+  colback=\IfDarkModeTF{accentcolor!20!\thepagecolor}{accentcolor!10!\thepagecolor}, %Hintergrundfarbe
   colframe=accentcolor, % Randfarbe
   coltext=.,
   frame hidden,
@@ -680,7 +697,7 @@
   boxrule=0pt,
   arc=\boxarc,
   %hbox, % This option could be used to limit the Length of Code Blocks automatically, but does not work with the minted Line Numbers
-  title\space style=\bool_if:NTF\g_dark_mode_bool {accentcolor!40!black} {black!90},
+  title\space style=\bool_if:NTF\g_dark_mode_bool {accentcolor!60!black} {black!90},
   minted\space style=\bool_if:NTF\g_dark_mode_bool {paraiso-dark} {default}, %Sieht actually worse aus imo
   minted\space language=java, % Sprache setzen
   minted\space options={ %Minted Optionen
@@ -723,13 +740,13 @@
 \newcommand{\fakebullett}{~\llap{-}~}
 \newcommand{\fakebullettt}{~\llap{*}~}
 \newcommand{\mlcell}[2][l]{\Gape[0pt][2pt]{\makecell[#1]{#2}}}
-\newcommand{\toprighttreemark}[1]{{\node at (.north east) [xshift=.2cm,yshift=.2cm] {#1};}}
-\newcommand{\toplefttreemark}[1]{{\node at (.north west) [xshift=-.2cm,yshift=.2cm] {#1};}}
-\newcommand{\toptreemark}[1]{{\node at (.north) [yshift=.2cm] {#1};}}
-\newcommand{\toppointer}[1]{{\node (lbl) at (.north) [yshift=1cm] {\textcolor{orange}{#1}}; \draw[->,orange] (lbl.south) -- (.north);}}
-\newcommand{\shorttoppointer}[1]{{\node (lbl) at (.north) [yshift=6mm] {\textcolor{orange}{#1}}; \draw[->,orange] (lbl.south) -- (.north);}}
-\newcommand{\toprightpointer}[1]{{\node (lbl) at (.north) [xshift=.3cm,yshift=.8cm] {\textcolor{orange}{#1}}; \draw[->,orange] ($(lbl.south)-(.05cm,0)$) -- ($(.north)+(.1cm,-.15mm)$);}}
-\newcommand{\topleftpointer}[1]{{\node (lbl) at (.north) [xshift=-.3cm,yshift=.8cm] {\textcolor{orange}{#1}}; \draw[->,orange] ($(lbl.south)+(.05cm,0)$) -- ($(.north)-(.1cm,.15mm)$);}}
+\newcommand{\toprighttreemark}[1]{{\node[inner sep=0pt] at (.north east) [xshift=.2cm,yshift=.2cm] {#1};}}
+\newcommand{\toplefttreemark}[1]{{\node[inner sep=0pt] at (.north west) [xshift=-.2cm,yshift=.2cm] {#1};}}
+\newcommand{\toptreemark}[1]{{\node[inner sep=0pt] at (.north) [yshift=.2cm] {#1};}}
+\newcommand{\toppointer}[1]{{\node[inner sep=0pt] (lbl) at (.north) [yshift=1cm] {\textcolor{orange}{#1}}; \draw[->,orange] (lbl.south) -- (.north);}}
+\newcommand{\shorttoppointer}[1]{{\node[inner sep=0pt] (lbl) at (.north) [yshift=6mm] {\textcolor{orange}{#1}}; \draw[->,orange] (lbl.south) -- (.north);}}
+\newcommand{\toprightpointer}[1]{{\node[inner sep=0pt] (lbl) at (.north) [xshift=.3cm,yshift=.8cm] {\textcolor{orange}{#1}}; \draw[->,orange] ($(lbl.south)-(.05cm,0)$) -- ($(.north)+(.1cm,-.15mm)$);}}
+\newcommand{\topleftpointer}[1]{{\node[inner sep=0pt] (lbl) at (.north) [xshift=-.3cm,yshift=.8cm] {\textcolor{orange}{#1}}; \draw[->,orange] ($(lbl.south)+(.05cm,0)$) -- ($(.north)-(.1cm,.15mm)$);}}
 
 % Colors
 

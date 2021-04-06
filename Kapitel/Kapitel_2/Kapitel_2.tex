@@ -1,7 +1,7 @@
 \documentclass[
     ngerman,
     color=3b,
-    % dark_mode,
+    dark_mode,
     load_common, % Loads a list of commonly used Packages
     summary,
     boxarc,
@@ -205,14 +205,14 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \paragraph{$\Theta$-Notation}\index{$\Theta$-Notation}
 \begin{wrapfigure}[5]{r}{.3\textwidth}
     \centering
-    \includegraphics[width=5cm]{pictures/thetaNotationGraph.pdf}
+    \includegraphics[width=5cm]{pictures/thetaNotationGraph\IfDarkModeT{_dark}.pdf}
     \caption{Veranschaulichung $\Theta$-Notation}
     \label{}
 \end{wrapfigure}
 \begin{itemize}
     \item $\Theta$-Notation beschränkt eine Funktion asymptotisch von oben und unten
     \item Funktionen $f,g: \mathbb{N} \rightarrow \mathbb{R}_{>0}$ ($\mathbb{N}$: Eingabelänge, $\mathbb{R}$: Zeit)
-    \item[] \includegraphics[width=12cm]{pictures/thetaNotation.pdf}
+    \item[] \includegraphics[width=12cm]{pictures/thetaNotation\IfDarkModeT{_dark}.pdf}
     \item $\Theta(g)$ enthält alle $f$, die genauso schnell wachsen wie $g$
     \item \fatsf{Schreibweise}: $f \in \Theta(g)$ (korrekt), manchmal auch $f = \Theta(g)$
 
@@ -239,13 +239,13 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \paragraph{$\mathcal{O}$-Notation}\index{$\mathcal{O}$-Notation}
 \begin{wrapfigure}[5]{r}{.3\textwidth}
     \centering
-    \includegraphics[width=5cm]{pictures/oNotationGraph.pdf}
+    \includegraphics[width=5cm]{pictures/oNotationGraph\IfDarkModeT{_dark}.pdf}
     \caption{Veranschaulichung $\mathcal{O}$-Notation}
     \label{}
 \end{wrapfigure}
 \begin{itemize}
     \item $\mathcal{O}$-Notation beschränkt eine Funktion asymptotisch von oben
-    \item[] \includegraphics[width=12cm]{pictures/oNotation.pdf}
+    \item[] \includegraphics[width=12cm]{pictures/oNotation\IfDarkModeT{_dark}.pdf}
     \item $O(g)$ enthält alle $f$, die höchstens so schnell wie $g$ wachsen
     \item \fatsf{Schreibweise}: $f=\mathcal{O}(g)$
     \item $f(n)=\Theta(g) \rightarrow f(n) = \mathcal{O}(g)$ | $\Theta(g(n)) \subseteq \mathcal{O}(g(n))$
@@ -281,13 +281,13 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \paragraph{$\Omega$-Notation}\index{$\Omega$-Notation}
 \begin{wrapfigure}[5]{r}{.3\textwidth}
     \centering
-    \includegraphics[width=5cm]{pictures/omegaNotationGraph.pdf}
+    \includegraphics[width=5cm]{pictures/omegaNotationGraph\IfDarkModeT{_dark}.pdf}
     \caption{Veranschaulichung}
     \label{}
 \end{wrapfigure}
 \begin{itemize}
     \item $\Omega$-Notation beschränkt eine Funktion asymptotisch von unten
-    \item[] \includegraphics[width=12cm]{pictures/omegaNotation.pdf}
+    \item[] \includegraphics[width=12cm]{pictures/omegaNotation\IfDarkModeT{_dark}.pdf}
     \item $\Omega$-Notation enthält alle $f$, die mindestens so schnell wie $g$ wachsen
     \item \fatsf{Schreibweise}: $f = \Omega(g)$
 \end{itemize}
@@ -325,11 +325,11 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
         \toprule
         Eingabegrö\ss{}e $n$ & $\log_{10} n$     & $n$                 & $n^2$                                     & $n^3$                         & $2^n$                             \\
         \midrule
-        10               & $1\mathrm{\mu s}$ & $10\mathrm{\mu s}$  & $100\mathrm{\mu s}$                       & $1\mathrm{ms}$                & $\sim 1~\mathrm{ms}$              \\
-        100              & $2\mathrm{\mu s}$ & $100\mathrm{\mu s}$ & $10\mathrm{ms}$                           & $1\mathrm{s}$                 & $\sim 4\times 10^{16}~\mathrm{y}$ \\
-        1000             & $3\mathrm{\mu s}$ & $1\mathrm{ms}$      & $1s$                                      & $16\mathrm{min}~40\mathrm{s}$ & $?$                               \\
-        10000            & $4\mathrm{\mu s}$ & $10\mathrm{ms}$     & $1\mathrm{min}~40\mathrm{s}$              & $\sim 11,5\mathrm{d}$         & $?$                               \\
-        100000           & $5\mathrm{\mu s}$ & $100\mathrm{ms}$    & $2\mathrm{h}~64\mathrm{min}~40\mathrm{s}$ & $\sim 31,7\mathrm{y}$         & $?$                               \\
+        10                   & $1\mathrm{\mu s}$ & $10\mathrm{\mu s}$  & $100\mathrm{\mu s}$                       & $1\mathrm{ms}$                & $\sim 1~\mathrm{ms}$              \\
+        100                  & $2\mathrm{\mu s}$ & $100\mathrm{\mu s}$ & $10\mathrm{ms}$                           & $1\mathrm{s}$                 & $\sim 4\times 10^{16}~\mathrm{y}$ \\
+        1000                 & $3\mathrm{\mu s}$ & $1\mathrm{ms}$      & $1s$                                      & $16\mathrm{min}~40\mathrm{s}$ & $?$                               \\
+        10000                & $4\mathrm{\mu s}$ & $10\mathrm{ms}$     & $1\mathrm{min}~40\mathrm{s}$              & $\sim 11,5\mathrm{d}$         & $?$                               \\
+        100000               & $5\mathrm{\mu s}$ & $100\mathrm{ms}$    & $2\mathrm{h}~64\mathrm{min}~40\mathrm{s}$ & $\sim 31,7\mathrm{y}$         & $?$                               \\
         \bottomrule
     \end{tabular}
     \caption{Komplexitätsklassen-Ausführungsdauer, falls eine Operation $n$ genau $1\mu s$ dauert}
@@ -672,22 +672,28 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
         2~T(\frac{n}{2}) + \Theta(n) & \text{falls } n > 1 \\
     \end{cases}
     \right \}
-\]
-\begin{itemize}
-    \item Lösen der Rekursionsgleichung mithilfe eines Rekursionsbaums
-          \begin{itemize}
-              \item[] \includegraphics[width=14cm]{pictures/merge_sort_equation/merge_sort_equation}
-              \item Verwenden der Konstante $c$ statt $\Theta(1)$
-              \item $cn$ stellt den Aufwand an der ersten Ebene dar
-              \item Der addierte Aufwand jeder Stufe (aller Knoten) ist auch $cn$
-              \item Die Azahl der Ebenen lässt sich mithilfe von $lg(n) + 1$ bestimmen (2-er Logarithmus)
-              \item Damit ergibt sich für die Laufzeit: $cn \cdot lg(n)+cn$
-              \item Für $\lim_{n \rightarrow \infty}$ wird diese zu $n \cdot lg(n)$
-              \item Laufzeit beträgt damit $\Theta(n \cdot lg(n))$
-              \item Laufzeit von \texttt{MergeSort} ist in jedem Fall gleich
-          \end{itemize}
+\]\\
+Lösen der Rekursionsgleichung mithilfe eines Rekursionsbaums
 
+\begin{equation*}T(n)=\begin{cases}\hiderowcolors
+        c                  & \text{falls } n=1, \\
+        2T(\frac{n}{2})+cn & \text{falls}n>1    \\
+    \end{cases}
+\end{equation*}
+\begin{center}
+    \includestandalone[width=14cm]{pictures/merge_sort_equation/merge_sort_equation}
+\end{center}
+\begin{itemize}
+    \item Verwenden der Konstante $c$ statt $\Theta(1)$
+    \item $cn$ stellt den Aufwand an der ersten Ebene dar
+    \item Der addierte Aufwand jeder Stufe (aller Knoten) ist auch $cn$
+    \item Die Azahl der Ebenen lässt sich mithilfe von $lg(n) + 1$ bestimmen (2-er Logarithmus)
+    \item Damit ergibt sich für die Laufzeit: $cn \cdot lg(n)+cn$
+    \item Für $\lim_{n \rightarrow \infty}$ wird diese zu $n \cdot lg(n)$
+    \item Laufzeit beträgt damit $\Theta(n \cdot lg(n))$
+    \item Laufzeit von \texttt{MergeSort} ist in jedem Fall gleich
 \end{itemize}
+
 \clearpage
 \subsection{Quicksort}\label{Quicksort}\index{Quicksort}
 \begin{idea}[Quicksort]\mbox{}
