@@ -81,7 +81,7 @@
 \begin{definition}[Zusammenhängende Graphen]\index{Zusammenhänge}\mbox{}
     \begin{itemize}
         \item Ungerichtet: Zusammenhängend\index{Zusammenhänge!zusammenhängend} wenn jeder Knoten von jedem anderen Knoten aus erreichbar ist
-        \item Gerichtet: \fatsf{Stark}\index{Zusammenhänge!stark zusammenhängend} zusammenhängend, wenn obiges auch gemäß Kantenrichtung gilt
+        \item Gerichtet: \fatsf{Stark}\index{Zusammenhänge!stark zusammenhängend} zusammenhängend, wenn obiges auch gemä\ss{} Kantenrichtung gilt
     \end{itemize}
 \end{definition}
 
@@ -115,7 +115,7 @@
 \begin{codeBlock}[autogobble,escapeinside=||]{title={BFS(G,s) //G=(V,E) s = source node in V}}
     BFS(G,s) //G=(V,E) s = source node in V
     FOREACH u in V-{s} DO
-        u.color = WHITE;        // Weiß = noch nicht besucht
+        u.color = WHITE;        // Wei\ss{} = noch nicht besucht
         u.dist = |$+\infty$|            // Setzen der Distanzen auf Unendlich
         u.pred = nil;           // Setzen der Vorgänger auf nil
     s.color = GRAY;             // Anfang bei Startnode
@@ -180,7 +180,7 @@ ELSE
               \item $E^s_{pred} = \{(v.pred,v) | v \in V^s_{pred} - \{s\}\}$
           \end{itemize}
     \item $G^s_{pred}$ enthält alle von $s$ aus erreichbaren Knoten in $G$
-    \item Außerdem handelt es sich hier nur um kürzeste Pfade
+    \item Au\ss{}erdem handelt es sich hier nur um kürzeste Pfade
 \end{itemize}
 \clearpage
 
@@ -264,7 +264,7 @@ u.finish = time;        // finish time
 %\end{noindent}
 
 \paragraph{Starke Zusammenhangskomponenten}\index{Starke Zusammenhangskomponenten}\mbox{}\vspace{-1em}\\
-\begin{wrapfigure}[5]{r}{8cm}
+\begin{wrapfigure}[5]{r}{6cm}
     \centering
     \includegraphics[width=6cm]{pictures/scc.PNG}
     \captionof{figure}{Beispiel Starke Zusammenhangskomponenten}
@@ -373,179 +373,177 @@ return A;
 
 
 \subsection{Kürzeste Wege in (gerichteten) Graphen}\index{Kürzeste Wege}
+\begin{definition}[SSSP]\mbox{}
+    \begin{itemize}
+        \item SSSP - Single-Source Shortest Path\index{SSSP}
+        \item Von Quelle $s$ ausgehend die kürzesten Pfad zu allen anderen Knoten
+        \item Kürzester Pfad: Pfad mit minimalem Gesamtgewicht von einem zum anderen Knoten
+        \item BFS findet nur minimale Kantenwege (nicht Gewichtswege)
+        \item MST minimiert das Gesamtgewicht des Baumes (nicht zu einzelnen Kanten)
+        \item Negative Kantengewichte sind erlaubt, aber keine Zyklen mit negativem Gesamtgewicht
+    \end{itemize}
+\end{definition}
+\vspace{-1em}
+\paragraph{Gemeinsame Idee für Algorithmen - Relax}\index{Relax}\mbox{}\\
+Verringere aktuelle Distanz von Knoten $v$, wenn durch Kante $(u,v)$ kürzer erreichbar\\
+\includegraphics[width=12cm]{pictures/ssspRelax.PNG}
+%\begin{noindent}
+\begin{codeBlock}[autogobble]{title={relax(G,u,v,w)}}
+IF v.dist > u.dist + w((u,v)) THEN
+    v.dist = u.dist + w((u,v));
+    v.pred = u;
+\end{codeBlock}
+%\end{noindent}
+\clearpage
+\paragraph{Bellman-Ford-Algorithmus}\index{Bellman-Ford}\mbox{}\\
+Laufzeit: $\Theta(|E| \cdot |V|)$
+%\begin{noindent}
+\begin{codeBlock}[autogobble,escapeinside=||]{title={Bellman-Ford-SSSP(G,s,w)}}
+    initSSSP(G,s,w);
+    FOR i = 1 TO |$\vert V\vert$|-1 DO
+        FOREACH (u,v) in E DO
+            relax(G,u,v,w);
+    FOREACH (u,v) in E DO   // Prüfung ob negativer Zyklus
+        IF v.dist > u.dist+w((u,v)) THEN
+            return false;
+    return true;
+\end{codeBlock}
+%\end{noindent}
+%\begin{noindent}
+\begin{codeBlock}[autogobble,escapeinside=||]{title={initSSSP(G,s,w)}}
+    FOREACH v in V DO
+        v.dist = |$\infty$|;
+        v.pred = nil;
+    s.dist = 0;
+\end{codeBlock}
+%\end{noindent}
+\vspace{-1em}
+\paragraph{TopoSort für dag}\index{TopoSort}\mbox{}
+\begin{idea}[TopoSort für dag]
+    Erhalten des kürzesten Pfades durch das topologische Sortieren
+\end{idea}
+Laufzeit: $\Theta(|E| + |V|)$
+
+%\begin{noindent}
+\begin{codeBlock}[autogobble]{title={TopoSort-SSSP(G,s,w)    // G muss dag sein}}
+    initSSSP(G,s,w);
+    execute topological sorting
+    FOREACH u in V in topological order DO
+        FOREACH v in adj(u) DO
+            relax(G,u,v,w);
+\end{codeBlock}
+%\end{noindent}
+
+\vspace{-1em}
+\paragraph{Dijkstra-Algorithmus}\index{Dijkstra}\mbox{}\\
+Voraussetzung: Keine negativen Kantengewichte\\
+Laufzeit: $\Theta(|V| \cdot log|V| + |E|)$
+%\begin{noindent}
+\begin{codeBlock}[autogobble]{title={Dijkstra-SSSP(G,s,w)}}
+    initSSSP(G,s,w);
+    Q = V;
+    WHILE !isEmpty(Q) DO
+        u = EXTRACT-MIN(Q);     // smallest distance
+        FOREACH v in adj(u) DO
+            relax(G,u,v,w);
+\end{codeBlock}
+%\end{noindent}
+\begin{minipage}{.4\textwidth}
+    \includestandalone[]{pictures/dijkstra-fail-graph/dijkstra-fail-graph}
+\end{minipage}
+\begin{minipage}{.6\textwidth}
+    \begin{itemize}
+        \item Beispiel für Problem mit negativen Kantengewisten bei Dijkstra: Dijkstra würde Pfad 1-2-3 liefern, da das Kantengewicht 4 grö\ss{}er als der andere Pfad ist.
+    \end{itemize}
+\end{minipage}
+
+\clearpage
+\subsection{Maximaler Fluss in Graphen}\index{Maximaler Fluss}\mbox{}\vspace{-2em}
+\begin{wrapfigure}[2]{r}{6cm}
+    \includegraphics[width=6cm]{pictures/flussIdee.PNG}
+    \caption{Beispiel Flussnetzwerk}
+\end{wrapfigure}
+\begin{idea}[Maximaler Fluss im Graphen]\mbox{}
+    \begin{itemize}
+        \item Kanten haben Flusswert und maximale Kapazität
+        \item Jeder Knoten (au\ss{}er s und t) haben den gleichen eingehenden und ausgehenden Fluss
+        \item Ziel: Finde maximalen Fluss von s nach t
+        \item s: Source/Quelle
+        \item t: Target/Senke
+    \end{itemize}
+\end{idea}
+
+\begin{definition}[Flussnetzwerk]
+    Ein Flussnetzwerk\index{Flussnetzwerk} ist ein gewichteter, gerichteter Graph $G=(V,E)$ mit Kapazität $c$, so dass
+    $c(u,v) \geq 0$ für $(u,v) \in E$ und $c(u,v) = 0$ für $(u,v) \notin E$, mit zwei Knoten $s,t \in V$,
+    so dass jeder Knoten von $s$ aus erreichbar ist und $t$ von jedem Knoten aus erreichbar ist.
+    Damit gilt $|E| \geq |V| - 1$.
+\end{definition}
+\begin{definition}[Fluss]\index{Fluss}\mbox{}\\
+    Ein Fluss $f: V x V \rightarrow \mathbb{R}$ für ein Flussnetzwerk $G = (V,E)$ mit Kapazität $c$
+    und Quelle $s$ und Senke $t$ erfüllt $0 \leq f(u,v) \leq c(u,v)$ für alle $u,v \in V$, sowie für alle
+    $u \in V - \{s,t\}$: \\
+    $\sum_{v\in V} f(u,v) = \sum_{v\in V} f(v,u)$ (ausgehend = eingehend)
+\end{definition}
+\begin{definition}[Wert eines Flusses]
+    Der Wert $|f|$ eines Flusses $f: V x V \rightarrow \mathbb{R}$ für ein Flussnetzwerk $G$ ist: \\
+    $|f| = \sum_{v\in V} f(s,v) = \sum_{v\in V} f(v,s)$
+\end{definition}
+
+\paragraph{Transformationen}\mbox{}\vspace{1em}\\
+\includegraphics[width=12cm]{pictures/flussTrans1.PNG}\vspace{1em}\\
+\includegraphics[width=12cm]{pictures/flussTrans2.PNG}
+
+\clearpage
+\paragraph{Restkapazitätsgraph}\index{Restkapazitätsgraph}
 \begin{itemize}
-    \item \fatsf{Definition}
-          \begin{itemize}
-              \item SSSP - Single-Source Shortest Path\index{SSSP}
-              \item Von Quelle $s$ ausgehend die kürzesten Pfad zu allen anderen Knoten
-              \item Kürzester Pfad: Pfad mit minimalem Gesamtgewicht von einem zum anderen Knoten
-              \item BFS findet nur minimale Kantenwege (nicht Gewichtswege)
-              \item MST minimiert das Gesamtgewicht des Baumes (nicht zu einzelnen Kanten)
-              \item Negative Kantengewichte sind erlaubt, aber keine Zyklen mit negativem Gesamtgewicht
-          \end{itemize}
+    \item Wird für Ford-Fulkerson benötigt
+\end{itemize}
+Restkapazität $c_f(u,v)$: \\
+\centerline{$c_f(u,v) = \begin{cases}\hiderowcolors
+            c(u,v) - f(u,v) & \text{falls $(u,v) \in E$} \\
+            f(v,u)          & \text{falls $(v,u) \in E$} \\
+            0               & \text{sonst}
+        \end{cases}$}
+$G_f = (V, E_f)$ mit $E_f = \{(u,v) \in V x V | c_f(u,v) > 0 \}$
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=12cm]{pictures/restkapazitätsgraph.PNG}
+    \caption{Beispiel Restkapazitätsgraph}
+\end{figure}
+Suche eines Pfades von $s$ nach $t$ und Erhöhung aller Flüsse um niedrigsten möglichen Wert auf Pfad
 
-    \item \fatsf{Gemeinsame Idee für Algorithmen - Relax}\index{Relax}
-          \begin{itemize}
-              \item Verringere aktuelle Distanz von Knoten $v$, wenn durch Kante $(u,v)$ kürzer erreichbar
-              \item[] \includegraphics[width=12cm]{pictures/ssspRelax.PNG}
-              \item[]%
-                    %\begin{noindent}
-                    \begin{codeBlock}[autogobble]{title={relax(G,u,v,w)}}
-                    IF v.dist > u.dist + w((u,v)) THEN
-                        v.dist = u.dist + w((u,v));
-                        v.pred = u;
-                    \end{codeBlock}
-                    %\end{noindent}
-          \end{itemize}
-          \clearpage
-    \item \fatsf{Bellman-Ford-Algorithmus}\index{Bellman-Ford}
-          \begin{itemize}
-              \item Laufzeit: $\Theta(|E| \cdot |V|)$
-              \item[]%
-                    %\begin{noindent}
-                    \begin{codeBlock}[autogobble,escapeinside=||]{title={Bellman-Ford-SSSP(G,s,w)}}
-                    initSSSP(G,s,w);
-                    FOR i = 1 TO |$\vert V\vert$|-1 DO
-                        FOREACH (u,v) in E DO
-                            relax(G,u,v,w);
-                    FOREACH (u,v) in E DO   // Prüfung ob negativer Zyklus
-                        IF v.dist > u.dist+w((u,v)) THEN
-                            return false;
-                    return true;
-                    \end{codeBlock}
-                    %\end{noindent}
-                    %\begin{noindent}
-                    \begin{codeBlock}[autogobble,escapeinside=||]{title={initSSSP(G,s,w)}}
-                    FOREACH v in V DO
-                        v.dist = |$\infty$|;
-                        v.pred = nil;
-                    s.dist = 0;
-                    \end{codeBlock}
-                    %\end{noindent}
-          \end{itemize}
 
-    \item \fatsf{TopoSort für dag}\index{TopoSort}
-          \begin{itemize}
-              \item Erhalten des kürzesten Pfades durch das topologische Sortieren
-              \item Laufzeit: $\Theta(|E| + |V|)$
-              \item[]%
-                    %\begin{noindent}
-                    \begin{codeBlock}[autogobble]{title={TopoSort-SSSP(G,s,w)    // G muss dag sein}}
-                    initSSSP(G,s,w);
-                    execute topological sorting
-                    FOREACH u in V in topological order DO
-                        FOREACH v in adj(u) DO
-                            relax(G,u,v,w);
-                    \end{codeBlock}
-                    %\end{noindent}
-          \end{itemize}
 
-    \item \fatsf{Dijkstra-Algorithmus}\index{Dijkstra}
-          \begin{itemize}
-              \item Voraussetzung: Keine negativen Kantengewichte
-              \item Laufzeit: $\Theta(|V| \cdot log|V| + |E|)$
-              \item[]%
-                    %\begin{noindent}
-                    \begin{codeBlock}[autogobble]{title={Dijkstra-SSSP(G,s,w)}}
-                    initSSSP(G,s,w);
-                    Q = V;
-                    WHILE !isEmpty(Q) DO
-                        u = EXTRACT-MIN(Q);     // smallest distance
-                        FOREACH v in adj(u) DO
-                            relax(G,u,v,w);
-                    \end{codeBlock}
-                    %\end{noindent}
-              \item \begin{minipage}{.3\textwidth}
-                        \includegraphics[]{pictures/dijkstra-fail-graph/dijkstra-fail-graph}
-                    \end{minipage}
-                    \begin{minipage}{.5\textwidth}
-                        \begin{itemize}
-                            \item Beispiel für Problem mit negativen Kantengewisten bei Dijkstra: Dijkstra würde Pfad 1-2-3 liefern, da das Kantengewicht 4 größer als der andere Pfad ist.
-                        \end{itemize}
-                    \end{minipage}
-          \end{itemize}
+\paragraph{Ford-Fulkerson-Algorithmus}\index{Ford-Fulkerson}\mbox{}
+\begin{idea}[Ford-Fulkerson-Algorithmus]\mbox{}
+    \begin{itemize}
+        \item Suche Pfad von $s$ nach $t$, der noch \fatsf{erweiterbar} ist
+        \item Suche dieses Pfades im Restkapazitätsgraphen $G_f$ (mögliche Zu- und Abflüsse)
+    \end{itemize}
+\end{idea}
+Code:
+%\begin{noindent}
+\begin{codeBlock}[autogobble,escapeinside=||]{title={Ford-Fulkerson(G,s,t,c)}}
+    FOREACH e in E do e.flow = 0;
+    WHILE there is path p from s to t in |$G_{flow}$| DO
+        |$c_{flow}(p)$| = min {|$c_{flow}(u,v)$| : (u,v) in p}
+        FOREACH e in p DO
+            IF e in E THEN
+                e.flow = e.flow + |$c_{flow}(p)$|;
+            ELSE
+                e.flow = e.flow - |$c_{flow}(p)$|;
+\end{codeBlock}
+%\end{noindent}
+\begin{itemize}
+    \item Die Pfadsuche erfolgt z.B. per BFS oder DFS
+    \item Laufzeit: $O(|E| \cdot u \cdot |f^*|)$ \\
+          ($O(|V| \cdot |E|^2)$ Mit Verbesserung nach Edmonds-Karp) \\
+          (wobei $f^*$ maximaler Fluss und Fluss um bis zu $\frac{1}{u}$ pro Iteration wächst)
 \end{itemize}
 \clearpage
-\subsection{Maximaler Fluss in Graphen}\index{Maximaler Fluss}
-\begin{itemize}
-    \item \fatsf{Idee}
-          \begin{itemize}
-              \item[]
-                    \begin{minipage}{0.35\textwidth}
-                        \includegraphics[width=7cm]{pictures/flussIdee.PNG}
-                    \end{minipage}
-                    \begin{minipage}{0.55\textwidth}
-                        \begin{itemize}
-                            \item Kanten haben Flusswert und maximale Kapazität
-                            \item Jeder Knoten (außer s und t) haben den gleichen eingehenden und ausgehenden Fluss
-                            \item Ziel: Finde maximalen Fluss von s nach t
-                            \item s: Source/Quelle
-                            \item t: Target/Senke
-                        \end{itemize}
-                    \end{minipage}
-              \item \fatsf{Flussnetzwerk:} \\
-                    Ein Flussnetzwerk\index{Flussnetzwerk} ist ein gewichteter, gerichteter Graph $G=(V,E)$ mit Kapazität $c$, so dass
-                    $c(u,v) \geq 0$ für $(u,v) \in E$ und $c(u,v) = 0$ für $(u,v) \notin E$, mit zwei Knoten $s,t \in V$,
-                    so dass jeder Knoten von $s$ aus erreichbar ist und $t$ von jedem Knoten aus erreichbar ist.
-                    Damit gilt $|E| \geq |V| - 1$.
-              \item \fatsf{Fluss:}\index{Fluss} \\
-                    Ein Fluss $f: V x V \rightarrow \mathbb{R}$ für ein Flussnetzwerk $G = (V,E)$ mit Kapazität $c$
-                    und Quelle $s$ und Senke $t$ erfüllt $0 \leq f(u,v) \leq c(u,v)$ für alle $u,v \in V$, sowie für alle
-                    $u \in V - \{s,t\}$: \\
-                    $\sum_{v\in V} f(u,v) = \sum_{v\in V} f(v,u)$ (ausgehend = eingehend)
-              \item \fatsf{Wert eines Flusses} \\
-                    Der Wert $|f|$ eines Flusses $f: V x V \rightarrow \mathbb{R}$ für ein Flussnetzwerk $G$ ist: \\
-                    $|f| = \sum_{v\in V} f(s,v) = \sum_{v\in V} f(v,s)$
-          \end{itemize}
-
-    \item \fatsf{Transformationen}
-          \begin{itemize}
-              \item[] \includegraphics[width=12cm]{pictures/flussTrans1.PNG}
-              \item[] \includegraphics[width=12cm]{pictures/flussTrans2.PNG}
-          \end{itemize}
-          \clearpage
-    \item \fatsf{Restkapazitätsgraph}\index{Restkapazitätsgraph}
-          \begin{itemize}
-              \item Wird für Ford-Fulkerson benötigt
-              \item Restkapazität $c_f(u,v)$: \\
-                    \centerline{$c_f(u,v) = \begin{cases}
-                                c(u,v) - f(u,v) & \text{falls $(u,v) \in E$} \\
-                                f(v,u)          & \text{falls $(v,u) \in E$} \\
-                                0               & \text{sonst}
-                            \end{cases}$}
-              \item $G_f = (V, E_f)$ mit $E_f = \{(u,v) \in V x V | c_f(u,v) > 0 \}$
-              \item[] \includegraphics[width=12cm]{pictures/restkapazitätsgraph.PNG}
-              \item Suche eines Pfades von $s$ nach $t$ und Erhöhung aller Flüsse um niedrigsten möglichen Wert auf Pfad
-          \end{itemize}
-
-
-    \item \fatsf{Ford-Fulkerson-Algorithmus}\index{Ford-Fulkerson}
-          \begin{itemize}
-              \item Idee: Suche Pfad von $s$ nach $t$, der noch \fatsf{erweiterbar} ist
-              \item Suche dieses Pfades im Restkapazitätsgraphen $G_f$ (mögliche Zu- und Abflüsse)
-              \item Code:
-              \item[]%
-                    %\begin{noindent}
-                    \begin{codeBlock}[autogobble,escapeinside=||]{title={Ford-Fulkerson(G,s,t,c)}}
-                    FOREACH e in E do e.flow = 0;
-                    WHILE there is path p from s to t in |$G_{flow}$| DO
-                        |$c_{flow}(p)$| = min {|$c_{flow}(u,v)$| : (u,v) in p}
-                        FOREACH e in p DO
-                            IF e in E THEN
-                                e.flow = e.flow + |$c_{flow}(p)$|;
-                            ELSE
-                                e.flow = e.flow - |$c_{flow}(p)$|;
-                    \end{codeBlock}
-                    %\end{noindent}
-              \item Die Pfadsuche erfolgt z.B. per BFS oder DFS
-              \item Laufzeit: $O(|E| \cdot u \cdot |f^*|)$ \\
-                    ($O(|V| \cdot |E|^2)$ Mit Verbesserung nach Edmonds-Karp) \\
-                    (wobei $f^*$ maximaler Fluss und Fluss um bis zu $\frac{1}{u}$ pro Iteration wächst)
-                    \pagebreak
-              \item Beispiel:
-              \item[] \includegraphics[width=12cm]{pictures/fordbsp1.PNG}
-              \item[] \includegraphics[width=12cm]{pictures/fordbsp2.PNG}
-          \end{itemize}
-\end{itemize}
+Beispiel:\\
+\includegraphics[width=12cm]{pictures/fordbsp1.PNG}\\
+\includegraphics[width=12cm]{pictures/fordbsp2.PNG}\\
 \clearpage
 \end{document}
