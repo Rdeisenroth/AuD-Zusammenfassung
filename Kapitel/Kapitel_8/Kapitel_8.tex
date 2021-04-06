@@ -94,7 +94,7 @@ Beispiele: Binäre Addition, Kürzeste Wege, Sortieren, \dots
 \end{itemize}
 
 \paragraph{P versus NP}\mbox{}\vspace{1em}\\
-\includegraphics[width=12cm]{pictures/pnp.PNG}
+\includegraphics[width=12cm]{pictures/pnp\IfDarkModeT{_dark}.PNG}
 \begin{itemize}
       \item Für viele wichtige Probleme ist jedoch unbekannt, ob sie in P (effizient) lösbar sind
       \item Unbekannt ob $P \neq NP$
@@ -146,7 +146,7 @@ Beispiele: Binäre Addition, Kürzeste Wege, Sortieren, \dots
             \item[] $\Rightarrow$ Antworten sind gleich
       \end{itemize}
 \end{idea}
-\includegraphics[width=15cm]{pictures/reduktion1.PNG}\\
+\includegraphics[width=15cm]{pictures/reduktion1\IfDarkModeT{_dark}.PNG}\\
 \textit{Beispiel:}
 \begin{grayInfoBox}
 
@@ -170,13 +170,13 @@ Beispiele: Binäre Addition, Kürzeste Wege, Sortieren, \dots
             in polynomieller Zeit berechenbare Funktion $f: \{0,1\}^* \rightarrow \{0,1\}^*$ existiert, sodass
             für alle $x \in \{0,1\}^*$ gilt: \\
             \centerline{$x \in A$ genau dann, wenn $f(x)\in B$}
-      \item[] \includegraphics[width=12cm]{pictures/reduktion2.PNG}
+      \item[] \includegraphics[width=12cm]{pictures/reduktion2\IfDarkModeT{_dark}.PNG}
 \end{itemize}
 
 \clearpage
 
 \paragraph{Travelling-Salesman Problem}\index{Travelling-Salesman Problem}\mbox{}\\
-\includegraphics[width=.5\textwidth]{pictures/traveling_salesman.png}
+\includegraphics[width=.5\textwidth]{pictures/traveling_salesman\IfDarkModeT{_dark}.png}
 
 \textit{Beschreibung:}
 \begin{itemize}
@@ -185,7 +185,7 @@ Beispiele: Binäre Addition, Kürzeste Wege, Sortieren, \dots
       \item Jede Stadt nur einmal besuchen
       \item Ziel: Minimale Reisekosten
 \end{itemize}
-\includegraphics[width=12cm]{pictures/tsp1.PNG}\\
+\includegraphics[width=12cm]{pictures/tsp1\IfDarkModeT{_dark}.PNG}\\
 \textit{Problem:}
 \begin{itemize}
       \item Anzahl der verschiedenen Rundreisen $(n-1)!$
@@ -216,9 +216,9 @@ Beispiele: Binäre Addition, Kürzeste Wege, Sortieren, \dots
       \item Instanz von TSP ist $<G', c, 0>$ (Konstruktion in polynomieller Zeit) (0: Kosten von 0)
       \item \fatsf{Zeige jetzt:} $G$ besitzt hamiltonischen Kreis $\Leftrightarrow$ G' enthält Tour mit Kosten $\leq$ 0
       \item $\Rightarrow$ Graph $G$ besitzt einen hamiltonischen Kreis $h$
-      \item[] \includegraphics[width=12cm]{pictures/schwer1.PNG}
+      \item[] \includegraphics[width=12cm]{pictures/schwer1\IfDarkModeT{_dark}.PNG}
       \item $\Leftarrow$ Graph $G$ besitzt eine Tour $h'$ mit Kosten kleiner gleich 0
-      \item[] \includegraphics[width=12cm]{pictures/schwer2.PNG}
+      \item[] \includegraphics[width=12cm]{pictures/schwer2\IfDarkModeT{_dark}.PNG}
 \end{itemize}
 
 \end{document}

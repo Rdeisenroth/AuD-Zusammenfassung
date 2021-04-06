@@ -1,7 +1,7 @@
 \documentclass[
     ngerman,
     color=3b,
-    % dark_mode,
+    dark_mode,
     load_common, % Loads a list of commonly used Packages
     summary,
     boxarc,
@@ -49,12 +49,12 @@
 \paragraph{Implementierung}\mbox{}\\
 \begin{minipage}{.60\textwidth-2.22166pt}
     \centering
-    \includegraphics[width=\textwidth]{pictures/skiplistImplement1.PNG}\\
+    \includegraphics[width=\textwidth]{pictures/skiplistImplement1\IfDarkModeT{_dark}.PNG}\\
     \captionof{figure}{Beispiel Skip List}
 \end{minipage}
 \begin{minipage}{.4\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{pictures/skiplistImplement2.PNG}
+    \includegraphics[width=\textwidth]{pictures/skiplistImplement2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 
 \clearpage
@@ -76,7 +76,7 @@ return nil;
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/skiplistSuche.PNG}
+    \includegraphics[width=12cm]{pictures/skiplistSuche\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Suche in einer Skip List}
 \end{figure}
 \paragraph{Einfügen}
@@ -105,7 +105,7 @@ return nil;
 \subsection{Hashtables}\label{Hashtables}\index{Hashtables}
 \mbox{}\vspace{-2em}
 \begin{wrapfigure}[1]{r}{0.4\textwidth}
-    \includegraphics[width=0.4\textwidth]{pictures/hashtableIdee.PNG}
+    \includegraphics[width=0.4\textwidth]{pictures/hashtableIdee\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Hashfunktion}
 \end{wrapfigure}
 \begin{idea}[Hashtable]\mbox{}
@@ -137,7 +137,7 @@ return nil;
           \end{itemize}
 \end{description}
 \begin{wrapfigure}[5]{r}{0.4\textwidth}
-    \includegraphics[width=0.4\textwidth]{pictures/hashtableLinkedList.PNG}
+    \includegraphics[width=0.4\textwidth]{pictures/hashtableLinkedList\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Hashtabelle}
 \end{wrapfigure}
 \paragraph{Hashtables vs. Bäume}
@@ -201,7 +201,7 @@ FOR i = 0 TO X.length - 1 DO
 \end{enumerate}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=15cm]{pictures/bloomCreate.PNG}
+    \includegraphics[width=15cm]{pictures/bloomCreate\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Bloom Filter}
 \end{figure}
 \clearpage
@@ -220,7 +220,7 @@ return result;
 \end{itemize}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=13.5cm]{pictures/bloomSearch.PNG}
+    \includegraphics[width=13.5cm]{pictures/bloomSearch\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Suche im Bloom Filter}
 \end{figure}
 \begin{itemize}

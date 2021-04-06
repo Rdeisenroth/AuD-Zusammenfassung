@@ -243,7 +243,7 @@ Laufzeit: $O(h) = O(log~n)$
 Delete kann die RSB-Bedingung verletzen. Das fixup hat vier fälle:
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth-2cm]{pictures/deleteFixuoRBTCases.png}
+    \includegraphics[width=\textwidth-2cm]{pictures/deleteFixuoRBTCases\IfDarkModeT{_dark}.png}
     \caption{Fälle für Fixup bei delete in RSB}
 \end{figure}
 \begin{enumerate}
@@ -315,7 +315,7 @@ Delete kann die RSB-Bedingung verletzen. Das fixup hat vier fälle:
 \subsection{AVL-Bäume}\label{AVL-Baeume}\index{AVL-Bäume}
 \begin{wrapfigure}[5]{r}{.4\textwidth}
     % \centering
-    \includegraphics[width=7cm]{pictures/avlbaum.PNG}
+    \includegraphics[width=7cm]{pictures/avlbaum\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Balance AVL Baum}
 \end{wrapfigure}\mbox{}
 \begin{definition}[AVL-Baum]\mbox{}\\
@@ -356,17 +356,17 @@ $h \leq 1.441 \cdot log~n$ (optimierte Konstanten - 1,441 vs 2 (RBT))\\
 \end{itemize}
 
 \begin{minipage}{0.5\textwidth}
-    \centering\includegraphics[width=\textwidth]{pictures/avlcase1.PNG}
+    \centering\includegraphics[width=\textwidth]{pictures/avlcase1\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
-    \centering\includegraphics[width=\textwidth]{pictures/avlcase34.PNG}
+    \centering\includegraphics[width=\textwidth]{pictures/avlcase34\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 
 \begin{minipage}{0.5\textwidth}
-    \centering\includegraphics[width=\textwidth]{pictures/avlcase2_1.PNG}
+    \centering\includegraphics[width=\textwidth]{pictures/avlcase2_1\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{0.5\textwidth}
-    \centering\includegraphics[width=\textwidth]{pictures/avlcase2_2.PNG}
+    \centering\includegraphics[width=\textwidth]{pictures/avlcase2_2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 
 
@@ -414,9 +414,9 @@ WHILE z != T.root DO
 \end{codeBlock}
 %\end{noindent}
 
-\index{Zig-Zag} \includegraphics[width=12cm]{pictures/zigzag.PNG}\\
-\index{Zig-Zig} \includegraphics[width=11cm]{pictures/zigzig.PNG}\vspace{1em}\\
-\index{Zig} \includegraphics[width=11cm]{pictures/zig.PNG}\\
+\index{Zig-Zag} \includegraphics[width=12cm]{pictures/zigzag\IfDarkModeT{_dark}.PNG}\\
+\index{Zig-Zig} \includegraphics[width=11cm]{pictures/zigzig\IfDarkModeT{_dark}.PNG}\vspace{1em}\\
+\index{Zig} \includegraphics[width=11cm]{pictures/zig\IfDarkModeT{_dark}.PNG}\\
 
 \vspace*{-1em}
 \begin{description}[itemsep=.8em]
@@ -459,7 +459,7 @@ WHILE z != T.root DO
 \end{definition}
 
 \paragraph{Heaps durch Arrays}\mbox{}\\
-\includegraphics[width=8cm]{pictures/heapArr.PNG}
+\includegraphics[width=8cm]{pictures/heapArr\IfDarkModeT{_dark}.PNG}
 
 \paragraph{Einfügen}\mbox{}
 \begin{idea}[Einfügen]
@@ -500,7 +500,7 @@ Laufzeit: $O(h) = O(log~n)$
 \end{minipage}
 \begin{minipage}[t]{0.43\textwidth}\mbox{}
     \centering
-    \includegraphics[width=\textwidth]{pictures/heapDelete.PNG}
+    \includegraphics[width=\textwidth]{pictures/heapDelete\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Löschen des Maximums im Binären Max-Heap}
 \end{minipage}
 
@@ -562,7 +562,7 @@ WHILE !isEmpty(H) DO
     \end{itemize}
 \end{definition}
 
-\includegraphics[width=15cm]{pictures/bbaum.PNG}
+\includegraphics[width=15cm]{pictures/bbaum\IfDarkModeT{_dark}.PNG}
 \begin{grayInfoBox}
     \begin{itemize}
         \item Höhe B-Baum: $h \leq log_t \frac{n+1}{2}$ (Grad $t$ und $n$ Werte)
@@ -571,7 +571,7 @@ WHILE !isEmpty(H) DO
 \end{grayInfoBox}
 \clearpage
 \paragraph{Suche}\mbox{}\\
-\includegraphics[width=12cm]{pictures/bbaumSuche.PNG}
+\includegraphics[width=12cm]{pictures/bbaumSuche\IfDarkModeT{_dark}.PNG}
 %\begin{noindent}
 \begin{codeBlock}[autogobble]{title={search(x, k)}}
 WHILE x != nil DO
@@ -624,7 +624,7 @@ Füge z in Blatt ein
     \item Durchlaufen des Baumes von oben und Anwendung der folgenden Algorithmen
 \end{itemize}
 \begin{minipage}{0.25\textwidth}
-    \includegraphics[width=4cm]{pictures/bbaumMelt.PNG}
+    \includegraphics[width=4cm]{pictures/bbaumMelt\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{0.75\textwidth}
     Allgemeines Verschmelzen:\index{Verschmelzen}
@@ -635,7 +635,7 @@ Füge z in Blatt ein
     \end{itemize}
 \end{minipage} \vspace{1em}\\
 \begin{minipage}{0.25\textwidth}
-    \includegraphics[width=4cm]{pictures/bbaumRot.PNG}
+    \includegraphics[width=4cm]{pictures/bbaumRot\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{0.75\textwidth}
     Allgemeines Rotieren/Verschieben:

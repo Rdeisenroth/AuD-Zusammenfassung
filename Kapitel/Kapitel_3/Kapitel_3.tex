@@ -1,7 +1,7 @@
 \documentclass[
     ngerman,
     color=3b,
-    % dark_mode,
+    dark_mode,
     load_common, % Loads a list of commonly used Packages
     summary,
     boxarc,
@@ -177,7 +177,7 @@ Im Durchschnitt für jeder der mindestens \texttt{n} Befehle $\Theta(1)$ Umkopie
 \paragraph{Aufbau}\mbox{}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/linkedList1.pdf}
+    \includegraphics[width=12cm]{pictures/linkedList1\IfDarkModeT{_dark}.pdf}
     \caption{Aufbau Verkettete Liste}
 \end{figure}
 
@@ -186,7 +186,7 @@ Im Durchschnitt für jeder der mindestens \texttt{n} Befehle $\Theta(1)$ Umkopie
 Entspricht doppelter Verkettung zwischen 45 und 12
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/linkedList2.pdf}
+    \includegraphics[width=12cm]{pictures/linkedList2\IfDarkModeT{_dark}.pdf}
     \caption{Beispiel Verkettete Liste durch Arrays}
 \end{figure}
 
@@ -204,7 +204,7 @@ Entspricht doppelter Verkettung zwischen 45 und 12
 Laufzeit beträgt im Worst Case $\Theta(n)\Rightarrow$ Keine Überprüfung, ob Wert bereits in Liste, sonst $\Theta(n)$
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/verketteteListenSuche.pdf}
+    \includegraphics[width=12cm]{pictures/verketteteListenSuche\IfDarkModeT{_dark}.pdf}
     \caption{Grafische Darstellung einer Suche in Listen}
 \end{figure}
 \FloatBarrier
@@ -243,7 +243,7 @@ Laufzeit beträgt im Worst Case $\Theta(n)\Rightarrow$ Keine Überprüfung, ob W
 Ziel ist die Eliminierung der Spezialfälle für Listenanfang/-ende
 \begin{figure}[h]
     \centering
-    \includegraphics[width=10cm]{pictures/linkedListSentinel.pdf}
+    \includegraphics[width=10cm]{pictures/linkedListSentinel\IfDarkModeT{_dark}.pdf}
     \caption{Beispiel Sentinel}
 \end{figure}\mbox{}\\
 Löschen mit Sentinels:
@@ -295,7 +295,7 @@ Löschen mit Sentinels:
 Bekannt: Maximale Elemente gleichzeitig in Queue
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=12cm]{pictures/queueZyklisch.pdf}
+    \includegraphics[width=12cm]{pictures/queueZyklisch\IfDarkModeT{_dark}.pdf}
     \caption{Beispiel Queue als Zyklisches Array}
 \end{figure}
 
@@ -356,7 +356,7 @@ Methoden für zyklisches Array:\\
 \paragraph{Queues durch einfach verkettete Listen}\mbox{}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/queuesListe1.pdf}
+    \includegraphics[width=12cm]{pictures/queuesListe1\IfDarkModeT{_dark}.pdf}
     \caption{Beispiel Queue durch einfach verkettete Liste}
 \end{figure}
 \FloatBarrier
@@ -418,7 +418,7 @@ Laufzeit:
 \paragraph{Bäume durch verkettete Listen}\mbox{}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/binäreBaumeListe.PNG}
+    \includegraphics[width=12cm]{pictures/binäreBaumeListe\IfDarkModeT{_dark}.PNG}
     \caption{Binärbaum-Beispiel}
 \end{figure}
 \FloatBarrier
@@ -426,16 +426,16 @@ Bäume sind \enquote{azyklisch}(also \enquote{keine Schleifen zwischen Knoten})
 
 \paragraph{Darstellung als (ungerichteter) Graph}\mbox{}\\
 \begin{minipage}[c]{0.49\textwidth}\mbox{}
-    \includegraphics[width=\linewidth-5pt]{pictures/baumGraph1.PNG}
+    \includegraphics[width=\linewidth-5pt]{pictures/baumGraph1\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}[c]{0.5\textwidth}\mbox{}
-    \includegraphics[width=\linewidth-5pt]{pictures/baumGraph2.PNG}
+    \includegraphics[width=\linewidth-5pt]{pictures/baumGraph2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 
 \paragraph{Allgemeine Begrifflichkeiten}\index{Vorfahre}\index{ancestor}\index{Wurzel}\index{root}\index{parent}\index{Elternknoten}\index{Kindknoten}\index{child}\index{Geschwisterknoten}\index{sibling}\index{Nachkomme}\index{descendant}\index{Blatt}\index{leaf}\index{Höhe (Baum)}\mbox{}\\
 
 \begin{minipage}[c]{0.59\textwidth}\mbox{}
-    \includegraphics[width=\linewidth-10pt]{pictures/baumBegriffe1.PNG}
+    \includegraphics[width=\linewidth-10pt]{pictures/baumBegriffe1\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}[c]{0.4\textwidth}\mbox{}
     \vspace{-.5cm}
@@ -449,7 +449,7 @@ Bäume sind \enquote{azyklisch}(also \enquote{keine Schleifen zwischen Knoten})
 \clearpage
 \paragraph{Begrifflichkeiten Binärbaum}\index{Halbblatt}\index{Teilbaum}\mbox{}\\
 \begin{minipage}[c]{0.45\textwidth}\mbox{}
-    \includegraphics[width=8cm]{pictures/binärbaumBegriffe}
+    \includegraphics[width=8cm]{pictures/binärbaumBegriffe\IfDarkModeT{_dark}}
 \end{minipage}
 \begin{minipage}[c]{0.45\textwidth}\mbox{}
     \begin{itemize}
@@ -481,13 +481,13 @@ Bäume sind \enquote{azyklisch}(also \enquote{keine Schleifen zwischen Knoten})
           \end{enumerate}
 \end{itemize}
 \begin{minipage}[c]{0.4\textwidth}\mbox{}
-    \includegraphics[width=6cm]{pictures/inorder1}
+    \includegraphics[width=6cm]{pictures/inorder1\IfDarkModeT{_dark}}
 \end{minipage}
 \begin{minipage}[c]{0.5\textwidth}\mbox{}
     \begin{itemize}
-        \item[] \includegraphics[width=6cm]{pictures/inorder2}
-        \item[] \includegraphics[width=6cm]{pictures/preorder1}
-        \item[] \includegraphics[width=6cm]{pictures/postorder1}
+        \item[] \includegraphics[width=6cm]{pictures/inorder2\IfDarkModeT{_dark}}
+        \item[] \includegraphics[width=6cm]{pictures/preorder1\IfDarkModeT{_dark}}
+        \item[] \includegraphics[width=6cm]{pictures/postorder1\IfDarkModeT{_dark}}
     \end{itemize}
 \end{minipage}
 \paragraph{Code:}\index{inorder}\index{preorder}\index{postorder}\mbox{}\vspace*{-1em}\\
@@ -526,7 +526,7 @@ Bäume sind \enquote{azyklisch}(also \enquote{keine Schleifen zwischen Knoten})
 \begin{itemize}
     \item Nur In-, Pre-, Postorder reichen nicht zur eindeutigen Bestimmbarkeit von Bäumen
     \item[] $\Rightarrow$ Preorder/Postorder $+$ Inorder $+$ eindeutige Werte sind notwendig
-    \item[] \includegraphics[width=12cm]{pictures/bestimmbarkeitBaum.PNG}
+    \item[] \includegraphics[width=12cm]{pictures/bestimmbarkeitBaum\IfDarkModeT{_dark}.PNG}
 \end{itemize}
 
 
@@ -588,7 +588,7 @@ Laufzeit = $\Theta(1)$
 Hier: Ersetze $x$ durch Halbblatt ganz rechts
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/löschenBaum.PNG}
+    \includegraphics[width=12cm]{pictures/löschenBaum\IfDarkModeT{_dark}.PNG}
     \caption{Löschen des Knoten 17}
 \end{figure}
 \clearpage
@@ -612,7 +612,7 @@ Hier: Ersetze $x$ durch Halbblatt ganz rechts
 \end{minipage}
 \begin{minipage}[c]{0.4\textwidth}
     \centering
-    \includegraphics[width=5cm]{pictures/löschenBaumConnect.PNG}
+    \includegraphics[width=5cm]{pictures/löschenBaumConnect\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Connect-Algorithmus Binärbaum}
 \end{minipage}
 
@@ -640,7 +640,7 @@ Hier: Ersetze $x$ durch Halbblatt ganz rechts
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
     \centering
-    \includegraphics[width=6cm]{pictures/löschenBaumDelete.PNG}
+    \includegraphics[width=6cm]{pictures/löschenBaumDelete\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Delete-Algorithmus Binärbaum}
 \end{minipage}
 
@@ -687,7 +687,7 @@ Hier: Ersetze $x$ durch Halbblatt ganz rechts
 \end{minipage}
 \begin{minipage}[c]{0.5\textwidth}
     \centering
-    \includegraphics[width=9cm]{pictures/binärerSuchbaumSuche.PNG}
+    \includegraphics[width=9cm]{pictures/binärerSuchbaumSuche\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Search-Algorithmus im Binärbaum}
 \end{minipage}
 \clearpage
@@ -717,7 +717,7 @@ Code:\label{BST-Insert}
 Laufzeit = $O(h)$
 \begin{figure}[h]
     \centering
-    \includegraphics[width=8cm]{pictures/binärerSuchbaumEinfügen.PNG}
+    \includegraphics[width=8cm]{pictures/binärerSuchbaumEinfügen\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel einfügen in Binären Suchbaum}
 \end{figure}
 
@@ -727,17 +727,17 @@ Laufzeit = $O(h)$
 wir Unterscheiden drei verschiedene Fälle:
 \begin{figure}[h]
     % \centering
-    \includegraphics[width=9cm]{pictures/binärerSuchbaumLöschen1.PNG}
+    \includegraphics[width=9cm]{pictures/binärerSuchbaumLöschen1\IfDarkModeT{_dark}.PNG}
     % \caption{Löschen im BST-Fall 1}
 \end{figure}
 \begin{figure}[h]
     % \centering
-    \includegraphics[width=9cm]{pictures/binärerSuchbaumLöschen2.PNG}
+    \includegraphics[width=9cm]{pictures/binärerSuchbaumLöschen2\IfDarkModeT{_dark}.PNG}
     % \caption{Löschen im BST-Fall 2}
 \end{figure}
 \begin{figure}[h]
     % \centering
-    \includegraphics[width=9cm]{pictures/binärerSuchbaumLöschen3.PNG}
+    \includegraphics[width=9cm]{pictures/binärerSuchbaumLöschen3\IfDarkModeT{_dark}.PNG}
     % \caption{Löschen im BST-Fall 3}
 \end{figure}
 \clearpage
@@ -801,7 +801,7 @@ Laufzeit ist damit besser, wenn viele Suchoperationen und $h$ klein relativ zu $
 \end{itemize}
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=12cm]{pictures/suchbaumSuchindex.PNG}
+    \includegraphics[width=12cm]{pictures/suchbaumSuchindex\IfDarkModeT{_dark}.PNG}
     \caption{Suchbäume als Suchindex}
 \end{figure}
 \clearpage

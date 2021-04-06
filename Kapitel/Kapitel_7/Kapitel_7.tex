@@ -29,7 +29,7 @@ Anwendung, wenn sich Teilprobleme überlappen:
 
 \subsubsection{Stabzerlegungsproblem}\index{Stabzerlegungsproblem}
 
-\includegraphics[width=12cm]{pictures/stabzerlegungsproblem.pdf}\\
+\includegraphics[width=12cm]{pictures/stabzerlegungsproblem\IfDarkModeT{_dark}.pdf}\\
 Optimaler Erlös: zwei 2cm lange Stücke ($5+5=10$)\\
 \paragraph{Aufteilung der Stange}
 \begin{itemize}
@@ -136,7 +136,7 @@ Laufzeit: $\Theta(n^2)$
 \end{minipage}
 
 Teilproblemgraph ($i \rightarrow j$ bedeutet, dass Berechnung von $r_i$ den Wert $r_j$ benutzt)\\
-\includegraphics[width=8cm]{pictures/teilproblemgraph.pdf}
+\includegraphics[width=8cm]{pictures/teilproblemgraph\IfDarkModeT{_dark}.pdf}
 
 
 \paragraph{Fibonacci-Zahlen}\index{Fibonacci-Zahlen}
@@ -155,7 +155,7 @@ Teilproblemgraph ($i \rightarrow j$ bedeutet, dass Berechnung von $r_i$ den Wert
     return f;
 \end{codeBlock}
 %\end{noindent}
-\includegraphics[width=13cm]{pictures/fibBaum.pdf}\\
+\includegraphics[width=13cm]{pictures/fibBaum\IfDarkModeT{_dark}.pdf}\\
 Gleiche Teilprobleme werden wieder mehrmals gelöst
 
 \clearpage
@@ -224,10 +224,10 @@ Hier wieder Berechnen aller Teilprobleme von unten beginnend
 \end{definition}
 
 \begin{minipage}{0.6\textwidth}
-    \includegraphics[width=10cm]{pictures/aktivProblem1.PNG}
+    \includegraphics[width=10cm]{pictures/aktivProblem1\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{0.3\textwidth}
-    \includegraphics[width=4cm]{pictures/aktivProblem2.PNG}
+    \includegraphics[width=4cm]{pictures/aktivProblem2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 
 \paragraph{Ansatz mittels dynamischer Programmierung}
@@ -295,7 +295,7 @@ Laufzeit: $\Theta(n)$
 \subsection{Backtracking}\index{Backtracking}
 \paragraph{Suchbaum - Baum der Möglichkeiten}\mbox{}\\
 Darstellung aller für ein Problem bestehenden Möglichkeiten\\
-\includegraphics[width=14cm]{pictures/suchbaum.pdf}
+\includegraphics[width=14cm]{pictures/suchbaum\IfDarkModeT{_dark}.pdf}
 \begin{idea}[Backtracking]\mbox{}
     \begin{itemize}
         \item Lösung finden via Trial and error
@@ -359,7 +359,7 @@ Damen eine andere schlägt.
 %\end{noindent}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=16cm]{pictures/damenSuchbaum.PNG}
+    \includegraphics[width=16cm]{pictures/damenSuchbaum\IfDarkModeT{_dark}.PNG}
     \caption{Mögliche Pfade von Place-Queens}
 \end{figure}
 
@@ -370,7 +370,7 @@ Damen eine andere schlägt.
 \subsection{Metaheuristiken}\index{Metaheuristiken}
 \paragraph{Optimierungsproblem}\index{Optimierungsproblem}\mbox{}\\
 \begin{minipage}{10cm}
-    \includegraphics[width=10cm]{pictures/optimierungsproblem.PNG}
+    \includegraphics[width=10cm]{pictures/optimierungsproblem\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Optimierungsproblem}
 \end{minipage}
 \begin{minipage}{\textwidth-10cm-2.22168pt}
@@ -423,7 +423,7 @@ Damen eine andere schlägt.
 Beispiel:
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/rucksack1.PNG}
+    \includegraphics[width=12cm]{pictures/rucksack1\IfDarkModeT{_dark}.PNG}
     \caption{Beispielgegenstände für Rucksackproblem}
 \end{figure}
 \begin{itemize}
@@ -439,7 +439,7 @@ Beispiel:
           \end{itemize}
 \end{itemize}
 \begin{minipage}{7.2cm}
-    \includegraphics[width=7cm]{pictures/nachbarschaft.PNG}
+    \includegraphics[width=7cm]{pictures/nachbarschaft\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{\textwidth-7.2cm-2.22168pt}
     \fatsf{Nachbarschaft:}
@@ -743,21 +743,21 @@ return best
               \item $k$-Bit Binärzähler hier als Array
               \item Codierung der Zahl als $x=\sum^{k-1}_{i=0}2^i b_i$
               \item Initialer Array für $x = 0$:
-              \item[]\includegraphics[width=9cm,trim={0 .8cm 0 .6cm},clip]{pictures/bitzähler.png}
+              \item[]\includegraphics[width=9cm,trim={0 .8cm 0 .6cm},clip]{pictures/bitzähler\IfDarkModeT{_dark}.png}
           \end{itemize}
     \item [Inkrementieren eines Binärzählers]
           \begin{itemize}
               \item Erhöhe $x$ um 1
               \item Beispiel: $x=3$
               \item \texttt{INCREMENT} kostet 3, da sich drei Bitpositionen ändern
-              \item[] \includegraphics[width=9cm]{pictures/increment.PNG}
+              \item[] \includegraphics[width=9cm]{pictures/increment\IfDarkModeT{_dark}.PNG}
           \end{itemize}
           \vspace*{-.2cm}
     \item [Teuerste INCREMENT-Operation]
           \begin{itemize}
               \item \texttt{INCREMENT} flippt $k-1$ Bits von 1 zu 0 und $1$ Bit von 0 auf 1
               \item Kosten nicht konstant, stark abhängig von Datenstruktur
-              \item[] \includegraphics[width=9cm]{pictures/incrementEXP.PNG}
+              \item[] \includegraphics[width=9cm]{pictures/incrementEXP\IfDarkModeT{_dark}.PNG}
           \end{itemize}
     \item [Traditionelle Worst-Case Analyse]
           \begin{itemize}
@@ -782,14 +782,14 @@ return best
 \textit{Durchführung:}\\
 
 \begin{minipage}{0.5\textwidth}
-    \includegraphics[width=\textwidth]{pictures/aggregat1.PNG}
+    \includegraphics[width=\textwidth]{pictures/aggregat1\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{0.5\textwidth-2.22168pt}
-    \includegraphics[width=\textwidth]{pictures/aggregat2.PNG}
+    \includegraphics[width=\textwidth]{pictures/aggregat2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \vspace{1em}\\
 \begin{minipage}{0.5\textwidth}
-    \includegraphics[width=\textwidth]{pictures/aggregat3.PNG}
+    \includegraphics[width=\textwidth]{pictures/aggregat3\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \begin{minipage}{0.5\textwidth-2.22168pt}
     \begin{itemize}
@@ -841,7 +841,7 @@ return best
               \item Jede Bitflip Operation kostet zusätzlich 1 Einheit
               \item Setzen Bit 0 $\rightarrow$ 1: Zahlt 2 ein, kostet aber 1 $\rightarrow$ +1 Guthaben
               \item Setzen Bit 1 $\rightarrow$ 0: Zahlt 0 ein, kostet aber 1 $\rightarrow$ -1 Guthaben
-              \item[] \includegraphics[width=12cm]{pictures/guthaben.PNG}
+              \item[] \includegraphics[width=12cm]{pictures/guthaben\IfDarkModeT{_dark}.PNG}
           \end{itemize}
 
 \textit{Obere Schranken der Kosten:}

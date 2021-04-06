@@ -47,12 +47,12 @@
     \centering
     \begin{subfigure}[c]{.5\textwidth}
         \centering
-        \includegraphics[width=.5\textwidth]{pictures/graph1.PNG}
+        \includegraphics[width=.5\textwidth]{pictures/graph1\IfDarkModeT{_dark}.PNG}
         \caption{Darstellung als Adjazentmatrix}
     \end{subfigure}
     \begin{subfigure}[c]{.49\textwidth}
         \centering
-        \includegraphics[width=.5\textwidth]{pictures/graph2.PNG}
+        \includegraphics[width=.5\textwidth]{pictures/graph2\IfDarkModeT{_dark}.PNG}
         \caption{Grafische Darstellung}
     \end{subfigure}
     \caption{Beispielhafte Darstellung eines Graphen}
@@ -170,7 +170,7 @@ ELSE
 \paragraph{Abgeleiteter BFS-Baum}\mbox{}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=14cm]{pictures/bfsBaum.PNG}
+    \includegraphics[width=14cm]{pictures/bfsBaum\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel BFS-Baum}
 \end{figure}
 \begin{itemize}
@@ -222,7 +222,7 @@ u.finish = time;        // finish time
 \begin{wrapfigure}[4]{r}{9cm}
     \centering
     % trim={<left> <lower> <right> <upper>}
-    \includegraphics[width=9cm,trim={0 2.2cm 0 0},clip]{pictures/dfswald.PNG}
+    \includegraphics[width=9cm,trim={0 2.2cm 0 0},clip]{pictures/dfswald\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel DFS-Wald}
 \end{wrapfigure}
 \begin{itemize}
@@ -242,7 +242,7 @@ u.finish = time;        // finish time
 \paragraph{Anwendungen DFS}
 \begin{wrapfigure}[5]{r}{8cm}
     \centering
-    \includegraphics[width=8cm]{pictures/topo.PNG}
+    \includegraphics[width=8cm]{pictures/topo\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Topoligisches Sortieren}
 \end{wrapfigure}
 \begin{itemize}
@@ -266,7 +266,7 @@ u.finish = time;        // finish time
 \paragraph{Starke Zusammenhangskomponenten}\index{Starke Zusammenhangskomponenten}\mbox{}\vspace{-1em}\\
 \begin{wrapfigure}[5]{r}{6cm}
     \centering
-    \includegraphics[width=6cm]{pictures/scc.PNG}
+    \includegraphics[width=6cm]{pictures/scc\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Starke Zusammenhangskomponenten}
 \end{wrapfigure}
 Knotenmenge $C \subseteq V$, so dass es zwischen zwei Knoten $u,v \in C$ einen Pfad von $u$ nach $v$ gibt und es keine Menge $D \subseteq V$ mit $C \subsetneq D$ gibt, für die obiges auch gilt.\\
@@ -313,7 +313,7 @@ return A
 \end{codeBlock}
 %\end{noindent}
 \begin{minipage}{0.35\textwidth}
-    \includegraphics[width=6cm]{pictures/mstTerm.PNG}
+    \includegraphics[width=6cm]{pictures/mstTerm\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Ausführung genericMST()}
 \end{minipage}
 \begin{minipage}{0.55\textwidth}
@@ -386,7 +386,7 @@ return A;
 \vspace{-1em}
 \paragraph{Gemeinsame Idee für Algorithmen - Relax}\index{Relax}\mbox{}\\
 Verringere aktuelle Distanz von Knoten $v$, wenn durch Kante $(u,v)$ kürzer erreichbar\\
-\includegraphics[width=12cm]{pictures/ssspRelax.PNG}
+\includegraphics[width=12cm]{pictures/ssspRelax\IfDarkModeT{_dark}.PNG}
 %\begin{noindent}
 \begin{codeBlock}[autogobble]{title={relax(G,u,v,w)}}
 IF v.dist > u.dist + w((u,v)) THEN
@@ -460,7 +460,7 @@ Laufzeit: $\Theta(|V| \cdot log|V| + |E|)$
 \clearpage
 \subsection{Maximaler Fluss in Graphen}\index{Maximaler Fluss}\mbox{}\vspace{-2em}
 \begin{wrapfigure}[2]{r}{6cm}
-    \includegraphics[width=6cm]{pictures/flussIdee.PNG}
+    \includegraphics[width=6cm]{pictures/flussIdee\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Flussnetzwerk}
 \end{wrapfigure}
 \begin{idea}[Maximaler Fluss im Graphen]\mbox{}
@@ -491,8 +491,8 @@ Laufzeit: $\Theta(|V| \cdot log|V| + |E|)$
 \end{definition}
 
 \paragraph{Transformationen}\mbox{}\vspace{1em}\\
-\includegraphics[width=12cm]{pictures/flussTrans1.PNG}\vspace{1em}\\
-\includegraphics[width=12cm]{pictures/flussTrans2.PNG}
+\includegraphics[width=12cm]{pictures/flussTrans1\IfDarkModeT{_dark}.PNG}\vspace{1em}\\
+\includegraphics[width=12cm]{pictures/flussTrans2\IfDarkModeT{_dark}.PNG}
 
 \clearpage
 \paragraph{Restkapazitätsgraph}\index{Restkapazitätsgraph}
@@ -508,7 +508,7 @@ Restkapazität $c_f(u,v)$: \\
 $G_f = (V, E_f)$ mit $E_f = \{(u,v) \in V x V | c_f(u,v) > 0 \}$
 \begin{figure}[h]
     \centering
-    \includegraphics[width=12cm]{pictures/restkapazitätsgraph.PNG}
+    \includegraphics[width=12cm]{pictures/restkapazitätsgraph\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Restkapazitätsgraph}
 \end{figure}
 Suche eines Pfades von $s$ nach $t$ und Erhöhung aller Flüsse um niedrigsten möglichen Wert auf Pfad
@@ -543,7 +543,7 @@ Code:
 \end{itemize}
 \clearpage
 Beispiel:\\
-\includegraphics[width=12cm]{pictures/fordbsp1.PNG}\\
-\includegraphics[width=12cm]{pictures/fordbsp2.PNG}\\
+\includegraphics[width=12cm]{pictures/fordbsp1\IfDarkModeT{_dark}.PNG}\\
+\includegraphics[width=12cm]{pictures/fordbsp2\IfDarkModeT{_dark}.PNG}\\
 \clearpage
 \end{document}
