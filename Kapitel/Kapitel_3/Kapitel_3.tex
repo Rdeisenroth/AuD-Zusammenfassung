@@ -64,7 +64,7 @@
     \item [\texttt{push(k)}] führt dazu, dass \texttt{s.Top} sich eins nach rechts bewegt
 \end{description}
 
-\paragraph{Stacks als Array - Methoden, falls maximale Größe bekannt}\mbox{}\\
+\paragraph{Stacks als Array - Methoden, falls maximale Grö\ss{}e bekannt}\mbox{}\\
 \begin{minipage}[t]{.5\textwidth}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=new(S)}
@@ -107,15 +107,15 @@
 \end{minipage}
 %\item[] \includegraphics[width=12cm]{pictures/arrayMethods1}
 
-\paragraph{Stacks mit variabler Größe - Einfach}
+\paragraph{Stacks mit variabler Grö\ss{}e - Einfach}
 \begin{itemize}
-    \item Falls \texttt{push(k)} bei vollem Array $\Rightarrow$ Vergößerung des Arrays
+    \item Falls \texttt{push(k)} bei vollem Array $\Rightarrow$ Vergö\ss{}erung des Arrays
     \item Erzeugen eines neuen Arrays mit Länge + 1 und Umkopieren aller Elemente
     \item Durchschnittlich $\Omega(n)$ Kopierschritte pro \texttt{push}-Befehl
 \end{itemize}
 \clearpage
-\paragraph{Stacks mit variabler Größe - Verbesserung}\mbox{}
-\begin{idea}[Stacks mit Variabler Größe]\mbox{}
+\paragraph{Stacks mit variabler Grö\ss{}e - Verbesserung}\mbox{}
+\begin{idea}[Stacks mit Variabler Grö\ss{}e]\mbox{}
     \begin{itemize}
         \item Wenn Grenze erreicht, Verdopplung des Speichers und Kopieren der Elemente
         \item Falls weniger als ein Viertel belegt, schrumpfe das Array wieder

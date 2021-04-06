@@ -40,7 +40,7 @@
         \item $h \leq 2 \cdot log_2(n+1)$  ($n$ Knoten)
         \item In jedem Unterteilbaum gleiche Anzahl schwarzer Knoten
         \item Maximal zusätzlich gleiche Anzahl roter Knoten auf diesem Pfad
-        \item Einigermaßen ausbalanciert $\Rightarrow$ Höhe $O(log~n)$
+        \item Einigerma\ss{}en ausbalanciert $\Rightarrow$ Höhe $O(log~n)$
     \end{itemize}
 \end{grayInfoBox}
 Alle folgenden Algorithmen arbeiten mithilfe eines Sentinels (zeigt auf sich selbst)
@@ -112,7 +112,7 @@ Also müssen wir:
 \begin{itemize}
     \item nach Rotation die root des Baumes ggf auf schwarz setzen
     \item Überprüfen, ob RSB-Bedingung verletzt wurde
-    \item Bloß wenn das parent auch rot ist kommen wir in Verlegenheit $\Longrightarrow$ wir müssen den Algorithmus starten
+    \item Blo\ss{} wenn das parent auch rot ist kommen wir in Verlegenheit $\Longrightarrow$ wir müssen den Algorithmus starten
 \end{itemize}
 
 Fälle falls $z.parent$ rot ist:\\
@@ -434,8 +434,8 @@ WHILE z != T.root DO
               \item Laufzeit: $O(h)$
               \item[1.] Spüle gesuchten Knoten per Splay-Operation nach oben
               \item[2.] Lösche den gesuchten Knoten (Wenn einer der beiden entstehenden Teilbäume leer, dann fertig)
-              \item[3.] Spüle den größten Knoten im linken Teilbaum nach oben (kann kein rechtes Kind haben)
-              \item[4.] Hänge rechten Teilbaum an größten Knoten aus 3. an
+              \item[3.] Spüle den grö\ss{}ten Knoten im linken Teilbaum nach oben (kann kein rechtes Kind haben)
+              \item[4.] Hänge rechten Teilbaum an grö\ss{}ten Knoten aus 3. an
           \end{itemize}
     \item[Laufzeit Splay-Bäume] \begin{itemize}
               \item Amortisierte Laufzeit: Laufzeit pro Operation über mehrere Operationen hinweg
@@ -566,7 +566,7 @@ WHILE !isEmpty(H) DO
 \begin{grayInfoBox}
     \begin{itemize}
         \item Höhe B-Baum: $h \leq log_t \frac{n+1}{2}$ (Grad $t$ und $n$ Werte)
-        \item B-Baum wird für größere $t$ flacher
+        \item B-Baum wird für grö\ss{}ere $t$ flacher
     \end{itemize}
 \end{grayInfoBox}
 \clearpage

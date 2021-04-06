@@ -33,7 +33,7 @@
     \fatsf{Bedingung}: Schlüssel(werte) müssen vergleichbar sein
 \end{definition}
 \begin{itemize}
-    \item zu sortierende Elemente heißen auch Schlüssel(werte)
+    \item zu sortierende Elemente hei\ss{}en auch Schlüssel(werte)
 \end{itemize}
 \begin{grayInfoBox}[title=Durchführung]
     \begin{itemize}
@@ -67,7 +67,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \begin{definition}[Totale Ordnung]
     Sei $M$ eine nicht leere Menge und $\leq \subseteq M\times M $ eine binäre Relation auf $M$.
 
-    Das Paar $(M,\leq)$ heißt genau dann eine totale Relation auf der Menge $M$, wenn folgende Eigenschaften erfüllt sind:
+    Das Paar $(M,\leq)$ hei\ss{}t genau dann eine totale Relation auf der Menge $M$, wenn folgende Eigenschaften erfüllt sind:
     \begin{itemize}
         \item Reflexivität\index{Reflexivität}: $\forall x \in M: x \leq x$
         \item Transitivität\index{Transitivität}: $\forall x,y,z\in M: x\leq y \land y \leq z \Rightarrow x \leq z$
@@ -91,8 +91,8 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
               \item Best Case vs. Average Case vs Worst Case
           \end{itemize}
     \item[Speicherbedarf] \begin{itemize}
-              \item in-Place (in situ): zusätzlicher Speicher von der Eingabegröße unabhängig
-              \item out-of-place: Speichermehrbedarf von Eingabegröße abhängig
+              \item in-Place (in situ): zusätzlicher Speicher von der Eingabegrö\ss{}e unabhängig
+              \item out-of-place: Speichermehrbedarf von Eingabegrö\ss{}e abhängig
           \end{itemize}
     \item[Stabilität] \begin{itemize}
               \item stabile Verfahren verändern die Reihenfolge von äquivalenten Elementen nicht
@@ -323,7 +323,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
     \renewcommand{\arraystretch}{1.2}
     \begin{tabular}{cccccc}
         \toprule
-        Eingabegröße $n$ & $\log_{10} n$     & $n$                 & $n^2$                                     & $n^3$                         & $2^n$                             \\
+        Eingabegrö\ss{}e $n$ & $\log_{10} n$     & $n$                 & $n^2$                                     & $n^3$                         & $2^n$                             \\
         \midrule
         10               & $1\mathrm{\mu s}$ & $10\mathrm{\mu s}$  & $100\mathrm{\mu s}$                       & $1\mathrm{ms}$                & $\sim 1~\mathrm{ms}$              \\
         100              & $2\mathrm{\mu s}$ & $100\mathrm{\mu s}$ & $10\mathrm{ms}$                           & $1\mathrm{s}$                 & $\sim 4\times 10^{16}~\mathrm{y}$ \\
@@ -549,7 +549,7 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
     \begin{itemize}
         \item Sortieren durch direktes Auswählen
         \item \texttt{MinSort}\index{MinSort}: "wähle kleines Element in Array und tausche es nach vorne"
-        \item \texttt{MaxSort}\index{MaxSort}: "wähle größtes Element in Array und tausche es nach vorne"
+        \item \texttt{MaxSort}\index{MaxSort}: "wähle grö\ss{}tes Element in Array und tausche es nach vorne"
     \end{itemize}
 \end{idea}
 
@@ -653,15 +653,15 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
           in der \texttt{ELSE}-Anweisung.
     \item [Terminierung]
           Beim Abbruch gilt \texttt{k=r+1}. Durch die Schleifeninvariante enthält \texttt{A[p...r]} die kleinste Elemente von
-          \texttt{L[0...$n_1$]} und \texttt{R[0...$n_2$]} in sortierter Reihenfolge. Alle Elemente außer der Sentinels wurden
-          komplett zurück kopiert. \texttt{MergeSort} ist außerdem ein stabiler Algorithmus.
+          \texttt{L[0...$n_1$]} und \texttt{R[0...$n_2$]} in sortierter Reihenfolge. Alle Elemente au\ss{}er der Sentinels wurden
+          komplett zurück kopiert. \texttt{MergeSort} ist au\ss{}erdem ein stabiler Algorithmus.
 \end{description}
 
 \paragraph{Analyse von MergeSort}\mbox{}
 \begin{description}[leftmargin=2cm]
     \item [Ziel] Bestimme Rekursionsgleichung für Laufzeit $T(n)$ von $n$ Zahlen im schlechtesten Fall
     \item [Divide] Berechnung der Mitte des Feldes: Konstante Zeit $\Theta(1)$
-    \item [Conquer] Rekursives Lösen von zwei Teilproblemen der Größe $\frac{n}{2}$: Laufzeit von $2~T(\frac{n}{2})$
+    \item [Conquer] Rekursives Lösen von zwei Teilproblemen der Grö\ss{}e $\frac{n}{2}$: Laufzeit von $2~T(\frac{n}{2})$
     \item [Combine] \texttt{MERGE} auf einem Teilfeld der Länge $n$: Lineare Zeit $\Theta(n)$
 \end{description}
 \[
@@ -748,10 +748,10 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
           Zwei mögliche Fälle durch \texttt{IF A[j] $\leq$ x}. Wenn \texttt{A[j] > x}, dann inkrementiert die
           Schleife nur den Index $j$. Dann gilt Bedingung 2 für \texttt{A[j-1]} und alle anderen Einträge
           bleiben unverändert. Wenn \texttt{A[j] $\leq$ x}, dann wird Index $i$ inkrementiert und die
-          Einträge \texttt{A[i]} und \texttt{A[j]} getauscht und schließlich der Index $j$ erhöht. Wegen
+          Einträge \texttt{A[i]} und \texttt{A[j]} getauscht und schlie\ss{}lich der Index $j$ erhöht. Wegen
           des Vertauschens gilt \texttt{A[i] $\leq$ x} und Bedingung 1 ist erfüllt. Analog gilt
           \texttt{A[j-1] > x}, da das Element welches mit \texttt{A[j-1]} vertauscht wurde wegen der
-          Invariante gerade größer als $x$ ist.
+          Invariante gerade grö\ss{}er als $x$ ist.
     \item [Terminierung]
           Bei der Terminierung gilt, dass $j = r$. Daher gilt, dass jeder Eintrag des Arrays zu einer der drei
           durch die Invariante beschriebenen Mengen gehört.
@@ -770,7 +770,7 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
           \begin{itemize}
               \item Partition zerlegt Problem in ein Teilproblem mit $n-1$ Elementen und eins mit $0$ Elementen
               \item Unbalancierte Zerlegung mit Kosten $\Theta(n)$ zieht sich durch gesamte Rekursion
-              \item Aufruf auf Feld der Größe 0: $T() = \Theta(1)$
+              \item Aufruf auf Feld der Grö\ss{}e 0: $T() = \Theta(1)$
               \item Laufzeit (rekursiv):
                     \begin{itemize}
                         \item $T(n) = T(n-1) + T(0) + \Theta(n) = T(n-1) + \Theta(n)$
@@ -781,7 +781,7 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
     \item \textit{Zerlegung im \textbf{besten Fall}}
           \begin{itemize}
               \item Problem wird so balanciert wie möglich zerlegt
-              \item Zwei Teilprobleme mit maximaler Größe von $\frac{n}{2}$
+              \item Zwei Teilprobleme mit maximaler Grö\ss{}e von $\frac{n}{2}$
               \item Zerlegung kostet $\Theta(n)$
               \item Laufzeit (rekursiv):
                     \begin{itemize}
@@ -797,13 +797,13 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
 \subsection{Laufzeitanalyse von rekursiven Algorithmen}\label{Laufzeit rekursive Algorithmen}\index{Laufzeit bei Rekursion}
 \subsubsection{Analyse von Divide-And-Conquer Algorithmen}\mbox{}
 \begin{itemize}
-    \item $T(n)$ ist Laufzeit eines Problems der Größe $n$
+    \item $T(n)$ ist Laufzeit eines Problems der Grö\ss{}e $n$
     \item Für kleines Problem benötigt die direkte Lösung eine konstante Zeit $\Theta(1)$
     \item Für sonstige $n$ gilt:
           \begin{itemize}
               \item Aufteilen eines Problems führt zu $a$ Teilproblemen
-              \item Jedes dieser Teilprobleme hat die Größe $\frac{1}{b}$ der Größe des ursprünglichen Problems
-              \item Lösen eines Teilproblems der Größe $\frac{n}{b}$: $T(\frac{n}{b})$
+              \item Jedes dieser Teilprobleme hat die Grö\ss{}e $\frac{1}{b}$ der Grö\ss{}e des ursprünglichen Problems
+              \item Lösen eines Teilproblems der Grö\ss{}e $\frac{n}{b}$: $T(\frac{n}{b})$
               \item Lösen $a$ solcher Probleme: $a~T(\frac{n}{b})$
               \item $D(n)$: Zeit um das Problem aufzuteilen (Divide)
               \item $C(n)$: Zeit um Teillösungen zur Gesamtlösung zusammenzufügen (Combine)
@@ -904,10 +904,10 @@ $T(n) = 3T(\left \lfloor \frac{n}{4} \right \rfloor) + \Theta(n^2)$
     \item [Vorüberlegungen]
           \begin{itemize}
               \item $\Rightarrow T(n) = 3T(\frac{n}{4}) + cn^2$ ($c>0$)
-              \item Je Abstieg verringert sich die Größe des Problems um den Faktor 4.
+              \item Je Abstieg verringert sich die Grö\ss{}e des Problems um den Faktor 4.
               \item Erreichen der Randbedingung ist vonnöten, die Frage ist wann dies geschieht.
-              \item Größe Teilproblem bei Level $i$: $\frac{n}{4^i}$
-              \item Erreichen Teilproblem der Größe 1, wenn $\frac{n}{4^i}=1$, d.h. wenn $i=log_4(n)$ \\
+              \item Grö\ss{}e Teilproblem bei Level $i$: $\frac{n}{4^i}$
+              \item Erreichen Teilproblem der Grö\ss{}e 1, wenn $\frac{n}{4^i}=1$, d.h. wenn $i=log_4(n)$ \\
                     $\Rightarrow$ Baum hat also $\log_4n + 1$ Ebenen
           \end{itemize}
     \item [Kosten pro Ebene]
@@ -971,7 +971,7 @@ $T(n) = 3T(\left \lfloor \frac{n}{4} \right \rfloor) + \Theta(n^2)$
         \item Gilt $f(n) = O(n^{\log_b (a - \epsilon)})$ für eine Konstante $\epsilon > 0$, dann $T(n) = \Theta(n^{\log_b (a)})$
         \item Gilt $f(n) = \Theta(n^{\log_b (a)})$, dann gilt $T(n) = \Theta(n^{\log_b (a)} lg(n))$
         \item Gilt $f(n) = \Omega(n^{\log_b (a+\epsilon)})$ für eine Konstante $\epsilon > 0$ und $a~f(\frac{n}{b}) \leq c~f(n)$
-              für eine \\ Konstante $c < 1$ und hinreichend großen $n$, dann ist $T(n) = \Theta(f(n))$
+              für eine \\ Konstante $c < 1$ und hinreichend gro\ss{}en $n$, dann ist $T(n) = \Theta(f(n))$
     \end{enumerate}
 \end{idea}
 
@@ -980,10 +980,10 @@ $T(n) = 3T(\left \lfloor \frac{n}{4} \right \rfloor) + \Theta(n^2)$
     \item In jedem der 3 Fälle wird die Funktion $f(n)$ mit $n^{\log_b(a)}$ verglichen
           \begin{enumerate}
               \item Wenn $f(n)$ polynomial kleiner ist als $n^{\log_b(a)}$, dann $T(n) = \Theta(n^{\log_b(a)})$
-              \item Wenn $f(n)$ und $n^{\log_b(a)}$ die gleiche Größe haben, gilt $T(n) = \Theta(n^{\log_b (a)} lg(n))$
-              \item Wenn $f(n)$ polynomial größer als $n^{\log_b(a)}$ und $a~f(\frac{n}{b}) \leq c~f(n)$ erfüllt, dann $T(n) = \Theta(f(n))$
+              \item Wenn $f(n)$ und $n^{\log_b(a)}$ die gleiche Grö\ss{}e haben, gilt $T(n) = \Theta(n^{\log_b (a)} lg(n))$
+              \item Wenn $f(n)$ polynomial grö\ss{}er als $n^{\log_b(a)}$ und $a~f(\frac{n}{b}) \leq c~f(n)$ erfüllt, dann $T(n) = \Theta(f(n))$
           \end{enumerate}
-    \item (polynomial größer/kleiner: um Faktor $n^\epsilon$ asymptotisch größer/kleiner)
+    \item (polynomial grö\ss{}er/kleiner: um Faktor $n^\epsilon$ asymptotisch grö\ss{}er/kleiner)
 \end{itemize}
 
 \paragraph{Nicht abgedeckte Fälle}\mbox{}
@@ -991,7 +991,7 @@ $T(n) = 3T(\left \lfloor \frac{n}{4} \right \rfloor) + \Theta(n^2)$
     \item Wenn einer dieser Fälle eintritt, kann das Mastertheorem nicht angewendet werden
           \begin{enumerate}
               \item Wenn $f(n)$ kleiner ist als $n^{\log_b(a)}$, aber nicht polynomial kleiner
-              \item Wenn $f(n)$ größer ist als $n^{\log_b(a)}$, aber nicht polynomial größer
+              \item Wenn $f(n)$ grö\ss{}er ist als $n^{\log_b(a)}$, aber nicht polynomial grö\ss{}er
               \item Regularitätsbedingung $a~f(\frac{n}{b}) \leq c~f(n)$ wird nicht erfüllt
               \item $a$ oder $b$ sind nicht konstant (z.B. $a=2^n$)
           \end{enumerate}

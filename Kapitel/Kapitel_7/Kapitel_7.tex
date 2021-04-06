@@ -244,7 +244,7 @@
                         \item[]
                             \begin{codeBlock}[autogobble,escapeinside=||]{title={RECURSIVE-ACTIVITY-SELECTOR(s,f,k,n)}}
                             // s Anfangszeitenarray, f Endzeitenarray, 
-                            // k Index von Teilproblem, n Größe Anfangsproblem
+                            // k Index von Teilproblem, n Grö\ss{}e Anfangsproblem
                             m = k + 1;
                             WHILE m |$\leq$| n and s[m] < f[k]  // Suche nach erster Kompatibilität
                                 m = m + 1;
@@ -316,7 +316,7 @@
         \item \fatsf{Damenproblem}\index{Damenproblem}
             \begin{itemize}
                 \item[]
-                    Auf einem Schachbrett der Größe $n \cdot n$ sollen $n$ Damen so positioniert werden, dass sie sich 
+                    Auf einem Schachbrett der Grö\ss{}e $n \cdot n$ sollen $n$ Damen so positioniert werden, dass sie sich 
                     gegenseitig nicht schlagen können. Wie viele Möglichkeiten gibt es, $n$ Damen so aufzustellen, dass keine
                     Damen eine andere schlägt.
                 \item[]
@@ -370,7 +370,7 @@
                             \item Einschränkungen
                                 \begin{itemize}
                                     \item Antwortzeit
-                                    \item Problemgröße
+                                    \item Problemgrö\ss{}e
                                 \end{itemize}
                             \item[] $\Rightarrow$ exkludieren oft exakte Methoden
                         \end{itemize}
@@ -407,12 +407,12 @@
                 \item[] \includegraphics[width=12cm]{pictures/rucksack1.PNG}
                 \item Rucksack hat eine Kapazität von 101, 9 verschiedene Gegenstände
                 \item Ziel: Höchster Wert der Gegenstände im Rucksack
-                \item Beispiellösung: Gegenstand 3 + 5 (Wert 73, Größe 70)
+                \item Beispiellösung: Gegenstand 3 + 5 (Wert 73, Grö\ss{}e 70)
                 \item Nachbarschaftslösungen: 
                     \begin{itemize}
-                        \item Gegenstände 2,3 und 5: Wert 105, Größe 96
-                        \item Gegenstände 1,3 und 5: Wert 152, Größe 155 (Gewichtsüberschreitung problematisch)
-                        \item Gegenstand 3: Wert 47, Größe 48
+                        \item Gegenstände 2,3 und 5: Wert 105, Grö\ss{}e 96
+                        \item Gegenstände 1,3 und 5: Wert 152, Grö\ss{}e 155 (Gewichtsüberschreitung problematisch)
+                        \item Gegenstand 3: Wert 47, Grö\ss{}e 48
                     \end{itemize}
                 \item[]
                     \begin{minipage}{0.4\textwidth}
@@ -421,7 +421,7 @@
                     \begin{minipage}{0.5\textwidth}
                         \fatsf{Nachbarschaft:}
                         \begin{itemize}
-                            \item Suchraum $S$ kann sehr groß sein
+                            \item Suchraum $S$ kann sehr gro\ss{} sein
                             \item Einschränkung des Suchraums in der Nähe der Startlösung x
                             \item Distanzfunktion $d: S x S \rightarrow \mathbb{R}$
                             \item Nachbarschaft: $N(x) = \{y \in S: d(x,y) \leq \epsilon\}$
@@ -515,7 +515,7 @@
                         \item Suche nach anderen lokalen Optima bei Fund eines lokalen Optimas
                         \item Lösungen nur in der Nähe der \string"Homebase\string"
                         \item Entscheidung, ob neue oder alte Lösung
-                        \item Bergsteigeralgo zu Beginn, danach aber großen Sprung um anderes Optimum zu finden
+                        \item Bergsteigeralgo zu Beginn, danach aber gro\ss{}en Sprung um anderes Optimum zu finden
                     \end{itemize}
 
                 \item \textit{Code}
@@ -542,7 +542,7 @@
                             \end{codeBlock}
                         \item Perturb:
                             \begin{itemize}
-                                \item ausreichend weiter Sprung (außerhalb der Nachbarschaft)
+                                \item ausreichend weiter Sprung (au\ss{}erhalb der Nachbarschaft)
                                 \item Aber nicht soweit, dass es eine zufällige Wahl ist
                             \end{itemize}
                         \item NewHomeBase:
@@ -598,7 +598,7 @@
                             \begin{itemize}
                                 \item[]
                                     \begin{codeBlock}[autogobble,escapeinside=||,fontsize=\footnotesize]{title={TABU-SEARCH}}
-                                    l <- maximale Größe der Tabu List
+                                    l <- maximale Grö\ss{}e der Tabu List
                                     n <- Anzahl der zu betrachtenden Nachbarschaftslösungen
                                     S <- irgendeine initiale zufällige Lösung
                                     best <- S
@@ -699,7 +699,7 @@
                                     AssesFitness(|$P_i$|)
                                     IF best = |$\boxdot$| oder Fitness(|$P_i$|) > Fitness(best) THEN
                                         best <- |$P_i$|
-                                Q <- die |$\mu$| Individueen deren Fitness() am Größten ist
+                                Q <- die |$\mu$| Individueen deren Fitness() am Grö\ss{}ten ist
                                 P <- {}
                                 FOR jedes Element |$Q_j \in Q$| DO
                                     FOR |$\frac{\lambda}{\mu}$|-oft DO
