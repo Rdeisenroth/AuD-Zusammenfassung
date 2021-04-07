@@ -82,46 +82,46 @@
 \ExplSyntaxOn
 
 % \newcommand{\loadcommon}{
-  \bool_if:NT \g_ptxcd_ex_load_common_bool {
-    % \pagecolor{black}\color{white}
-    \RequirePackage[export]{adjustbox}
-    \RequirePackage{amssymb}
-    \RequirePackage[ngerman]{babel}
-    \RequirePackage{blindtext}
-    \RequirePackage{colortbl}
-    % \RequirePackage{cryptocode}
-    \RequirePackage[utf8]{inputenc} % Has to be loaded before csquotes
-    \RequirePackage{csquotes}
-    \RequirePackage{ebproof}
-    \RequirePackage{etoolbox}
-    \RequirePackage[T1]{fontenc}
-    \RequirePackage{forest}
-    \RequirePackage{framed}
-    \RequirePackage{import}
-    % \RequirePackage[utf8]{inputenc} % Already loaded before cs quotes
-    \RequirePackage{karnaughmap}
-    \RequirePackage{latexsym}
-    \RequirePackage{listings}
-    \RequirePackage{longtable}
-    \RequirePackage{makecell}
-    \RequirePackage[framemethod=tikz]{mdframed}
-    \RequirePackage{mleftright}
-    \RequirePackage[longtable]{multirow}
-    \RequirePackage{nccmath}
-    \RequirePackage{placeins}
-    \RequirePackage{proof}
-    \RequirePackage{ragged2e}
-    \RequirePackage{stackengine}
-    \RequirePackage{standalone}
-    \RequirePackage{tabularx}
-    \RequirePackage{tikz}
-    \ExplSyntaxOff % Tikz doesn't Like Expl3 :/
-    \usetikzlibrary{patterns, shapes, intersections, arrows, math, decorations,decorations.pathreplacing, decorations.pathmorphing, positioning, calc, automata, chains, matrix, arrows.meta, shapes.geometric, shadows.blur, shapes.symbols, backgrounds, tikzmark, angles}
-    \ExplSyntaxOn
+\bool_if:NT \g_ptxcd_ex_load_common_bool {
+  % \pagecolor{black}\color{white}
+  \RequirePackage[export]{adjustbox}
+  \RequirePackage{amssymb}
+  \RequirePackage[ngerman]{babel}
+  \RequirePackage{blindtext}
+  \RequirePackage{colortbl}
+  % \RequirePackage{cryptocode}
+  \RequirePackage[utf8]{inputenc} % Has to be loaded before csquotes
+  \RequirePackage{csquotes}
+  \RequirePackage{ebproof}
+  \RequirePackage{etoolbox}
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{forest}
+  \RequirePackage{framed}
+  \RequirePackage{import}
+  % \RequirePackage[utf8]{inputenc} % Already loaded before cs quotes
+  \RequirePackage{karnaughmap}
+  \RequirePackage{latexsym}
+  \RequirePackage{listings}
+  \RequirePackage{longtable}
+  \RequirePackage{makecell}
+  \RequirePackage[framemethod=tikz]{mdframed}
+  \RequirePackage{mleftright}
+  \RequirePackage[longtable]{multirow}
+  \RequirePackage{nccmath}
+  \RequirePackage{placeins}
+  \RequirePackage{proof}
+  \RequirePackage{ragged2e}
+  \RequirePackage{stackengine}
+  \RequirePackage{standalone}
+  \RequirePackage{tabularx}
+  \RequirePackage{tikz}
+  \ExplSyntaxOff % Tikz doesn't Like Expl3 :/
+  \usetikzlibrary{patterns, shapes, intersections, arrows, math, decorations,decorations.pathreplacing, decorations.pathmorphing, positioning, calc, automata, chains, matrix, arrows.meta, shapes.geometric, shadows.blur, shapes.symbols, backgrounds, tikzmark, angles}
+  \ExplSyntaxOn
 
-    % \RequirePackage{tikz-uml}
-    \RequirePackage{xifthen}
-  }
+  % \RequirePackage{tikz-uml}
+  \RequirePackage{xifthen}
+}
 % }
 % \loadcommon{}
 
@@ -290,10 +290,14 @@
 \clist_gset:Nn \g_ptxcd_ex_term_order_clist {printAuthor,printSemester,printContributor,printVersion,quad,quad,printDate,printFachbereich}
 \newcommand*{\termOrder}[1]{\tl_gset:Nn \g_ptxcd_ex_term_order_clist {#1}}
 
+\tl_gclear_new:N \g_ptxcd_ex_term_style_tl
+\newcommand*{\termStyle}[1]{\tl_gset:Nn \g_ptxcd_ex_term_style_tl {#1}}
+\termStyle{left-right}
+
 \prg_new_conditional:Nnn \__ptxcd_if_dark_mode: {T,F,TF} {
-	\bool_if:NTF \g_dark_mode_bool
-	{\prg_return_true:}
-	{\prg_return_false:}
+  \bool_if:NTF \g_dark_mode_bool
+  {\prg_return_true:}
+  {\prg_return_false:}
 }
 
 \cs_set_eq:NN\IfDarkModeT \__ptxcd_if_dark_mode:T
@@ -357,9 +361,7 @@
   \rowcolors{2}{\thepagecolor}{fgcolor!10!\thepagecolor}
 }
 
-\bool_if:NTF \g_dark_mode_bool
-{\IfFileExists{tuda_logo_inverted.pdf}{\tl_gset:Nn \g_ptxcd_logofile_tl {tuda_logo_inverted.pdf}}{}}
-{}
+\IfDarkModeT{\IfFileExists{tuda_logo_inverted.pdf}{\tl_gset:Nn \g_ptxcd_logofile_tl {tuda_logo_inverted.pdf}}{}}
 
 \cs_new:Nn \ptxcd_declare_caption:Nnnn {
   \ptxcd_define_captionFallback:Nn #1 {#2}
@@ -467,30 +469,39 @@
                 \bool_gset_true:N \g_tmpa_left_bool
                 \seq_clear_new:N \g_tmpa_left_seq
                 \seq_clear_new:N \g_tmpa_right_seq
-                % \clist_if_empty:NTF \g_ptxcd_ex_term_order_clist {true} {false}
-                % \clist_map_inline:Nn \g_ptxcd_ex_term_order_clist {##1 +}
-                % \clist_count:N \g_ptxcd_ex_term_order_clist
                 \clist_map_inline:Nn \g_ptxcd_ex_term_order_clist {
-                  \tl_if_empty:cF {##1} {
-                    \seq_put_right:cn {\bool_if:nTF \g_tmpa_left_bool {g_tmpa_left_seq} {g_tmpa_right_seq}} {\use:c {##1}}\bool_set:Nn \g_tmpa_left_bool {!\g_tmpa_left_bool}
+                  % Process different term Styles
+                  \str_case_e:nnF {\g_ptxcd_ex_term_style_tl} {
+                    {left} {
+                        \tl_if_empty:cF {##1} {
+                          \seq_put_right:cn {\bool_if:nTF \g_tmpa_left_bool {g_tmpa_left_seq} {g_tmpa_right_seq}} {\use:c {##1}}
+                        }
+                      }
+                      {center} {
+                        \tl_if_empty:cF {##1} {
+                          \seq_put_right:cn {\bool_if:nTF \g_tmpa_left_bool {g_tmpa_left_seq} {g_tmpa_right_seq}} {\use:c {##1}}
+                        }
+                      }
+                      {left-right} {
+                        \tl_if_empty:cF {##1} {
+                          \seq_put_right:cn {\bool_if:nTF \g_tmpa_left_bool {g_tmpa_left_seq} {g_tmpa_right_seq}} {\use:c {##1}}\bool_set:Nn \g_tmpa_left_bool {!\g_tmpa_left_bool}
+                        }
+                      }
+                  }
+                  {
+                    \ClassError{rubos_tuda_template}{Unknown Term style Option: \use:c {\g_ptxcd_ex_term_style_tl}}{Available options are: left, center, left-right (default)}
                   }
                 }
                 % Left Side
-                \begin{minipage}[t]{.7\linewidth}
+                \begin{minipage}[t]{\seq_if_empty:NF {\g_tmpa_right_seq}{.7}\linewidth}
+                  \str_if_eq:eeT{\g_ptxcd_ex_term_style_tl} {center} {\centering}
                   \seq_use:Nnnn \g_tmpa_left_seq {\mbox{}\\} {\mbox{}\\} {\mbox{}\\}
-                  % \xdef\printSemester {\printSemester}
-                  % printSemester: \tl_if_empty:NTF \printSemester {true}{false},
-                  % sem: \tl_if_empty:NTF \g_ptxcd_ex_semester_tl {true} {false}
-                  % \tl_count:N{\printSemester}
                   \gdef\ptxcd_nextsep{\\}
                 \end{minipage}
                 \seq_if_empty:NF {\g_tmpa_right_seq}{
                   \begin{minipage}[t]{.3\linewidth}
                     \raggedleft
                     \begin{flushright}
-                      % \tl_if_empty:NF \g_ptxcd_ex_semester_tl {\ptxcd_nextsep_right\textbf{\textsf{Semester:~}}\g_ptxcd_ex_semester_tl\def\ptxcd_nextsep_right{\\}}
-                      % \tl_if_empty:NF \g_ptxcd_ex_sheetver_tl {\ptxcd_nextsep_right\textbf{\textsf{v\g_ptxcd_ex_sheetver_tl}}\def\ptxcd_nextsep_right{\\}}
-                      % \tl_if_empty:NF \g_ptxcd_ex_fachbereich_tl {\ptxcd_nextsep_right\textbf{\textsf{Fachbereich:~}}\g_ptxcd_ex_fachbereich_tl\def\ptxcd_nextsep_right{\\}}
                       \seq_use:Nnnn \g_tmpa_right_seq {\mbox{}\\} {\mbox{}\\} {\mbox{}\\}
                     \end{flushright}
                     \gdef\ptxcd_nextsep{\\}
@@ -595,16 +606,14 @@
   \thmnote{\space\sffamily\bfseries\color{fgcolor}---\space#3}% Optional theorem note
 }
 
-\ExplSyntaxOn
-
 % A Gray Info Box (gray bar on the Left+ light gray background)
 \newtcolorbox{grayInfoBox}[1][]{
-  colback=\bool_if:NTF \g_dark_mode_bool {fgcolor!10!\thepagecolor } {gray!10!\thepagecolor}, %Hintergrundfarbe
+  colback=\IfDarkModeTF{fgcolor!10!\thepagecolor}{gray!10!\thepagecolor}, %Hintergrundfarbe
   % colback=fgcolor!10!\thepagecolor, %Hintergrundfarbe
   coltext=.,
   colframe=gray, % Randfarbe
-  frame\space hidden,
-  title\space style=black!80,
+  frame hidden,
+  title style=black!80,
   arc=\boxarc,
   boxrule=0pt,
   left=5pt, % Links Platz lassen
@@ -612,12 +621,11 @@
   fonttitle=\sffamily, % Titelschriftart auf 
   overlay={ % Für Grauen Bereich links
       \begin{tcbclipinterior}
-        \fill[gray] (frame.south\space west) rectangle ([xshift=4pt]frame.north\space west); % Zeilennummernbereich färben
+        \fill[gray] (frame.south west) rectangle ([xshift=4pt]frame.north west); % Zeilennummernbereich färben
       \end{tcbclipinterior}
     },
   #1 % Weitere Argumente zulassen
 }
-\ExplSyntaxOff
 
 % A Normal Information Box (Accentcolor bar on the left)
 \newtcolorbox{infoBox}[1][]{
@@ -684,47 +692,42 @@
 % Minted Line Number Styling
 \renewcommand{\theFancyVerbLine}{\tikz{\coordinate(a);\node[text width=5mm,inner sep=0pt,align=center]{\ttfamily\textcolor{white}{\scriptsize\arabic{FancyVerbLine}}};}}
 
-\ExplSyntaxOn
-
 % Environment für meinen Style (Arg 1 = minted Options, Arg 2 = tcolorbox Options)
 \newtcblisting{codeBlock}[2][]{
-  listing\space engine=minted, % Minted verwenden
-  colback=\bool_if:NTF\g_dark_mode_bool {codebg}{fgcolor!10!\thepagecolor}, %Hintergrundfarbe
+  listing engine=minted, % Minted verwenden
+  colback=\IfDarkModeTF{codebg}{fgcolor!10!\thepagecolor}, %Hintergrundfarbe
   colframe=black!70, % Randfarbe
   coltext=.,
-  listing\space only,  % Sonst will er den Plain Text nach dem Minted Listing noch anfügen
-  frame\space hidden,
+  listing only,  % Sonst will er den Plain Text nach dem Minted Listing noch anfügen
+  frame hidden,
   boxrule=0pt,
   arc=\boxarc,
   %hbox, % This option could be used to limit the Length of Code Blocks automatically, but does not work with the minted Line Numbers
-  title\space style=\bool_if:NTF\g_dark_mode_bool {accentcolor!60!black} {black!90},
-  minted\space style=\bool_if:NTF\g_dark_mode_bool {paraiso-dark} {default}, %Sieht actually worse aus imo
-  minted\space language=java, % Sprache setzen
-  minted\space options={ %Minted Optionen
-  linenos=true,
-  numbersep=3mm,
-  texcl=true,
-  #1 % weitere optionen für Minted zulassen
-  },
+  title style=\IfDarkModeTF{accentcolor!60!black}{black!90},
+  minted style=\IfDarkModeTF{paraiso-dark}{default}, %Sieht actually worse aus imo
+  minted language=java, % Sprache setzen
+  minted options={ %Minted Optionen
+      linenos=true,
+      numbersep=3mm,
+      texcl=true,
+      #1 % weitere optionen für Minted zulassen
+    },
   left=7.1mm, % Links Platz lassen
   enhanced, % Erlaubt uns, den ramen zu zeichnen
   fonttitle=\sffamily, % Titelschriftart auf 
   overlay={ % Für Grauen Bereich links
-  \begin{tcbclipinterior}
-    \fill[black!70] (frame.south\space west) rectangle ([xshift=5mm]frame.north\space west); % Zeilennummernbereich färben
-  \end{tcbclipinterior}
-  },
+      \begin{tcbclipinterior}
+        \fill[black!70] (frame.south west) rectangle ([xshift=5mm]frame.north west); % Zeilennummernbereich färben
+      \end{tcbclipinterior}
+    },
   #2 % Weitere Argumente zulassen
-  }
-  \ExplSyntaxOff
-  
-  % --Makros--
-  \newenvironment*{cpenumerate}[1][]{\begin{enumerate}[nosep, #1]}{\end{enumerate}}
+}
+
+% --Makros--
+\newenvironment*{cpenumerate}[1][]{\begin{enumerate}[nosep, #1]}{\end{enumerate}}
 \newcommand{\code}[1]{\texttt{\footnotesize{}#1}}
 \newcommand{\raisedcode}[1]{\raisebox{.1em}{\code{#1}}}
-\ExplSyntaxOn
-\newcommand{\bluecode}[1]{\code{\textcolor{\bool_if:NTF \g_dark_mode_bool {cyan} {blue}}{#1}}}
-\ExplSyntaxOff
+\newcommand{\bluecode}[1]{\code{\textcolor{\IfDarkModeTF{cyan}{blue}}{#1}}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\fatsf}[1]{\textbf{\textsf{#1}}}
 \newcommand{\fatit}[1]{\textbf{\textit{#1}}}
