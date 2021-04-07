@@ -85,25 +85,25 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \subsection{Vergleichskriterien von Suchalgorithmen}\label{Vergleichskriterien von Suchalgorithmen}
 \begin{description}[leftmargin=3.6cm,itemsep=1em]
     \item[Berechnungsaufwand] \begin{itemize}
-              \item $\mathcal{O}(n)$
-          \end{itemize}
+            \item $\mathcal{O}(n)$
+        \end{itemize}
     \item[Effizienz] \begin{itemize}
-              \item Best Case vs. Average Case vs Worst Case
-          \end{itemize}
+            \item Best Case vs. Average Case vs Worst Case
+        \end{itemize}
     \item[Speicherbedarf] \begin{itemize}
-              \item in-Place (in situ): zusätzlicher Speicher von der Eingabegrö\ss{}e unabhängig
-              \item out-of-place: Speichermehrbedarf von Eingabegrö\ss{}e abhängig
-          \end{itemize}
+            \item in-Place (in situ): zusätzlicher Speicher von der Eingabegrö\ss{}e unabhängig
+            \item out-of-place: Speichermehrbedarf von Eingabegrö\ss{}e abhängig
+        \end{itemize}
     \item[Stabilität] \begin{itemize}
-              \item stabile Verfahren verändern die Reihenfolge von äquivalenten Elementen nicht
-          \end{itemize}
+            \item stabile Verfahren verändern die Reihenfolge von äquivalenten Elementen nicht
+        \end{itemize}
     \item[Anwendung als Auswahlfaktor] \begin{itemize}
-              \item Hauptoperationen beim Sortieren: Vergleichen und Vertauschen
-              \item Anwendung spielt eine enorme Rolle:\begin{itemize}
-                        \item Verfahren mit vielen Vertauschungen und wenig Vergleichen, wenn Vergleichen teuer
-                        \item Verfahren mit wenig Vertauschungen und vielen Vergleichen, wenn Umsortieren teuer
-                    \end{itemize}
-          \end{itemize}
+            \item Hauptoperationen beim Sortieren: Vergleichen und Vertauschen
+            \item Anwendung spielt eine enorme Rolle:\begin{itemize}
+                      \item Verfahren mit vielen Vertauschungen und wenig Vergleichen, wenn Vergleichen teuer
+                      \item Verfahren mit wenig Vertauschungen und vielen Vergleichen, wenn Umsortieren teuer
+                  \end{itemize}
+        \end{itemize}
 \end{description}
 \clearpage
 \subsection{Analyse von Algorithmen \textmd{(I)}}\label{Analyse von Algorithmen 1}
@@ -202,6 +202,12 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \end{description}
 \clearpage
 \subsection{Analyse von Algorithmen \textmd{(III)}}\label{Analyse von Algorithmen 3}
+\paragraph{Übersicht}\mbox{}
+\begin{description}[leftmargin=2cm]
+    \item [$\Theta$] $=$
+    \item [$\mathcal{O}$] $\leq$
+    \item [$\Omega$] $\geq$
+\end{description}
 \paragraph{$\Theta$-Notation}\index{$\Theta$-Notation}
 \begin{wrapfigure}[5]{r}{.3\textwidth}
     \centering
@@ -353,12 +359,12 @@ Es gilt: $\log(n) < \sqrt{n} < n < n\cdot \log(n) < n^2 < n! < 2^n<n^n$
     \item Au\ss erdem $<$ statt $\leq$
     \item z.B.: $2n = o(n^2)$ und $2n^2 \neq o(n^2)$
     \item[] %\includegraphics[width=12cm]{pictures/oKleinNotation.PNG}
-          $o(g)=\{f:\underbrace{\forall c \in \mathbb{R}_{>0}}_{
-              \mathclap{
-                  \substack{
-                      \text{Gilt für \fatsf{alle} Konstanten $c>0$.}\\
-                      \text{In $\mathcal{O}$-Notation gilt es für eine Konstante $c>0$}}}
-              }, \exists n_0 \in \mathbb{N}, \forall n \geq n_0, 0\leq f(n)<cg(n)\}$
+        $o(g)=\{f:\underbrace{\forall c \in \mathbb{R}_{>0}}_{
+            \mathclap{
+                \substack{
+                    \text{Gilt für \fatsf{alle} Konstanten $c>0$.}\\
+                    \text{In $\mathcal{O}$-Notation gilt es für eine Konstante $c>0$}}}
+            }, \exists n_0 \in \mathbb{N}, \forall n \geq n_0, 0\leq f(n)<cg(n)\}$
 \end{itemize}
 
 \paragraph{$\omega$-Notation}
@@ -368,7 +374,7 @@ Es gilt: $\log(n) < \sqrt{n} < n < n\cdot \log(n) < n^2 < n! < 2^n<n^n$
     \item Au\ss erdem $>$ statt $\geq$
     \item z.B.: $\frac{n^2}{2} = \omega(n)$ und $\frac{n^2}{2} \neq \omega(n^2)$
     \item[] %\includegraphics[width=12cm]{pictures/omegaKleinNotation.PNG}
-          $\omega(g)=\{f:\forall c \in \mathbb{R}_{>0},\exists n_0 \in \mathbb{N} \forall n \geq n_0,0\leq cg(n)<f(n)\}$
+        $\omega(g)=\{f:\forall c \in \mathbb{R}_{>0},\exists n_0 \in \mathbb{N} \forall n \geq n_0,0\leq cg(n)<f(n)\}$
 \end{itemize}
 \clearpage
 \subsection{Insertion Sort \textmd{(Sortieren durch Einfügen)}}\label{InsertionSort}\index{Insertion Sort}
@@ -814,14 +820,14 @@ Lösen der Rekursionsgleichung mithilfe eines Rekursionsbaums
               \item $D(n)$: Zeit um das Problem aufzuteilen (Divide)
               \item $C(n)$: Zeit um Teillösungen zur Gesamtlösung zusammenzufügen (Combine)
               \item[] \[
-                        T(n) = \left.
-                        \begin{cases}
-                            \hiderowcolors
-                            \Theta(1)                      & \text{falls } n \leq c \\
-                            a~T(\frac{n}{b}) + D(n) + C(n) & \text{sonst}           \\
-                        \end{cases}
-                        \right \}
-                    \]
+                      T(n) = \left.
+                      \begin{cases}
+                          \hiderowcolors
+                          \Theta(1)                      & \text{falls } n \leq c \\
+                          a~T(\frac{n}{b}) + D(n) + C(n) & \text{sonst}           \\
+                      \end{cases}
+                      \right \}
+                  \]
           \end{itemize}
 \end{itemize}
 
@@ -847,11 +853,11 @@ Lösen der Rekursionsgleichung mithilfe eines Rekursionsbaums
     \item [Ziel]
           \begin{itemize}
               \item[]
-                    Obere Abschätzung $T(n) \leq g(n)$ mit $g(n)$ ist eine Funktion, die durch eine
-                    geschlossene Formel dargestellt werden kann.
+                  Obere Abschätzung $T(n) \leq g(n)$ mit $g(n)$ ist eine Funktion, die durch eine
+                  geschlossene Formel dargestellt werden kann.
               \item[]
-                    Wir \string"raten\string": $T(n) \leq 4cn~lg(n)$ und nehmen dies für alle $n' < n$ an und
-                    zeigen es für $n$.
+                  Wir \string"raten\string": $T(n) \leq 4cn~lg(n)$ und nehmen dies für alle $n' < n$ an und
+                  zeigen es für $n$.
           \end{itemize}
 
     \item [Induktion]
@@ -874,16 +880,16 @@ Lösen der Rekursionsgleichung mithilfe eines Rekursionsbaums
           \begin{itemize}
               \item Annahme: $n > 2$ und sei Behauptung wahr für alle $n' < n$.
               \item[]
-                    ${\makebox[1cm][l]{T(n)}}  \leq T(\left \lfloor \frac{n}{2} \right \rfloor) + T(\left \lceil \frac{n}{2} \right \rceil) + cn \\
-                        {\makebox[1cm][l]{}} \leq 4c \left \lfloor \frac{n}{2} \right \rfloor~ lg(\left \lfloor \frac{n}{2} \right \rfloor )
-                        + 4c \left \lceil \frac{n}{2} \right \rceil~ lg(\left \lceil \frac{n}{2} \right \rceil ) + cn \\
-                        {\makebox[1cm][l]{(HB)}} \leq 4c \cdot lg(\frac{2}{3}n) \cdot (\left \lfloor \frac{n}{2} \right \rfloor + \left \lceil \frac{n}{2} \right \rceil +cn \\
-                        {\makebox[1cm][l]{}} \leq 4c \cdot lg(\frac{2}{3}n) \cdot n + cn \\
-                        {\makebox[1cm][l]{(HB)}} \leq 4cn \cdot (lg(\frac{2}{3}) + lg(n)) + cn \\
-                        {\makebox[1cm][l]{}} = 4cn \cdot lg(n) + 4cn \cdot lg(\frac{2}{3}) \\
-                        {\makebox[1cm][l]{}} = 4cn \cdot lg(n) + cn (1+ 4 \cdot (lg(2) - lg(3))) \\
-                        {\makebox[1cm][l]{}} \leq 4cn \cdot lg(n) \\
-                        {\makebox[1cm][l]{}} \Rightarrow \Theta(n~lg(n))$
+                  ${\makebox[1cm][l]{T(n)}}  \leq T(\left \lfloor \frac{n}{2} \right \rfloor) + T(\left \lceil \frac{n}{2} \right \rceil) + cn \\
+                      {\makebox[1cm][l]{}} \leq 4c \left \lfloor \frac{n}{2} \right \rfloor~ lg(\left \lfloor \frac{n}{2} \right \rfloor )
+                      + 4c \left \lceil \frac{n}{2} \right \rceil~ lg(\left \lceil \frac{n}{2} \right \rceil ) + cn \\
+                      {\makebox[1cm][l]{(HB)}} \leq 4c \cdot lg(\frac{2}{3}n) \cdot (\left \lfloor \frac{n}{2} \right \rfloor + \left \lceil \frac{n}{2} \right \rceil +cn \\
+                      {\makebox[1cm][l]{}} \leq 4c \cdot lg(\frac{2}{3}n) \cdot n + cn \\
+                      {\makebox[1cm][l]{(HB)}} \leq 4cn \cdot (lg(\frac{2}{3}) + lg(n)) + cn \\
+                      {\makebox[1cm][l]{}} = 4cn \cdot lg(n) + 4cn \cdot lg(\frac{2}{3}) \\
+                      {\makebox[1cm][l]{}} = 4cn \cdot lg(n) + cn (1+ 4 \cdot (lg(2) - lg(3))) \\
+                      {\makebox[1cm][l]{}} \leq 4cn \cdot lg(n) \\
+                      {\makebox[1cm][l]{}} \Rightarrow \Theta(n~lg(n))$
           \end{itemize}
 \end{description}
 
@@ -945,7 +951,7 @@ $T(n) = 3T(\left \lfloor \frac{n}{4} \right \rfloor) + \Theta(n^2)$
                     & < \sum\nolimits^{\infty}_{i=0} (\frac{3}{16})^i \cdot cn^2 + \Theta(n^{\log_43}) \\
                     & = \frac{1}{1-\frac{3}{16}} \cdot cn^2 + \Theta(n^{\log_43})                      \\
                     & = \frac{16}{13} \cdot cn^2 + Theta(n^{\log_43}) = O(n^2)
-                        \end{aligned}$
+                      \end{aligned}$
           \end{itemize}
     \item [Jetzt \textbf{Subsitutionsmethode}]
           \begin{description}[leftmargin=3cm]
