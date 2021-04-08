@@ -313,7 +313,7 @@ Delete kann die RSB-Bedingung verletzen. Das fixup hat vier fälle:
 \end{description}
 \clearpage
 \subsection{AVL-Bäume}\label{AVL-Baeume}\index{AVL-Bäume}
-\begin{wrapfigure}[5]{r}{.4\textwidth}
+\begin{wrapfigure}[1]{r}{.4\textwidth}
     % \centering
     \includegraphics[width=7cm]{pictures/avlbaum\IfDarkModeT{_dark}.PNG}
     \caption{Beispiel Balance AVL Baum}
@@ -377,16 +377,18 @@ $h \leq 1.441 \cdot log~n$ (optimierte Konstanten - 1,441 vs 2 (RBT))\\
 \end{itemize}
 
 \paragraph{Worst-Case-Laufzeiten}
+\begin{description}[leftmargin=2.5cm]
+    \item [Einfügen] $\Theta(log~n)$
+    \item [Löschen] $\Theta(log~n)$
+    \item [Suchen] $\Theta(log~n)$
+\end{description}
 \begin{itemize}
-    \item {\makebox[2cm][l]{Einfügen: }} $\Theta(log~n)$
-    \item {\makebox[2cm][l]{Löschen: }} $\Theta(log~n)$
-    \item {\makebox[2cm][l]{Suchen: }} $\Theta(log~n)$
     \item theoretisch bessere Konstanten als RBT
     \item in Praxis aber nur unwesentlich schneller
 \end{itemize}
 \clearpage
 \subsection{Splay-Bäume}\label{Splay-Baeume}\index{Splay-Bäume}
-\begin{definition}[Splay-Baum]
+\begin{definition}[Splay-Baum]\mbox{}
     \begin{itemize}
         \item selbst-organisierender Baum
         \item Ansatz: Einmal angefragte Werte werden wahrs. noch öfter angefragt
@@ -414,33 +416,34 @@ WHILE z != T.root DO
 \end{codeBlock}
 %\end{noindent}
 
-\index{Zig-Zag} \includegraphics[width=12cm]{pictures/zigzag\IfDarkModeT{_dark}.PNG}\\
-\index{Zig-Zig} \includegraphics[width=11cm]{pictures/zigzig\IfDarkModeT{_dark}.PNG}\vspace{1em}\\
+\index{Zig-Zag} \includegraphics[width=12cm]{pictures/zigzag\IfDarkModeT{_dark}.PNG}
+\clearpage
+\index{Zig-Zig} \includegraphics[width=11cm]{pictures/zigzig\IfDarkModeT{_dark}.PNG}\\
 \index{Zig} \includegraphics[width=11cm]{pictures/zig\IfDarkModeT{_dark}.PNG}\\
 
-\vspace*{-1em}
+\vspace*{-2em}
 \begin{description}[itemsep=.8em]
     \item[Suchen] \begin{itemize}
-              \item Laufzeit: $O(h)$
-              \item Suche des Knotens wie im BST
-              \item Hochspülen des gefundenen Knotens (alternativ zuletzt besuchter Knoten, falls nicht gefunden)
-          \end{itemize}
+            \item Laufzeit: $O(h)$
+            \item Suche des Knotens wie im BST
+            \item Hochspülen des gefundenen Knotens (alternativ zuletzt besuchter Knoten, falls nicht gefunden)
+        \end{itemize}
     \item[Einfügen] \begin{itemize}
-              \item Laufzeit: $O(h)$
-              \item Suche der Position wie im BST
-              \item Einfügen und danach hochspülen des eingefügten Knotens
-          \end{itemize}
+            \item Laufzeit: $O(h)$
+            \item Suche der Position wie im BST
+            \item Einfügen und danach hochspülen des eingefügten Knotens
+        \end{itemize}
     \item[Löschen] \begin{itemize}
-              \item Laufzeit: $O(h)$
-              \item[1.] Spüle gesuchten Knoten per Splay-Operation nach oben
-              \item[2.] Lösche den gesuchten Knoten (Wenn einer der beiden entstehenden Teilbäume leer, dann fertig)
-              \item[3.] Spüle den grö\ss{}ten Knoten im linken Teilbaum nach oben (kann kein rechtes Kind haben)
-              \item[4.] Hänge rechten Teilbaum an grö\ss{}ten Knoten aus 3. an
-          \end{itemize}
+            \item Laufzeit: $O(h)$
+            \item[1.] Spüle gesuchten Knoten per Splay-Operation nach oben
+            \item[2.] Lösche den gesuchten Knoten (Wenn einer der beiden entstehenden Teilbäume leer, dann fertig)
+            \item[3.] Spüle den grö\ss{}ten Knoten im linken Teilbaum nach oben (kann kein rechtes Kind haben)
+            \item[4.] Hänge rechten Teilbaum an grö\ss{}ten Knoten aus 3. an
+        \end{itemize}
     \item[Laufzeit Splay-Bäume] \begin{itemize}
-              \item Amortisierte Laufzeit: Laufzeit pro Operation über mehrere Operationen hinweg
-              \item Worst-Case-Laufzeit pro Operation: $O(log_n~n)$
-          \end{itemize}
+            \item Amortisierte Laufzeit: Laufzeit pro Operation über mehrere Operationen hinweg
+            \item Worst-Case-Laufzeit pro Operation: $O(log_n~n)$
+        \end{itemize}
 \end{description}
 
 \clearpage
