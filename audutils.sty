@@ -1,0 +1,105 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{audutils}[2021/04/13 Algorithms and Data structures LaTeX Package]
+
+% Made by Ruben Deisenroth, 2021
+% Available at https://github.com/Rdeisenroth/AuD-Zusammenfassung/blob/master/audutils.sty
+
+\RequirePackage{tikz}
+\RequirePackage{expl3}
+\RequirePackage{amssymb}
+\usetikzlibrary{3d, angles, animations, arrows, arrows.meta, arrows.spaced, automata, babel, backgrounds, bending, calc, calendar, chains, circuits.ee.IEC, circuits.logic.CDH, circuits.logic.IEC, circuits.logic.US, datavisualization, datavisualization.formats.functions, datavisualization.polar, decorations, decorations.footprints, decorations.fractals, decorations.markings, decorations.pathmorphing, decorations.pathreplacing, decorations.shapes, decorations.text, er, external, fadings, fit, fixedpointarithmetic, folding, fpu, graphs, graphs.standard, intersections, lindenmayersystems, math, matrix, patterns, patterns.meta, perspective, petri, plotmarks, positioning, quotes, rdf, scopes, shadings, shadows, shadows.blur, shapes, shapes.arrows, shapes.callouts, shapes.gates.logic.IEC, shapes.gates.logic.US, shapes.geometric, shapes.misc, shapes.multipart, shapes.symbols, spy, svg.path, through, tikzmark, topaths, trees, turtle, views}
+
+\ExplSyntaxOn
+\providecommand{\IfDarkModeTF}[2]{#2}
+\newcommand{\ifsublistTF}[3]{
+    \cs_generate_variant:Nn \regex_match:nnTF { nxTF }
+    \regex_match:nxTF {,} {#1} {#2} {#3}
+}
+\newcommand*{\ifEmptySublistTF}[3]{
+    \cs_generate_variant:Nn \str_count_ignore_spaces:n { e }
+    \int_compare:nTF {\str_count_ignore_spaces:e {#1} < 1}{#2}{#3}
+}
+\newcommand{\rmFirstAndLastChar}[1]{
+    \str_range_ignore_spaces:nnn {#1}{2}{-2} % Remove first and last char
+}
+\newcommand{\audutils@setupLinkedList}[1]{
+    % \str_clear_new:N \l_ptxcd_unknown_clsopts_str
+    \tl_gclear_new:N \audutils@linkedlist@nodedistance
+    \keys_define:nn { audutils/linkedList }
+    {
+        mark_head .bool_gset:N = \g_audutils_linked_list_mark_head_bool,
+        mark_head .initial:n = true,
+        mark_head .default:n = true,
+        node~distance .code:n = {\tl_set:Nn \audutils@linkedlist@nodedistance {##1}},
+        node~distance .initial:n = {.5cm},
+        node~distance .default:n = {1cm},
+        % unknown .code:n = {
+        %     % \str_put_right:Nn \l_ptxcd_unknown_clsopts_str {}
+        %     \str_put_right:Nx \l_ptxcd_unknown_clsopts_str {\l_keys_key_str\space =\space ##1}
+        %     },
+    }
+    \keys_set:nn { audutils/linkedList } { #1 }
+}
+% \newcommand{\audutils@unknownLinkedListOptionHandler}[1]{
+%     \str_use:N \l_ptxcd_unknown_clsopts_str
+% }
+\newcommand{\audutils@head}[1]{
+    \bool_if:NT \g_audutils_linked_list_mark_head_bool {
+        \draw[<-,semithick,\IfDarkModeTF{cyan}{blue}](rubos@linkedlist@curr)--++(0,1cm) node[above]{head};
+    }
+}
+\ExplSyntaxOff
+
+% Definition des Zeichen-Commands
+
+\newcommand{\linkedList}[2][]{
+    \audutils@setupLinkedList{#1}
+    % \audutils@test{}
+    % Main code for \MyModuleMacro
+    \begin{tikzpicture}[
+            start chain = going right,
+            listnode/.style = {rectangle split, rectangle split horizontal, rectangle split parts=2, draw, semithick, align=center, minimum width=.4cm, minimum height=1.5em},
+            sublistnode/.style = {rectangle split, rectangle split, rectangle split parts=2, draw, semithick, align=center, minimum width=.4cm, minimum height=1.5em},
+            listedge/.style = {*->, semithick, shorten <=-9pt},
+            sublistedge/.style = {*->, semithick, shorten <=-9pt,transform canvas={xshift = 0cm}},
+            subliststartedge/.style = {*->, semithick, shorten <=-10pt,transform canvas={xshift = -0cm}},
+            sublistendedge/.style = {*->, semithick,to path={($(\tikztostart)+(0mm,-4pt)$) -- (\tikztotarget)}},
+            node distance=\audutils@linkedlist@nodedistance
+            % \expandafter\noexpand\audutils@unknownLinkedListOptionHandler{}
+        ]
+        \foreach [count=\linkedListIndex from 0]\linkedListItem in {#2} {%
+            \ifsublistTF{\linkedListItem}{
+                \ifEmptySublistTF{\linkedListItem}{% Might be unreachable
+                    \node[listnode, on chain,join=by {listedge}]{\nodepart[text width=.5cm](rubos@linkedlist@curr){one}$\varnothing$};
+                }{
+                    \node[listnode, on chain,join=by {listedge}](rubos@linkedlist@curr){\nodepart[text width=.5cm]{one}};
+                    {[start chain= 2 going below]
+                        \foreach[count=\sublistindex from 0] \sublistitem in \linkedListItem {
+                            \ifnum\sublistindex=0%
+                                \node[sublistnode, on chain=2, below= of rubos@linkedlist@curr.one south](rubos@linkedlist@currslhead){\nodepart[text width=.5cm]{one}\sublistitem};
+                                \draw[subliststartedge] (rubos@linkedlist@curr.one south)--(rubos@linkedlist@currslhead);
+                            \else
+                                \node[sublistnode, on chain=2,join=by {sublistedge}]{\nodepart[text width=.5cm]{one}\sublistitem};
+                            \fi
+                        }
+                        \node[on chain=2,join=by {sublistendedge},xshift=0cm]{$\varnothing$};
+                    }
+                }
+            }{
+                    \node[listnode, on chain,join=by {listedge}](rubos@linkedlist@curr){%
+                        \nodepart[text width=.5cm]{one}\ifEmptySublistTF{\linkedListItem}{$\varnothing$}{\linkedListItem}%
+                    };
+            }
+            \ifnum\linkedListIndex=0%
+                % \expandafter\ifx\csname g_audutils_linked_list_mark_head_bool\endcsname%
+                %     % \draw[<-,semithick,\IfDarkModeTF{cyan}{blue}](rubos@linkedlist@curr)--++(0,1cm) node[above]{head};
+                %     \node{true};
+                % \else
+                %     \node{false};
+                % \fi
+                \audutils@head{}
+            \fi
+        }
+        \node[on chain,join=by {listedge}]{$\varnothing$};
+    \end{tikzpicture}
+}
