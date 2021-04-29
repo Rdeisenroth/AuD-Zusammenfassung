@@ -9,7 +9,8 @@ Aktuell umfasst sie:
 ## Wie kompiliere ich sie?
 Requirements:
 - Latex-Installation (z.B. MikTex oder TexLive)
-- Installation der [TU-Template](https://github.com/tudace/tuda_latex_templates) und der verwendeten Plugins (siehe [hier](https://github.com/Rdeisenroth/AuD-Zusammenfassung/blob/master/tuda_summary.cls#L10-L18), [hier](https://github.com/Rdeisenroth/AuD-Zusammenfassung/blob/6eaff6994243fe01c9db8c5b2b28af39164edf5b/tuda_summary.cls#L49-L60) und [hier](https://github.com/Rdeisenroth/AuD-Zusammenfassung/blob/6eaff6994243fe01c9db8c5b2b28af39164edf5b/tuda_summary.cls#L72-L109))
+- Installation der [TU-Template](https://github.com/tudace/tuda_latex_templates) und der verwendeten Plugins
+- Installation von Pygments (für Codeblöcke) z.B. per `pip install Pygments`
 
 Zunächst muss natürlich die Ordnerstruktur heruntergeladen werden, z.b. mit `git clone`.  
 Anschließend muss die Zusammenfassung mit dem `--shell-escape`-Flag kompilliert werden.  
