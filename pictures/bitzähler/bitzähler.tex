@@ -9,45 +9,24 @@
 
 
 \begin{document}
-%Styles
 \begin{tikzpicture}
-    \def\blockheight{2em}       % Cell height
-    \def\blockwidth{3.5em}      % Cell width
-    \def\headline{$b_{k-1}$, $b_{k-2}$, $$, $$, $$, $$, $b_2$, $b_1$, $b_0$}        % Input for the header of the array
-    \def\content{0, 0, $\cdots$, $$, $$, $\cdots$, 0, 0, 0}     % Input of content for the array
-
-    \@ifundefined{c@pos}        % Checks if a counter register has already the name  
-    {\newcounter{pos}}          % If not then the name is asigned to a register
-    {}                          % otherwise nothing is done
-    \setcounter{pos}{0};        % Setting counter to 0
-
-    \setcounter{pos}{0};        % Setting counter to 0
-
-    % First loop creating the nodes with the array content and inner seperation lines
-    \foreach \x in \content{
-        \addtocounter{pos}{1};
-        \node[
+    \def\blockheight{2em}                                       % Cell height
+    \def\blockwidth{3.5em}                                      % Cell width
+    \@ifundefined{c@lastelement}{\newcounter{lastelement}}{}    % Storage  for the number of the last element
+    \def\contentt{$0$/$b_{k-1}$, 0/$b_{k-2}$, $\cdots$/{}, , , $\cdots$/{}, 0/$b_2$, 0/$b_1$, 0/$b_0$}     % Input of content for the array
+    % draw Array
+    \foreach [count=\pos from 1] \x/\y in \contentt{
+        \node[                                                                      % Node with the cell content 
             minimum height=\blockheight, 
             minimum width=\blockwidth,
-            rectangle, 
-            draw=fgcolor,
-            inner sep=0pt, outer sep=0pt
-            ] (n\thepos) at (\thepos*\blockwidth,0) {\x};
-        \draw[very thick, draw=fgcolor](n\thepos.south west)--(n\thepos.north west);
+            inner sep=0pt, outer sep=0pt,
+            ] (n\pos) at (\pos*\blockwidth,0) {\x};
+        \node[above = 0mm of n\pos] {\y};                                           % Node with the cell title
+        \ifnum\pos > 1 {                                                            % Drawing the inner seperation lines
+        \draw[very thick, draw=fgcolor](n\pos.south west)--(n\pos.north west);}     
+        \else {} \fi
+        \setcounter{lastelement}{\pos}                                              % Saving number of the last element
     }
-    
-    % Lines around the outer border of the array -- this way to get a clean result
-    \node[fit={(n1.north west) (n\thepos.south east)}, very thick,fill=none, draw=fgcolor, inner sep=0pt, outer sep=0pt]{};
-
-    % Second loop adding the header above the cells
-    \setcounter{pos}{0};
-    \foreach \x in \headline{
-        \addtocounter{pos}{1};
-        \node[
-            draw=none,
-            fill=none,
-            above = 0mm of n\thepos
-            ] {\x};
-    }
+    \node[fit={(n1.north west) (n9.south east)}, very thick,fill=none, draw=fgcolor, inner sep=0pt, outer sep=0pt]{};   % Drawing the outer frame
 \end{tikzpicture}
 \end{document}
