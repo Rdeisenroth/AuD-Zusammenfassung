@@ -1,0 +1,53 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+
+\begin{document}
+%Styles
+\begin{tikzpicture}
+    \def\blockheight{2em}       % Cell height
+    \def\blockwidth{3.5em}      % Cell width
+    \def\headline{$b_{k-1}$, $b_{k-2}$, $$, $$, $$, $$, $b_2$, $b_1$, $b_0$}        % Input for the header of the array
+    \def\content{0, 0, $\cdots$, $$, $$, $\cdots$, 0, 0, 0}     % Input of content for the array
+
+    \@ifundefined{c@pos}        % Checks if a counter register has already the name  
+    {\newcounter{pos}}          % If not then the name is asigned to a register
+    {}                          % otherwise nothing is done
+    \setcounter{pos}{0};        % Setting counter to 0
+
+    \setcounter{pos}{0};        % Setting counter to 0
+
+    % First loop creating the nodes with the array content and inner seperation lines
+    \foreach \x in \content{
+        \addtocounter{pos}{1};
+        \node[
+            minimum height=\blockheight, 
+            minimum width=\blockwidth,
+            rectangle, 
+            draw=fgcolor,
+            inner sep=0pt, outer sep=0pt
+            ] (n\thepos) at (\thepos*\blockwidth,0) {\x};
+        \draw[very thick, draw=fgcolor](n\thepos.south west)--(n\thepos.north west);
+    }
+    
+    % Lines around the outer border of the array -- this way to get a clean result
+    \node[fit={(n1.north west) (n\thepos.south east)}, very thick,fill=none, draw=fgcolor, inner sep=0pt, outer sep=0pt]{};
+
+    % Second loop adding the header above the cells
+    \setcounter{pos}{0};
+    \foreach \x in \headline{
+        \addtocounter{pos}{1};
+        \node[
+            draw=none,
+            fill=none,
+            above = 0mm of n\thepos
+            ] {\x};
+    }
+\end{tikzpicture}
+\end{document}
