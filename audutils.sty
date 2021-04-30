@@ -7,7 +7,8 @@
 \RequirePackage{tikz}
 \RequirePackage{expl3}
 \RequirePackage{amssymb}
-\usetikzlibrary{3d, angles, animations, arrows, arrows.meta, arrows.spaced, automata, babel, backgrounds, bending, calc, calendar, chains, circuits.ee.IEC, circuits.logic.CDH, circuits.logic.IEC, circuits.logic.US, datavisualization, datavisualization.formats.functions, datavisualization.polar, decorations, decorations.footprints, decorations.fractals, decorations.markings, decorations.pathmorphing, decorations.pathreplacing, decorations.shapes, decorations.text, er, external, fadings, fit, fixedpointarithmetic, folding, fpu, graphs, graphs.standard, intersections, lindenmayersystems, math, matrix, patterns, patterns.meta, perspective, petri, plotmarks, positioning, quotes, rdf, scopes, shadings, shadows, shadows.blur, shapes, shapes.arrows, shapes.callouts, shapes.gates.logic.IEC, shapes.gates.logic.US, shapes.geometric, shapes.misc, shapes.multipart, shapes.symbols, spy, svg.path, through, tikzmark, topaths, trees, turtle, views}
+\usetikzlibrary{3d, angles, animations, arrows, arrows.meta, arrows.spaced, automata, babel, backgrounds, bending, calc, calendar, chains, circuits.ee.IEC, circuits.logic.CDH, circuits.logic.IEC, circuits.logic.US, datavisualization, datavisualization.formats.functions, datavisualization.polar, decorations, decorations.footprints, decorations.fractals, decorations.markings, decorations.pathmorphing, decorations.pathreplacing, decorations.shapes, decorations.text, er, external, fadings, fit, fixedpointarithmetic, folding, fpu, graphs, graphs.standard, intersections, lindenmayersystems, math, matrix, patterns, patterns.meta, perspective, petri, plotmarks, positioning, quotes, rdf, scopes, shadings, shadows, shadows.blur, shapes, shapes.arrows, shapes.callouts, shapes.gates.logic.IEC, shapes.gates.logic.US, shapes.geometric, shapes.misc, shapes.multipart, shapes.symbols, spy, svg.path, through, topaths, trees, turtle, views}
+%\usetikzlibrary{tikzmark} % Comment out if imported or defined on different instance
 
 \ExplSyntaxOn
 \providecommand{\IfDarkModeTF}[2]{#2}
@@ -103,3 +104,26 @@
         \node[on chain,join=by {listedge}]{$\varnothing$};
     \end{tikzpicture}
 }
+
+\newcommand{\onedimarray}[1]{%
+    \begin{tikzpicture}%
+        \def\blockheight{2em}                                       % Cell height
+        \def\blockwidth{3.5em}                                      % Cell width
+        \@ifundefined{c@lastelement}{\newcounter{lastelement}}{}    % Storage  for the number of the last element
+        \def\contentt{#1}                                           % Input of content for the array
+        % draw Array
+        \foreach [count=\pos from 1] \x/\y in \contentt{                                %
+            \node[                                                                      % Node with the cell content 
+                minimum height=\blockheight,                                            %
+                minimum width=\blockwidth,                                              %
+                inner sep=0pt, outer sep=0pt,                                           %
+                ] (n\pos) at (\pos*\blockwidth,0) {\x};                                 %
+            \node[above = 0mm of n\pos] {\y};                                           % Node with the cell title
+            \ifnum\pos > 1 {                                                            % Drawing the inner seperation lines
+            \draw[very thick, draw=fgcolor](n\pos.south west)--(n\pos.north west);}     %
+            \else {} \fi                                                                %
+            \setcounter{lastelement}{\pos}                                              % Saving number of the last element
+        }
+        \node[fit={(n1.north west) (n9.south east)}, very thick,fill=none, draw=fgcolor, inner sep=0pt, outer sep=0pt]{};   % Drawing the outer frame
+    \end{tikzpicture}%
+}%
