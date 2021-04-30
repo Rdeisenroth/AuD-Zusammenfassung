@@ -122,7 +122,6 @@
   % \pagecolor{black}\color{white}
   \RequirePackage[export]{adjustbox}
   \RequirePackage{amssymb}
-  \RequirePackage{audutils}
   \RequirePackage[ngerman]{babel}
   \RequirePackage{blindtext}
   \RequirePackage{colortbl}
