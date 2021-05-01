@@ -118,12 +118,16 @@
                 minimum width=\blockwidth,                                              %
                 inner sep=0pt, outer sep=0pt,                                           %
                 ] (n\pos) at (\pos*\blockwidth,0) {\x};                                 %
-            \node[above = 0mm of n\pos] {\y};                                           % Node with the cell title
+            \node[                                                                      % Node with the cell title
+                minimum height=0.75*\blockheight,                                       %
+                minimum width=\blockwidth,                                              %
+                inner sep=0pt, outer sep=0pt,                                           %                                                                   
+                anchor=south] at (n\pos.north) {\y};                                    %       
             \ifnum\pos > 1 {                                                            % Drawing the inner seperation lines
             \draw[very thick, draw=fgcolor](n\pos.south west)--(n\pos.north west);}     %
             \else {} \fi                                                                %
             \setcounter{lastelement}{\pos}                                              % Saving number of the last element
         }
-        \node[fit={(n1.north west) (n9.south east)}, very thick,fill=none, draw=fgcolor, inner sep=0pt, outer sep=0pt]{};   % Drawing the outer frame
+        \node[fit={(n1.north west) (n\thelastelement.south east)}, very thick,fill=none, draw=fgcolor, inner sep=0pt, outer sep=0pt]{};   % Drawing the outer frame
     \end{tikzpicture}%
 }%
