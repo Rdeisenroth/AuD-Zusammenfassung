@@ -109,9 +109,8 @@ node~distance .default:n = {1cm},
     \begin{tikzpicture}[font=\sffamily]%
         \def\blockheight{2em}  % Cell height
         \def\blockwidth{3.5em} % Cell width
-        \gdef\contentt{#1}     % Input of content for the array
         % draw Array
-        \foreach [count=\pos from 1] \x/\y in \contentt{%
+        \foreach [count=\pos from 1] \x/\y in #1{%
             \node[
                 draw,very thick,             % Node with the cell content 
                 minimum height=\blockheight,
