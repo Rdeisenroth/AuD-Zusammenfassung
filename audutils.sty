@@ -24,22 +24,22 @@
     \str_range_ignore_spaces:nnn {#1}{2}{-2} % Remove first and last char
 }
 \newcommand{\audutils@setupLinkedList}[1]{
-    % \str_clear_new:N \l_ptxcd_unknown_clsopts_str
-    \tl_gclear_new:N \audutils@linkedlist@nodedistance
-    \keys_define:nn { audutils/linkedList }
-    {
-        mark_head .bool_gset:N = \g_audutils_linked_list_mark_head_bool,
-        mark_head .initial:n = true,
-        mark_head .default:n = true,
-        node~distance .code:n = {\tl_set:Nn \audutils@linkedlist@nodedistance {##1}},
-        node~distance .initial:n = {.5cm},
-        node~distance .default:n = {1cm},
-        % unknown .code:n = {
-        %     % \str_put_right:Nn \l_ptxcd_unknown_clsopts_str {}
-        %     \str_put_right:Nx \l_ptxcd_unknown_clsopts_str {\l_keys_key_str\space =\space ##1}
-        %     },
-    }
-    \keys_set:nn { audutils/linkedList } { #1 }
+% \str_clear_new:N \l_ptxcd_unknown_clsopts_str
+\tl_gclear_new:N \audutils@linkedlist@nodedistance
+\keys_define:nn { audutils/linkedList }
+{
+mark_head .bool_gset:N = \g_audutils_linked_list_mark_head_bool,
+mark_head .initial:n = true,
+mark_head .default:n = true,
+node~distance .code:n = {\tl_set:Nn \audutils@linkedlist@nodedistance {##1}},
+node~distance .initial:n = {.5cm},
+node~distance .default:n = {1cm},
+% unknown .code:n = {
+%     % \str_put_right:Nn \l_ptxcd_unknown_clsopts_str {}
+%     \str_put_right:Nx \l_ptxcd_unknown_clsopts_str {\l_keys_key_str\space =\space ##1}
+%     },
+}
+\keys_set:nn { audutils/linkedList } { #1 }
 }
 % \newcommand{\audutils@unknownLinkedListOptionHandler}[1]{
 %     \str_use:N \l_ptxcd_unknown_clsopts_str
@@ -69,37 +69,37 @@
             % \expandafter\noexpand\audutils@unknownLinkedListOptionHandler{}
         ]
         \foreach [count=\linkedListIndex from 0]\linkedListItem in {#2} {%
-            \ifsublistTF{\linkedListItem}{
-                \ifEmptySublistTF{\linkedListItem}{% Might be unreachable
-                    \node[listnode, on chain,join=by {listedge}]{\nodepart[text width=.5cm](rubos@linkedlist@curr){one}$\varnothing$};
-                }{
-                    \node[listnode, on chain,join=by {listedge}](rubos@linkedlist@curr){\nodepart[text width=.5cm]{one}};
-                    {[start chain= 2 going below]
-                        \foreach[count=\sublistindex from 0] \sublistitem in \linkedListItem {
-                            \ifnum\sublistindex=0%
-                                \node[sublistnode, on chain=2, below= of rubos@linkedlist@curr.one south](rubos@linkedlist@currslhead){\nodepart[text width=.5cm]{one}\sublistitem};
-                                \draw[subliststartedge] (rubos@linkedlist@curr.one south)--(rubos@linkedlist@currslhead);
-                            \else
-                                \node[sublistnode, on chain=2,join=by {sublistedge}]{\nodepart[text width=.5cm]{one}\sublistitem};
-                            \fi
-                        }
-                        \node[on chain=2,join=by {sublistendedge},xshift=0cm]{$\varnothing$};
-                    }
-                }
-            }{
-                    \node[listnode, on chain,join=by {listedge}](rubos@linkedlist@curr){%
-                        \nodepart[text width=.5cm]{one}\ifEmptySublistTF{\linkedListItem}{$\varnothing$}{\linkedListItem}%
-                    };
-            }
-            \ifnum\linkedListIndex=0%
-                % \expandafter\ifx\csname g_audutils_linked_list_mark_head_bool\endcsname%
-                %     % \draw[<-,semithick,\IfDarkModeTF{cyan}{blue}](rubos@linkedlist@curr)--++(0,1cm) node[above]{head};
-                %     \node{true};
-                % \else
-                %     \node{false};
-                % \fi
-                \audutils@head{}
-            \fi
+        \ifsublistTF{\linkedListItem}{
+        \ifEmptySublistTF{\linkedListItem}{% Might be unreachable
+        \node[listnode, on chain,join=by {listedge}]{\nodepart[text width=.5cm](rubos@linkedlist@curr){one}$\varnothing$};
+        }{
+        \node[listnode, on chain,join=by {listedge}](rubos@linkedlist@curr){\nodepart[text width=.5cm]{one}};
+        {[start chain= 2 going below]
+        \foreach[count=\sublistindex from 0] \sublistitem in \linkedListItem {
+        \ifnum\sublistindex=0%
+            \node[sublistnode, on chain=2, below= of rubos@linkedlist@curr.one south](rubos@linkedlist@currslhead){\nodepart[text width=.5cm]{one}\sublistitem};
+            \draw[subliststartedge] (rubos@linkedlist@curr.one south)--(rubos@linkedlist@currslhead);
+        \else
+            \node[sublistnode, on chain=2,join=by {sublistedge}]{\nodepart[text width=.5cm]{one}\sublistitem};
+        \fi
+        }
+        \node[on chain=2,join=by {sublistendedge},xshift=0cm]{$\varnothing$};
+        }
+        }
+        }{
+        \node[listnode, on chain,join=by {listedge}](rubos@linkedlist@curr){%
+                \nodepart[text width=.5cm]{one}\ifEmptySublistTF{\linkedListItem}{$\varnothing$}{\linkedListItem}%
+            };
+        }
+        \ifnum\linkedListIndex=0%
+            % \expandafter\ifx\csname g_audutils_linked_list_mark_head_bool\endcsname%
+            %     % \draw[<-,semithick,\IfDarkModeTF{cyan}{blue}](rubos@linkedlist@curr)--++(0,1cm) node[above]{head};
+            %     \node{true};
+            % \else
+            %     \node{false};
+            % \fi
+            \audutils@head{}
+        \fi
         }
         \node[on chain,join=by {listedge}]{$\varnothing$};
     \end{tikzpicture}
@@ -107,27 +107,22 @@
 
 \newcommand{\onedimarray}[1]{%
     \begin{tikzpicture}[font=\sffamily]%
-        \def\blockheight{2em}                                       % Cell height
-        \def\blockwidth{3.5em}                                      % Cell width
-        \@ifundefined{c@lastelement}{\newcounter{lastelement}}{}    % Storage  for the number of the last element
-        \def\contentt{#1}                                           % Input of content for the array
+        \def\blockheight{2em}  % Cell height
+        \def\blockwidth{3.5em} % Cell width
+        \gdef\contentt{#1}     % Input of content for the array
         % draw Array
-        \foreach [count=\pos from 1] \x/\y in \contentt{                                %
-            \node[                                                                      % Node with the cell content 
-                minimum height=\blockheight,                                            %
-                minimum width=\blockwidth,                                              %
-                inner sep=0pt, outer sep=0pt,                                           %
-                ] (n\pos) at (\pos*\blockwidth,0) {\x};                                 %
-            \node[                                                                      % Node with the cell title
-                minimum height=0.75*\blockheight,                                       %
-                minimum width=\blockwidth,                                              %
-                inner sep=0pt, outer sep=0pt,                                           %                                                                   
-                anchor=south] at (n\pos.north) {\y};                                    %       
-            \ifnum\pos > 1 {                                                            % Drawing the inner seperation lines
-            \draw[very thick, draw=fgcolor](n\pos.south west)--(n\pos.north west);}     %
-            \else {} \fi                                                                %
-            \setcounter{lastelement}{\pos}                                              % Saving number of the last element
+        \foreach [count=\pos from 1] \x/\y in \contentt{%
+            \node[
+                draw,very thick,             % Node with the cell content 
+                minimum height=\blockheight,
+                minimum width=\blockwidth,
+                inner sep=0pt, outer sep=0pt,
+            ] (n\pos) at (\pos*\blockwidth,0) {\x};%
+            \node[                                   % Node with the cell title
+                minimum height=0.75*\blockheight,
+                minimum width=\blockwidth,
+                inner sep=0pt, outer sep=0pt,
+                anchor=south] at (n\pos.north) {\y};
         }
-        \node[fit={(n1.north west) (n\thelastelement.south east)}, very thick,fill=none, draw=fgcolor, inner sep=0pt, outer sep=0pt]{};   % Drawing the outer frame
     \end{tikzpicture}%
 }%
