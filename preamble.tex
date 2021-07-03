@@ -6,7 +6,9 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{minted,skins}
 \usepackage{amsmath}
-\usepackage{amssymb}
+\ifcsname circledS\endcsname\else%
+    \RequirePackage{amssymb}
+\fi
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{mleftright}
