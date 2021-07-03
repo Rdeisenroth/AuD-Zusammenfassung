@@ -213,7 +213,6 @@ Laufzeit beträgt im Worst Case $\Theta(n)\Rightarrow$ Keine Überprüfung, ob W
     \paragraph{Einfügen eines Elements am Kopf der Liste}\mbox{}
     %\begin{noindent}
         \begin{codeBlock}[autogobble]{title={insert(L,x)}}
-            insert(L,x)
             x.next = l.head;
             x.prev = nil;
             IF L.head != nil THEN
@@ -762,7 +761,7 @@ Code:\index{transplant}
         transplant(T,z,z.left)
     ELSE
         IF z.right == nil THEN
-            transplant(T,z,z,left)
+            transplant(T,z,z.left)
         ELSE
             y = z.right;
             WHILE y.left != nil DO y = y.left;
