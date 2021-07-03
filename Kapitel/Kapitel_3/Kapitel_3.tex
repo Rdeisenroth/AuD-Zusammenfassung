@@ -396,11 +396,11 @@ Methoden:\\
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title={enqueue(Q,k)}}
         IF isEmpty(Q) THEN
-            Q.front=x;
+            Q.front=k;
         ELSE
-            Q.rear.next=x;
-        x.next=nil;
-        Q.rear=x;
+            Q.rear.next=k;
+        k.next=nil;
+        Q.rear=k;
     \end{codeBlock}
     %\end{noindent}
 \end{minipage}
