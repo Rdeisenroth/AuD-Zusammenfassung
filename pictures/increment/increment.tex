@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{audutils}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+    \begin{tikzpicture}[font=\sffamily]%
+        \node[
+            inner sep=0pt, 
+            outer sep=0pt](a1){\onedimarray{0/$b_{k-1}$, 0/$b_{k-2}$, $\cdots$/{}, , , $\cdots$/{}, 0/$b_2$, 1/$b_1$, 1/$b_0$}}; % start array
+        \node[
+            inner sep=0pt, 
+            outer sep=0pt, 
+            anchor=north](a2) at([yshift=-2em]a1.south){\onedimarray{0/$b_{k-1}$, 0/$b_{k-2}$, $\cdots$/{}, , , $\cdots$/{}, 1/$b_2$, 0/$b_1$, 0/$b_0$}}; % incremented array
+        \draw[-{Triangle[angle=45:0.7em]}, ultra thick]  % getting a fitting arrow head
+            ([yshift=0.7em, xshift=0.2em]a1.south east) [out=330, in=30]  to ([yshift=1.3em, xshift=0.2em]a2.south east) % arrow path
+            node at ([yshift=3.75em, xshift=2.3em]a2.south east){{\small\raisebox{0.1ex}{+}\hspace{0.2ex}}1}; % label of the arrow
+    \end{tikzpicture}
+\end{document}

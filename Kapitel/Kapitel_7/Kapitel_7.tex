@@ -1,13 +1,14 @@
 \documentclass[
     ngerman,
     color=3b,
-    dark_mode,
+    % dark_mode,
     load_common, % Loads a list of commonly used Packages
     summary,
     boxarc,
     % manual_term,
     % solution=true,
 ]{rubos-tuda-template} 
+\usepackage{audutils}
 % Import all Packages from Main Preamble with relative Path
 % \subimport*{../../}{preamble}
 % Get Labels from Main Document using the xr-hyper Package
@@ -750,14 +751,13 @@ return best
               \item Erhöhe $x$ um 1
               \item Beispiel: $x=3$
               \item \texttt{INCREMENT} kostet 3, da sich drei Bitpositionen ändern
-              \item[] \includegraphics[width=9cm]{pictures/increment\IfDarkModeT{_dark}.PNG}
+              \item[]\includestandalone[width=9.89cm]{pictures/increment/increment}
           \end{itemize}
-          \vspace*{-.2cm}
     \item [Teuerste INCREMENT-Operation]
           \begin{itemize}
               \item \texttt{INCREMENT} flippt $k-1$ Bits von 1 zu 0 und $1$ Bit von 0 auf 1
               \item Kosten nicht konstant, stark abhängig von Datenstruktur
-              \item[] \includegraphics[width=9cm]{pictures/incrementEXP\IfDarkModeT{_dark}.PNG}
+              \item[]\includestandalone[width=9.89cm]{pictures/incrementEXP/incrementEXP}
           \end{itemize}
     \item [Traditionelle Worst-Case Analyse]
           \begin{itemize}
@@ -841,7 +841,7 @@ return best
               \item Jede Bitflip Operation kostet zusätzlich 1 Einheit
               \item Setzen Bit 0 $\rightarrow$ 1: Zahlt 2 ein, kostet aber 1 $\rightarrow$ +1 Guthaben
               \item Setzen Bit 1 $\rightarrow$ 0: Zahlt 0 ein, kostet aber 1 $\rightarrow$ -1 Guthaben
-              \item[] \includegraphics[width=12cm]{pictures/guthaben\IfDarkModeT{_dark}.PNG}
+              \item[]\includestandalone[width=12cm]{pictures/guthaben/guthaben}
           \end{itemize}
 
 \textit{Obere Schranken der Kosten:}
