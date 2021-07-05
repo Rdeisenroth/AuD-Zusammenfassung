@@ -218,7 +218,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \begin{itemize}
     \item $\Theta$-Notation beschränkt eine Funktion asymptotisch von oben und unten
     \item Funktionen $f,g: \mathbb{N} \rightarrow \mathbb{R}_{>0}$ ($\mathbb{N}$: Eingabelänge, $\mathbb{R}$: Zeit)
-    \item[] \includegraphics[width=12cm]{pictures/thetaNotation\IfDarkModeT{_dark}.pdf}
+    \item[] \includegraphics[width=\linewidth]{pictures/thetaNotation\IfDarkModeT{_dark}.pdf}
     \item $\Theta(g)$ enthält alle $f$, die genauso schnell wachsen wie $g$
     \item \fatsf{Schreibweise}: $f \in \Theta(g)$ (korrekt), manchmal auch $f = \Theta(g)$
 
@@ -251,7 +251,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \end{wrapfigure}
 \begin{itemize}
     \item $\mathcal{O}$-Notation beschränkt eine Funktion asymptotisch von oben
-    \item[] \includegraphics[width=12cm]{pictures/oNotation\IfDarkModeT{_dark}.pdf}
+    \item[] \includegraphics[width=\linewidth]{pictures/oNotation\IfDarkModeT{_dark}.pdf}
     \item $O(g)$ enthält alle $f$, die höchstens so schnell wie $g$ wachsen
     \item \fatsf{Schreibweise}: $f=\mathcal{O}(g)$
     \item $f(n)=\Theta(g) \rightarrow f(n) = \mathcal{O}(g)$ | $\Theta(g(n)) \subseteq \mathcal{O}(g(n))$
@@ -293,7 +293,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
 \end{wrapfigure}
 \begin{itemize}
     \item $\Omega$-Notation beschränkt eine Funktion asymptotisch von unten
-    \item[] \includegraphics[width=12cm]{pictures/omegaNotation\IfDarkModeT{_dark}.pdf}
+    \item[] \includegraphics[width=\linewidth]{pictures/omegaNotation\IfDarkModeT{_dark}.pdf}
     \item $\Omega$-Notation enthält alle $f$, die mindestens so schnell wie $g$ wachsen
     \item \fatsf{Schreibweise}: $f = \Omega(g)$
 \end{itemize}
@@ -456,7 +456,7 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
         \item Schleifen: Abbruchüberprüfung zählt auch
         \item \texttt{$t_j$}: Anzahl der Abfragen der \texttt{While}-Schleife
         \item Laufzeit:
-              $T(n)=c_{1} n+c_{2}(n-1)+c_{4}(n-1)+c_{5} \sum_{j=1}^{n-1} t_{j}\linebreak +c_{6} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{7} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{8}(n-1)$
+              $T(n)=c_{1} n+c_{2}(n-1)+c_{4}(n-1)+c_{5} \sum_{j=1}^{n-1} t_{j}\\ +c_{6} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{7} \sum_{j=1}^{n-1}\left(t_{j}-1\right)+c_{8}(n-1)$
     \end{itemize}
 \end{minipage}
 % \vspace{1em}
@@ -1044,7 +1044,7 @@ $T(n) = 3T(\left \lfloor \frac{n}{4} \right \rfloor) + \Theta(n^2)$
           \end{itemize}
 \end{itemize}
 %Horizontal Seperator
-\hbox to \hsize{\cleaders\hbox to 1em{-}\hfill\hfil}
+\hbox to \hsize{\leaders\hbox to 1em{-\hfil}\hfil}%
 \vspace{3cm}
 \begin{table}[ht]
     \centering

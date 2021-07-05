@@ -30,8 +30,10 @@ Anwendung, wenn sich Teilprobleme überlappen:
 
 \subsubsection{Stabzerlegungsproblem}\index{Stabzerlegungsproblem}
 
-\includegraphics[width=12cm]{pictures/stabzerlegungsproblem\IfDarkModeT{_dark}.pdf}\\
-Optimaler Erlös: zwei 2cm lange Stücke ($5+5=10$)\\
+\includegraphics[width=12cm]{pictures/stabzerlegungsproblem\IfDarkModeT{_dark}.pdf}
+
+Optimaler Erlös: zwei 2cm lange Stücke ($5+5=10$)
+
 \paragraph{Aufteilung der Stange}
 \begin{itemize}
     \item Stange mit Länge $n$ kann auf $2^{n-1}$ Weisen zerlegt werden
@@ -333,9 +335,10 @@ Auf einem Schachbrett der Grö\ss{}e $n \cdot n$ sollen $n$ Damen so positionier
 gegenseitig nicht schlagen können. Wie viele Möglichkeiten gibt es, $n$ Damen so aufzustellen, dass keine
 Damen eine andere schlägt.\par
 \begin{minipage}{7cm}
+    \captionsetup{type=figure}
     \includegraphics[width=6cm]{pictures/damenproblem.PNG}
     \captionof{figure}{Beispielhafte Darstellung des Damenproblems}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}{\textwidth-7cm}
     \begin{itemize}
         \item $n=8:$ 4 Milliarden Positionierungen
@@ -371,10 +374,11 @@ Damen eine andere schlägt.\par
 \subsection{Metaheuristiken}\index{Metaheuristiken}
 \paragraph{Optimierungsproblem}\index{Optimierungsproblem}\mbox{}\\
 \begin{minipage}{10cm}
+    \captionsetup{type=figure}
     \includegraphics[width=10cm]{pictures/optimierungsproblem\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Optimierungsproblem}
-\end{minipage}
-\begin{minipage}{\textwidth-10cm-2.22168pt}
+\end{minipage}%
+\begin{minipage}{\textwidth-10cm}
     \begin{itemize}
         \item Lösungsstrategien:
               \begin{itemize}
@@ -779,19 +783,19 @@ return best
     \item Ziel: $T(n)$ genau berechnen, \fatsf{ohne} jedes Mal Worst-Case anzunehmen
     \item Ansatz: Aufsummation der \fatsf{tatsächlich} anfallenden Kosten aller Operationen
 \end{itemize}
-\textit{Durchführung:}\\
+\textit{Durchführung:}
 
 \begin{minipage}{0.5\textwidth}
     \includegraphics[width=\textwidth]{pictures/aggregat1\IfDarkModeT{_dark}.PNG}
-\end{minipage}
-\begin{minipage}{0.5\textwidth-2.22168pt}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
     \includegraphics[width=\textwidth]{pictures/aggregat2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 \vspace{1em}\\
 \begin{minipage}{0.5\textwidth}
     \includegraphics[width=\textwidth]{pictures/aggregat3\IfDarkModeT{_dark}.PNG}
-\end{minipage}
-\begin{minipage}{0.5\textwidth-2.22168pt}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
     \begin{itemize}
         \item Bisher noch kein Worst-Case
         \item Nächste Operation hätte max. Kosten
@@ -857,7 +861,7 @@ return best
 
 \pagebreak
 
-\paragraph{Potential-Methode - Beispiel Binärzähler}\mbox{}\vspace{-1em}\\
+\paragraph{Potential-Methode - Beispiel Binärzähler}\mbox{}
 
 \textit{Eigenschaften:}
 \begin{itemize}

@@ -28,7 +28,8 @@
       \item Polynomielle Probleme: \textit{\string"einfach\string"}
       \item Superpolynomielle Probleme: \textit{\string"hart\string"}
 \end{itemize}
-\mbox{}\vspace{1cm}\\
+\mbox{}\vspace{1cm}
+
 \begin{definition}[Klasse P]\mbox{}
       \begin{itemize}
             \item Klasse aller Polynomialzeitprobleme
@@ -168,8 +169,9 @@ Beispiele: Binäre Addition, Kürzeste Wege, Sortieren, \dots
       \item[]
             A lässt sich auf B in \fatsf{polynomieller Zeit reduzieren}, mit Schreibweise $A \leq_p B$, wenn eine
             in polynomieller Zeit berechenbare Funktion $f: \{0,1\}^* \rightarrow \{0,1\}^*$ existiert, sodass
-            für alle $x \in \{0,1\}^*$ gilt: \\
-            \centerline{$x \in A$ genau dann, wenn $f(x)\in B$}
+            für alle $x \in \{0,1\}^*$ gilt:\begin{align*}
+                  x \in A\text{ genau dann, wenn }f(x)\in B
+            \end{align*}
       \item[] \includegraphics[width=12cm]{pictures/reduktion2\IfDarkModeT{_dark}.PNG}
 \end{itemize}
 

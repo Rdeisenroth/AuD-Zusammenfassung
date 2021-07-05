@@ -116,14 +116,14 @@ Also müssen wir:
 \end{itemize}
 
 Fälle falls $z.parent$ rot ist:\\
-\begin{minipage}{.5\textwidth-1.85301pt}
+\begin{minipage}{.5\textwidth-1pt}
     \begin{itemize}
         \item[1.] Onkel ist ebenfalls rot $\Rightarrow$ parent und Onkel werden schwarz gefärbt und Grandparent wird rot gefärbt, z wird zu z.p.p, ggf. Verletzung durch Farbe des neuen z
         \item[2.] Onkel ist schwarz und z hat andere Kindrichtung wie z.p $\Rightarrow$ zu Fall 3 durch Rotation konvertieren
         \item[3.] Onkel ist schwarz und z hat gleiche Kindrichtung wie z.p $\Rightarrow$ z.p wird schwarz, z.p.p wird rot, und es wird um z.p.p entgegen der Kindrichtung gedreht. Schleife terminiert nach Fall 3
     \end{itemize}
-\end{minipage}
-\begin{minipage}{.5\textwidth}
+\end{minipage}\hspace{2pt}%
+\begin{minipage}{.5\textwidth-1pt}
     \begin{tcolorbox}[
             colback=yellow!20,
             colframe=black!70,
@@ -136,8 +136,9 @@ Fälle falls $z.parent$ rot ist:\\
         \centering
         \includestandalone{pictures/fixColorsAfterInsertionCases/case1}
     \end{tcolorbox}
-\end{minipage}\\
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\end{minipage}
+
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     \begin{tcolorbox}[
             colback=yellow!20,
             colframe=black!70,
@@ -151,8 +152,8 @@ Fälle falls $z.parent$ rot ist:\\
         \includestandalone{pictures/fixColorsAfterInsertionCases/case2}
     \end{tcolorbox}
     %\captionof*{figure}{Fall 2}
-\end{minipage}
-\begin{minipage}[t]{.5\textwidth-1.85301pt}\mbox{}
+\end{minipage}\hspace{2pt}%
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     \begin{tcolorbox}[
             colback=yellow!20,
             colframe=black!70,
@@ -323,7 +324,7 @@ Delete kann die RSB-Bedingung verletzen. Das fixup hat vier fälle:
     Balance für $x$: $B(x)$ = Höhe(rechter Teilbaum) - Höhe(linker Teilbaum)
     \index{linkslastig}\index{rechtslastig}\index{balanciert}
 \end{definition}
-$h \leq 1.441 \cdot log~n$ (optimierte Konstanten - 1,441 vs 2 (RBT))\\
+$h \leq 1.441 \cdot log~n$ (optimierte Konstanten - 1,441 vs 2 (RBT))\par\vspace{2em}
 \paragraph{AVL vs. Rot-Schwarz-Bäume}\mbox{}
 \begin{grayInfoBox}
     \begin{description}[leftmargin=3cm,itemsep=1em]
@@ -357,14 +358,14 @@ $h \leq 1.441 \cdot log~n$ (optimierte Konstanten - 1,441 vs 2 (RBT))\\
 
 \begin{minipage}{0.5\textwidth}
     \centering\includegraphics[width=\textwidth]{pictures/avlcase1\IfDarkModeT{_dark}.PNG}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}{0.5\textwidth}
     \centering\includegraphics[width=\textwidth]{pictures/avlcase34\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 
 \begin{minipage}{0.5\textwidth}
     \centering\includegraphics[width=\textwidth]{pictures/avlcase2_1\IfDarkModeT{_dark}.PNG}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}{0.5\textwidth}
     \centering\includegraphics[width=\textwidth]{pictures/avlcase2_2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
@@ -418,8 +419,9 @@ WHILE z != T.root DO
 
 \index{Zig-Zag} \includegraphics[width=12cm]{pictures/zigzag\IfDarkModeT{_dark}.PNG}
 \clearpage
-\index{Zig-Zig} \includegraphics[width=11cm]{pictures/zigzig\IfDarkModeT{_dark}.PNG}\\
-\index{Zig} \includegraphics[width=11cm]{pictures/zig\IfDarkModeT{_dark}.PNG}\\
+\index{Zig-Zig} \includegraphics[width=11cm]{pictures/zigzig\IfDarkModeT{_dark}.PNG}
+
+\index{Zig} \includegraphics[width=11cm]{pictures/zig\IfDarkModeT{_dark}.PNG}
 
 \vspace*{-2em}
 \begin{description}[itemsep=.8em]
@@ -500,9 +502,10 @@ Laufzeit: $O(h) = O(log~n)$
         return max;
     \end{codeBlock}
     %\end{noindent}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}[t]{0.43\textwidth}\mbox{}
     \centering
+    \captionsetup{type=figure}
     \includegraphics[width=\textwidth]{pictures/heapDelete\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Löschen des Maximums im Binären Max-Heap}
 \end{minipage}
@@ -628,7 +631,7 @@ Füge z in Blatt ein
 \end{itemize}
 \begin{minipage}{0.25\textwidth}
     \includegraphics[width=4cm]{pictures/bbaumMelt\IfDarkModeT{_dark}.PNG}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}{0.75\textwidth}
     Allgemeines Verschmelzen:\index{Verschmelzen}
     \begin{itemize}
@@ -636,10 +639,11 @@ Füge z in Blatt ein
         \item Wenn Elternknoten vorher min. $t$ Werte
         \item[] $\Rightarrow$ keine Änderung oberhalb notwendig
     \end{itemize}
-\end{minipage} \vspace{1em}\\
+\end{minipage}\vspace{1em}
+
 \begin{minipage}{0.25\textwidth}
     \includegraphics[width=4cm]{pictures/bbaumRot\IfDarkModeT{_dark}.PNG}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}{0.75\textwidth}
     Allgemeines Rotieren/Verschieben:
     \begin{itemize}

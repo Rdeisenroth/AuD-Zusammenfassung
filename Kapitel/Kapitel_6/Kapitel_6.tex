@@ -313,6 +313,7 @@ return A
 \end{codeBlock}
 %\end{noindent}
 \begin{minipage}{0.35\textwidth}
+    \captionsetup{type=figure}
     \includegraphics[width=6cm]{pictures/mstTerm\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Ausführung genericMST()}
 \end{minipage}
@@ -327,7 +328,8 @@ return A
     \end{itemize}
 \end{minipage}
 
-\paragraph{Algorithmus von Kruskal}\index{Kruskal}\mbox{}\\
+\paragraph{Algorithmus von Kruskal}\index{Kruskal}\mbox{}
+
 \begin{idea}[Algorithmus von Kruskal]\mbox{}
     Suchen der \enquote{kleinsten} Kante und Zusammenfügen von Mengen, falls Mengen ungleich sind
 \end{idea}
@@ -450,7 +452,7 @@ Laufzeit: $\Theta(|V| \cdot log|V| + |E|)$
 %\end{noindent}
 \begin{minipage}{.4\textwidth}
     \includestandalone[]{pictures/dijkstra-fail-graph/dijkstra-fail-graph}
-\end{minipage}
+\end{minipage}%
 \begin{minipage}{.6\textwidth}
     \begin{itemize}
         \item Beispiel für Problem mit negativen Kantengewisten bei Dijkstra: Dijkstra würde Pfad 1-2-3 liefern, da das Kantengewicht 4 grö\ss{}er als der andere Pfad ist.
@@ -544,6 +546,6 @@ Code:
 \clearpage
 Beispiel:\\
 \includegraphics[width=12cm]{pictures/fordbsp1\IfDarkModeT{_dark}.PNG}\\
-\includegraphics[width=12cm]{pictures/fordbsp2\IfDarkModeT{_dark}.PNG}\\
+\includegraphics[width=12cm]{pictures/fordbsp2\IfDarkModeT{_dark}.PNG}
 \clearpage
 \end{document}

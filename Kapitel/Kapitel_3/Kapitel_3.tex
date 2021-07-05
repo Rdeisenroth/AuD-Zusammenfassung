@@ -64,16 +64,17 @@
     \item [\texttt{push(k)}] führt dazu, dass \texttt{s.Top} sich eins nach rechts bewegt
 \end{description}
 
-\paragraph{Stacks als Array - Methoden, falls maximale Grö\ss{}e bekannt}\mbox{}\\
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\paragraph{Stacks als Array - Methoden, falls maximale Grö\ss{}e bekannt}\mbox{}
+
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=new(S)}
         S.A[]=ALLOCATE(MAX);
         S.top=-1;
     \end{codeBlock}
     %\end{noindent}
-\end{minipage}
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\end{minipage}\hspace{2pt}%
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=isEmpty(S)}
         IF S.top<0 THEN
@@ -83,7 +84,7 @@
     \end{codeBlock}
     %\end{noindent}
 \end{minipage}
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=pop(S)}
         IF isEmpty(S) THEN
@@ -93,8 +94,8 @@
           return S.A[S.top+1];
     \end{codeBlock}
     %\end{noindent}
-\end{minipage}
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\end{minipage}\hspace{2pt}%
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=push(S)}
         IF S.top==MAX-1 THEN
@@ -121,9 +122,10 @@
         \item Falls weniger als ein Viertel belegt, schrumpfe das Array wieder
     \end{itemize}
 \end{idea}
+
 Methoden:
 \texttt{RESIZE(A,m)} reserviert neuen Speicher der Grö\ss e \texttt{m} und kopiert \texttt{A} um\\
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=new(S)}
         S.A[]=ALLOCATE(1);
@@ -131,8 +133,8 @@ Methoden:
         S.memsize=1;
     \end{codeBlock}
     %\end{noindent}
-\end{minipage}
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\end{minipage}\hspace{2pt}%
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=isEmpty(S)}
         IF S.top<0 THEN
@@ -142,7 +144,7 @@ Methoden:
     \end{codeBlock}
     %\end{noindent}
 \end{minipage}
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=pop(S)}
         IF isEmpty(S) THEN
@@ -155,8 +157,8 @@ Methoden:
             return S.A[S.top+1];
     \end{codeBlock}
     %\end{noindent}
-\end{minipage}
-\begin{minipage}[t]{.5\textwidth}\mbox{}
+\end{minipage}\hspace{2pt}%
+\begin{minipage}[t]{.5\textwidth-1pt}\mbox{}
     %\begin{noindent}
     \begin{codeBlock}[autogobble]{title=push(S)}
         S.top=S.top+1;
@@ -431,7 +433,7 @@ Bäume sind \enquote{azyklisch}(also \enquote{keine Schleifen zwischen Knoten})
     \includegraphics[width=\linewidth-5pt]{pictures/baumGraph2\IfDarkModeT{_dark}.PNG}
 \end{minipage}
 
-\paragraph{Allgemeine Begrifflichkeiten}\index{Vorfahre}\index{ancestor}\index{Wurzel}\index{root}\index{parent}\index{Elternknoten}\index{Kindknoten}\index{child}\index{Geschwisterknoten}\index{sibling}\index{Nachkomme}\index{descendant}\index{Blatt}\index{leaf}\index{Höhe (Baum)}\mbox{}\\
+\paragraph{Allgemeine Begrifflichkeiten}\index{Vorfahre}\index{ancestor}\index{Wurzel}\index{root}\index{parent}\index{Elternknoten}\index{Kindknoten}\index{child}\index{Geschwisterknoten}\index{sibling}\index{Nachkomme}\index{descendant}\index{Blatt}\index{leaf}\index{Höhe (Baum)}\mbox{}
 
 \begin{minipage}[c]{0.59\textwidth}\mbox{}
     \includegraphics[width=\linewidth-10pt]{pictures/baumBegriffe1\IfDarkModeT{_dark}.PNG}
@@ -614,6 +616,7 @@ Hier: Ersetze $x$ durch Halbblatt ganz rechts
 \end{minipage}
 \begin{minipage}[c]{0.4\textwidth}
     \centering
+    \captionsetup{type=figure}
     \includegraphics[width=5cm]{pictures/löschenBaumConnect\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Connect-Algorithmus Binärbaum}
 \end{minipage}
@@ -642,6 +645,7 @@ Hier: Ersetze $x$ durch Halbblatt ganz rechts
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
     \centering
+    \captionsetup{type=figure}
     \includegraphics[width=6cm]{pictures/löschenBaumDelete\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Delete-Algorithmus Binärbaum}
 \end{minipage}
@@ -657,11 +661,9 @@ Hier: Ersetze $x$ durch Halbblatt ganz rechts
     \item Preorder/Postorder + eindeutige Werte $\Rightarrow$ Eindeutige Identifizierung
 \end{definition}
 
-\paragraph{Suchen im Binären Suchbaum}\mbox{}\\
+\paragraph{Suchen im Binären Suchbaum}\mbox{}
 
-
-\begin{minipage}[c]{0.5\textwidth-1.85301pt}
-
+\begin{minipage}[c]{0.5\textwidth}
 
     Code:
     %\begin{noindent}
@@ -686,9 +688,10 @@ Hier: Ersetze $x$ durch Halbblatt ganz rechts
     \end{codeBlock}
     %\end{noindent}
     Laufzeit (beide) $= O(h)$ (Höhe)
-\end{minipage}
+\end{minipage}%
 \begin{minipage}[c]{0.5\textwidth}
     \centering
+    \captionsetup{type=figure}
     \includegraphics[width=9cm]{pictures/binärerSuchbaumSuche\IfDarkModeT{_dark}.PNG}
     \captionof{figure}{Beispiel Search-Algorithmus im Binärbaum}
 \end{minipage}
