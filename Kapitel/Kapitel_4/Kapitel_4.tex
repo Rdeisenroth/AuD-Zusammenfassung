@@ -11,7 +11,7 @@
 % Import all Packages from Main Preamble with relative Path
 % \subimport*{../../}{preamble}
 % Get Labels from Main Document using the xr-hyper Package
-\externaldocument{../../AuD-Zusammenfassung-2020}
+\externaldocument[ext:]{../../AuD-Zusammenfassung-2020}
 % Set Graphics Path, so pictures load correctly
 \graphicspath{{../../}}
 
@@ -48,13 +48,13 @@ Alle folgenden Algorithmen arbeiten mithilfe eines Sentinels (zeigt auf sich sel
 \begin{figure}[ht]
     \centering
     \includestandalone[width=.5\textwidth]{pictures/baum_beispiel/baum_beispiel}% 
-    \caption{Beispielhafte Darstellung wie in \ref{Definitionen fuer Datenstrukturen}}
+    \caption{Beispielhafte Darstellung wie in \extref{Definitionen fuer Datenstrukturen}}
     \label{fig:red_black_tree_example}
 \end{figure}
 \clearpage
 \paragraph{Einfügen}
 \begin{enumerate}
-    \item Finde Elternknoten wie im BST (\hyperref[BST-Insert]{BST-Einfüge Algorithmus})
+    \item Finde Elternknoten wie im BST (\exthyperref[BST-Insert]{BST-Einfüge Algorithmus})
     \item Knoten als Kind von Elternknoten anfügen
     \item Färbe den neuen Knoten rot
     \item Wiederherstellen der Rot-Schwarz-Bedingung\index{fixColorsAfterInsertion()}

@@ -11,7 +11,7 @@
 % Import all Packages from Main Preamble with relative Path
 % \subimport*{../../}{preamble}
 % Get Labels from Main Document using the xr-hyper Package
-\externaldocument{../../AuD-Zusammenfassung-2020}
+\externaldocument[ext:]{../../AuD-Zusammenfassung-2020}
 % Set Graphics Path, so pictures load correctly
 \graphicspath{{../../}}
 
@@ -23,6 +23,7 @@
 \begin{definition}[Das Sortierproblem]\mbox{}\\
     \fatsf{Ausgangspunkt}:
     \begin{center}
+        \captionsetup{type=figure}
         \includestandalone[width=.2\textwidth]{pictures/folge_von_Datensätzen/folge_von_Datensätzen}% 
         \captionof{figure}{Folge von Datensätzen $D_1,D_2,\cdots,D_n$}
         \label{fig:folge_von_Datensätzen}
@@ -51,7 +52,7 @@
     \centering
     \includestandalone[]{pictures/array_beispiel/array_beispiel}% 
     \caption{beispielhafte Darstellung eines Arrays}
-    \label{fig:folge_von_Datensätzen}
+    \label{fig:array_beispiel}
 \end{figure}
 \begin{description}[leftmargin=1cm]
     \item [$A$] Bezeichnung des Arrays mit dem Namen "`$A$"'
@@ -213,7 +214,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
     \centering
     \includegraphics[width=5cm]{pictures/thetaNotationGraph\IfDarkModeT{_dark}.pdf}
     \caption{Veranschaulichung $\Theta$-Notation}
-    \label{}
+    \label{fig:theta_notation}
 \end{wrapfigure}
 \begin{itemize}
     \item $\Theta$-Notation beschränkt eine Funktion asymptotisch von oben und unten
@@ -247,7 +248,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
     \centering
     \includegraphics[width=5cm]{pictures/oNotationGraph\IfDarkModeT{_dark}.pdf}
     \caption{Veranschaulichung $\mathcal{O}$-Notation}
-    \label{}
+    \label{fig:o-notation}
 \end{wrapfigure}
 \begin{itemize}
     \item $\mathcal{O}$-Notation beschränkt eine Funktion asymptotisch von oben
@@ -289,7 +290,7 @@ $\Longrightarrow$ Arrays erlauben effizienten Zugriff auf Elemente: konstanter A
     \centering
     \includegraphics[width=5cm]{pictures/omegaNotationGraph\IfDarkModeT{_dark}.pdf}
     \caption{Veranschaulichung}
-    \label{}
+    \label{fig:omega-notation}
 \end{wrapfigure}
 \begin{itemize}
     \item $\Omega$-Notation beschränkt eine Funktion asymptotisch von unten
@@ -538,7 +539,7 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
     \item [Anzahl der Vertauschungen]
           \begin{itemize}
               \item \texttt{Best Case}: 0 Vertauschungen
-              \item \texttt{Worst Case}: $\frac{n^2-n}{2}$ Vertauschungen
+              \item \texttt{Worst Case}: $\dfrac{n^2-n}{2}$ Vertauschungen
           \end{itemize}
 
     \item [Komplexität]
@@ -1050,13 +1051,13 @@ $T(n) = 3T(\left \lfloor \frac{n}{4} \right \rfloor) + \Theta(n^2)$
     \centering
     \rowcolors{2}{\thepagecolor}{fgcolor!10!\thepagecolor}
     \begin{tabular}{c|c|c}
-        \fatsf{Grundlegende Datenstrukturen}            & \fatsf{Fortgeschrittene Datenstrukturen}         & \fatsf{Randomisierte Datenstrukturen} \\
+        \fatsf{Grundlegende Datenstrukturen}               & \fatsf{Fortgeschrittene Datenstrukturen}            & \fatsf{Randomisierte Datenstrukturen}    \\
         \toprule
-        \hyperref[Stacks]{Stacks}                       & \hyperref[Rot-Schwarz-Baeume]{Rot-Schwarz-Bäume} & \hyperref[Skip Lists]{Skip Lists}     \\
-        \hyperref[Verkettete Listen]{Verkettete Listen} & \hyperref[AVL-Baeume]{AVL-Bäume}                 & \hyperref[Hashtables]{Hash Tables}    \\
-        \hyperref[Queues]{Queues}                       & \hyperref[Splay-Baeume]{Splay-Bäume}             & \hyperref[Bloom-Filter]{Bloom-Filter} \\
-        \hyperref[Binaere Baeume]{Bäume}                & \hyperref[Binaere Max-Heaps]{Heaps}              &                                       \\
-        \hyperref[Binaere Suchbaeume]{Binäre Suchbäume} & \hyperref[B-Baeume]{B-Bäume}                     &                                       \\
+        \exthyperref[Stacks]{Stacks}                       & \exthyperref[Rot-Schwarz-Baeume]{Rot-Schwarz-Bäume} & \exthyperref[Skip Lists]{Skip Lists}     \\
+        \exthyperref[Verkettete Listen]{Verkettete Listen} & \exthyperref[AVL-Baeume]{AVL-Bäume}                 & \exthyperref[Hashtables]{Hash Tables}    \\
+        \exthyperref[Queues]{Queues}                       & \exthyperref[Splay-Baeume]{Splay-Bäume}             & \exthyperref[Bloom-Filter]{Bloom-Filter} \\
+        \exthyperref[Binaere Baeume]{Bäume}                & \exthyperref[Binaere Max-Heaps]{Heaps}              &                                          \\
+        \exthyperref[Binaere Suchbaeume]{Binäre Suchbäume} & \exthyperref[B-Baeume]{B-Bäume}                     &                                          \\
     \end{tabular}
     \caption{Übersicht Datenstrukturen}
     \label{tab:overview_dataStructures}

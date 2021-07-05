@@ -11,7 +11,7 @@
 % Import all Packages from Main Preamble with relative Path
 % \subimport*{../../}{preamble}
 % Get Labels from Main Document using the xr-hyper Package
-\externaldocument{../../AuD-Zusammenfassung-2020}
+\externaldocument[ext:]{../../AuD-Zusammenfassung-2020}
 % Set Graphics Path, so pictures load correctly
 \graphicspath{{../../}}
 
@@ -75,7 +75,7 @@ Datenstrukturen:\begin{itemize}
     \item Sind Organisationsformen für Daten
     \item Beinhalten Strukturbestandteile und Nutzerdaten (Payload)
 \end{itemize}
-z.B. \hyperref[2.2]{Arrays}, Listen, \ldots
+z.B. \exthyperref[2.2]{Arrays}, \exthyperref[Verkettete Listen]{Listen}, \ldots
 \vspace*{2cm}
 \subsection{Pseudocode-Konventionen}\index{Pseudocode}
 \begin{grayInfoBox}

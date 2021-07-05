@@ -23,55 +23,44 @@
 \bool_gset_false:N \g_dark_mode_bool
 \bool_gset_false:N \g_manual_term_bool
 \bool_gset_false:N \g_is_summary_bool
+\bool_gset_false:N \g_is_main_file_bool
 \bool_gset_false:N \g_is_submission_bool
 \bool_gset_false:N \g_ptxcd_ex_load_common_bool
 \bool_gset_true:N \g_ptxcd_ex_fancy_rowcolor_bool
 \tl_gclear_new:N \datename
 \tl_gset:Nn \datename {Datum}
+\tl_gclear_new:N \g_rubos_external_label_prefix_tl
+\tl_gset:Nn \g_rubos_external_label_prefix_tl {ext:}
 \prop_new:N \g_ptxcd_template_opts_prop
 
+\tl_gclear_new:N \g_rubos_keys_tl
+\tl_gset:Nn \g_rubos_keys_tl {
+  boxarc .code:n = \prop_gput:Nnn \g_ptxcd_template_opts_prop {boxarc} {#1},
+  boxarc .initial:n = {0pt},
+  boxarc .default:n = {3pt},
+  dark_mode .code:n = \pagecolor{black}\color{white}\selectcolormodel{RGB}\bool_gset_true:N \g_dark_mode_bool,
+  manual_term .bool_gset:N = \g_manual_term_bool,
+  manual_term .initial:n = false,
+  manual_term .default:n = true,
+  summary .code:n = \bool_if:nTF \g_is_submission_bool {\ClassError{rubos-tuda-template}{summary\space can't\space be\space used\space with\space submission\space mode\space enabled}{disable\space submission\space mode}}{\bool_gset_true:N \g_is_summary_bool\tl_gset:Nn \datename {Stand}},
+  submission .code:n = \bool_if:nTF \g_is_summary_bool{\ClassError{rubos-tuda-template}{submission\space can't\space be\space used\space with\space summary\space mode\space enabled}{disable\space summary\space mode}}{\bool_gset_true:N \g_is_submission_bool},
+  load_common .bool_gset:N = \g_ptxcd_ex_load_common_bool,
+  load_common .initial:n = false,
+  load_common . default:n = true,
+  default_row_color .bool_gset_inverse:N = \g_ptxcd_ex_fancy_rowcolor_bool,
+  default_row_color .initial:n = false,
+  default_row_color .default:n = true,
+  shell_escape .bool_gset:N = \g_rubos_shell_escape_bool,
+  shell_escape .initial:n = true,
+  shell_escape .default:n = true,
+  main .bool_gset:N = \g_is_main_file_bool,
+  main .initial:n = false,
+  main .default:n = true,
+}
 % Additional Class Options
-\keys_define:nn {ptxcd/exercise} {
-  boxarc .code:n = \prop_gput:Nnn \g_ptxcd_template_opts_prop {boxarc} {#1},
-  boxarc .initial:n = {0pt},
-  boxarc .default:n = {3pt},
-  dark_mode .code:n = \pagecolor{black}\color{white}\selectcolormodel{RGB}\bool_gset_true:N \g_dark_mode_bool,
-  manual_term .bool_gset:N = \g_manual_term_bool,
-  manual_term .initial:n = false,
-  manual_term .default:n = true,
-  summary .code:n = \bool_if:nTF \g_is_submission_bool {\ClassError{rubos-tuda-template}{summary\space can't\space be\space used\space with\space submission\space mode\space enabled}{disable\space submission\space mode}}{\bool_gset_true:N \g_is_summary_bool\tl_gset:Nn \datename {Stand}},
-  submission .code:n = \bool_if:nTF \g_is_summary_bool{\ClassError{rubos-tuda-template}{submission\space can't\space be\space used\space with\space summary\space mode\space enabled}{disable\space summary\space mode}}{\bool_gset_true:N \g_is_submission_bool},
-  load_common .bool_gset:N = \g_ptxcd_ex_load_common_bool,
-  load_common .initial:n = false,
-  load_common . default:n = true,
-  default_row_color .bool_gset_inverse:N =  \g_ptxcd_ex_fancy_rowcolor_bool,
-  default_row_color .initial:n = false,
-  default_row_color .default:n = true,
-  shell_escape .bool_gset:N = \g_rubos_shell_escape_bool,
-  shell_escape .initial:n = true,
-  shell_escape .default:n = true,
-}
+\exp_args:Nno \keys_define:nn {ptxcd/exercise} { \g_rubos_keys_tl }
 % Compatibility with older versions (We can't use version check makros before loading the class)
-\keys_define:nn {TUDa/pub} {
-  boxarc .code:n = \prop_gput:Nnn \g_ptxcd_template_opts_prop {boxarc} {#1},
-  boxarc .initial:n = {0pt},
-  boxarc .default:n = {3pt},
-  dark_mode .code:n = \pagecolor{black}\color{white}\selectcolormodel{RGB}\bool_gset_true:N \g_dark_mode_bool,
-  manual_term .bool_gset:N = \g_manual_term_bool,
-  manual_term .initial:n = false,
-  manual_term .default:n = true,
-  summary .code:n = \bool_if:nTF \g_is_submission_bool {\ClassError{rubos-tuda-template}{summary\space can't\space be\space used\space with\space submission\space mode\space enabled}{disable\space submission\space mode}}{\bool_gset_true:N \g_is_summary_bool\tl_gset:Nn \datename {Stand}},
-  submission .code:n = \bool_if:nTF \g_is_summary_bool{\ClassError{rubos-tuda-template}{submission\space can't\space be\space used\space with\space summary\space mode\space enabled}{disable\space summary\space mode}}{\bool_gset_true:N \g_is_submission_bool},
-  load_common .bool_gset:N = \g_ptxcd_ex_load_common_bool,
-  load_common .initial:n = false,
-  load_common . default:n = true,
-  default_row_color .bool_gset_inverse:N =  \g_ptxcd_ex_fancy_rowcolor_bool,
-  default_row_color .initial:n = false,
-  default_row_color .default:n = true,
-  shell_escape .bool_gset:N = \g_rubos_shell_escape_bool,
-  shell_escape .initial:n = true,
-  shell_escape .default:n = true,
-}
+\exp_args:Nno \keys_define:nn {TUDa/pub} { \g_rubos_keys_tl }
 \ExplSyntaxOff
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{tudaexercise}}
@@ -1595,6 +1584,37 @@
   \setcounter{task}{\getrefnumber{#1}}
   \hyperref[#1]{\taskformat}
   \setcounter{task}{\int_use:N \g_ptxcd_tmp_int}
+}
+
+\newcommand{\includeinvertablegraphics}[2][]{% Grafik wird beim Dark Mode automatisch Invertiert (rgb)
+  \IfDarkModeTF{\includegraphics[decodearray={1.0~0.0~1.0~0.0~1.0~0.0},#1]{#2}}{\includegraphics[#1]{#2}}
+}
+\newcommand{\includeinvertablegrayscalegraphics}[2][]{% Grafik wird beim Dark Mode automatisch Invertiert (grayscale)
+  \IfDarkModeTF{\includegraphics[decodearray={1.0~0.0},#1]{#2}}{\includegraphics[#1]{#2}}
+}
+
+\newcommand{\setextlblprefix}[1]{
+  \tl_if_empty:cTF {#1} {
+    \tl_gset:Nn \g_rubos_external_label_prefix_tl {ext:}
+    } {
+      \tl_gset:Nn \g_rubos_external_label_prefix_tl {#1}
+  }
+}
+
+% References from external Files
+\newcommand{\extref}[2][\g_rubos_external_label_prefix_tl]{
+  \bool_if:NTF \g_is_main_file_bool {
+    \ref{#2}
+  } {
+    \ref{#1#2}
+  }
+}
+\NewDocumentCommand\exthyperref{oO{\g_rubos_external_label_prefix_tl}m}{
+  \bool_if:NTF \g_is_main_file_bool {
+    \hyperref[#1]{#3}
+  } {
+    \hyperref[#2#1]{#3}
+  }
 }
 \ExplSyntaxOff
 \newcommand{\raisedcode}[1]{\raisebox{.1em}{\code{#1}}}
