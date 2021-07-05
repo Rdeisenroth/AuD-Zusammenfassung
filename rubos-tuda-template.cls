@@ -1,5 +1,5 @@
-\def\fileversion{1.3.2}
-\def\filedate{2021/06/19}
+\def\fileversion{1.3.3}
+\def\filedate{2021/07/05}
 
 % Sets the LaTeX version for the package to work.
 \NeedsTeXFormat{LaTeX2e}
@@ -1107,19 +1107,24 @@
                   % Left Side
                   \begin{minipage}[t]{\seq_if_empty:NF {\g_ptxcd_term_right_seq}{.6}\linewidth}
                     \str_if_eq:eeT{\g_ptxcd_ex_term_style_tl} {center} {\centering}
-                    \seq_use:Nnnn \g_ptxcd_term_left_seq {\mbox{}\\} {\mbox{}\\} {\mbox{}\\}
-                    \gdef\ptxcd_nextsep{\\}
+                    \seq_use:Nnnn \g_ptxcd_term_left_seq {\mbox{}\par} {\mbox{}\par} {\mbox{}\par}
+                    \gdef\ptxcd_nextsep{\par}
                   \end{minipage}
                   \seq_if_empty:NF {\g_ptxcd_term_right_seq}{
                     \begin{minipage}[t]{.4\linewidth}
                       \raggedleft
                       \begin{flushright}
-                        \seq_use:Nnnn \g_ptxcd_term_right_seq {\mbox{}\\} {\mbox{}\\} {\mbox{}\\}
+                        \seq_use:Nnnn \g_ptxcd_term_right_seq {\mbox{}\par} {\mbox{}\par} {\mbox{}\par}
                       \end{flushright}
-                      \gdef\ptxcd_nextsep{\\}
+                      \gdef\ptxcd_nextsep{\par}
                     \end{minipage}
-                    \tl_if_empty:NF \g_ptxcd_ex_term_tl {\ptxcd_nextsep\g_ptxcd_ex_term_tl}
                   }
+                  % \vspace{-\abovedisplayskip}
+                  \bool_if:nT { !\seq_if_empty_p:N \g_ptxcd_term_left_seq || !\seq_if_empty_p:N \g_ptxcd_term_right_seq } {
+                    \vspace*{\lineskip}
+                    \par
+                  }
+                  \tl_if_empty:NF \g_ptxcd_ex_term_tl {\g_ptxcd_ex_term_tl}
                   % \clist_map_inline:nn {@subtitle, @subsubtitle, g_ptxcd_ex_term_tl} {
                   %   \tl_if_empty:cF {##1} {\ptxcd_nextsep\use:c {##1}\def\ptxcd_nextsep{\\}}
                   % }
@@ -1644,6 +1649,20 @@
 \newcommand{\topleftpointer}[1]{{\node[inner sep=0pt] (lbl) at (.north) [xshift=-.3cm,yshift=.8cm] {\textcolor{orange}{#1}}; \draw[->,orange] ($(lbl.south)+(.05cm,0)$) -- ($(.north)-(.1cm,.15mm)$);}}
 \newcommand{\inlinejava}[1]{\lstinline[style=java]{#1}} % Wie in FOP- und AuD
 \newcommand{\hyraisedlink}[1]{\Hy@raisedlink{\hypertarget{#1}{}}}
+% Boxes surrounded by borders for information and warnings.
+\newcommand{\info}[1]{%
+  \begin{defBox}%
+    #1
+  \end{defBox}
+}
+\newcommand{\warning}[1]{
+    \begin{defBox}
+      \fatsf{Warnung:} #1
+    \end{defBox}
+}
+% Workarounds and similar stuff.
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+
 % Colors
 
 %Color Definitions
