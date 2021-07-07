@@ -11,14 +11,16 @@
 ]{rubos-tuda-template}
 \usepackage{audutils}
 
+\usetag{full} % Inhalt ggf einschränken - aktuelle Tags: {KW, Fischlin, full}
+
 \title[AuD]{Algorithmen\\und Datenstrukturen}
 \subtitle{Zusammenfassung}
-\semester{SoSe 2020}
+\semester{SoSe \iftagged{KW,full}{2021}{2020}}
 \fachbereich{Informatik}
 \author{Ruben Deisenroth}
 \contributor{J. Milkovits}
 \date{\today}
-\version{2.0.2 (SNAPSHOT)}
+\version{2.1 (SNAPSHOT)}
 \termOrder{printAuthor,printSemester,printContributor,%
 printVersion,,,printDate,printFachbereich}
 
