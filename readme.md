@@ -6,6 +6,9 @@ Aktuell umfasst sie:
 - Pseudocode der Folien (und teils auch eigenen)
 - Einige Beispiele
 
+## Warum weicht der Inhalt / die Reihenfolge von den Folien ab?
+Die Zusammenfassung wurde für den Stoff im `SoSe 2020` geschrieben. Da nun ein anderer Prof die AuD hält, sind einige neuen Inhalte dazugekommen und andere weggefallen. Die neuen Inhalte werde ich (wahrscheinlich) bald nachtragen.  
+Um nur die für das Semester relevanten Inhalte zu kompillieren, kann man den passenden Tag in der Hauptdatei festlegen.
 ## Wie kompiliere ich sie?
 Requirements:
 - Latex-Installation (z.B. MikTex oder TexLive)
@@ -37,6 +40,7 @@ Dadurch kann die Zusammenfassung Reibungslos mit VS-Code kompillieren.
 
 ## Bekannte Fehler/Warnungen
 - Um die Kapitel einzeln kompillieren zu können, ist es notwendig, die `tuda_summary.cls` in `$Texmfhome` o.ä. zu legen oder jeweils in die einzelnen Ordner zu kopieren
+- Einige Font-Shapes werden nicht gefunden (aber mit default-Font gerendert)
 ## Wie kann ich Helfen?
 Wenn dir ein Fehler aufgefallen ist, du die Zusammenfassung erweitern willst oder einfach nur Anregungen hast kannst du entwerder einen PR oder Issue eröffnen oder mir auf Discord an `Rubosplay#0815` eine DM senden.
 
@@ -49,10 +53,20 @@ Wenn dir ein Fehler aufgefallen ist, du die Zusammenfassung erweitern willst ode
   - Gitignore angepasst
   - Weniger indents (war ja teilweise die Halbe Seite mit indents verschwendet)
   - Korrupte Bilder angepasst, lässt sich wieder mit LuaTeX kompillieren
+
+- v2.1 (gepnant, ETA unbekannt) KW-Update
+  - Umstieg auf `rubos-tuda-template.cls`
+  - Inhalte des neuen Semesters
+  - Tags für die einzelnen Semester
+  - Compilerwarnungen fast follständig behoben:
+    - Labelchaos behoben
+    - Korrekte Minipage-Alignments
+  - Und viele kleine Fehler behoben + kleine Verbesserungen
 ## Danksagung
 Vielen Dank an [J. Milkovits](https://github.com/j-milkovits) für die Bereitstellung des Quellcodes [seiner Zusammenfassung](https://github.com/j-milkovits/latex_university_documents/tree/master/aud-reference_sheet)  
 
 Weitere Helfer (Namen oder Discord Tags):  
-- Nhan Huynh (Nyanyan#5701) - Anregungen+Fehlersuche+Hilfe
-- robflop#3939 Anregungen+Fehlersuche
-- Khan#3224 Fehlersuche
+- Nhan Huynh (Nyanyan#5701): Anregungen+Fehlersuche+Hilfe
+- robflop#3939: Anregungen+Fehlersuche
+- wunderhuhn#6967: Grafiken Binärzähler
+- Khan#3224, sibu#0513: Fehlersuche
