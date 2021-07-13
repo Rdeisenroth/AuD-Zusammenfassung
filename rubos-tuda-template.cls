@@ -83,6 +83,7 @@
 \RequirePackage{booktabs}
 \RequirePackage[font=small, labelfont=sc, position=bottom]{caption}
 \RequirePackage[labelfont=normalfont, position=bottom]{subcaption}
+\PassOptionsToPackage{inline}{enumitem}
 \RequirePackage{enumitem}
 \RequirePackage{mathtools}
 \RequirePackage{silence}
@@ -150,6 +151,7 @@
   \RequirePackage{nccmath}
   \RequirePackage{placeins}
   \RequirePackage{pgfplots}
+  \pgfplotsset{compat=1.17}
   \RequirePackage{proof}
   \RequirePackage{qtree}
   \RequirePackage{ragged2e}
@@ -382,6 +384,17 @@
 %     \setcounter{task}{\int_use:N \g_ptxcd_tmp_int}
 %   }
 % }
+
+\prg_new_conditional:Nnn \__rubos_if_points_loaded: {T,F,TF} {
+  \tl_if_empty:NTF \g__ptxcd_task_properties_loaded_tl
+  {\prg_return_false:}
+  {\prg_return_true:}
+}
+
+\cs_set_eq:NN\IfPointsLoadedT \__rubos_if_points_loaded:T
+\cs_set_eq:NN\IfPointsLoadedF \__rubos_if_points_loaded:F
+\cs_set_eq:NN\IfPointsLoadedTF \__rubos_if_points_loaded:TF
+
 % Star currently useless
 \NewDocumentCommand{\mapTasks}{sO{1}O{-1}m}{
 \prop_clear_new:N \l_temp_task_mapping_prop
