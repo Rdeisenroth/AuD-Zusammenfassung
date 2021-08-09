@@ -521,42 +521,41 @@ $\Longrightarrow$ Algorithmus \texttt{Insertion Sort} arbeitet damit korrekt.
         \end{itemize}
     \end{idea}
 
-\subsubsection{Iterativ}
+    \subsubsection{Iterativ}
     \paragraph{Code}\mbox{}
 
-%\begin{noindent}
-\begin{codeBlock}[autogobble]{title={StringMatching(S,T,A)}}
-    IF S.length < T.length
-        return [];                // No Match possible
-    I=[]
-    R=[]
-    FOR i = 0 TO S.length
-        FOR j = 0 TO I.length - 1
-            IF S[i] != T[i-I[j]]
-                I.remove(I[j]);   // Valid Candidate
-            IF i-I[j] == T.length
-                R.add[I[j]];      // Match Found
-        IF S[i] == T[0]
-            I.add(i);
-    return R;
-
-\end{codeBlock}
-%\end{noindent}
-\paragraph{Analyse von \texttt{String matching}}
-\begin{description}[leftmargin=5cm,itemsep=1em]
-    \item [Komplexität]
-          \begin{itemize}
-            %   \item \texttt{Best Case}: $\Theta(n)$
-            %   \item \texttt{Average Case}: $\Theta(n^2)$
-              \item \texttt{Worst Case}: $\mathcal{O}(\vert S\vert\cdot\vert T\vert)$.
-          \end{itemize}
-\end{description}
-\subsubsection{Als Endlicher automat}\label{BOFAStringMatching}\index{BOFA String Matching}
-\begin{figure}[h]
-    \centering
-    \includestandalone[]{pictures/string-matching_bofa/string-matching_bofa}
-\end{figure}
-\clearpage
+    %\begin{noindent}
+    \begin{codeBlock}[autogobble]{title={StringMatching(S,T,A)}}
+        IF S.length < T.length
+            return [];                // No Match possible
+        I=[]
+        R=[]
+        FOR i = 0 TO S.length
+            FOR j = 0 TO I.length - 1
+                IF S[i] != T[i-I[j]]
+                    I.remove(I[j]);   // Valid Candidate
+                IF i-I[j] == T.length
+                    R.add[I[j]];      // Match Found
+            IF S[i] == T[0]
+                I.add(i);
+        return R;
+    \end{codeBlock}
+    %\end{noindent}
+    \paragraph{Analyse von \texttt{String matching}}
+    \begin{description}[leftmargin=5cm,itemsep=1em]
+        \item [Komplexität]
+              \begin{itemize}
+                  %   \item \texttt{Best Case}: $\Theta(n)$
+                  %   \item \texttt{Average Case}: $\Theta(n^2)$
+                  \item \texttt{Worst Case}: $\mathcal{O}(\vert S\vert\cdot\vert T\vert)$.
+              \end{itemize}
+    \end{description}
+    \subsubsection{Als Endlicher automat}\label{BOFAStringMatching}\index{BOFA String Matching}
+    \begin{figure}[h]
+        \centering
+        \includestandalone[]{pictures/string-matching_bofa/string-matching_bofa}
+    \end{figure}
+    \clearpage
 \end{taggedblock}
 %
 \subsection{Bubble Sort}\label{BubbleSort}\index{Bubble Sort}

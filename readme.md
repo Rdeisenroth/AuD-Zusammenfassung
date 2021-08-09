@@ -1,4 +1,8 @@
 # AuD Zusammenfassung
+![Made with](https://img.shields.io/badge/Made%20with-LaTeX-blue)<!-- ![Downloads](https://img.shields.io/github/downloads/Rdeisenroth/AuD-Zusammenfassung/total?color=brightgreen) -->
+![GitHub Repo stars](https://img.shields.io/github/stars/Rdeisenroth/AuD-Zusammenfassung?logo=Github&color=brightgreen)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Rdeisenroth/AuD-Zusammenfassung?include_prereleases&label=latest%20release&color=yellowgreen&logo=Github)
+![Size](https://badge-size.herokuapp.com/Rdeisenroth/AuD-Zusammenfassung/master/AuD-Zusammenfassung-2020.pdf?color=red)
 ## Was ist das?
 Eine Zusammenfassung des Faches Algorithmen und Datenstrukturen (kurz: AuD), geschrieben in Latex.
 Aktuell umfasst sie:
