@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\usepackage{audutils}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+% \externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+
+\begin{document}
+\onedimarray{$0$/$b_{k-1}$, 0/$b_{k-2}$, $\cdots$/{}, , , $\cdots$/{}, 0/$b_2$, 0/$b_1$, 0/$b_0$}% Creates an array with cell titles
+\end{document}

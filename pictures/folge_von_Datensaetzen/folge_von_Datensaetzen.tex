@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+%Styles
+\begin{tikzpicture}
+    \matrix (A) [
+        matrix of nodes,
+        row sep=-\pgflinewidth,
+        column sep=-\pgflinewidth,
+        nodes={
+            rectangle, draw=., minimum height=1.25em, minimum width=2em,
+            anchor=center, %align=center, %text width=2em,
+            inner sep=0pt, outer sep=0pt
+        }
+    ]{
+    $D_1$ & $D_2$ & $\cdots$ & $D_n$\\};
+\end{tikzpicture}
+\end{document}
