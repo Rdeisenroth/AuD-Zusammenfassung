@@ -208,7 +208,14 @@
 \newcommand{\loesung}{\fatsf{Lösung: }}
 \newcommand{\rechnung}{\fatsf{Rechnung: }}
 
+% Decoy Commands
+\newcommand{\extref}[2][]{
+    \ref{#1#2}
+}
 
+\NewDocumentCommand\exthyperref{oO{}m}{
+    \hyperref[#2#1]{#3}
+}
 
 % Center Captions
 \captionsetup[figure]{justification=centering}

@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{import}
+% Import all Packages from Main Preamble with relative Path
+\subimport*{../../}{preamble}
+% Get Labels from Main Document using the xr-hyper Package
+\externaldocument{../../AuD-Zusammenfassung-2020}
+% Set Graphics Path, so imported pictures load correctly
+\graphicspath{{../../}}
+
+\begin{document}
+%Styles
+\begin{tikzpicture}[font=\sffamily\slshape]
+    \tikzstyle{stringpart} = [draw,thick, minimum height=2em]
+    \node[stringpart,minimum width = 3cm](s-1){};
+    \node[stringpart,minimum width = 2cm, right= -\pgflinewidth of s-1](s-2){};
+    \node[stringpart,minimum width = 4cm, right= -\pgflinewidth of s-2](s-3){};
+    \node[stringpart, right= -\pgflinewidth of s-3](s-4){a};
+    \node[stringpart,minimum width = 4cm, right= -\pgflinewidth of s-4](s-5){};
+    %Other
+    \node[left=1ex of s-1, inner sep=0pt]{S:};
+    \node[above=1ex of s-4, inner sep=0pt]{h};
+    \draw[decorate,decoration={brace,amplitude=30pt,mirror, raise=2pt}, very thick,densely dotted] (s-3.north east) --node[above=30pt]{$(S[h-i]\dots S[h-1])=(T[1]\dots T[i])$} (s-2.north west);
+    \draw[decorate,decoration={brace,amplitude=30pt, raise=2pt}, very thick,densely dotted] (s-4.south east) --node[below=30pt,align=center,inner sep=0pt]{$(T[i-k+2]\dots T[i],a)=(S[h-k+1]\dots S[h])=(T[1]\dots T[k])$\\$L[i,a]=$ maximales $k$ mit dieser Gleichheit} (s-3.south west);
+\end{tikzpicture}
+\end{document}
