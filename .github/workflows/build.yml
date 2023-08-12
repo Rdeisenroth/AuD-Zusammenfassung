@@ -1,0 +1,70 @@
+# LaTeX document build workflow
+
+name: build
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push events for all branches
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: [self-hosted]
+    # The docker image to use for the container
+    container:
+      image: ghcr.io/rdeisenroth/rubos-tuda-template:latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 1. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+
+      # Link texmf folder to the current texmf home
+      - name: Link texmf folder to the current texmf home
+        run: |
+          ln -s /root/texmf $(kpsewhich -var-value=TEXMFHOME)
+          texhash --verbose
+
+      # 2. Build the document
+      - name: "Build the document"
+        run: |
+          CI_RUN=1 make -j $(nproc)
+          mv build/*.pdf .
+
+      # 3. Upload artifacts to GitHub
+      - name: Upload artifacts to GitHub
+        #if: ${{ !env.ACT }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: "*.pdf"
+          if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to `warn`
+      
+      # 4. Get Date
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S.%N')"
+
+      # 5. create a release
+      - name: Create a release
+        if: ${{ github.ref == 'refs/heads/master' && !env.ACT && github.repository == 'Rdeisenroth/AuD-Zusammenfassung' }}
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: snapshot-${{ steps.date.outputs.date }}
+          name: snapshot-release-${{ steps.date.outputs.date }}
+          files: "*.pdf"
+          fail_on_unmatched_files: true
+          draft: false
+          prerelease: false
