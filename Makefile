@@ -16,7 +16,7 @@ define build_latex_with_jobname_and_env
 	@mv $(DIR)/$(2).pdf $(OUT_DIR)/
 endef
 
-FILES := $(wildcard *.tex)
+FILES := $(wildcard AuD-Zusammenfassung-2020.tex)
 
 all:
 	$(MAKE) clean
